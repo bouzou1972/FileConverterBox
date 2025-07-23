@@ -42,7 +42,7 @@ The application provides various developer utilities:
 - **JSON Formatter**: JSON validation, formatting, and minification
 - **Lorem Ipsum Generator**: Placeholder text generation with HTML options
 - **Markdown Converter**: Markdown to HTML conversion with preview
-- **PDF Converter**: Text and HTML to PDF conversion with formatting options
+- **PDF Converter**: Text, HTML, and image to PDF conversion with formatting options
 
 ### UI/UX Features
 - **Responsive Design**: Mobile-first approach with Tailwind CSS

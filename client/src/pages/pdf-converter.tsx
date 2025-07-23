@@ -12,6 +12,7 @@ import { FileText, Download, Upload, RotateCcw } from "lucide-react";
 import { 
   convertTextToPDF, 
   convertHTMLToPDF, 
+  convertImageToPDF,
   downloadPDF, 
   sampleText, 
   sampleHTML,
@@ -21,6 +22,8 @@ import {
 export default function PDFConverter() {
   const [textContent, setTextContent] = useState("");
   const [htmlContent, setHtmlContent] = useState("");
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>("");
   const [format, setFormat] = useState<"A4" | "A3" | "Letter">("A4");
   const [orientation, setOrientation] = useState<"portrait" | "landscape">("portrait");
   const [fontSize, setFontSize] = useState(12);
@@ -100,6 +103,58 @@ export default function PDFConverter() {
     }
   };
 
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      if (file.type.startsWith('image/')) {
+        setSelectedImage(file);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          setImagePreview(e.target?.result as string);
+        };
+        reader.readAsDataURL(file);
+        setError("");
+      } else {
+        setError("Please select a valid image file (PNG, JPG, JPEG, etc.)");
+      }
+    }
+  };
+
+  const handleConvertImage = async () => {
+    if (!selectedImage) {
+      setError("Please select an image to convert");
+      return;
+    }
+
+    setIsConverting(true);
+    setError("");
+
+    try {
+      const options: PDFConversionOptions = {
+        format,
+        orientation,
+        fontSize,
+        margin
+      };
+
+      const result = await convertImageToPDF(selectedImage, options);
+
+      if (result.success && result.blob) {
+        downloadPDF(result.blob, `converted-${selectedImage.name.replace(/\.[^/.]+$/, "")}.pdf`);
+        toast({
+          title: "Success",
+          description: "PDF generated and downloaded successfully!"
+        });
+      } else {
+        setError(result.error || "Failed to convert image to PDF");
+      }
+    } catch (error) {
+      setError((error as Error).message);
+    } finally {
+      setIsConverting(false);
+    }
+  };
+
   const loadSampleText = () => {
     setTextContent(sampleText);
     setActiveTab("text");
@@ -113,6 +168,8 @@ export default function PDFConverter() {
   const clearContent = () => {
     setTextContent("");
     setHtmlContent("");
+    setSelectedImage(null);
+    setImagePreview("");
     setError("");
   };
 
@@ -160,9 +217,10 @@ export default function PDFConverter() {
               </div>
 
               <Tabs value={activeTab} onValueChange={setActiveTab}>
-                <TabsList className="grid w-full grid-cols-2">
+                <TabsList className="grid w-full grid-cols-3">
                   <TabsTrigger value="text">Text to PDF</TabsTrigger>
                   <TabsTrigger value="html">HTML to PDF</TabsTrigger>
+                  <TabsTrigger value="image">Image to PDF</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="text" className="space-y-4">
@@ -194,6 +252,70 @@ export default function PDFConverter() {
                     className="w-full bg-red-600 hover:bg-red-700"
                   >
                     {isConverting ? "Converting..." : "Convert HTML to PDF"}
+                  </Button>
+                </TabsContent>
+
+                <TabsContent value="image" className="space-y-4">
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                      id="image-upload"
+                    />
+                    {!imagePreview ? (
+                      <div>
+                        <label
+                          htmlFor="image-upload"
+                          className="cursor-pointer flex flex-col items-center"
+                        >
+                          <Upload className="w-12 h-12 text-gray-400 mb-4" />
+                          <p className="text-lg font-medium text-gray-700 mb-2">
+                            Upload an Image
+                          </p>
+                          <p className="text-sm text-gray-500">
+                            PNG, JPG, JPEG, GIF, WebP files supported
+                          </p>
+                        </label>
+                      </div>
+                    ) : (
+                      <div className="space-y-4">
+                        <img
+                          src={imagePreview}
+                          alt="Preview"
+                          className="max-h-64 mx-auto rounded-lg shadow-md"
+                        />
+                        <div className="flex gap-2 justify-center">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              setSelectedImage(null);
+                              setImagePreview("");
+                            }}
+                          >
+                            <RotateCcw className="w-4 h-4 mr-1" />
+                            Remove
+                          </Button>
+                          <label htmlFor="image-upload">
+                            <Button variant="outline" size="sm" asChild>
+                              <span>
+                                <Upload className="w-4 h-4 mr-1" />
+                                Change
+                              </span>
+                            </Button>
+                          </label>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <Button
+                    onClick={handleConvertImage}
+                    disabled={isConverting || !selectedImage}
+                    className="w-full bg-red-600 hover:bg-red-700"
+                  >
+                    {isConverting ? "Converting..." : "Convert Image to PDF"}
                   </Button>
                 </TabsContent>
               </Tabs>
@@ -276,11 +398,12 @@ export default function PDFConverter() {
           <div className="mt-8 p-4 bg-blue-50 rounded-lg">
             <h4 className="font-medium text-blue-900 mb-2">How to use:</h4>
             <ul className="text-sm text-blue-800 space-y-1">
-              <li>• Choose between Text or HTML conversion modes</li>
-              <li>• Enter your content or load a sample to get started</li>
+              <li>• Choose between Text, HTML, or Image conversion modes</li>
+              <li>• Enter your content, load a sample, or upload an image to get started</li>
               <li>• Adjust PDF settings like format, orientation, and font size</li>
               <li>• Click convert to generate and download your PDF</li>
               <li>• HTML mode preserves styling and supports complex layouts</li>
+              <li>• Image mode supports PNG, JPG, JPEG, GIF, and WebP formats</li>
             </ul>
           </div>
         </CardContent>

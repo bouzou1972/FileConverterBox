@@ -72,6 +72,85 @@ export async function convertTextToPDF(
   }
 }
 
+export async function convertImageToPDF(
+  imageFile: File,
+  options: PDFConversionOptions
+): Promise<PDFResult> {
+  try {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const img = new Image();
+          img.onload = () => {
+            try {
+              const pdf = new jsPDF({
+                orientation: options.orientation,
+                unit: 'mm',
+                format: options.format
+              });
+
+              const pageWidth = pdf.internal.pageSize.getWidth();
+              const pageHeight = pdf.internal.pageSize.getHeight();
+              const maxWidth = pageWidth - (options.margin * 2);
+              const maxHeight = pageHeight - (options.margin * 2);
+
+              // Calculate image dimensions to fit the page
+              let imgWidth = img.width;
+              let imgHeight = img.height;
+              const aspectRatio = imgWidth / imgHeight;
+
+              if (imgWidth > maxWidth) {
+                imgWidth = maxWidth;
+                imgHeight = imgWidth / aspectRatio;
+              }
+
+              if (imgHeight > maxHeight) {
+                imgHeight = maxHeight;
+                imgWidth = imgHeight * aspectRatio;
+              }
+
+              // Center the image on the page
+              const x = (pageWidth - imgWidth) / 2;
+              const y = (pageHeight - imgHeight) / 2;
+
+              pdf.addImage(
+                e.target?.result as string,
+                'PNG',
+                x,
+                y,
+                imgWidth,
+                imgHeight
+              );
+
+              const blob = pdf.output('blob');
+              resolve({ success: true, blob });
+            } catch (error) {
+              resolve({ success: false, error: (error as Error).message });
+            }
+          };
+          
+          img.onerror = () => {
+            resolve({ success: false, error: 'Failed to load image' });
+          };
+          
+          img.src = e.target?.result as string;
+        } catch (error) {
+          resolve({ success: false, error: (error as Error).message });
+        }
+      };
+      
+      reader.onerror = () => {
+        resolve({ success: false, error: 'Failed to read file' });
+      };
+      
+      reader.readAsDataURL(imageFile);
+    });
+  } catch (error) {
+    return { success: false, error: (error as Error).message };
+  }
+}
+
 export async function convertHTMLToPDF(
   htmlContent: string,
   options: PDFConversionOptions

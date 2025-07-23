@@ -56,7 +56,7 @@ export default function Home() {
       icon: "picture_as_pdf",
       iconColor: "text-red-600",
       title: "PDF Converter",
-      description: "Convert text or HTML content to PDF with customizable formatting and page settings."
+      description: "Convert text, HTML, or images to PDF with customizable formatting and page settings."
     }
   ];
 
