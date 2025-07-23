@@ -56,7 +56,7 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           {/* Site Name */}
           <Link href="/">
-            <h1 className="text-2xl font-bold text-blue-600 cursor-pointer">
+            <h1 className="text-2xl font-bold text-blue-600 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1" tabIndex={0}>
               FileConverterData
             </h1>
           </Link>

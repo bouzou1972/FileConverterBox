@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { useToast } from "@/hooks/use-toast";
-import { Copy, RotateCcw, Upload, Download } from "lucide-react";
+import { RotateCcw, Upload, Download } from "lucide-react";
+import CopyButton from "@/components/copy-button";
 
 export default function Base64Converter() {
   const [textInput, setTextInput] = useState("");

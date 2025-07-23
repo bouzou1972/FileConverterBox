@@ -224,7 +224,7 @@ export default function Home() {
       </div>
 
       {/* Search Bar */}
-      <div className="max-w-md mx-auto mb-8 sm:mb-12">
+      <section className="max-w-md mx-auto mb-8 sm:mb-12" role="search" aria-label="Tool search">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
           <Input
@@ -232,15 +232,16 @@ export default function Home() {
             placeholder="Search tools... (e.g., json, pdf, image)"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 text-center bg-background border-border"
+            className="pl-10 text-center bg-background border-border focus:ring-2 focus:ring-blue-500"
+            aria-label="Search for tools by name or description"
           />
         </div>
         {searchQuery && (
-          <p className="text-sm text-muted-foreground mt-2 text-center">
+          <p className="text-sm text-muted-foreground mt-2 text-center" role="status" aria-live="polite">
             Showing {filteredGroups.reduce((acc, group) => acc + group.tools.length, 0)} tools
           </p>
         )}
-      </div>
+      </section>
       
       {filteredGroups.map((group, groupIndex) => (
         <div key={groupIndex} className="mb-8 sm:mb-12">

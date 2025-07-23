@@ -4,8 +4,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Copy, Upload, Hash } from "lucide-react";
+import { Upload, Hash } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import CopyButton from "@/components/copy-button";
 
 export default function HashGenerator() {
   const [input, setInput] = useState("");

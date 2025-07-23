@@ -3,8 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { RefreshCw, Copy } from "lucide-react";
+import { RefreshCw } from "lucide-react";
+import CopyButton from "@/components/copy-button";
 import { generateUUID, generateBulkUUIDs } from "@/lib/utils/uuid";
 
 export default function UuidGenerator() {
@@ -27,13 +27,7 @@ export default function UuidGenerator() {
     setBulkUUIDs(uuids.join('\n'));
   };
 
-  const copyToClipboard = (text: string, message: string) => {
-    navigator.clipboard.writeText(text);
-    toast({
-      title: "Copied",
-      description: message
-    });
-  };
+
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -68,12 +62,10 @@ export default function UuidGenerator() {
                 readOnly
                 className="font-mono text-lg bg-gray-50"
               />
-              <Button
-                variant="outline"
-                onClick={() => copyToClipboard(currentUUID, "UUID copied to clipboard!")}
-              >
-                <Copy className="w-4 h-4" />
-              </Button>
+              <CopyButton 
+                text={currentUUID} 
+                label="Copy"
+              />
             </div>
           </div>
 
@@ -97,14 +89,11 @@ export default function UuidGenerator() {
               >
                 Generate Multiple
               </Button>
-              <Button
+              <CopyButton 
+                text={bulkUUIDs} 
+                label="Copy All"
                 variant="outline"
-                onClick={() => copyToClipboard(bulkUUIDs, "All UUIDs copied to clipboard!")}
-                disabled={!bulkUUIDs}
-              >
-                <Copy className="w-4 h-4 mr-1" />
-                Copy All
-              </Button>
+              />
             </div>
             <Textarea
               value={bulkUUIDs}
