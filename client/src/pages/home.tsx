@@ -1,104 +1,140 @@
 import ToolCard from "@/components/tool-card";
 
 export default function Home() {
-  const tools = [
+  const toolGroups = [
     {
-      href: "/csv-converter",
-      icon: "code",
-      iconColor: "text-blue-500",
-      title: "CSV ↔ JSON/YAML/TSV",
-      description: "Convert structured data between formats in seconds. Upload files or paste content directly."
+      title: "Data Formats",
+      subtitle: "Most Popular Converters",
+      tools: [
+        {
+          href: "/csv-converter",
+          icon: "table_chart",
+          iconColor: "text-blue-600",
+          title: "CSV Converter",
+          description: "Convert between CSV, JSON, YAML, and TSV formats with drag-and-drop support."
+        },
+        {
+          href: "/json-formatter",
+          icon: "data_object",
+          iconColor: "text-indigo-600",
+          title: "JSON Formatter",
+          description: "Format, validate, and minify JSON data with syntax highlighting and error detection."
+        },
+        {
+          href: "/base64-converter",
+          icon: "code",
+          iconColor: "text-blue-600",
+          title: "Base64 Encoder/Decoder",
+          description: "Encode text or files to Base64 format or decode Base64 strings back to readable text."
+        }
+      ]
     },
     {
-      href: "/regex-tester",
-      icon: "filter_alt",
-      iconColor: "tool-green",
-      title: "Regex Tester",
-      description: "Test and debug regular expressions with live feedback and match highlighting."
+      title: "PDF Tools",
+      subtitle: "High Demand File Converters",
+      tools: [
+        {
+          href: "/pdf-converter",
+          icon: "picture_as_pdf",
+          iconColor: "text-red-600",
+          title: "PDF Converter",
+          description: "Convert text, HTML, or images to PDF with customizable formatting and page settings."
+        },
+        {
+          href: "/png-to-pdf",
+          icon: "image",
+          iconColor: "text-orange-600",
+          title: "PNG to PDF Converter",
+          description: "Convert PNG, JPG, and other image formats to PDF with batch processing support."
+        },
+        {
+          href: "/pdf-to-ppt",
+          icon: "slideshow",
+          iconColor: "text-purple-600",
+          title: "PDF to PPT Converter",
+          description: "Convert PDF documents to PowerPoint presentations with automatic slide generation."
+        }
+      ]
     },
     {
-      href: "/timestamp-converter",
-      icon: "schedule",
-      iconColor: "tool-purple",
-      title: "Timestamp Converter",
-      description: "Convert UNIX timestamps to human-readable time and vice versa with timezone support."
+      title: "HTML/Markdown",
+      subtitle: "Web Content Converters",
+      tools: [
+        {
+          href: "/markdown-converter",
+          icon: "description",
+          iconColor: "text-red-600",
+          title: "Markdown to HTML",
+          description: "Convert Markdown content into clean HTML with live preview and export options."
+        },
+        {
+          href: "/html-to-markdown",
+          icon: "code",
+          iconColor: "text-indigo-600",
+          title: "HTML to Markdown",
+          description: "Convert HTML content to clean Markdown format with support for headers, links, images, and more."
+        }
+      ]
     },
     {
-      href: "/uuid-generator",
-      icon: "vpn_key",
-      iconColor: "tool-yellow",
-      title: "UUID Generator",
-      description: "Generate unique UUID v4 identifiers instantly with copy-to-clipboard functionality."
+      title: "Text Processing",
+      subtitle: "Advanced Text Tools",
+      tools: [
+        {
+          href: "/text-case-converter",
+          icon: "text_fields",
+          iconColor: "text-green-600",
+          title: "Text Case Converter",
+          description: "Convert text between different case formats like camelCase, snake_case, kebab-case, and more."
+        },
+        {
+          href: "/text-diff-checker",
+          icon: "compare_arrows",
+          iconColor: "text-purple-600",
+          title: "Text Diff Checker",
+          description: "Compare two blocks of text to find differences, additions, and deletions with detailed analysis."
+        },
+        {
+          href: "/regex-tester",
+          icon: "search",
+          iconColor: "text-green-600",
+          title: "Regex Tester",
+          description: "Test regular expressions with live matching, replace functionality, and pattern explanation."
+        }
+      ]
     },
     {
-      href: "/json-formatter",
-      icon: "data_object",
-      iconColor: "tool-pink",
-      title: "JSON Formatter",
-      description: "Beautify and validate JSON data with syntax highlighting and error detection."
+      title: "Developer Utils",
+      subtitle: "Programming Utilities",
+      tools: [
+        {
+          href: "/uuid-generator",
+          icon: "fingerprint",
+          iconColor: "text-purple-600",
+          title: "UUID Generator",
+          description: "Generate secure UUID v4 identifiers with bulk generation and copy functionality."
+        },
+        {
+          href: "/timestamp-converter",
+          icon: "schedule",
+          iconColor: "text-orange-600",
+          title: "Timestamp Converter",
+          description: "Convert Unix timestamps to human-readable dates and back with timezone support."
+        }
+      ]
     },
     {
-      href: "/lorem-generator",
-      icon: "text_snippet",
-      iconColor: "tool-indigo",
-      title: "Lorem Ipsum Generator",
-      description: "Generate placeholder text for mockups and layouts with customizable options."
-    },
-    {
-      href: "/markdown-converter",
-      icon: "html",
-      iconColor: "tool-red",
-      title: "Markdown to HTML",
-      description: "Convert Markdown content into clean HTML with live preview and export options."
-    },
-    {
-      href: "/pdf-converter",
-      icon: "picture_as_pdf",
-      iconColor: "text-red-600",
-      title: "PDF Converter",
-      description: "Convert text, HTML, or images to PDF with customizable formatting and page settings."
-    },
-    {
-      href: "/png-to-pdf",
-      icon: "image",
-      iconColor: "text-orange-600",
-      title: "PNG to PDF Converter",
-      description: "Convert PNG, JPG, and other image formats to PDF with batch processing support."
-    },
-    {
-      href: "/pdf-to-ppt",
-      icon: "slideshow",
-      iconColor: "text-purple-600",
-      title: "PDF to PPT Converter",
-      description: "Convert PDF documents to PowerPoint presentations with automatic slide generation."
-    },
-    {
-      href: "/base64-converter",
-      icon: "code",
-      iconColor: "text-blue-600",
-      title: "Base64 Encoder/Decoder",
-      description: "Encode text or files to Base64 format or decode Base64 strings back to readable text."
-    },
-    {
-      href: "/text-case-converter",
-      icon: "text_fields",
-      iconColor: "text-green-600",
-      title: "Text Case Converter",
-      description: "Convert text between different case formats like camelCase, snake_case, kebab-case, and more."
-    },
-    {
-      href: "/text-diff-checker",
-      icon: "compare_arrows",
-      iconColor: "text-purple-600",
-      title: "Text Diff Checker",
-      description: "Compare two blocks of text to find differences, additions, and deletions with detailed analysis."
-    },
-    {
-      href: "/html-to-markdown",
-      icon: "code",
-      iconColor: "text-indigo-600",
-      title: "HTML to Markdown",
-      description: "Convert HTML content to clean Markdown format with support for headers, links, images, and more."
+      title: "Content Generation",
+      subtitle: "Text & Content Tools",
+      tools: [
+        {
+          href: "/lorem-generator",
+          icon: "text_snippet",
+          iconColor: "text-gray-600",
+          title: "Lorem Ipsum Generator",
+          description: "Generate placeholder text with customizable length, paragraphs, and HTML formatting."
+        }
+      ]
     }
   ];
 
@@ -111,11 +147,20 @@ export default function Home() {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {tools.map((tool, index) => (
-          <ToolCard key={index} {...tool} />
-        ))}
-      </div>
+      {toolGroups.map((group, groupIndex) => (
+        <div key={groupIndex} className="mb-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">{group.title}</h3>
+            <p className="text-sm text-gray-500 uppercase tracking-wide">{group.subtitle}</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {group.tools.map((tool, toolIndex) => (
+              <ToolCard key={toolIndex} {...tool} />
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
