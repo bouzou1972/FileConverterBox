@@ -43,6 +43,7 @@ The application provides various developer utilities:
 - **Lorem Ipsum Generator**: Placeholder text generation with HTML options
 - **Markdown Converter**: Markdown to HTML conversion with preview
 - **PDF Converter**: Text, HTML, and image to PDF conversion with formatting options
+- **PNG to PDF Converter**: Dedicated image-to-PDF converter with batch processing and SEO optimization
 
 ### UI/UX Features
 - **Responsive Design**: Mobile-first approach with Tailwind CSS

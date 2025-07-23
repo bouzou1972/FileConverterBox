@@ -57,6 +57,13 @@ export default function Home() {
       iconColor: "text-red-600",
       title: "PDF Converter",
       description: "Convert text, HTML, or images to PDF with customizable formatting and page settings."
+    },
+    {
+      href: "/png-to-pdf",
+      icon: "image",
+      iconColor: "text-orange-600",
+      title: "PNG to PDF Converter",
+      description: "Convert PNG, JPG, and other image formats to PDF with batch processing support."
     }
   ];
 
@@ -69,7 +76,7 @@ export default function Home() {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {tools.map((tool, index) => (
           <ToolCard key={index} {...tool} />
         ))}

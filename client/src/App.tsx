@@ -13,6 +13,7 @@ import JsonFormatter from "@/pages/json-formatter";
 import LoremGenerator from "@/pages/lorem-generator";
 import MarkdownConverter from "@/pages/markdown-converter";
 import PDFConverter from "@/pages/pdf-converter";
+import PngToPdf from "@/pages/png-to-pdf";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -28,6 +29,7 @@ function Router() {
         <Route path="/lorem-generator" component={LoremGenerator} />
         <Route path="/markdown-converter" component={MarkdownConverter} />
         <Route path="/pdf-converter" component={PDFConverter} />
+        <Route path="/png-to-pdf" component={PngToPdf} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
