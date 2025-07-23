@@ -44,6 +44,7 @@ The application provides various developer utilities:
 - **Markdown Converter**: Markdown to HTML conversion with preview
 - **PDF Converter**: Text, HTML, and image to PDF conversion with formatting options
 - **PNG to PDF Converter**: Dedicated image-to-PDF converter with batch processing and SEO optimization
+- **PDF to PPT Converter**: Convert PDF documents to PowerPoint presentations with automatic content extraction
 
 ### UI/UX Features
 - **Responsive Design**: Mobile-first approach with Tailwind CSS

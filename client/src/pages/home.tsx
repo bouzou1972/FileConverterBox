@@ -64,6 +64,13 @@ export default function Home() {
       iconColor: "text-orange-600",
       title: "PNG to PDF Converter",
       description: "Convert PNG, JPG, and other image formats to PDF with batch processing support."
+    },
+    {
+      href: "/pdf-to-ppt",
+      icon: "slideshow",
+      iconColor: "text-purple-600",
+      title: "PDF to PPT Converter",
+      description: "Convert PDF documents to PowerPoint presentations with automatic slide generation."
     }
   ];
 
