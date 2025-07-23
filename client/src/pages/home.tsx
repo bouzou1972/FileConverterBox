@@ -71,6 +71,34 @@ export default function Home() {
       iconColor: "text-purple-600",
       title: "PDF to PPT Converter",
       description: "Convert PDF documents to PowerPoint presentations with automatic slide generation."
+    },
+    {
+      href: "/base64-converter",
+      icon: "code",
+      iconColor: "text-blue-600",
+      title: "Base64 Encoder/Decoder",
+      description: "Encode text or files to Base64 format or decode Base64 strings back to readable text."
+    },
+    {
+      href: "/text-case-converter",
+      icon: "text_fields",
+      iconColor: "text-green-600",
+      title: "Text Case Converter",
+      description: "Convert text between different case formats like camelCase, snake_case, kebab-case, and more."
+    },
+    {
+      href: "/text-diff-checker",
+      icon: "compare_arrows",
+      iconColor: "text-purple-600",
+      title: "Text Diff Checker",
+      description: "Compare two blocks of text to find differences, additions, and deletions with detailed analysis."
+    },
+    {
+      href: "/html-to-markdown",
+      icon: "code",
+      iconColor: "text-indigo-600",
+      title: "HTML to Markdown",
+      description: "Convert HTML content to clean Markdown format with support for headers, links, images, and more."
     }
   ];
 

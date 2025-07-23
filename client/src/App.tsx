@@ -15,6 +15,10 @@ import MarkdownConverter from "@/pages/markdown-converter";
 import PDFConverter from "@/pages/pdf-converter";
 import PngToPdf from "@/pages/png-to-pdf";
 import PdfToPpt from "@/pages/pdf-to-ppt";
+import Base64Converter from "@/pages/base64-converter";
+import TextCaseConverter from "@/pages/text-case-converter";
+import TextDiffChecker from "@/pages/text-diff-checker";
+import HtmlToMarkdown from "@/pages/html-to-markdown";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -32,6 +36,10 @@ function Router() {
         <Route path="/pdf-converter" component={PDFConverter} />
         <Route path="/png-to-pdf" component={PngToPdf} />
         <Route path="/pdf-to-ppt" component={PdfToPpt} />
+        <Route path="/base64-converter" component={Base64Converter} />
+        <Route path="/text-case-converter" component={TextCaseConverter} />
+        <Route path="/text-diff-checker" component={TextDiffChecker} />
+        <Route path="/html-to-markdown" component={HtmlToMarkdown} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

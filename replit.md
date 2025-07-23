@@ -45,6 +45,10 @@ The application provides various developer utilities:
 - **PDF Converter**: Text, HTML, and image to PDF conversion with formatting options
 - **PNG to PDF Converter**: Dedicated image-to-PDF converter with batch processing and SEO optimization
 - **PDF to PPT Converter**: Convert PDF documents to PowerPoint presentations with automatic content extraction
+- **Base64 Encoder/Decoder**: Encode text/files to Base64 or decode Base64 strings with file support
+- **Text Case Converter**: Convert text between 10 different case formats (camelCase, snake_case, etc.)
+- **Text Diff Checker**: Compare text blocks with detailed difference analysis and statistics
+- **HTML to Markdown Converter**: Convert HTML content to clean Markdown with comprehensive element support
 
 ### UI/UX Features
 - **Responsive Design**: Mobile-first approach with Tailwind CSS

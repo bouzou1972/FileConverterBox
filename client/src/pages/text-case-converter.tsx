@@ -1,0 +1,237 @@
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useToast } from "@/hooks/use-toast";
+import { Copy, RotateCcw, Type } from "lucide-react";
+
+export default function TextCaseConverter() {
+  const [inputText, setInputText] = useState("");
+  const [results, setResults] = useState({
+    uppercase: "",
+    lowercase: "",
+    titlecase: "",
+    camelcase: "",
+    pascalcase: "",
+    snakecase: "",
+    kebabcase: "",
+    constantcase: "",
+    dotcase: "",
+    pathcase: ""
+  });
+  
+  const { toast } = useToast();
+
+  const convertText = (text: string) => {
+    if (!text.trim()) {
+      setResults({
+        uppercase: "",
+        lowercase: "",
+        titlecase: "",
+        camelcase: "",
+        pascalcase: "",
+        snakecase: "",
+        kebabcase: "",
+        constantcase: "",
+        dotcase: "",
+        pathcase: ""
+      });
+      return;
+    }
+
+    // Helper function to convert to camelCase
+    const toCamelCase = (str: string) => {
+      return str
+        .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
+          return index === 0 ? word.toLowerCase() : word.toUpperCase();
+        })
+        .replace(/\s+/g, '');
+    };
+
+    // Helper function to convert to PascalCase
+    const toPascalCase = (str: string) => {
+      return str
+        .replace(/(?:^\w|[A-Z]|\b\w)/g, (word) => {
+          return word.toUpperCase();
+        })
+        .replace(/\s+/g, '');
+    };
+
+    // Helper function to convert to snake_case
+    const toSnakeCase = (str: string) => {
+      return str
+        .replace(/\W+/g, ' ')
+        .split(/ |\B(?=[A-Z])/)
+        .map(word => word.toLowerCase())
+        .join('_');
+    };
+
+    // Helper function to convert to kebab-case
+    const toKebabCase = (str: string) => {
+      return str
+        .replace(/\W+/g, ' ')
+        .split(/ |\B(?=[A-Z])/)
+        .map(word => word.toLowerCase())
+        .join('-');
+    };
+
+    // Helper function to convert to Title Case
+    const toTitleCase = (str: string) => {
+      return str.replace(/\w\S*/g, (txt) => {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+    };
+
+    setResults({
+      uppercase: text.toUpperCase(),
+      lowercase: text.toLowerCase(),
+      titlecase: toTitleCase(text),
+      camelcase: toCamelCase(text),
+      pascalcase: toPascalCase(text),
+      snakecase: toSnakeCase(text),
+      kebabcase: toKebabCase(text),
+      constantcase: toSnakeCase(text).toUpperCase(),
+      dotcase: toSnakeCase(text).replace(/_/g, '.'),
+      pathcase: toSnakeCase(text).replace(/_/g, '/')
+    });
+  };
+
+  const handleInputChange = (value: string) => {
+    setInputText(value);
+    convertText(value);
+  };
+
+  const copyToClipboard = async (text: string, type: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast({
+        title: "Copied",
+        description: `${type} text copied to clipboard!`
+      });
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: "Failed to copy to clipboard",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const clearAll = () => {
+    setInputText("");
+    setResults({
+      uppercase: "",
+      lowercase: "",
+      titlecase: "",
+      camelcase: "",
+      pascalcase: "",
+      snakecase: "",
+      kebabcase: "",
+      constantcase: "",
+      dotcase: "",
+      pathcase: ""
+    });
+  };
+
+  const caseTypes = [
+    { key: 'uppercase', label: 'UPPERCASE', description: 'ALL LETTERS IN CAPS' },
+    { key: 'lowercase', label: 'lowercase', description: 'all letters in small case' },
+    { key: 'titlecase', label: 'Title Case', description: 'First Letter Of Each Word Capitalized' },
+    { key: 'camelcase', label: 'camelCase', description: 'firstWordLowerRestCapitalized' },
+    { key: 'pascalcase', label: 'PascalCase', description: 'FirstLetterOfEachWordCapitalized' },
+    { key: 'snakecase', label: 'snake_case', description: 'words_separated_by_underscores' },
+    { key: 'kebabcase', label: 'kebab-case', description: 'words-separated-by-hyphens' },
+    { key: 'constantcase', label: 'CONSTANT_CASE', description: 'WORDS_SEPARATED_BY_UNDERSCORES_IN_CAPS' },
+    { key: 'dotcase', label: 'dot.case', description: 'words.separated.by.dots' },
+    { key: 'pathcase', label: 'path/case', description: 'words/separated/by/slashes' }
+  ];
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-10">
+      <Card className="shadow-lg">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-3">
+            <Type className="text-green-600 text-3xl" />
+            Text Case Converter
+          </CardTitle>
+          <p className="text-gray-600">
+            Convert text between different case formats like camelCase, snake_case, kebab-case, and more
+          </p>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Enter Text to Convert
+              </label>
+              <Textarea
+                value={inputText}
+                onChange={(e) => handleInputChange(e.target.value)}
+                placeholder="Enter text to convert between different cases..."
+                className="min-h-24"
+              />
+              <div className="flex gap-2 mt-2">
+                <Button variant="outline" onClick={clearAll}>
+                  <RotateCcw className="w-4 h-4 mr-2" />
+                  Clear
+                </Button>
+              </div>
+            </div>
+
+            {inputText.trim() && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {caseTypes.map(({ key, label, description }) => (
+                  <div key={key} className="border rounded-lg p-4 bg-gray-50">
+                    <div className="flex justify-between items-start mb-2">
+                      <div>
+                        <h3 className="font-medium text-gray-900">{label}</h3>
+                        <p className="text-xs text-gray-500">{description}</p>
+                      </div>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => copyToClipboard(results[key as keyof typeof results], label)}
+                        disabled={!results[key as keyof typeof results]}
+                      >
+                        <Copy className="w-3 h-3" />
+                      </Button>
+                    </div>
+                    <div className="bg-white p-2 rounded border min-h-[3rem] font-mono text-sm break-all">
+                      {results[key as keyof typeof results] || (
+                        <span className="text-gray-400">Converted text will appear here</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="mt-8 p-4 bg-green-50 rounded-lg">
+              <h4 className="font-medium text-green-900 mb-2">Text Case Converter Features:</h4>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>• Convert text to 10 different case formats instantly</li>
+                <li>• Perfect for developers working with different naming conventions</li>
+                <li>• Copy any converted format to clipboard with one click</li>
+                <li>• Real-time conversion as you type</li>
+                <li>• Handles special characters and numbers appropriately</li>
+                <li>• Useful for API naming, variable names, file names, and more</li>
+              </ul>
+            </div>
+
+            <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+              <h4 className="font-medium text-blue-900 mb-2">Common Use Cases:</h4>
+              <ul className="text-sm text-blue-800 space-y-1">
+                <li>• <strong>camelCase:</strong> JavaScript variables and functions</li>
+                <li>• <strong>PascalCase:</strong> Class names and components</li>
+                <li>• <strong>snake_case:</strong> Python variables and database columns</li>
+                <li>• <strong>kebab-case:</strong> CSS classes and URL slugs</li>
+                <li>• <strong>CONSTANT_CASE:</strong> Environment variables and constants</li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
