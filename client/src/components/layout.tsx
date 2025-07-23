@@ -9,20 +9,31 @@ interface LayoutProps {
 }
 
 const tools = [
-  { href: "/csv-converter", title: "CSV Converter", icon: "table_chart" },
-  { href: "/regex-tester", title: "Regex Tester", icon: "search" },
-  { href: "/timestamp-converter", title: "Timestamp Converter", icon: "schedule" },
-  { href: "/uuid-generator", title: "UUID Generator", icon: "fingerprint" },
-  { href: "/json-formatter", title: "JSON Formatter", icon: "data_object" },
-  { href: "/lorem-generator", title: "Lorem Generator", icon: "text_snippet" },
-  { href: "/markdown-converter", title: "Markdown to HTML", icon: "description" },
-  { href: "/pdf-converter", title: "PDF Converter", icon: "picture_as_pdf" },
-  { href: "/png-to-pdf", title: "PNG to PDF", icon: "image" },
-  { href: "/pdf-to-ppt", title: "PDF to PPT", icon: "slideshow" },
-  { href: "/base64-converter", title: "Base64 Encoder/Decoder", icon: "code" },
-  { href: "/text-case-converter", title: "Text Case Converter", icon: "text_fields" },
-  { href: "/text-diff-checker", title: "Text Diff Checker", icon: "compare_arrows" },
-  { href: "/html-to-markdown", title: "HTML to Markdown", icon: "code" }
+  // Data Format Converters (Most Popular)
+  { href: "/csv-converter", title: "CSV Converter", icon: "table_chart", group: "Data" },
+  { href: "/json-formatter", title: "JSON Formatter", icon: "data_object", group: "Data" },
+  { href: "/base64-converter", title: "Base64 Encoder/Decoder", icon: "code", group: "Data" },
+  
+  // PDF Tools (High Demand)
+  { href: "/pdf-converter", title: "PDF Converter", icon: "picture_as_pdf", group: "PDF" },
+  { href: "/png-to-pdf", title: "PNG to PDF", icon: "image", group: "PDF" },
+  { href: "/pdf-to-ppt", title: "PDF to PPT", icon: "slideshow", group: "PDF" },
+  
+  // HTML/Markdown Tools
+  { href: "/markdown-converter", title: "Markdown to HTML", icon: "description", group: "HTML" },
+  { href: "/html-to-markdown", title: "HTML to Markdown", icon: "code", group: "HTML" },
+  
+  // Text Processing Tools
+  { href: "/text-case-converter", title: "Text Case Converter", icon: "text_fields", group: "Text" },
+  { href: "/text-diff-checker", title: "Text Diff Checker", icon: "compare_arrows", group: "Text" },
+  { href: "/regex-tester", title: "Regex Tester", icon: "search", group: "Text" },
+  
+  // Developer Utilities
+  { href: "/uuid-generator", title: "UUID Generator", icon: "fingerprint", group: "Dev" },
+  { href: "/timestamp-converter", title: "Timestamp Converter", icon: "schedule", group: "Dev" },
+  
+  // Content Generation (Least Essential)
+  { href: "/lorem-generator", title: "Lorem Generator", icon: "text_snippet", group: "Content" }
 ];
 
 export default function Layout({ children }: LayoutProps) {
@@ -55,19 +66,44 @@ export default function Layout({ children }: LayoutProps) {
                   <SheetTitle className="text-left">All Tools ({tools.length})</SheetTitle>
                 </SheetHeader>
                 <div className="mt-6 space-y-1 pb-6">
-                  {tools.map((tool) => (
-                    <Link key={tool.href} href={tool.href}>
-                      <div 
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer border-b border-gray-100 last:border-b-0"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <span className="material-icons text-blue-600 text-lg flex-shrink-0">
-                          {tool.icon}
-                        </span>
-                        <span className="font-medium text-sm">{tool.title}</span>
+                  {(() => {
+                    const groupedTools = tools.reduce((acc, tool) => {
+                      if (!acc[tool.group]) acc[tool.group] = [];
+                      acc[tool.group].push(tool);
+                      return acc;
+                    }, {} as Record<string, typeof tools>);
+
+                    const groupOrder = ['Data', 'PDF', 'HTML', 'Text', 'Dev', 'Content'];
+                    const groupLabels = {
+                      'Data': 'Data Formats',
+                      'PDF': 'PDF Tools',
+                      'HTML': 'HTML/Markdown',
+                      'Text': 'Text Processing',
+                      'Dev': 'Developer Utils',
+                      'Content': 'Content Gen'
+                    };
+
+                    return groupOrder.map(groupKey => (
+                      <div key={groupKey} className="mb-4">
+                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-3 py-2 bg-gray-50 rounded-sm">
+                          {groupLabels[groupKey as keyof typeof groupLabels]}
+                        </div>
+                        {groupedTools[groupKey]?.map((tool) => (
+                          <Link key={tool.href} href={tool.href}>
+                            <div 
+                              className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer border-b border-gray-100 last:border-b-0"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              <span className="material-icons text-blue-600 text-lg flex-shrink-0">
+                                {tool.icon}
+                              </span>
+                              <span className="font-medium text-sm">{tool.title}</span>
+                            </div>
+                          </Link>
+                        ))}
                       </div>
-                    </Link>
-                  ))}
+                    ));
+                  })()}
                 </div>
               </SheetContent>
             </Sheet>
@@ -89,19 +125,44 @@ export default function Layout({ children }: LayoutProps) {
                   <div className="text-xs text-gray-500 mb-4 p-2 bg-green-50 rounded">
                     100% Local, Free & Private
                   </div>
-                  {tools.map((tool) => (
-                    <Link key={tool.href} href={tool.href}>
-                      <div 
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer border-b border-gray-100 last:border-b-0"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <span className="material-icons text-blue-600 text-lg flex-shrink-0">
-                          {tool.icon}
-                        </span>
-                        <span className="font-medium text-sm">{tool.title}</span>
+                  {(() => {
+                    const groupedTools = tools.reduce((acc, tool) => {
+                      if (!acc[tool.group]) acc[tool.group] = [];
+                      acc[tool.group].push(tool);
+                      return acc;
+                    }, {} as Record<string, typeof tools>);
+
+                    const groupOrder = ['Data', 'PDF', 'HTML', 'Text', 'Dev', 'Content'];
+                    const groupLabels = {
+                      'Data': 'Data Formats',
+                      'PDF': 'PDF Tools',
+                      'HTML': 'HTML/Markdown',
+                      'Text': 'Text Processing',
+                      'Dev': 'Developer Utils',
+                      'Content': 'Content Gen'
+                    };
+
+                    return groupOrder.map(groupKey => (
+                      <div key={groupKey} className="mb-4">
+                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-3 py-2 bg-gray-50 rounded-sm">
+                          {groupLabels[groupKey as keyof typeof groupLabels]}
+                        </div>
+                        {groupedTools[groupKey]?.map((tool) => (
+                          <Link key={tool.href} href={tool.href}>
+                            <div 
+                              className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer border-b border-gray-100 last:border-b-0"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              <span className="material-icons text-blue-600 text-lg flex-shrink-0">
+                                {tool.icon}
+                              </span>
+                              <span className="font-medium text-sm">{tool.title}</span>
+                            </div>
+                          </Link>
+                        ))}
                       </div>
-                    </Link>
-                  ))}
+                    ));
+                  })()}
                 </div>
               </SheetContent>
             </Sheet>
