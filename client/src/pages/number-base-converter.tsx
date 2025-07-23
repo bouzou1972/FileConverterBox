@@ -296,10 +296,6 @@ export default function NumberBaseConverter() {
             </div>
           </CardContent>
         </Card>
-      
-      <div className="text-center mt-8">
-        <BuyMeCoffee />
-      </div>
       </div>
 
       <Card className="mt-8">
@@ -334,6 +330,9 @@ export default function NumberBaseConverter() {
       
       <div className="text-center mt-8">
         <BuyMeCoffee />
+        <p className="text-sm text-gray-600 mt-2">
+          Thanks for using this free tool! Your support keeps it ad-free and private.
+        </p>
       </div>
     </div>
   );

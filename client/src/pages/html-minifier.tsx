@@ -300,10 +300,6 @@ export default function HtmlMinifier() {
             )}
           </CardContent>
         </Card>
-      
-      <div className="text-center mt-8">
-        <BuyMeCoffee />
-      </div>
       </div>
 
       <Card className="mb-6">
@@ -364,10 +360,6 @@ export default function HtmlMinifier() {
           </div>
         </CardContent>
       </Card>
-      
-      <div className="text-center mt-8">
-        <BuyMeCoffee />
-      </div>
 
       <div className="flex gap-4 justify-center">
         <Button onClick={handleMinify} size="lg" className="px-8">
@@ -378,6 +370,13 @@ export default function HtmlMinifier() {
           <Maximize2 className="w-4 h-4 mr-2" />
           Beautify HTML
         </Button>
+      </div>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+        <p className="text-sm text-gray-600 mt-2">
+          Thanks for using this free tool! Your support keeps it ad-free and private.
+        </p>
       </div>
     </div>
   );

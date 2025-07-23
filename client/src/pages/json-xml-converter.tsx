@@ -197,10 +197,6 @@ export default function JsonXmlConverter() {
                 </Button>
               </CardContent>
             </Card>
-      
-      <div className="text-center mt-8">
-        <BuyMeCoffee />
-      </div>
 
             <Card>
               <CardHeader>
@@ -229,10 +225,6 @@ export default function JsonXmlConverter() {
                 />
               </CardContent>
             </Card>
-      
-      <div className="text-center mt-8">
-        <BuyMeCoffee />
-      </div>
           </div>
         </TabsContent>
 
@@ -272,10 +264,6 @@ export default function JsonXmlConverter() {
                 </Button>
               </CardContent>
             </Card>
-      
-      <div className="text-center mt-8">
-        <BuyMeCoffee />
-      </div>
 
             <Card>
               <CardHeader>
@@ -304,13 +292,16 @@ export default function JsonXmlConverter() {
                 />
               </CardContent>
             </Card>
-      
-      <div className="text-center mt-8">
-        <BuyMeCoffee />
-      </div>
           </div>
         </TabsContent>
       </Tabs>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+        <p className="text-sm text-gray-600 mt-2">
+          Thanks for using this free tool! Your support keeps it ad-free and private.
+        </p>
+      </div>
     </div>
   );
 }
