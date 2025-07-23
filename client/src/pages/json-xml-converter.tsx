@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Download, Upload, RefreshCw } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { useToast } from "@/hooks/use-toast";
 
 export default function JsonXmlConverter() {
@@ -196,6 +197,10 @@ export default function JsonXmlConverter() {
                 </Button>
               </CardContent>
             </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
             <Card>
               <CardHeader>
@@ -224,6 +229,10 @@ export default function JsonXmlConverter() {
                 />
               </CardContent>
             </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
           </div>
         </TabsContent>
 
@@ -263,6 +272,10 @@ export default function JsonXmlConverter() {
                 </Button>
               </CardContent>
             </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
             <Card>
               <CardHeader>
@@ -291,6 +304,10 @@ export default function JsonXmlConverter() {
                 />
               </CardContent>
             </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
           </div>
         </TabsContent>
       </Tabs>

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Upload, Hash } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 
@@ -190,6 +191,10 @@ Example: 'Hello World' or paste any content here"
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
       <div className="space-y-6">
         {hashTypes.map((hashType) => (
@@ -203,14 +208,12 @@ Example: 'Hello World' or paste any content here"
                     <p className="text-sm text-gray-500 font-normal">{hashType.description}</p>
                   </div>
                 </div>
-                <Button
+                <CopyButton 
+                  text={hashes[hashType.key]} 
+                  label=""
                   variant="outline"
                   size="sm"
-                  onClick={() => copyToClipboard(hashes[hashType.key], hashType.name)}
-                  disabled={!hashes[hashType.key]}
-                >
-                  <Copy className="w-4 h-4" />
-                </Button>
+                />
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -262,6 +265,10 @@ Example: 'Hello World' or paste any content here"
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }

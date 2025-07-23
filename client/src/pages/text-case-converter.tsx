@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { Copy, RotateCcw, Type } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 
 export default function TextCaseConverter() {
   const [inputText, setInputText] = useState("");
@@ -232,6 +233,10 @@ export default function TextCaseConverter() {
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }

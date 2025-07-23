@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, RefreshCw } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { useToast } from "@/hooks/use-toast";
 
 export default function NumberBaseConverter() {
@@ -182,6 +183,10 @@ export default function NumberBaseConverter() {
           </Button>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
@@ -207,6 +212,10 @@ export default function NumberBaseConverter() {
             </div>
           </CardContent>
         </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
         <Card>
           <CardHeader>
@@ -231,6 +240,10 @@ export default function NumberBaseConverter() {
             </div>
           </CardContent>
         </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
         <Card>
           <CardHeader>
@@ -255,6 +268,10 @@ export default function NumberBaseConverter() {
             </div>
           </CardContent>
         </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
         <Card>
           <CardHeader>
@@ -279,6 +296,10 @@ export default function NumberBaseConverter() {
             </div>
           </CardContent>
         </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
       </div>
 
       <Card className="mt-8">
@@ -310,6 +331,10 @@ export default function NumberBaseConverter() {
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }

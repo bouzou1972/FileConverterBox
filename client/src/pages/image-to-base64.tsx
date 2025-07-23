@@ -4,6 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Download, Upload, Image as ImageIcon, Trash2 } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ImageToBase64() {
@@ -200,6 +201,10 @@ export default function ImageToBase64() {
           )}
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
       {base64Output && (
         <div className="space-y-6">
@@ -221,6 +226,10 @@ export default function ImageToBase64() {
               />
             </CardContent>
           </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
           <Card>
             <CardHeader>
@@ -240,6 +249,10 @@ export default function ImageToBase64() {
               />
             </CardContent>
           </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card>
@@ -260,6 +273,10 @@ export default function ImageToBase64() {
                 />
               </CardContent>
             </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
             <Card>
               <CardHeader>
@@ -279,6 +296,10 @@ export default function ImageToBase64() {
                 />
               </CardContent>
             </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
           </div>
 
           <div className="flex gap-4">
@@ -327,6 +348,10 @@ export default function ImageToBase64() {
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }

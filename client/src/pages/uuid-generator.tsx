@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RefreshCw } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { generateUUID, generateBulkUUIDs } from "@/lib/utils/uuid";
@@ -32,9 +33,6 @@ export default function UuidGenerator() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
-      <div className="text-center mb-6">
-        <BuyMeCoffee />
-      </div>
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">
@@ -108,6 +106,10 @@ export default function UuidGenerator() {
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Download, Upload, FileText, Minimize2, Maximize2 } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { useToast } from "@/hooks/use-toast";
 
 export default function HtmlMinifier() {
@@ -251,6 +252,10 @@ export default function HtmlMinifier() {
             />
           </CardContent>
         </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
         <Card>
           <CardHeader>
@@ -295,6 +300,10 @@ export default function HtmlMinifier() {
             )}
           </CardContent>
         </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
       </div>
 
       <Card className="mb-6">
@@ -355,6 +364,10 @@ export default function HtmlMinifier() {
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
       <div className="flex gap-4 justify-center">
         <Button onClick={handleMinify} size="lg" className="px-8">

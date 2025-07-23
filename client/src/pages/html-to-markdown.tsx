@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { Copy, RotateCcw, Download, Code } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 
 export default function HtmlToMarkdown() {
   const [htmlInput, setHtmlInput] = useState("");
@@ -288,6 +289,10 @@ export default function HtmlToMarkdown() {
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }

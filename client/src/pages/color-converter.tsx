@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Palette, RefreshCw } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { useToast } from "@/hooks/use-toast";
 
 interface ColorValues {
@@ -244,6 +245,10 @@ export default function ColorConverter() {
             </Button>
           </CardContent>
         </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
         {/* Color Input Controls */}
         <Card>
@@ -357,6 +362,10 @@ export default function ColorConverter() {
             </div>
           </CardContent>
         </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
       </div>
 
       {/* Color Format Outputs */}
@@ -377,6 +386,10 @@ export default function ColorConverter() {
               </div>
             </CardContent>
           </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
         ))}
       </div>
 
@@ -416,6 +429,10 @@ export default function ColorConverter() {
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }

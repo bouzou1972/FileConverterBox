@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, Download, FileText, Presentation } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { convertPdfToPpt } from "@/lib/utils/pdf-to-ppt";
 
 export default function PdfToPpt() {
@@ -257,6 +258,10 @@ export default function PdfToPpt() {
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }

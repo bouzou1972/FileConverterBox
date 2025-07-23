@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Download, Upload, SortAsc, SortDesc, Filter, Merge } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { useToast } from "@/hooks/use-toast";
 
 export default function TextLineTools() {
@@ -197,6 +198,10 @@ Duplicate line"
             )}
           </CardContent>
         </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
 
         <Card>
           <CardHeader>
@@ -235,6 +240,10 @@ Duplicate line"
             )}
           </CardContent>
         </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
       </div>
 
       <Tabs defaultValue="basic" className="space-y-6">
@@ -316,6 +325,10 @@ Duplicate line"
               </div>
             </CardContent>
           </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
         </TabsContent>
       </Tabs>
 
@@ -346,6 +359,10 @@ Duplicate line"
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }

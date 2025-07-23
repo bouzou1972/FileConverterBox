@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { RotateCcw, Upload, Download } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import CopyButton from "@/components/copy-button";
 
 export default function Base64Converter() {
@@ -255,6 +256,10 @@ export default function Base64Converter() {
           </div>
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }
