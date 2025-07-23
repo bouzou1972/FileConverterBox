@@ -28,6 +28,7 @@ const tools = [
   // Text Processing Tools
   { href: "/text-case-converter", title: "Text Case Converter", icon: "text_fields", group: "Text" },
   { href: "/text-diff-checker", title: "Text Diff Checker", icon: "compare_arrows", group: "Text" },
+  { href: "/text-line-tools", title: "Text Line Tools", icon: "format_list_bulleted", group: "Text" },
   { href: "/regex-tester", title: "Regex Tester", icon: "search", group: "Text" },
   
   // Developer Utilities
@@ -35,6 +36,10 @@ const tools = [
   { href: "/number-base-converter", title: "Number Base Converter", icon: "calculate", group: "Dev" },
   { href: "/uuid-generator", title: "UUID Generator", icon: "fingerprint", group: "Dev" },
   { href: "/timestamp-converter", title: "Timestamp Converter", icon: "schedule", group: "Dev" },
+  
+  // Image & Color Tools
+  { href: "/image-to-base64", title: "Image to Base64", icon: "image", group: "Image" },
+  { href: "/color-converter", title: "Color Converter", icon: "palette", group: "Image" },
   
   // Content Generation (Least Essential)
   { href: "/lorem-generator", title: "Lorem Generator", icon: "text_snippet", group: "Content" }
@@ -77,13 +82,14 @@ export default function Layout({ children }: LayoutProps) {
                       return acc;
                     }, {} as Record<string, typeof tools>);
 
-                    const groupOrder = ['Data', 'PDF', 'HTML', 'Text', 'Dev', 'Content'];
+                    const groupOrder = ['Data', 'PDF', 'HTML', 'Text', 'Dev', 'Image', 'Content'];
                     const groupLabels = {
                       'Data': 'Data Formats',
                       'PDF': 'PDF Tools',
                       'HTML': 'HTML/Markdown',
                       'Text': 'Text Processing',
                       'Dev': 'Developer Utils',
+                      'Image': 'Image & Color',
                       'Content': 'Content Gen'
                     };
 
@@ -136,13 +142,14 @@ export default function Layout({ children }: LayoutProps) {
                       return acc;
                     }, {} as Record<string, typeof tools>);
 
-                    const groupOrder = ['Data', 'PDF', 'HTML', 'Text', 'Dev', 'Content'];
+                    const groupOrder = ['Data', 'PDF', 'HTML', 'Text', 'Dev', 'Image', 'Content'];
                     const groupLabels = {
                       'Data': 'Data Formats',
                       'PDF': 'PDF Tools',
                       'HTML': 'HTML/Markdown',
                       'Text': 'Text Processing',
                       'Dev': 'Developer Utils',
+                      'Image': 'Image & Color',
                       'Content': 'Content Gen'
                     };
 

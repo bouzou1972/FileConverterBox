@@ -109,6 +109,13 @@ export default function Home() {
           description: "Compare two blocks of text to find differences, additions, and deletions with detailed analysis."
         },
         {
+          href: "/text-line-tools",
+          icon: "format_list_bulleted",
+          iconColor: "text-blue-600",
+          title: "Text Line Tools",
+          description: "Sort, deduplicate, merge, and manipulate text lines with powerful processing options."
+        },
+        {
           href: "/regex-tester",
           icon: "search",
           iconColor: "text-green-600",
@@ -148,6 +155,26 @@ export default function Home() {
           iconColor: "text-orange-600",
           title: "Timestamp Converter",
           description: "Convert Unix timestamps to human-readable dates and back with timezone support."
+        }
+      ]
+    },
+    {
+      title: "Image & Color Tools",
+      subtitle: "Visual Design Utilities",
+      tools: [
+        {
+          href: "/image-to-base64",
+          icon: "image",
+          iconColor: "text-purple-600",
+          title: "Image to Base64",
+          description: "Convert images to Base64 encoded strings for embedding in HTML, CSS, or applications."
+        },
+        {
+          href: "/color-converter",
+          icon: "palette",
+          iconColor: "text-pink-600",
+          title: "Color Converter",
+          description: "Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders."
         }
       ]
     },

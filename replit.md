@@ -55,6 +55,7 @@ The application provides various developer utilities grouped by category:
 #### Text Processing Tools
 - **Text Case Converter**: Convert text between 10 different case formats (camelCase, snake_case, etc.)
 - **Text Diff Checker**: Compare text blocks with detailed difference analysis and statistics
+- **Text Line Tools**: Sort, deduplicate, merge, and manipulate text lines with powerful processing options
 - **Regex Tester**: Pattern testing with live feedback and match highlighting
 
 #### Developer Utilities
@@ -62,6 +63,10 @@ The application provides various developer utilities grouped by category:
 - **Number Base Converter**: Convert numbers between binary, octal, decimal, and hexadecimal formats with live conversion
 - **UUID Generator**: v4 UUID generation with bulk options
 - **Timestamp Converter**: Unix timestamp conversion with timezone support
+
+#### Image & Color Tools (New Category)
+- **Image to Base64 Converter**: Convert images to Base64 encoded strings for embedding in HTML, CSS, or applications
+- **Color Converter**: Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders
 
 #### Content Generation
 - **Lorem Ipsum Generator**: Placeholder text generation with HTML options

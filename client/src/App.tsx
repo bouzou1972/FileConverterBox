@@ -23,6 +23,9 @@ import JsonXmlConverter from "@/pages/json-xml-converter";
 import HtmlMinifier from "@/pages/html-minifier";
 import NumberBaseConverter from "@/pages/number-base-converter";
 import HashGenerator from "@/pages/hash-generator";
+import TextLineTools from "@/pages/text-line-tools";
+import ImageToBase64 from "@/pages/image-to-base64";
+import ColorConverter from "@/pages/color-converter";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -48,6 +51,9 @@ function Router() {
         <Route path="/html-minifier" component={HtmlMinifier} />
         <Route path="/number-base-converter" component={NumberBaseConverter} />
         <Route path="/hash-generator" component={HashGenerator} />
+        <Route path="/text-line-tools" component={TextLineTools} />
+        <Route path="/image-to-base64" component={ImageToBase64} />
+        <Route path="/color-converter" component={ColorConverter} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
