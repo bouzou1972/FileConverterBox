@@ -51,8 +51,8 @@ export default function Layout({ children }: LayoutProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow sticky top-0 z-20">
+    <div className="min-h-screen bg-background">
+      <header className="bg-background border-b border-border sticky top-0 z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           {/* Site Name */}
           <Link href="/">
@@ -63,7 +63,7 @@ export default function Layout({ children }: LayoutProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            <span className="text-sm text-gray-500">100% Local, Free & Private</span>
+            <span className="text-sm text-muted-foreground">100% Local, Free & Private</span>
             <ThemeToggle />
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
@@ -135,7 +135,7 @@ export default function Layout({ children }: LayoutProps) {
                   <SheetTitle className="text-left">All Tools ({tools.length})</SheetTitle>
                 </SheetHeader>
                 <div className="mt-6 space-y-1 pb-6">
-                  <div className="text-xs text-gray-500 mb-4 p-2 bg-green-50 rounded">
+                  <div className="text-xs text-muted-foreground mb-4 p-2 bg-muted rounded">
                     100% Local, Free & Private
                   </div>
                   {(() => {
@@ -184,9 +184,9 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </header>
 
-      <main>{children}</main>
+      <main className="bg-background">{children}</main>
 
-      <footer className="text-center py-6 text-sm text-gray-500 border-t bg-white mt-12">
+      <footer className="text-center py-6 text-sm text-muted-foreground border-t border-border bg-background mt-12">
         <p>
           © 2025 FileConverterData. All rights reserved. |{" "}
           <span className="text-green-600">●</span> All processing happens locally in your browser
