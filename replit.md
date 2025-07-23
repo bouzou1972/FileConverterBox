@@ -2,7 +2,7 @@
 
 ## Overview
 
-ToolGenius is a web application that provides free, in-browser developer utilities. The application is built as a full-stack TypeScript project using React for the frontend and Express.js for the backend, with a focus on client-side processing to ensure user privacy and security.
+FileConverterData is a web application that provides free, in-browser developer utilities. The application is built as a full-stack TypeScript project using React for the frontend and Express.js for the backend, with a focus on client-side processing to ensure user privacy and security.
 
 ## User Preferences
 

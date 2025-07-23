@@ -23,7 +23,7 @@ export default function Layout({ children }: LayoutProps) {
             )}
             <Link href="/">
               <h1 className="text-2xl font-bold text-blue-600 cursor-pointer">
-                ToolGenius
+                FileConverterData
               </h1>
             </Link>
           </div>
@@ -35,7 +35,7 @@ export default function Layout({ children }: LayoutProps) {
 
       <footer className="text-center py-6 text-sm text-gray-500 border-t bg-white mt-12">
         <p>
-          © 2025 ToolGenius. All rights reserved. |{" "}
+          © 2025 FileConverterData. All rights reserved. |{" "}
           <span className="text-green-600">●</span> All processing happens locally in your browser
         </p>
       </footer>
