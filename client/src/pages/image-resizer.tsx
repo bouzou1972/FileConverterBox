@@ -169,9 +169,6 @@ export default function ImageResizer() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
-      <div className="text-center mb-6">
-        <BuyMeCoffee />
-      </div>
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-foreground">
@@ -405,6 +402,10 @@ export default function ImageResizer() {
           <canvas ref={canvasRef} className="hidden" />
         </CardContent>
       </Card>
+      
+      <div className="text-center mt-8">
+        <BuyMeCoffee />
+      </div>
     </div>
   );
 }
