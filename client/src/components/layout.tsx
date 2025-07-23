@@ -43,7 +43,13 @@ const tools = [
   { href: "/color-converter", title: "Color Converter", icon: "palette", group: "Image" },
   
   // Content Generation (Least Essential)
-  { href: "/lorem-generator", title: "Lorem Generator", icon: "text_snippet", group: "Content" }
+  { href: "/lorem-generator", title: "Lorem Generator", icon: "text_snippet", group: "Content" },
+  
+  // Advanced Tools
+  { href: "/csv-merger", title: "CSV Merger & Splitter", icon: "merge", group: "Advanced" },
+  { href: "/text-analyzer", title: "Text Analyzer", icon: "analytics", group: "Advanced" },
+  { href: "/image-converter", title: "Image Format Converter", icon: "image", group: "Image" },
+  { href: "/image-resizer", title: "Image Resizer & Compressor", icon: "photo_size_select_large", group: "Image" }
 ];
 
 export default function Layout({ children }: LayoutProps) {

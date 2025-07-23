@@ -26,6 +26,10 @@ import HashGenerator from "@/pages/hash-generator";
 import TextLineTools from "@/pages/text-line-tools";
 import ImageToBase64 from "@/pages/image-to-base64";
 import ColorConverter from "@/pages/color-converter";
+import CsvMerger from "@/pages/csv-merger";
+import TextAnalyzer from "@/pages/text-analyzer";
+import ImageConverter from "@/pages/image-converter";
+import ImageResizer from "@/pages/image-resizer";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -54,6 +58,10 @@ function Router() {
         <Route path="/text-line-tools" component={TextLineTools} />
         <Route path="/image-to-base64" component={ImageToBase64} />
         <Route path="/color-converter" component={ColorConverter} />
+        <Route path="/csv-merger" component={CsvMerger} />
+        <Route path="/text-analyzer" component={TextAnalyzer} />
+        <Route path="/image-converter" component={ImageConverter} />
+        <Route path="/image-resizer" component={ImageResizer} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

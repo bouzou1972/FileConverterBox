@@ -1,0 +1,125 @@
+Recommended Lightweight Add-On Tools
+1. CSV Merger & Splitter
+🔁 Combine multiple .csv files (drag-and-drop).
+
+✂️ Split large CSVs by rows or size.
+
+⚙️ Lightweight logic with FileReader and .split("\n").
+
+2. Text Encryptor/Decryptor (AES-256)
+🔒 Encrypt/decrypt text or small files using a password.
+
+🧠 Uses crypto.subtle – secure and native in modern browsers.
+
+🪶 Very light; no need for crypto libraries.
+
+3. Text Analyzer
+📊 Word count, sentence count, character count, reading time.
+
+🧪 Detects passive voice, long sentences (optional).
+
+💡 Can be under 20KB with plain JS.
+
+4. ZIP Extractor and Creator
+📦 Drag in .zip, extract files in-browser.
+
+📁 Select files and generate a .zip.
+
+✅ Use fflate (5KB) or zip.js (optional).
+
+⚠️ No RAR/7Z support (would need heavy libs).
+
+5. Image Format Converter
+📸 Convert PNG ↔ JPG ↔ WebP.
+
+🖼️ Uses <canvas> element.
+
+✅ No external lib required.
+
+6. Image Resizer/Compressor
+📏 Resize images by pixels or percentage.
+
+🪶 Compress with quality slider.
+
+⚙️ Use native <canvas> — extremely fast.
+
+7. Hex/RGB/HSL ↔ Color Picker Tool
+🎨 Convert HEX ↔ RGB ↔ HSL.
+
+🌈 Interactive picker with copy/export.
+
+🚫 No dependencies; use <input type="color"> for color UI.
+
+8. Clipboard Inspector
+📋 Paste to inspect raw clipboard data (text, HTML, maybe image).
+
+✅ Uses navigator.clipboard.readText() (browser-native).
+
+🧪 Great for debugging copy/paste issues.
+
+9. Whitespace & Formatting Cleaner
+✨ Remove extra spaces, line breaks, tabs, or invisible characters.
+
+🔄 Normalize formatting of copy-pasted text.
+
+🪶 One JS function can handle this.
+
+10. Simple Stopwatch / Timer
+⏱️ For measuring how long operations take.
+
+🕹️ Start/stop/reset, copy time to clipboard.
+
+💡 Great dev utility — tiny in size.
+
+🧠 Optional (Advanced) but Lightweight
+11. Regex Generator Helper
+🧩 Select patterns (email, numbers, date) → it generates regex.
+
+🧪 Paired with your existing regex tester.
+
+🚫 Doesn’t need external libs.
+
+12. Tabular Data Visualizer
+📊 Convert CSV/JSON into live HTML tables.
+
+🔎 Add sort/search (optional).
+
+✅ 100% in-browser with DataTables-like features.
+
+13. Text Line Tools
+🧹 Remove duplicates, sort, reverse, shuffle lines.
+
+✅ Already listed in your UI — great tool. Consider expanding it.
+
+🛠️ Implementation Tips
+Bundle with tree-shaking to keep unused logic out.
+
+Use ES Modules, no jQuery or bloated frameworks.
+
+Avoid heavy UI frameworks — prefer native HTML, Tailwind, or micro-UI libs like Shoelace.
+
+✅ Want Help?
+If you like, I can:
+
+Build code stubs for any tools listed
+
+Optimize your homepage UX or layout
+
+Give you a one-click Replit/HTML boilerplate to add all of these tools incrementally
+
+Just let me know which you'd like to start with.
+
+
+
+
+
+
+
+
+
+
+Tools
+
+
+
+ChatGPT can make mistakes. Check importa

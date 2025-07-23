@@ -186,6 +186,44 @@ export default function Home() {
           title: "Color Converter",
           description: "Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders.",
           badge: "🆕 New"
+        },
+        {
+          href: "/image-converter",
+          icon: "image",
+          iconColor: "text-indigo-600",
+          title: "Image Format Converter",
+          description: "Convert images between PNG, JPEG, and WebP formats with quality control.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/image-resizer",
+          icon: "photo_size_select_large",
+          iconColor: "text-green-600",
+          title: "Image Resizer & Compressor",
+          description: "Resize images by pixels or percentage and compress with quality control.",
+          badge: "🆕 New"
+        }
+      ]
+    },
+    {
+      title: "Advanced Tools",
+      subtitle: "Power User Utilities",
+      tools: [
+        {
+          href: "/csv-merger",
+          icon: "merge",
+          iconColor: "text-blue-600",
+          title: "CSV Merger & Splitter",
+          description: "Combine multiple CSV files or split large CSVs by rows or file size.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/text-analyzer",
+          icon: "analytics",
+          iconColor: "text-purple-600",
+          title: "Text Analyzer",
+          description: "Analyze text for readability, word count, sentence structure, and writing quality.",
+          badge: "🆕 New"
         }
       ]
     },
