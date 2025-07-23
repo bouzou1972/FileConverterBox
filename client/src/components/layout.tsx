@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import ThemeToggle from "@/components/theme-toggle";
 import { Menu, X } from "lucide-react";
 
 interface LayoutProps {
@@ -63,6 +64,7 @@ export default function Layout({ children }: LayoutProps) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             <span className="text-sm text-gray-500">100% Local, Free & Private</span>
+            <ThemeToggle />
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="sm" className="flex items-center gap-2">
@@ -120,7 +122,8 @@ export default function Layout({ children }: LayoutProps) {
           </div>
 
           {/* Mobile Hamburger Menu */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="sm">

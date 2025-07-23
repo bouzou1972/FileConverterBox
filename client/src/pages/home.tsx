@@ -1,6 +1,11 @@
+import { useState } from "react";
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import ToolCard from "@/components/tool-card";
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   const toolGroups = [
     {
       title: "Data Formats",
@@ -11,21 +16,24 @@ export default function Home() {
           icon: "table_chart",
           iconColor: "text-blue-600",
           title: "CSV Converter",
-          description: "Convert between CSV, JSON, YAML, and TSV formats with drag-and-drop support."
+          description: "Convert between CSV, JSON, YAML, and TSV formats with drag-and-drop support.",
+          badge: "🔥 Popular"
         },
         {
           href: "/json-formatter",
           icon: "data_object",
           iconColor: "text-indigo-600",
           title: "JSON Formatter",
-          description: "Format, validate, and minify JSON data with syntax highlighting and error detection."
+          description: "Format, validate, and minify JSON data with syntax highlighting and error detection.",
+          badge: "🔥 Popular"
         },
         {
           href: "/json-xml-converter",
           icon: "swap_horiz",
           iconColor: "text-green-600",
           title: "JSON ↔ XML Converter",
-          description: "Convert between JSON and XML formats bidirectionally with file upload support."
+          description: "Convert between JSON and XML formats bidirectionally with file upload support.",
+          badge: "🆕 New"
         },
         {
           href: "/base64-converter",
@@ -113,7 +121,8 @@ export default function Home() {
           icon: "format_list_bulleted",
           iconColor: "text-blue-600",
           title: "Text Line Tools",
-          description: "Sort, deduplicate, merge, and manipulate text lines with powerful processing options."
+          description: "Sort, deduplicate, merge, and manipulate text lines with powerful processing options.",
+          badge: "🆕 New"
         },
         {
           href: "/regex-tester",
@@ -167,14 +176,16 @@ export default function Home() {
           icon: "image",
           iconColor: "text-purple-600",
           title: "Image to Base64",
-          description: "Convert images to Base64 encoded strings for embedding in HTML, CSS, or applications."
+          description: "Convert images to Base64 encoded strings for embedding in HTML, CSS, or applications.",
+          badge: "🆕 New"
         },
         {
           href: "/color-converter",
           icon: "palette",
           iconColor: "text-pink-600",
           title: "Color Converter",
-          description: "Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders."
+          description: "Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders.",
+          badge: "🆕 New"
         }
       ]
     },
@@ -193,23 +204,52 @@ export default function Home() {
     }
   ];
 
+  // Filter tools based on search query
+  const filteredGroups = toolGroups.map(group => ({
+    ...group,
+    tools: group.tools.filter(tool => 
+      searchQuery === "" || 
+      tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.description.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  })).filter(group => group.tools.length > 0);
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4">Free In-Browser Tools</h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+    <div className="max-w-6xl mx-auto px-4 py-6 sm:py-10">
+      <div className="text-center mb-8 sm:mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground">Free In-Browser Tools</h2>
+        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
           Professional utilities that work entirely in your browser. No data leaves your device - 100% private and secure.
         </p>
       </div>
+
+      {/* Search Bar */}
+      <div className="max-w-md mx-auto mb-8 sm:mb-12">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+          <Input
+            type="text"
+            placeholder="Search tools... (e.g., json, pdf, image)"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10 text-center bg-background border-border"
+          />
+        </div>
+        {searchQuery && (
+          <p className="text-sm text-muted-foreground mt-2 text-center">
+            Showing {filteredGroups.reduce((acc, group) => acc + group.tools.length, 0)} tools
+          </p>
+        )}
+      </div>
       
-      {toolGroups.map((group, groupIndex) => (
-        <div key={groupIndex} className="mb-12">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">{group.title}</h3>
-            <p className="text-sm text-gray-500 uppercase tracking-wide">{group.subtitle}</p>
+      {filteredGroups.map((group, groupIndex) => (
+        <div key={groupIndex} className="mb-8 sm:mb-12">
+          <div className="text-center mb-6 sm:mb-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">{group.title}</h3>
+            <p className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">{group.subtitle}</p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
             {group.tools.map((tool, toolIndex) => (
               <ToolCard key={toolIndex} {...tool} />
             ))}
