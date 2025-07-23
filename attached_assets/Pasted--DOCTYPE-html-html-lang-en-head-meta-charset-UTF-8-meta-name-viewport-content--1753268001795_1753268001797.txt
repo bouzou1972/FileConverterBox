@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ToolGenius | Free In-Browser Utilities</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen text-gray-800">
+  <header class="bg-white shadow sticky top-0 z-10">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">ToolGenius</h1>
+      <span class="text-sm text-gray-500">100% Local, Free & Private</span>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-3xl font-bold mb-6">Free In-Browser Tools</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <a href="#" class="bg-white shadow rounded-xl p-6 flex items-start gap-4 hover:shadow-md transition">
+        <span class="material-icons text-blue-500 text-4xl">code</span>
+        <div>
+          <h3 class="text-lg font-semibold">CSV ↔ JSON/YAML/TSV</h3>
+          <p class="text-sm text-gray-600">Convert structured data between formats in seconds.</p>
+        </div>
+      </a>
+
+      <a href="#" class="bg-white shadow rounded-xl p-6 flex items-start gap-4 hover:shadow-md transition">
+        <span class="material-icons text-green-500 text-4xl">filter_alt</span>
+        <div>
+          <h3 class="text-lg font-semibold">Regex Tester</h3>
+          <p class="text-sm text-gray-600">Test and debug regular expressions with live feedback.</p>
+        </div>
+      </a>
+
+      <a href="#" class="bg-white shadow rounded-xl p-6 flex items-start gap-4 hover:shadow-md transition">
+        <span class="material-icons text-purple-500 text-4xl">schedule</span>
+        <div>
+          <h3 class="text-lg font-semibold">Timestamp Converter</h3>
+          <p class="text-sm text-gray-600">Convert UNIX timestamps to human-readable time and vice versa.</p>
+        </div>
+      </a>
+
+      <a href="#" class="bg-white shadow rounded-xl p-6 flex items-start gap-4 hover:shadow-md transition">
+        <span class="material-icons text-yellow-500 text-4xl">vpn_key</span>
+        <div>
+          <h3 class="text-lg font-semibold">UUID Generator</h3>
+          <p class="text-sm text-gray-600">Generate unique UUID v4 identifiers instantly.</p>
+        </div>
+      </a>
+
+      <a href="#" class="bg-white shadow rounded-xl p-6 flex items-start gap-4 hover:shadow-md transition">
+        <span class="material-icons text-pink-500 text-4xl">data_object</span>
+        <div>
+          <h3 class="text-lg font-semibold">JSON Formatter</h3>
+          <p class="text-sm text-gray-600">Beautify and validate JSON data with auto formatting.</p>
+        </div>
+      </a>
+
+      <a href="#" class="bg-white shadow rounded-xl p-6 flex items-start gap-4 hover:shadow-md transition">
+        <span class="material-icons text-indigo-500 text-4xl">text_snippet</span>
+        <div>
+          <h3 class="text-lg font-semibold">Lorem Ipsum Generator</h3>
+          <p class="text-sm text-gray-600">Generate placeholder text for mockups and layouts.</p>
+        </div>
+      </a>
+
+      <a href="#" class="bg-white shadow rounded-xl p-6 flex items-start gap-4 hover:shadow-md transition">
+        <span class="material-icons text-red-500 text-4xl">html</span>
+        <div>
+          <h3 class="text-lg font-semibold">Markdown to HTML</h3>
+          <p class="text-sm text-gray-600">Convert Markdown content into clean HTML instantly.</p>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <footer class="text-center py-6 text-sm text-gray-500">
+    © 2025 ToolGenius. All rights reserved.
+  </footer>
+</body>
+</html>
