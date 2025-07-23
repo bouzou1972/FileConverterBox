@@ -50,21 +50,21 @@ export default function Layout({ children }: LayoutProps) {
                   All Tools
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80">
+              <SheetContent side="right" className="w-80 max-h-screen overflow-y-auto">
                 <SheetHeader>
-                  <SheetTitle className="text-left">All Tools</SheetTitle>
+                  <SheetTitle className="text-left">All Tools ({tools.length})</SheetTitle>
                 </SheetHeader>
-                <div className="mt-6 space-y-2">
+                <div className="mt-6 space-y-1 pb-6">
                   {tools.map((tool) => (
                     <Link key={tool.href} href={tool.href}>
                       <div 
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer border-b border-gray-100 last:border-b-0"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <span className="material-icons text-blue-600 text-xl">
+                        <span className="material-icons text-blue-600 text-lg flex-shrink-0">
                           {tool.icon}
                         </span>
-                        <span className="font-medium">{tool.title}</span>
+                        <span className="font-medium text-sm">{tool.title}</span>
                       </div>
                     </Link>
                   ))}
@@ -81,24 +81,24 @@ export default function Layout({ children }: LayoutProps) {
                   <Menu className="w-5 h-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80">
+              <SheetContent side="right" className="w-80 max-h-screen overflow-y-auto">
                 <SheetHeader>
-                  <SheetTitle className="text-left">All Tools</SheetTitle>
+                  <SheetTitle className="text-left">All Tools ({tools.length})</SheetTitle>
                 </SheetHeader>
-                <div className="mt-6 space-y-2">
+                <div className="mt-6 space-y-1 pb-6">
                   <div className="text-xs text-gray-500 mb-4 p-2 bg-green-50 rounded">
                     100% Local, Free & Private
                   </div>
                   {tools.map((tool) => (
                     <Link key={tool.href} href={tool.href}>
                       <div 
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer border-b border-gray-100 last:border-b-0"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <span className="material-icons text-blue-600 text-xl">
+                        <span className="material-icons text-blue-600 text-lg flex-shrink-0">
                           {tool.icon}
                         </span>
-                        <span className="font-medium">{tool.title}</span>
+                        <span className="font-medium text-sm">{tool.title}</span>
                       </div>
                     </Link>
                   ))}
