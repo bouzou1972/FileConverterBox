@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Eye, Code, Copy, Download, FileText } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { convertMarkdownToHTML, createFullHTMLDocument, sampleMarkdown } from "@/lib/utils/markdown";
 import { downloadFile } from "@/lib/utils/data-converter";
 
@@ -52,6 +53,9 @@ export default function MarkdownConverter() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="text-center mb-6">
+        <BuyMeCoffee />
+      </div>
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">

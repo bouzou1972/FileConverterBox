@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 
 interface RegexMatch {
   match: string;
@@ -78,6 +79,9 @@ export default function RegexTester() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="text-center mb-6">
+        <BuyMeCoffee />
+      </div>
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">

@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { FileText, Copy, Download } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { generateLorem, type LoremOptions } from "@/lib/utils/lorem";
 import { downloadFile } from "@/lib/utils/data-converter";
 
@@ -55,6 +56,9 @@ export default function LoremGenerator() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="text-center mb-6">
+        <BuyMeCoffee />
+      </div>
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">

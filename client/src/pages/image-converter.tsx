@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Upload, Download, RefreshCw } from "lucide-react";
 import CopyButton from "@/components/copy-button";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 
 type ImageFormat = "png" | "jpeg" | "webp";
 
@@ -111,6 +112,9 @@ export default function ImageConverter() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="text-center mb-6">
+        <BuyMeCoffee />
+      </div>
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-foreground">

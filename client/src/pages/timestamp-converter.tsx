@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Clock } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 
 export default function TimestampConverter() {
   const [unixInput, setUnixInput] = useState("");
@@ -103,6 +104,9 @@ export default function TimestampConverter() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="text-center mb-6">
+        <BuyMeCoffee />
+      </div>
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">

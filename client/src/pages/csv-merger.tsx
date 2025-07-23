@@ -7,6 +7,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Upload, Download, Merge, Split, X } from "lucide-react";
 import CopyButton from "@/components/copy-button";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 
 export default function CsvMerger() {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
@@ -139,6 +140,9 @@ export default function CsvMerger() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="text-center mb-6">
+        <BuyMeCoffee />
+      </div>
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-foreground">

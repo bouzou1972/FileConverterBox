@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { FileText, Download, Upload, RotateCcw } from "lucide-react";
+import BuyMeCoffee from "@/components/buy-me-coffee";
 import { 
   convertTextToPDF, 
   convertHTMLToPDF, 
@@ -175,6 +176,9 @@ export default function PDFConverter() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="text-center mb-6">
+        <BuyMeCoffee />
+      </div>
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">
