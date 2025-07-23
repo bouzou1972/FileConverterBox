@@ -1,30 +1,13 @@
-import { useEffect } from 'react';
-
 export default function BuyMeCoffee() {
-  useEffect(() => {
-    // Load the Buy Me a Coffee script
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js';
-    script.setAttribute('data-name', 'bmc-button');
-    script.setAttribute('data-slug', 'freedownloads');
-    script.setAttribute('data-color', '#FFDD00');
-    script.setAttribute('data-emoji', '');
-    script.setAttribute('data-font', 'Cookie');
-    script.setAttribute('data-text', 'Buy me a coffee');
-    script.setAttribute('data-outline-color', '#000000');
-    script.setAttribute('data-font-color', '#000000');
-    script.setAttribute('data-coffee-color', '#ffffff');
-    
-    document.body.appendChild(script);
-    
-    return () => {
-      // Cleanup script on unmount
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
-
-  return <div id="bmc-wbtn" className="inline-block" />;
+  return (
+    <a 
+      href="https://www.buymeacoffee.com/freedownloads" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+    >
+      <span className="text-lg">☕</span>
+      <span>Buy me a coffee</span>
+    </a>
+  );
 }
