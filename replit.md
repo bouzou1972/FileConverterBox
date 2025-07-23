@@ -34,7 +34,7 @@ Preferred communication style: Simple, everyday language.
 ## Key Components
 
 ### Tool Collection
-The application provides various developer utilities grouped by category:
+The application provides various developer utilities grouped by category, now including 25+ tools:
 
 #### Data Format Converters (Most Popular)
 - **CSV/JSON/YAML/TSV Converter**: Data format conversion with file upload support
@@ -67,6 +67,12 @@ The application provides various developer utilities grouped by category:
 #### Image & Color Tools (New Category)
 - **Image to Base64 Converter**: Convert images to Base64 encoded strings for embedding in HTML, CSS, or applications
 - **Color Converter**: Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders
+
+#### Smart Add-On Tools (New)
+- **Whitespace & Indentation Tool**: Clean up messy text formatting by normalizing whitespace, fixing indentation, and removing unwanted spaces
+- **CSV/TSV Viewer**: View and sort CSV/TSV files in a tabular grid with filtering and column hiding features
+- **Text Encryptor/Decryptor**: Securely encrypt and decrypt text using AES-256 encryption with client-side processing
+- **Color Palette Generator**: Extract beautiful color palettes from images with hex, RGB, and HSL values
 
 #### Content Generation
 - **Lorem Ipsum Generator**: Placeholder text generation with HTML options

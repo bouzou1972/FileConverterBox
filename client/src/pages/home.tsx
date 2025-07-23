@@ -125,6 +125,14 @@ export default function Home() {
           badge: "🆕 New"
         },
         {
+          href: "/whitespace-tool",
+          icon: "auto_fix_high",
+          iconColor: "text-green-600",
+          title: "Whitespace & Indentation Tool",
+          description: "Clean up messy text formatting by normalizing whitespace, fixing indentation, and removing unwanted spaces.",
+          badge: "🆕 New"
+        },
+        {
           href: "/regex-tester",
           icon: "search",
           iconColor: "text-green-600",
@@ -202,6 +210,14 @@ export default function Home() {
           title: "Image Resizer & Compressor",
           description: "Resize images by pixels or percentage and compress with quality control.",
           badge: "🆕 New"
+        },
+        {
+          href: "/color-palette-generator",
+          icon: "palette",
+          iconColor: "text-purple-600",
+          title: "Color Palette Generator",
+          description: "Extract beautiful color palettes from any image with hex, RGB, and HSL values.",
+          badge: "🆕 New"
         }
       ]
     },
@@ -223,6 +239,22 @@ export default function Home() {
           iconColor: "text-purple-600",
           title: "Text Analyzer",
           description: "Analyze text for readability, word count, sentence structure, and writing quality.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/csv-viewer",
+          icon: "table_view",
+          iconColor: "text-blue-600",
+          title: "CSV/TSV Viewer",
+          description: "View and sort CSV/TSV files in a tabular grid with filtering and column hiding features.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/text-encryptor",
+          icon: "lock",
+          iconColor: "text-red-600",
+          title: "Text Encryptor/Decryptor",
+          description: "Securely encrypt and decrypt text using AES-256 encryption. All processing happens in your browser.",
           badge: "🆕 New"
         }
       ]

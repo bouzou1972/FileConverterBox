@@ -30,6 +30,10 @@ import CsvMerger from "@/pages/csv-merger";
 import TextAnalyzer from "@/pages/text-analyzer";
 import ImageConverter from "@/pages/image-converter";
 import ImageResizer from "@/pages/image-resizer";
+import WhitespaceTool from "@/pages/whitespace-tool";
+import CsvViewer from "@/pages/csv-viewer";
+import TextEncryptor from "@/pages/text-encryptor";
+import ColorPaletteGenerator from "@/pages/color-palette-generator";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -62,6 +66,10 @@ function Router() {
         <Route path="/text-analyzer" component={TextAnalyzer} />
         <Route path="/image-converter" component={ImageConverter} />
         <Route path="/image-resizer" component={ImageResizer} />
+        <Route path="/whitespace-tool" component={WhitespaceTool} />
+        <Route path="/csv-viewer" component={CsvViewer} />
+        <Route path="/text-encryptor" component={TextEncryptor} />
+        <Route path="/color-palette-generator" component={ColorPaletteGenerator} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
