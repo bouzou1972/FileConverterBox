@@ -12,6 +12,7 @@ const tools = [
   // Data Format Converters (Most Popular)
   { href: "/csv-converter", title: "CSV Converter", icon: "table_chart", group: "Data" },
   { href: "/json-formatter", title: "JSON Formatter", icon: "data_object", group: "Data" },
+  { href: "/json-xml-converter", title: "JSON ↔ XML Converter", icon: "swap_horiz", group: "Data" },
   { href: "/base64-converter", title: "Base64 Encoder/Decoder", icon: "code", group: "Data" },
   
   // PDF Tools (High Demand)
@@ -20,6 +21,7 @@ const tools = [
   { href: "/pdf-to-ppt", title: "PDF to PPT", icon: "slideshow", group: "PDF" },
   
   // HTML/Markdown Tools
+  { href: "/html-minifier", title: "HTML Minifier/Beautifier", icon: "compress", group: "HTML" },
   { href: "/markdown-converter", title: "Markdown to HTML", icon: "description", group: "HTML" },
   { href: "/html-to-markdown", title: "HTML to Markdown", icon: "code", group: "HTML" },
   
@@ -29,6 +31,8 @@ const tools = [
   { href: "/regex-tester", title: "Regex Tester", icon: "search", group: "Text" },
   
   // Developer Utilities
+  { href: "/hash-generator", title: "Hash Generator", icon: "tag", group: "Dev" },
+  { href: "/number-base-converter", title: "Number Base Converter", icon: "calculate", group: "Dev" },
   { href: "/uuid-generator", title: "UUID Generator", icon: "fingerprint", group: "Dev" },
   { href: "/timestamp-converter", title: "Timestamp Converter", icon: "schedule", group: "Dev" },
   

@@ -19,6 +19,10 @@ import Base64Converter from "@/pages/base64-converter";
 import TextCaseConverter from "@/pages/text-case-converter";
 import TextDiffChecker from "@/pages/text-diff-checker";
 import HtmlToMarkdown from "@/pages/html-to-markdown";
+import JsonXmlConverter from "@/pages/json-xml-converter";
+import HtmlMinifier from "@/pages/html-minifier";
+import NumberBaseConverter from "@/pages/number-base-converter";
+import HashGenerator from "@/pages/hash-generator";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -40,6 +44,10 @@ function Router() {
         <Route path="/text-case-converter" component={TextCaseConverter} />
         <Route path="/text-diff-checker" component={TextDiffChecker} />
         <Route path="/html-to-markdown" component={HtmlToMarkdown} />
+        <Route path="/json-xml-converter" component={JsonXmlConverter} />
+        <Route path="/html-minifier" component={HtmlMinifier} />
+        <Route path="/number-base-converter" component={NumberBaseConverter} />
+        <Route path="/hash-generator" component={HashGenerator} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

@@ -34,21 +34,37 @@ Preferred communication style: Simple, everyday language.
 ## Key Components
 
 ### Tool Collection
-The application provides various developer utilities:
+The application provides various developer utilities grouped by category:
+
+#### Data Format Converters (Most Popular)
 - **CSV/JSON/YAML/TSV Converter**: Data format conversion with file upload support
-- **Regex Tester**: Pattern testing with live feedback and match highlighting
-- **Timestamp Converter**: Unix timestamp conversion with timezone support
-- **UUID Generator**: v4 UUID generation with bulk options
 - **JSON Formatter**: JSON validation, formatting, and minification
-- **Lorem Ipsum Generator**: Placeholder text generation with HTML options
-- **Markdown Converter**: Markdown to HTML conversion with preview
+- **JSON ↔ XML Converter**: Bidirectional conversion between JSON and XML formats with file support
+- **Base64 Encoder/Decoder**: Encode text/files to Base64 or decode Base64 strings with file support
+
+#### PDF Tools (High Demand)
 - **PDF Converter**: Text, HTML, and image to PDF conversion with formatting options
 - **PNG to PDF Converter**: Dedicated image-to-PDF converter with batch processing and SEO optimization
 - **PDF to PPT Converter**: Convert PDF documents to PowerPoint presentations with automatic content extraction
-- **Base64 Encoder/Decoder**: Encode text/files to Base64 or decode Base64 strings with file support
+
+#### HTML/Markdown Tools
+- **HTML Minifier/Beautifier**: Minify HTML to reduce file size or beautify for readability with customizable options
+- **Markdown Converter**: Markdown to HTML conversion with preview
+- **HTML to Markdown Converter**: Convert HTML content to clean Markdown with comprehensive element support
+
+#### Text Processing Tools
 - **Text Case Converter**: Convert text between 10 different case formats (camelCase, snake_case, etc.)
 - **Text Diff Checker**: Compare text blocks with detailed difference analysis and statistics
-- **HTML to Markdown Converter**: Convert HTML content to clean Markdown with comprehensive element support
+- **Regex Tester**: Pattern testing with live feedback and match highlighting
+
+#### Developer Utilities
+- **Hash Generator**: Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or files for security verification
+- **Number Base Converter**: Convert numbers between binary, octal, decimal, and hexadecimal formats with live conversion
+- **UUID Generator**: v4 UUID generation with bulk options
+- **Timestamp Converter**: Unix timestamp conversion with timezone support
+
+#### Content Generation
+- **Lorem Ipsum Generator**: Placeholder text generation with HTML options
 
 ### UI/UX Features
 - **Responsive Design**: Mobile-first approach with Tailwind CSS

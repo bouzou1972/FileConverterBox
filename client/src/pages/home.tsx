@@ -21,6 +21,13 @@ export default function Home() {
           description: "Format, validate, and minify JSON data with syntax highlighting and error detection."
         },
         {
+          href: "/json-xml-converter",
+          icon: "swap_horiz",
+          iconColor: "text-green-600",
+          title: "JSON ↔ XML Converter",
+          description: "Convert between JSON and XML formats bidirectionally with file upload support."
+        },
+        {
           href: "/base64-converter",
           icon: "code",
           iconColor: "text-blue-600",
@@ -60,6 +67,13 @@ export default function Home() {
       title: "HTML/Markdown",
       subtitle: "Web Content Converters",
       tools: [
+        {
+          href: "/html-minifier",
+          icon: "compress",
+          iconColor: "text-purple-600",
+          title: "HTML Minifier/Beautifier",
+          description: "Minify HTML to reduce file size or beautify HTML for better readability with customizable options."
+        },
         {
           href: "/markdown-converter",
           icon: "description",
@@ -107,6 +121,20 @@ export default function Home() {
       title: "Developer Utils",
       subtitle: "Programming Utilities",
       tools: [
+        {
+          href: "/hash-generator",
+          icon: "tag",
+          iconColor: "text-red-600",
+          title: "Hash Generator",
+          description: "Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or files for security and integrity."
+        },
+        {
+          href: "/number-base-converter",
+          icon: "calculate",
+          iconColor: "text-blue-600",
+          title: "Number Base Converter",
+          description: "Convert numbers between binary, octal, decimal, and hexadecimal formats with live conversion."
+        },
         {
           href: "/uuid-generator",
           icon: "fingerprint",
