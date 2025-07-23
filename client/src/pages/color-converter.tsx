@@ -245,10 +245,6 @@ export default function ColorConverter() {
             </Button>
           </CardContent>
         </Card>
-      
-      <div className="text-center mt-8">
-        <BuyMeCoffee />
-      </div>
 
         {/* Color Input Controls */}
         <Card>
@@ -362,10 +358,6 @@ export default function ColorConverter() {
             </div>
           </CardContent>
         </Card>
-      
-      <div className="text-center mt-8">
-        <BuyMeCoffee />
-      </div>
       </div>
 
       {/* Color Format Outputs */}
@@ -386,10 +378,6 @@ export default function ColorConverter() {
               </div>
             </CardContent>
           </Card>
-      
-      <div className="text-center mt-8">
-        <BuyMeCoffee />
-      </div>
         ))}
       </div>
 
