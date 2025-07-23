@@ -42,6 +42,7 @@ The application provides various developer utilities:
 - **JSON Formatter**: JSON validation, formatting, and minification
 - **Lorem Ipsum Generator**: Placeholder text generation with HTML options
 - **Markdown Converter**: Markdown to HTML conversion with preview
+- **PDF Converter**: Text and HTML to PDF conversion with formatting options
 
 ### UI/UX Features
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
@@ -84,6 +85,7 @@ The application provides various developer utilities:
 - **Utilities**: date-fns, clsx, class-variance-authority
 - **Icons**: Lucide React icons, Google Material Icons
 - **Routing**: Wouter for lightweight routing
+- **PDF Generation**: jsPDF, html2canvas for client-side PDF creation
 
 ### Backend Dependencies
 - **Server**: Express.js with TypeScript

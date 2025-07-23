@@ -12,6 +12,7 @@ import UuidGenerator from "@/pages/uuid-generator";
 import JsonFormatter from "@/pages/json-formatter";
 import LoremGenerator from "@/pages/lorem-generator";
 import MarkdownConverter from "@/pages/markdown-converter";
+import PDFConverter from "@/pages/pdf-converter";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
         <Route path="/json-formatter" component={JsonFormatter} />
         <Route path="/lorem-generator" component={LoremGenerator} />
         <Route path="/markdown-converter" component={MarkdownConverter} />
+        <Route path="/pdf-converter" component={PDFConverter} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

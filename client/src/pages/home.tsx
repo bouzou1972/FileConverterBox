@@ -50,6 +50,13 @@ export default function Home() {
       iconColor: "tool-red",
       title: "Markdown to HTML",
       description: "Convert Markdown content into clean HTML with live preview and export options."
+    },
+    {
+      href: "/pdf-converter",
+      icon: "picture_as_pdf",
+      iconColor: "text-red-600",
+      title: "PDF Converter",
+      description: "Convert text or HTML content to PDF with customizable formatting and page settings."
     }
   ];
 
