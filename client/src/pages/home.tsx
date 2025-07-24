@@ -793,10 +793,10 @@ export default function Home() {
           {/* Recent Tools & Favorites - Combined Section */}
           {(recentTools.length > 0 || bookmarks.length > 0) && (
             <div className="mb-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                {/* Recent Tools Column */}
+              <div className="flex flex-col sm:flex-row gap-6 lg:gap-8">
+                {/* Recent Tools Column - 50% width */}
                 {recentTools.length > 0 && (
-                  <div>
+                  <div className="flex-1">
                     <div className="text-center mb-6">
                       <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
                         <Clock className="w-6 h-6 text-purple-500" />
@@ -812,9 +812,9 @@ export default function Home() {
                   </div>
                 )}
 
-                {/* Bookmarked Tools Column */}
+                {/* Bookmarked Tools Column - 50% width */}
                 {bookmarks.length > 0 && (
-                  <div>
+                  <div className="flex-1">
                     <div className="text-center mb-6">
                       <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
                         <Heart className="w-6 h-6 text-red-500" />
@@ -832,12 +832,6 @@ export default function Home() {
               </div>
             </div>
           )}
-        </>
-      )}
-
-      {/* Show main content only when not searching */}
-      {!searchQuery && (
-        <>
           {/* Most Popular Tools */}
           <div className="mb-12">
             <div className="text-center mb-8">
