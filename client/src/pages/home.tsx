@@ -1,124 +1,119 @@
 import { useState } from "react";
-import { Search } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import ToolCard from "@/components/tool-card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Link } from "wouter";
+import { Search, ChevronDown, ChevronRight, TrendingUp, Sparkles, ArrowRight } from "lucide-react";
+
+interface Tool {
+  href: string;
+  icon: string;
+  iconColor: string;
+  title: string;
+  description: string;
+  badge?: string;
+}
+
+interface ToolCategory {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  iconColor: string;
+  featured: Tool[];
+  allTools: Tool[];
+}
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [openCategories, setOpenCategories] = useState<string[]>([]);
 
-  const toolGroups = [
+  // Top 6 most popular tools (manually curated)
+  const popularTools: Tool[] = [
     {
-      title: "Most Popular Tools",
-      subtitle: "Top 6 Most-Used Converters",
-      tools: [
+      href: "/csv-converter",
+      icon: "table_chart",
+      iconColor: "text-blue-600",
+      title: "CSV Converter",
+      description: "Convert between CSV, JSON, YAML, and TSV formats with drag-and-drop support.",
+      badge: "🔥 #1 Popular"
+    },
+    {
+      href: "/json-formatter",
+      icon: "data_object",
+      iconColor: "text-indigo-600",
+      title: "JSON Formatter",
+      description: "Format, validate, and minify JSON data with syntax highlighting and error detection.",
+      badge: "🔥 #2 Popular"
+    },
+    {
+      href: "/pdf-converter",
+      icon: "picture_as_pdf",
+      iconColor: "text-red-600",
+      title: "PDF Converter",
+      description: "Convert text, HTML, or images to PDF with customizable formatting and page settings.",
+      badge: "🔥 #3 Popular"
+    },
+    {
+      href: "/excel-converter",
+      icon: "swap_horiz",
+      iconColor: "text-green-600",
+      title: "Excel ↔ CSV Converter",
+      description: "Convert between Excel (.xlsx) and CSV formats with support for multiple sheets.",
+      badge: "🔥 #4 Popular"
+    },
+    {
+      href: "/image-converter",
+      icon: "image",
+      iconColor: "text-purple-600",
+      title: "Image Format Converter",
+      description: "Convert images between PNG, JPEG, and WebP formats with quality control.",
+      badge: "🔥 #5 Popular"
+    },
+    {
+      href: "/string-to-json",
+      icon: "data_object",
+      iconColor: "text-orange-600",
+      title: "String to JSON Converter",
+      description: "Convert malformed strings to valid JSON. Fixes single quotes, unquoted keys, and trailing commas.",
+      badge: "🔥 #6 Popular"
+    }
+  ];
+
+  // Organized categories with featured tools + all tools
+  const categories: ToolCategory[] = [
+    {
+      id: "file-converters",
+      title: "File Converters",
+      description: "Convert between different file formats",
+      icon: "swap_horiz",
+      iconColor: "text-blue-600",
+      featured: [
+        {
+          href: "/json-xml-converter",
+          icon: "swap_horiz",
+          iconColor: "text-green-600",
+          title: "JSON ↔ XML Converter",
+          description: "Convert between JSON and XML formats bidirectionally with file upload support."
+        },
+        {
+          href: "/base64-converter",
+          icon: "code",
+          iconColor: "text-blue-600",
+          title: "Base64 Encoder/Decoder",
+          description: "Encode text or files to Base64 format or decode Base64 strings back to readable text."
+        }
+      ],
+      allTools: [
         {
           href: "/csv-converter",
           icon: "table_chart",
           iconColor: "text-blue-600",
           title: "CSV Converter",
-          description: "Convert between CSV, JSON, YAML, and TSV formats with drag-and-drop support.",
-          badge: "🔥 #1 Popular"
+          description: "Convert between CSV, JSON, YAML, and TSV formats with drag-and-drop support."
         },
-        {
-          href: "/json-formatter",
-          icon: "data_object",
-          iconColor: "text-indigo-600",
-          title: "JSON Formatter",
-          description: "Format, validate, and minify JSON data with syntax highlighting and error detection.",
-          badge: "🔥 #2 Popular"
-        },
-        {
-          href: "/excel-converter",
-          icon: "swap_horiz",
-          iconColor: "text-green-600",
-          title: "Excel ↔ CSV Converter",
-          description: "Convert between Excel (.xlsx) and CSV formats with support for multiple sheets and custom delimiters.",
-          badge: "🔥 #3 Popular"
-        },
-        {
-          href: "/pdf-converter",
-          icon: "picture_as_pdf",
-          iconColor: "text-red-600",
-          title: "PDF Converter",
-          description: "Convert text, HTML, or images to PDF with customizable formatting and page settings.",
-          badge: "🔥 #4 Popular"
-        },
-        {
-          href: "/image-converter",
-          icon: "image",
-          iconColor: "text-indigo-600",
-          title: "Image Format Converter",
-          description: "Convert images between PNG, JPEG, and WebP formats with quality control.",
-          badge: "🔥 #5 Popular"
-        },
-        {
-          href: "/string-to-json",
-          icon: "data_object",
-          iconColor: "text-purple-600",
-          title: "String to JSON Converter",
-          description: "Convert malformed strings to valid JSON. Fixes single quotes, unquoted keys, and trailing commas.",
-          badge: "🔥 #6 Popular"
-        }
-      ]
-    },
-    {
-      title: "Quick Utilities",
-      subtitle: "Lightweight & Fast Tools",
-      tools: [
-        {
-          href: "/character-counter",
-          icon: "format_list_numbered",
-          iconColor: "text-blue-600",
-          title: "Character & Word Counter",
-          description: "Count characters, words, lines, and paragraphs in text. Track reading time and text statistics.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/clipboard-inspector",
-          icon: "content_paste",
-          iconColor: "text-green-600",
-          title: "Clipboard Inspector",
-          description: "View, analyze, and clear clipboard content. See hidden formatting and special characters.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/calculator",
-          icon: "calculate",
-          iconColor: "text-orange-600",
-          title: "Expression Calculator",
-          description: "Evaluate mathematical expressions with support for functions, constants, and variables.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/text-compressor",
-          icon: "compress",
-          iconColor: "text-purple-600",
-          title: "Text Compressor",
-          description: "Compress text using run-length encoding and other simple compression algorithms.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/unit-converter",
-          icon: "straighten",
-          iconColor: "text-teal-600",
-          title: "Unit Converter",
-          description: "Convert between metric/imperial units, time, data sizes, and more. Works completely offline.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/grammar-checker",
-          icon: "spellcheck",
-          iconColor: "text-indigo-600",
-          title: "Grammar Checker",
-          description: "Check text for grammar, spelling, punctuation, and style issues with suggestions for improvement.",
-          badge: "🆕 New"
-        }
-      ]
-    },
-    {
-      title: "Data Formats",
-      subtitle: "File Format Converters",
-      tools: [
         {
           href: "/json-xml-converter",
           icon: "swap_horiz",
@@ -160,9 +155,28 @@ export default function Home() {
       ]
     },
     {
+      id: "pdf-tools",
       title: "PDF Tools",
-      subtitle: "High Demand File Converters",
-      tools: [
+      description: "Create, convert and modify PDF documents",
+      icon: "picture_as_pdf",
+      iconColor: "text-red-600",
+      featured: [
+        {
+          href: "/pdf-converter",
+          icon: "picture_as_pdf",
+          iconColor: "text-red-600",
+          title: "PDF Converter",
+          description: "Convert text, HTML, or images to PDF with customizable formatting and page settings."
+        },
+        {
+          href: "/png-to-pdf",
+          icon: "image",
+          iconColor: "text-orange-600",
+          title: "PNG to PDF Converter",
+          description: "Convert PNG, JPG, and other image formats to PDF with batch processing support."
+        }
+      ],
+      allTools: [
         {
           href: "/pdf-converter",
           icon: "picture_as_pdf",
@@ -187,72 +201,49 @@ export default function Home() {
       ]
     },
     {
-      title: "HTML/Markdown",
-      subtitle: "Web Content Converters",
-      tools: [
-        {
-          href: "/html-minifier",
-          icon: "compress",
-          iconColor: "text-purple-600",
-          title: "HTML Minifier/Beautifier",
-          description: "Minify HTML to reduce file size or beautify HTML for better readability with customizable options."
-        },
-        {
-          href: "/markdown-converter",
-          icon: "description",
-          iconColor: "text-red-600",
-          title: "Markdown to HTML",
-          description: "Convert Markdown content into clean HTML with live preview and export options."
-        },
-        {
-          href: "/html-to-markdown",
-          icon: "code",
-          iconColor: "text-indigo-600",
-          title: "HTML to Markdown",
-          description: "Convert HTML content to clean Markdown format with support for headers, links, images, and more."
-        }
-      ]
-    },
-    {
-      title: "Text Processing",
-      subtitle: "Advanced Text Tools",
-      tools: [
+      id: "text-tools",
+      title: "Text Tools",
+      description: "Process, format and analyze text content",
+      icon: "text_fields",
+      iconColor: "text-green-600",
+      featured: [
         {
           href: "/text-case-converter",
-          icon: "text_fields",
-          iconColor: "text-green-600",
+          icon: "format_clear",
+          iconColor: "text-indigo-600",
           title: "Text Case Converter",
-          description: "Convert text between different case formats like camelCase, snake_case, kebab-case, and more. Includes lowercase, UPPERCASE, and Capitalize options."
+          description: "Convert text between 10 different formats: camelCase, snake_case, PascalCase, kebab-case, and more."
+        },
+        {
+          href: "/readability-grader",
+          icon: "analytics",
+          iconColor: "text-blue-600",
+          title: "Readability Grader",
+          description: "Analyze text with 6 readability formulas including Flesch-Kincaid, Gunning Fog, and SMOG indices.",
+          badge: "🆕 New"
+        }
+      ],
+      allTools: [
+        {
+          href: "/text-case-converter",
+          icon: "format_clear",
+          iconColor: "text-indigo-600",
+          title: "Text Case Converter",
+          description: "Convert text between 10 different formats: camelCase, snake_case, PascalCase, kebab-case, and more."
         },
         {
           href: "/text-diff-checker",
-          icon: "compare_arrows",
-          iconColor: "text-purple-600",
+          icon: "difference",
+          iconColor: "text-orange-600",
           title: "Text Diff Checker",
-          description: "Compare two blocks of text to find differences, additions, and deletions with detailed analysis."
+          description: "Compare two text blocks and highlight differences with detailed analysis and statistics."
         },
         {
           href: "/text-line-tools",
-          icon: "format_list_bulleted",
-          iconColor: "text-blue-600",
+          icon: "format_line_spacing",
+          iconColor: "text-purple-600",
           title: "Text Line Tools",
-          description: "Sort, deduplicate, merge, and manipulate text lines with powerful processing options.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/whitespace-tool",
-          icon: "auto_fix_high",
-          iconColor: "text-green-600",
-          title: "Whitespace & Indentation Tool",
-          description: "Clean up messy text formatting by normalizing whitespace, fixing indentation, and removing unwanted spaces.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/regex-tester",
-          icon: "search",
-          iconColor: "text-green-600",
-          title: "Regex Tester",
-          description: "Test regular expressions with live matching, replace functionality, and pattern explanation."
+          description: "Sort, deduplicate, merge, and manipulate text lines with powerful processing options."
         },
         {
           href: "/readability-grader",
@@ -277,107 +268,163 @@ export default function Home() {
           title: "Academic Writing Formatter",
           description: "Generate properly formatted citations and bibliographies in APA, MLA, and Chicago styles.",
           badge: "🆕 New"
+        },
+        {
+          href: "/whitespace-tool",
+          icon: "format_indent_increase",
+          iconColor: "text-gray-600",
+          title: "Whitespace & Indentation Tool",
+          description: "Clean up messy text formatting by normalizing whitespace, fixing indentation, and removing unwanted spaces.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/regex-tester",
+          icon: "search",
+          iconColor: "text-green-600",
+          title: "Regex Tester",
+          description: "Test regular expressions with live matching, replace functionality, and pattern explanation."
+        },
+        {
+          href: "/grammar-checker",
+          icon: "spellcheck",
+          iconColor: "text-indigo-600",
+          title: "Grammar Checker",
+          description: "Check text for grammar, spelling, punctuation, and style issues with suggestions for improvement.",
+          badge: "🆕 New"
         }
       ]
     },
     {
-      title: "Developer Utils",
-      subtitle: "Programming Utilities",
-      tools: [
+      id: "developer-tools",
+      title: "Developer Tools",
+      description: "Utilities for developers and programmers",
+      icon: "code",
+      iconColor: "text-orange-600",
+      featured: [
+        {
+          href: "/json-formatter",
+          icon: "data_object",
+          iconColor: "text-indigo-600",
+          title: "JSON Formatter",
+          description: "Format, validate, and minify JSON data with syntax highlighting and error detection."
+        },
         {
           href: "/hash-generator",
           icon: "tag",
           iconColor: "text-red-600",
           title: "Hash Generator",
-          description: "Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or files for security and integrity."
+          description: "Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or files for security verification."
+        }
+      ],
+      allTools: [
+        {
+          href: "/json-formatter",
+          icon: "data_object",
+          iconColor: "text-indigo-600",
+          title: "JSON Formatter",
+          description: "Format, validate, and minify JSON data with syntax highlighting and error detection."
         },
         {
-          href: "/number-base-converter",
-          icon: "calculate",
-          iconColor: "text-blue-600",
-          title: "Number Base Converter",
-          description: "Convert numbers between binary, octal, decimal, and hexadecimal formats with live conversion."
+          href: "/hash-generator",
+          icon: "tag",
+          iconColor: "text-red-600",
+          title: "Hash Generator",
+          description: "Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or files for security verification."
         },
         {
           href: "/uuid-generator",
           icon: "fingerprint",
           iconColor: "text-purple-600",
           title: "UUID Generator",
-          description: "Generate secure UUID v4 identifiers with bulk generation and copy functionality."
+          description: "Generate v4 UUIDs with bulk generation options and format validation."
+        },
+        {
+          href: "/number-base-converter",
+          icon: "functions",
+          iconColor: "text-blue-600",
+          title: "Number Base Converter",
+          description: "Convert numbers between binary, octal, decimal, and hexadecimal formats with live conversion."
         },
         {
           href: "/timestamp-converter",
           icon: "schedule",
-          iconColor: "text-orange-600",
+          iconColor: "text-green-600",
           title: "Timestamp Converter",
-          description: "Convert Unix timestamps to human-readable dates and back with timezone support."
+          description: "Convert Unix timestamps to readable dates and vice versa with timezone support."
+        },
+        {
+          href: "/lorem-ipsum",
+          icon: "article",
+          iconColor: "text-gray-600",
+          title: "Lorem Ipsum Generator",
+          description: "Generate placeholder text with options for paragraphs, words, and HTML formatting."
         }
       ]
     },
     {
-      title: "Image & Color Tools",
-      subtitle: "Visual Design Utilities",
-      tools: [
+      id: "image-color-tools",
+      title: "Images & Colors",
+      description: "Process images and work with colors",
+      icon: "palette",
+      iconColor: "text-pink-600",
+      featured: [
         {
-          href: "/image-to-base64",
+          href: "/image-converter",
           icon: "image",
           iconColor: "text-purple-600",
-          title: "Image to Base64",
-          description: "Convert images to Base64 encoded strings for embedding in HTML, CSS, or applications.",
-          badge: "🆕 New"
+          title: "Image Format Converter",
+          description: "Convert images between PNG, JPEG, and WebP formats with quality control."
         },
         {
           href: "/color-converter",
           icon: "palette",
           iconColor: "text-pink-600",
           title: "Color Converter",
-          description: "Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders.",
-          badge: "🆕 New"
-        },
+          description: "Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders."
+        }
+      ],
+      allTools: [
         {
           href: "/image-converter",
           icon: "image",
-          iconColor: "text-indigo-600",
-          title: "Image Format Converter",
-          description: "Convert images between PNG, JPEG, and WebP formats with quality control.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/image-resizer",
-          icon: "photo_size_select_large",
-          iconColor: "text-green-600",
-          title: "Image Resizer & Compressor",
-          description: "Resize images by pixels or percentage and compress with quality control.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/color-palette-generator",
-          icon: "palette",
           iconColor: "text-purple-600",
-          title: "Color Palette Generator",
-          description: "Extract beautiful color palettes from any image with hex, RGB, and HSL values.",
-          badge: "🆕 New"
+          title: "Image Format Converter",
+          description: "Convert images between PNG, JPEG, and WebP formats with quality control."
+        },
+        {
+          href: "/color-converter",
+          icon: "palette",
+          iconColor: "text-pink-600",
+          title: "Color Converter",
+          description: "Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders."
+        },
+        {
+          href: "/image-to-base64",
+          icon: "photo",
+          iconColor: "text-blue-600",
+          title: "Image to Base64 Converter",
+          description: "Convert images to Base64 encoded strings for embedding in HTML, CSS, or applications."
         },
         {
           href: "/favicon-generator",
           icon: "web",
-          iconColor: "text-blue-600",
+          iconColor: "text-orange-600",
           title: "Favicon Generator",
-          description: "Upload any image and generate favicons in all standard sizes for your website (ICO & PNG formats).",
+          description: "Upload any image and generate favicons in all standard sizes for websites (ICO & PNG formats).",
           badge: "🆕 New"
         },
         {
           href: "/social-media-cropper",
           icon: "crop",
-          iconColor: "text-purple-600",
+          iconColor: "text-green-600",
           title: "Social Media Image Cropper",
-          description: "Auto-crop images to perfect sizes for Instagram, Facebook, Twitter, LinkedIn, YouTube, and more.",
+          description: "Auto-crop images to perfect sizes for Instagram, Facebook, Twitter, LinkedIn, YouTube, and more platforms.",
           badge: "🆕 New"
         },
         {
           href: "/logo-cleaner",
           icon: "auto_fix_high",
-          iconColor: "text-orange-600",
+          iconColor: "text-purple-600",
           title: "Logo Background Remover",
           description: "Remove backgrounds from logos and images with manual brush and magic wand tools.",
           badge: "🆕 New"
@@ -385,101 +432,191 @@ export default function Home() {
       ]
     },
     {
+      id: "spreadsheet-tools",
       title: "Spreadsheet Tools",
-      subtitle: "Excel & CSV Utilities",
-      tools: [
+      description: "Work with Excel, CSV and data files",
+      icon: "table_view",
+      iconColor: "text-green-600",
+      featured: [
         {
           href: "/excel-converter",
           icon: "swap_horiz",
           iconColor: "text-green-600",
           title: "Excel ↔ CSV Converter",
-          description: "Convert between Excel (.xlsx) and CSV formats with support for multiple sheets and custom delimiters.",
-          badge: "🆕 New"
+          description: "Convert between Excel (.xlsx) and CSV formats with support for multiple sheets and custom delimiters."
+        },
+        {
+          href: "/csv-merger",
+          icon: "merge_type",
+          iconColor: "text-blue-600",
+          title: "CSV Merger & Splitter",
+          description: "Combine multiple CSV files or split large CSVs by rows or file size with advanced processing options."
+        }
+      ],
+      allTools: [
+        {
+          href: "/excel-converter",
+          icon: "swap_horiz",
+          iconColor: "text-green-600",
+          title: "Excel ↔ CSV Converter",
+          description: "Convert between Excel (.xlsx) and CSV formats with support for multiple sheets and custom delimiters."
+        },
+        {
+          href: "/csv-merger",
+          icon: "merge_type",
+          iconColor: "text-blue-600",
+          title: "CSV Merger & Splitter",
+          description: "Combine multiple CSV files or split large CSVs by rows or file size with advanced processing options."
+        },
+        {
+          href: "/csv-viewer",
+          icon: "table_chart",
+          iconColor: "text-purple-600",
+          title: "CSV/TSV Viewer",
+          description: "View and sort CSV/TSV files in a tabular grid with filtering and column hiding features."
         },
         {
           href: "/data-cleaner",
           icon: "cleaning_services",
-          iconColor: "text-blue-600",
+          iconColor: "text-orange-600",
           title: "Smart Data Cleaner",
-          description: "Clean messy Excel data: remove currency symbols, convert text to numbers, handle percentages.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/csv-merger",
-          icon: "merge",
-          iconColor: "text-purple-600",
-          title: "CSV Merger & Splitter",
-          description: "Combine multiple CSV files or split large CSVs by rows or file size.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/csv-viewer",
-          icon: "table_view",
-          iconColor: "text-indigo-600",
-          title: "CSV/TSV Viewer",
-          description: "View and sort CSV/TSV files in a tabular grid with filtering and column hiding features.",
-          badge: "🆕 New"
-        }
-      ]
-    },
-    {
-      title: "Advanced Tools",
-      subtitle: "Power User Utilities",
-      tools: [
-        {
-          href: "/text-analyzer",
-          icon: "analytics",
-          iconColor: "text-purple-600",
-          title: "Text Analyzer",
-          description: "Analyze text for readability, word count, sentence structure, and writing quality.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/text-encryptor",
-          icon: "lock",
-          iconColor: "text-red-600",
-          title: "Text Encryptor/Decryptor",
-          description: "Securely encrypt and decrypt text using AES-256 encryption. All processing happens in your browser.",
-          badge: "🆕 New"
-        }
-      ]
-    },
-    {
-      title: "Content Generation",
-      subtitle: "Text & Content Tools",
-      tools: [
-        {
-          href: "/lorem-generator",
-          icon: "text_snippet",
-          iconColor: "text-gray-600",
-          title: "Lorem Ipsum Generator",
-          description: "Generate placeholder text with customizable length, paragraphs, and HTML formatting."
+          description: "Clean messy Excel data by removing currency symbols, converting text to numbers, handling percentages, and fixing formatting issues."
         }
       ]
     }
   ];
 
-  // Filter tools based on search query
-  const filteredGroups = toolGroups.map(group => ({
-    ...group,
-    tools: group.tools.filter(tool => 
-      searchQuery === "" || 
-      tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      tool.description.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  })).filter(group => group.tools.length > 0);
+  const toggleCategory = (categoryId: string) => {
+    setOpenCategories(prev => 
+      prev.includes(categoryId) 
+        ? prev.filter(id => id !== categoryId)
+        : [...prev, categoryId]
+    );
+  };
+
+  // Filter logic for search
+  const allTools = [
+    ...popularTools,
+    ...categories.flatMap(cat => cat.allTools)
+  ];
+
+  const filteredTools = searchQuery 
+    ? allTools.filter(tool => 
+        tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        tool.description.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
+
+  const ToolCard = ({ href, icon, iconColor, title, description, badge }: Tool) => (
+    <Link href={href}>
+      <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer group border-border hover:border-blue-200">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex items-start gap-3 sm:gap-4">
+            <div className={`p-2 sm:p-3 rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors`}>
+              <span className={`material-icons text-xl sm:text-2xl ${iconColor}`}>{icon}</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <h3 className="font-semibold text-sm sm:text-base text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
+                  {title}
+                </h3>
+                {badge && (
+                  <Badge 
+                    variant="secondary" 
+                    className="text-xs whitespace-nowrap bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 border-orange-200"
+                  >
+                    {badge}
+                  </Badge>
+                )}
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 group-hover:text-gray-600 transition-colors">
+                {description}
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
+  );
+
+  const CategoryCard = ({ category }: { category: ToolCategory }) => (
+    <Card className="border-border">
+      <CardHeader className="pb-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className={`p-2 rounded-lg bg-gray-50`}>
+              <span className={`material-icons text-xl ${category.iconColor}`}>{category.icon}</span>
+            </div>
+            <div>
+              <CardTitle className="text-lg">{category.title}</CardTitle>
+              <p className="text-sm text-muted-foreground">{category.description}</p>
+            </div>
+          </div>
+          <Badge variant="outline">{category.allTools.length} tools</Badge>
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {/* Featured Tools */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {category.featured.map((tool, index) => (
+            <ToolCard key={index} {...tool} />
+          ))}
+        </div>
+        
+        {/* View All Button */}
+        {category.allTools.length > category.featured.length && (
+          <Collapsible
+            open={openCategories.includes(category.id)}
+            onOpenChange={() => toggleCategory(category.id)}
+          >
+            <CollapsibleTrigger asChild>
+              <Button 
+                variant="outline" 
+                className="w-full mt-4 flex items-center justify-center gap-2 hover:bg-blue-50"
+              >
+                {openCategories.includes(category.id) ? (
+                  <>
+                    <ChevronDown className="w-4 h-4" />
+                    Hide {category.allTools.length - category.featured.length} more tools
+                  </>
+                ) : (
+                  <>
+                    <ChevronRight className="w-4 h-4" />
+                    View all {category.allTools.length} {category.title.toLowerCase()}
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </>
+                )}
+              </Button>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {category.allTools
+                  .filter(tool => !category.featured.some(featured => featured.href === tool.href))
+                  .map((tool, index) => (
+                    <ToolCard key={index} {...tool} />
+                  ))}
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
+        )}
+      </CardContent>
+    </Card>
+  );
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6 sm:py-10">
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      {/* Hero Section */}
       <div className="text-center mb-8 sm:mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground">Free In-Browser Tools</h2>
-        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground">
+          File Converter Box
+        </h1>
+        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
           Professional utilities that work entirely in your browser. No data leaves your device - 100% private and secure.
         </p>
       </div>
 
       {/* Search Bar */}
-      <section className="max-w-md mx-auto mb-8 sm:mb-12" role="search" aria-label="Tool search">
+      <div className="max-w-md mx-auto mb-8 sm:mb-12">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
           <Input
@@ -488,33 +625,78 @@ export default function Home() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10 text-center bg-background border-border focus:ring-2 focus:ring-blue-500"
-            aria-label="Search for tools by name or description"
           />
         </div>
         {searchQuery && (
-          <p className="text-sm text-muted-foreground mt-2 text-center" role="status" aria-live="polite">
-            Showing {filteredGroups.reduce((acc, group) => acc + group.tools.length, 0)} tools
+          <p className="text-sm text-muted-foreground mt-2 text-center">
+            Found {filteredTools.length} tools
           </p>
         )}
-      </section>
-      
-      {filteredGroups.map((group, groupIndex) => (
-        <div key={groupIndex} className="mb-8 sm:mb-12">
-          <div className="text-center mb-6 sm:mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">{group.title}</h3>
-            <p className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">{group.subtitle}</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-            {group.tools.map((tool, toolIndex) => (
-              <ToolCard key={toolIndex} {...tool} />
+      </div>
+
+      {/* Search Results */}
+      {searchQuery && (
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+            <Search className="w-6 h-6" />
+            Search Results
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {filteredTools.map((tool, index) => (
+              <ToolCard key={index} {...tool} />
             ))}
           </div>
+          {filteredTools.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No tools found matching "{searchQuery}"</p>
+            </div>
+          )}
         </div>
-      ))}
-      
+      )}
+
+      {/* Show main content only when not searching */}
+      {!searchQuery && (
+        <>
+          {/* Most Popular Tools */}
+          <div className="mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+                <TrendingUp className="w-6 h-6 text-orange-500" />
+                Most Popular Tools
+              </h2>
+              <p className="text-sm text-muted-foreground">Top 6 most-used converters and utilities</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+              {popularTools.map((tool, index) => (
+                <ToolCard key={index} {...tool} />
+              ))}
+            </div>
+          </div>
+
+          {/* Categories */}
+          <div className="mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+                <Sparkles className="w-6 h-6 text-purple-500" />
+                Tool Categories
+              </h2>
+              <p className="text-sm text-muted-foreground">Explore our complete collection of utilities</p>
+            </div>
+            <div className="space-y-8">
+              {categories.map((category) => (
+                <CategoryCard key={category.id} category={category} />
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+
       {/* Buy Me a Coffee Button */}
       <div className="text-center mt-12 pt-8 border-t border-border">
+        <div className="mb-4">
+          <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
+          <p className="text-muted-foreground">Help support future development</p>
+        </div>
         <div 
           dangerouslySetInnerHTML={{
             __html: `<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="freedownloads" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>`
