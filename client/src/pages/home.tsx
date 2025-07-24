@@ -552,7 +552,7 @@ export default function Home() {
               <p className="text-sm text-muted-foreground">{category.description}</p>
             </div>
           </div>
-          <Badge variant="outline">{category.allTools.length} tools</Badge>
+
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
