@@ -37,10 +37,15 @@ const tools = [
   { href: "/number-base-converter", title: "Number Base Converter", icon: "calculate", group: "Dev" },
   { href: "/uuid-generator", title: "UUID Generator", icon: "fingerprint", group: "Dev" },
   { href: "/timestamp-converter", title: "Timestamp Converter", icon: "schedule", group: "Dev" },
+  { href: "/qr-generator", title: "QR Code Generator", icon: "qr_code", group: "Dev" },
+  { href: "/barcode-generator", title: "Barcode Generator", icon: "barcode", group: "Dev" },
+  { href: "/password-generator", title: "Password Generator", icon: "security", group: "Dev" },
   
   // Image & Color Tools
   { href: "/image-to-base64", title: "Image to Base64", icon: "image", group: "Image" },
   { href: "/color-converter", title: "Color Converter", icon: "palette", group: "Image" },
+  { href: "/image-optimizer", title: "Image Optimizer", icon: "speed", group: "Image" },
+  { href: "/color-palette-extractor", title: "Color Palette Extractor", icon: "palette", group: "Image" },
   
   // Content Generation (Least Essential)
   { href: "/lorem-generator", title: "Lorem Generator", icon: "text_snippet", group: "Content" },

@@ -381,6 +381,30 @@ export default function Home() {
           iconColor: "text-gray-600",
           title: "Lorem Ipsum Generator",
           description: "Generate placeholder text with options for paragraphs, words, and HTML formatting."
+        },
+        {
+          href: "/qr-generator",
+          icon: "qr_code",
+          iconColor: "text-blue-600",
+          title: "QR Code Generator",
+          description: "Generate QR codes locally for URLs, text, WiFi credentials with customizable options.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/barcode-generator",
+          icon: "barcode",
+          iconColor: "text-gray-600",
+          title: "Barcode Generator",
+          description: "Create various barcode formats (Code128, EAN, UPC) with industry-standard compliance.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/password-generator",
+          icon: "security",
+          iconColor: "text-red-600",
+          title: "Password Generator",
+          description: "Secure password creation with customizable rules and strength analysis.",
+          badge: "🆕 New"
         }
       ]
     },
@@ -450,6 +474,22 @@ export default function Home() {
           iconColor: "text-purple-600",
           title: "Logo Background Remover",
           description: "Remove backgrounds from logos and images with manual brush and magic wand tools.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/image-optimizer",
+          icon: "speed",
+          iconColor: "text-orange-600",
+          title: "Image Optimizer",
+          description: "Compress images while preserving quality with customizable size and quality settings.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/color-palette-extractor",
+          icon: "palette",
+          iconColor: "text-pink-600",
+          title: "Color Palette Extractor",
+          description: "Extract dominant colors from any image with frequency analysis and multiple format support.",
           badge: "🆕 New"
         }
       ]

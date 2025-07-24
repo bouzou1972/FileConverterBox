@@ -66,6 +66,9 @@ The application provides various developer utilities grouped by category, now in
 - **Number Base Converter**: Convert numbers between binary, octal, decimal, and hexadecimal formats with live conversion
 - **UUID Generator**: v4 UUID generation with bulk options
 - **Timestamp Converter**: Unix timestamp conversion with timezone support
+- **QR Code Generator**: Generate QR codes locally for URLs, text, WiFi credentials with customizable options
+- **Barcode Generator**: Create various barcode formats (Code128, EAN, UPC) with industry-standard compliance
+- **Password Generator**: Secure password creation with customizable rules and strength analysis
 
 #### Image & Color Tools (New Category)
 - **Image to Base64 Converter**: Convert images to Base64 encoded strings for embedding in HTML, CSS, or applications
@@ -73,6 +76,8 @@ The application provides various developer utilities grouped by category, now in
 - **Favicon Generator**: Upload any image and generate favicons in all standard sizes for websites (ICO & PNG formats)
 - **Social Media Image Cropper**: Auto-crop images to perfect sizes for Instagram, Facebook, Twitter, LinkedIn, YouTube, and more platforms
 - **Logo Background Remover**: Remove backgrounds from logos and images with manual brush and magic wand tools
+- **Image Optimizer**: Compress images while preserving quality with customizable size and quality settings
+- **Color Palette Extractor**: Extract dominant colors from any image with frequency analysis and multiple format support
 
 #### Spreadsheet Tools (New Category)
 - **Excel ↔ CSV Converter**: Convert between Excel (.xlsx) and CSV formats with support for multiple sheets and custom delimiters using SheetJS

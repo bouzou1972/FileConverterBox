@@ -53,6 +53,11 @@ import AcademicWritingFormatter from "@/pages/academic-writing-formatter";
 import ZipViewer from "@/pages/zip-viewer";
 import FileOrganizer from "@/pages/file-organizer";
 import FileSplitter from "@/pages/file-splitter";
+import QRGenerator from "@/pages/qr-generator";
+import PasswordGenerator from "@/pages/password-generator";
+import BarcodeGenerator from "@/pages/barcode-generator";
+import ImageOptimizer from "@/pages/image-optimizer";
+import ColorPaletteExtractor from "@/pages/color-palette-extractor";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -107,6 +112,11 @@ function Router() {
         <Route path="/zip-viewer" component={ZipViewer} />
         <Route path="/file-organizer" component={FileOrganizer} />
         <Route path="/file-splitter" component={FileSplitter} />
+        <Route path="/qr-generator" component={QRGenerator} />
+        <Route path="/password-generator" component={PasswordGenerator} />
+        <Route path="/barcode-generator" component={BarcodeGenerator} />
+        <Route path="/image-optimizer" component={ImageOptimizer} />
+        <Route path="/color-palette-extractor" component={ColorPaletteExtractor} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
