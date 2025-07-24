@@ -633,14 +633,14 @@ export default function Home() {
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className={`p-3 rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors`}>
+            <div className={`p-3 rounded-xl bg-gray-50 group-hover:bg-blue-50 transition-colors shadow-md`}>
               <span className={`material-icons text-2xl ${category.iconColor}`}>{category.icon}</span>
             </div>
             <div className="flex-1">
-              <CardTitle className="text-xl mb-1">{category.title}</CardTitle>
+              <CardTitle className="text-sm font-bold mb-1 uppercase tracking-wider">{category.title}</CardTitle>
               <p className="text-sm text-muted-foreground mb-3">{category.description}</p>
               <div className="flex items-center gap-2">
-                <span className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full">
+                <span className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-xl shadow-md">
                   {category.allTools.length} tools available
                 </span>
               </div>
@@ -690,7 +690,7 @@ export default function Home() {
         >
           <CollapsibleTrigger asChild>
             <Button 
-              className="w-full flex items-center justify-center gap-2 text-white hover:opacity-90 transition-opacity"
+              className="w-full flex items-center justify-center gap-2 text-white hover:opacity-90 transition-opacity rounded-xl shadow-md"
               style={{ backgroundColor: '#9664C7' }}
             >
               {openCategories.includes(category.id) ? (
@@ -746,7 +746,7 @@ export default function Home() {
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setIsSearchFocused(true)}
             onBlur={() => setIsSearchFocused(false)}
-            className={`pl-10 text-center bg-background border-border focus:ring-2 focus:ring-purple-500 transition-all ${
+            className={`pl-10 text-center bg-background border-border focus:ring-2 focus:ring-purple-500 transition-all rounded-xl shadow-md ${
               isSearchFocused ? 'ring-2 ring-purple-500 border-purple-500' : ''
             }`}
           />
@@ -766,9 +766,9 @@ export default function Home() {
       {/* Search Results */}
       {searchQuery && (
         <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <h2 className="text-sm font-bold mb-6 flex items-center gap-2 uppercase tracking-wider">
             <Search className="w-6 h-6" />
-            Search Results
+            SEARCH RESULTS
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {filteredTools.map((tool, index) => (
@@ -830,9 +830,9 @@ export default function Home() {
           {/* Most Popular Tools */}
           <div className="mb-12">
             <div className="text-center mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+              <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
                 <TrendingUp className="w-6 h-6 text-orange-500" />
-                Most Popular Tools
+                MOST POPULAR TOOLS
               </h2>
               <p className="text-sm text-muted-foreground">Top 6 most-used converters and utilities</p>
             </div>
@@ -846,9 +846,9 @@ export default function Home() {
           {/* Categories */}
           <div className="mb-12">
             <div className="text-center mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+              <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
                 <Sparkles className="w-6 h-6 text-purple-500" />
-                Tool Categories
+                TOOL CATEGORIES
               </h2>
               <p className="text-sm text-muted-foreground">Explore our complete collection of utilities</p>
             </div>

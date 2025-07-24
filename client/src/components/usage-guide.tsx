@@ -31,7 +31,7 @@ export function UsageGuide({
       {/* Tool Overview */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 text-xl font-bold">
             <Target className="w-5 h-5 text-purple-600" />
             How to Use {title}
           </CardTitle>
@@ -58,7 +58,7 @@ export function UsageGuide({
       {examples.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-xl font-bold">
               <Zap className="w-5 h-5 text-blue-600" />
               Usage Examples
             </CardTitle>
@@ -100,7 +100,7 @@ export function UsageGuide({
         {tips.length > 0 && (
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-xl font-bold">
                 <Lightbulb className="w-5 h-5 text-yellow-600" />
                 Pro Tips
               </CardTitle>
@@ -121,7 +121,7 @@ export function UsageGuide({
         {bestPractices.length > 0 && (
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-xl font-bold">
                 <CheckCircle className="w-5 h-5 text-green-600" />
                 Best Practices
               </CardTitle>

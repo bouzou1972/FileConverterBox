@@ -65,7 +65,7 @@ export function ShareButtons({ title, description, url }: ShareButtonsProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-lg">
+        <CardTitle className="flex items-center gap-2 text-xl font-bold">
           <Share2 className="w-5 h-5" />
           Share This Tool
         </CardTitle>
@@ -76,7 +76,7 @@ export function ShareButtons({ title, description, url }: ShareButtonsProps) {
             variant="outline"
             size="sm"
             onClick={nativeShare}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 rounded-xl shadow-md"
           >
             <Share2 className="w-4 h-4" />
             Share
@@ -86,7 +86,7 @@ export function ShareButtons({ title, description, url }: ShareButtonsProps) {
             variant="outline"
             size="sm"
             onClick={shareOnTwitter}
-            className="flex items-center gap-2 hover:bg-blue-50 hover:border-blue-200"
+            className="flex items-center gap-2 hover:bg-blue-50 hover:border-blue-200 rounded-xl shadow-md"
           >
             <Twitter className="w-4 h-4" />
             Twitter
@@ -96,7 +96,7 @@ export function ShareButtons({ title, description, url }: ShareButtonsProps) {
             variant="outline"
             size="sm"
             onClick={shareOnFacebook}
-            className="flex items-center gap-2 hover:bg-blue-50 hover:border-blue-200"
+            className="flex items-center gap-2 hover:bg-blue-50 hover:border-blue-200 rounded-xl shadow-md"
           >
             <Facebook className="w-4 h-4" />
             Facebook
@@ -106,7 +106,7 @@ export function ShareButtons({ title, description, url }: ShareButtonsProps) {
             variant="outline"
             size="sm"
             onClick={shareOnLinkedIn}
-            className="flex items-center gap-2 hover:bg-blue-50 hover:border-blue-200"
+            className="flex items-center gap-2 hover:bg-blue-50 hover:border-blue-200 rounded-xl shadow-md"
           >
             <Linkedin className="w-4 h-4" />
             LinkedIn
@@ -116,7 +116,7 @@ export function ShareButtons({ title, description, url }: ShareButtonsProps) {
             variant="outline"
             size="sm"
             onClick={copyLink}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 rounded-xl shadow-md"
           >
             <Link className="w-4 h-4" />
             Copy Link

@@ -13,11 +13,11 @@ export default function ToolCard({ href, icon, iconColor, title, description, ba
   return (
     <Link href={href}>
       <button 
-        className="bg-card border border-border shadow rounded-xl p-4 sm:p-6 flex items-start gap-3 sm:gap-4 hover:shadow-lg hover:border-primary/20 transition-all duration-200 text-left w-full relative dark:hover:bg-accent/50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="bg-card border border-border shadow-md rounded-xl p-4 sm:p-6 flex items-start gap-3 sm:gap-4 hover:shadow-lg hover:border-primary/20 transition-all duration-200 text-left w-full relative dark:hover:bg-accent/50 focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-label={`${title} - ${description}`}
       >
         {badge && (
-          <span className="absolute top-3 right-3 text-xs bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded-full font-medium">
+          <span className="absolute top-3 right-3 text-xs bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded-xl font-medium shadow-md">
             {badge}
           </span>
         )}
@@ -25,7 +25,7 @@ export default function ToolCard({ href, icon, iconColor, title, description, ba
           {icon}
         </span>
         <div className="flex-1 min-w-0">
-          <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-foreground pr-8">{title}</h3>
+          <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-foreground pr-8">{title}</h3>
           <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{description}</p>
         </div>
       </button>
