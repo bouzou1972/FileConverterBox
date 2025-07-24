@@ -86,7 +86,7 @@ export default function Home() {
   const categories: ToolCategory[] = [
     {
       id: "file-converters",
-      title: "File Converters",
+      title: "🧩 File Converters",
       description: "Convert between different file formats",
       icon: "swap_horiz",
       iconColor: "text-blue-600",
@@ -156,7 +156,7 @@ export default function Home() {
     },
     {
       id: "pdf-tools",
-      title: "PDF Tools",
+      title: "📄 PDF Tools",
       description: "Create, convert and modify PDF documents",
       icon: "picture_as_pdf",
       iconColor: "text-red-600",
@@ -202,7 +202,7 @@ export default function Home() {
     },
     {
       id: "text-tools",
-      title: "Text Tools",
+      title: "✍️ Text Tools",
       description: "Process, format and analyze text content",
       icon: "text_fields",
       iconColor: "text-green-600",
@@ -296,7 +296,7 @@ export default function Home() {
     },
     {
       id: "developer-tools",
-      title: "Developer Tools",
+      title: "</> Developer Tools",
       description: "Utilities for developers and programmers",
       icon: "code",
       iconColor: "text-orange-600",
@@ -363,7 +363,7 @@ export default function Home() {
     },
     {
       id: "image-color-tools",
-      title: "Images & Colors",
+      title: "🎨 Images & Colors",
       description: "Process images and work with colors",
       icon: "palette",
       iconColor: "text-pink-600",
@@ -433,7 +433,7 @@ export default function Home() {
     },
     {
       id: "spreadsheet-tools",
-      title: "Spreadsheet Tools",
+      title: "📊 Spreadsheet Tools",
       description: "Work with Excel, CSV and data files",
       icon: "table_view",
       iconColor: "text-green-600",
@@ -563,7 +563,35 @@ export default function Home() {
         {/* Top Featured Tool */}
         <div className="mb-4">
           <h4 className="text-sm font-medium text-muted-foreground mb-3">Featured Tool:</h4>
-          <ToolCard {...category.featured[0]} />
+          <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
+            <Link href={category.featured[0].href} className="block">
+              <div className="flex items-start gap-3">
+                <div className={`p-2 rounded-lg bg-gray-50`}>
+                  <span className={`material-icons text-lg ${category.featured[0].iconColor}`}>
+                    {category.featured[0].icon}
+                  </span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h5 className="font-semibold text-sm text-foreground hover:text-blue-600 transition-colors">
+                      {category.featured[0].title}
+                    </h5>
+                    {category.featured[0].badge && (
+                      <Badge 
+                        variant="secondary" 
+                        className="text-xs whitespace-nowrap bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 border-orange-200"
+                      >
+                        {category.featured[0].badge}
+                      </Badge>
+                    )}
+                  </div>
+                  <p className="text-xs text-muted-foreground line-clamp-2">
+                    {category.featured[0].description}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
         
         {/* View All Button */}
@@ -704,6 +732,11 @@ export default function Home() {
             __html: `<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="freedownloads" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>`
           }}
         />
+        <div className="mt-6 pt-6 border-t border-border text-center">
+          <p className="text-sm text-muted-foreground">
+            © 2025 File Converter Box. Built with 💻 + ☕ | All processing happens locally in your browser
+          </p>
+        </div>
       </div>
     </div>
   );
