@@ -4,25 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+    /* Updated color palette for professional light mode */
+    --background: 210 20% 98%; /* #F9FAFB - soft gray-white background */
+    --foreground: 215 25% 9%; /* #111827 - rich dark gray for primary text */
+    --card: 0 0% 100%; /* #FFFFFF - clean white cards */
+    --card-foreground: 215 25% 9%; /* #111827 - rich dark gray for card text */
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
+    --popover-foreground: 215 25% 9%;
+    --primary: 213 94% 68%; /* #3B82F6 - blue-500 for accent color */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 213 100% 96%; /* #EFF6FF - blue-50 for category badges */
+    --secondary-foreground: 215 25% 9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 44%; /* #6B7280 - cool medium gray for descriptions */
+    --accent: 213 100% 96%; /* #EFF6FF - subtle blue background */
+    --accent-foreground: 215 25% 9%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 91%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 13% 91%; /* #E5E7EB - light gray borders */
     --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
+    --ring: 213 94% 68%; /* #3B82F6 - blue focus rings */
     --radius: 0.5rem;
   }
 
@@ -55,6 +56,72 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Professional styling enhancements */
+@layer components {
+  /* Card styling with subtle shadows */
+  .card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  /* Enhanced button styling */
+  .btn-primary {
+    background-color: hsl(213 94% 68%); /* #3B82F6 */
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    background-color: hsl(213 94% 58%); /* #2563EB - darker blue */
+    transform: translateY(-1px);
+  }
+  
+  /* Category badge styling */
+  .category-badge {
+    background-color: hsl(213 100% 96%); /* #EFF6FF */
+    color: hsl(213 94% 68%); /* #3B82F6 */
+    border: 1px solid hsl(213 100% 90%);
+  }
+  
+  /* Tool icon styling */
+  .tool-icon {
+    color: hsl(213 94% 48%); /* #1D4ED8 - blue-700 */
+  }
+  
+  .tool-icon-green {
+    color: hsl(142 71% 45%); /* #10B981 - green-500 */
+  }
+  
+  /* Enhanced focus states */
+  .focus-enhanced:focus {
+    ring: 2px solid hsl(213 94% 68%);
+    ring-offset: 2px;
+  }
+  
+  /* Professional text styling */
+  .text-primary {
+    color: hsl(215 25% 9%); /* #111827 - rich dark gray */
+  }
+  
+  .text-secondary {
+    color: hsl(215 20% 44%); /* #6B7280 - cool medium gray */
+  }
+  
+  /* Enhanced search bar */
+  .search-bar {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  
+  .search-bar:focus-within {
+    box-shadow: 0 0 0 3px hsl(213 100% 94%), 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 }
 

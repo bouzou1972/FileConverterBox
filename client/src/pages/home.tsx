@@ -509,27 +509,31 @@ export default function Home() {
 
   const ToolCard = ({ href, icon, iconColor, title, description, badge }: Tool) => (
     <Link href={href}>
-      <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer group border-border hover:border-blue-200">
+      <Card className="h-full card cursor-pointer group border-border hover:border-blue-200">
         <CardContent className="p-4 sm:p-6">
           <div className="flex items-start gap-3 sm:gap-4">
-            <div className={`p-2 sm:p-3 rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors`}>
-              <span className={`material-icons text-xl sm:text-2xl ${iconColor}`}>{icon}</span>
+            <div className="p-2 sm:p-3 rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors">
+              <span className={`material-icons text-xl sm:text-2xl tool-icon`}>{icon}</span>
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="font-semibold text-sm sm:text-base text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
+                <h3 className="font-semibold text-sm sm:text-base text-primary group-hover:text-blue-600 transition-colors line-clamp-2">
                   {title}
                 </h3>
                 {badge && (
                   <Badge 
                     variant="secondary" 
-                    className="text-xs whitespace-nowrap bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 border-orange-200"
+                    className={`text-xs whitespace-nowrap ${
+                      badge.includes('🔥') 
+                        ? 'bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 border-orange-200'
+                        : 'category-badge'
+                    }`}
                   >
                     {badge}
                   </Badge>
                 )}
               </div>
-              <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 group-hover:text-gray-600 transition-colors">
+              <p className="text-xs sm:text-sm text-secondary line-clamp-2 group-hover:text-gray-600 transition-colors">
                 {description}
               </p>
             </div>
@@ -540,19 +544,19 @@ export default function Home() {
   );
 
   const CategoryCard = ({ category }: { category: ToolCategory }) => (
-    <Card className="border-border">
+    <Card className="border-border card">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className={`p-2 rounded-lg bg-gray-50`}>
-              <span className={`material-icons text-xl ${category.iconColor}`}>{category.icon}</span>
+            <div className="p-2 rounded-lg bg-gray-50">
+              <span className={`material-icons text-xl tool-icon-green`}>{category.icon}</span>
             </div>
             <div>
-              <CardTitle className="text-lg">{category.title}</CardTitle>
-              <p className="text-sm text-muted-foreground">{category.description}</p>
+              <CardTitle className="text-lg text-primary">{category.title}</CardTitle>
+              <p className="text-sm text-secondary">{category.description}</p>
             </div>
           </div>
-          <Badge variant="outline">{category.allTools.length} tools</Badge>
+          <Badge variant="outline" className="category-badge">{category.allTools.length} tools</Badge>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -572,7 +576,7 @@ export default function Home() {
             <CollapsibleTrigger asChild>
               <Button 
                 variant="outline" 
-                className="w-full mt-4 flex items-center justify-center gap-2 hover:bg-blue-50"
+                className="w-full mt-4 flex items-center justify-center gap-2 btn-primary hover:bg-blue-50 focus-enhanced"
               >
                 {openCategories.includes(category.id) ? (
                   <>
@@ -607,28 +611,28 @@ export default function Home() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Hero Section */}
       <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
           File Converter Box
         </h1>
-        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
+        <p className="text-base sm:text-lg text-secondary max-w-2xl mx-auto mb-6">
           Professional utilities that work entirely in your browser. No data leaves your device - 100% private and secure.
         </p>
       </div>
 
       {/* Search Bar */}
       <div className="max-w-md mx-auto mb-8 sm:mb-12">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+        <div className="relative search-bar rounded-lg">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary w-4 h-4" />
           <Input
             type="text"
             placeholder="Search tools... (e.g., json, pdf, image)"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 text-center bg-background border-border focus:ring-2 focus:ring-blue-500"
+            className="pl-10 text-center bg-background border-border focus-enhanced"
           />
         </div>
         {searchQuery && (
-          <p className="text-sm text-muted-foreground mt-2 text-center">
+          <p className="text-sm text-secondary mt-2 text-center">
             Found {filteredTools.length} tools
           </p>
         )}
@@ -637,7 +641,7 @@ export default function Home() {
       {/* Search Results */}
       {searchQuery && (
         <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-primary">
             <Search className="w-6 h-6" />
             Search Results
           </h2>
@@ -648,7 +652,7 @@ export default function Home() {
           </div>
           {filteredTools.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">No tools found matching "{searchQuery}"</p>
+              <p className="text-secondary">No tools found matching "{searchQuery}"</p>
             </div>
           )}
         </div>
@@ -660,11 +664,11 @@ export default function Home() {
           {/* Most Popular Tools */}
           <div className="mb-12">
             <div className="text-center mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2 text-primary">
                 <TrendingUp className="w-6 h-6 text-orange-500" />
                 Most Popular Tools
               </h2>
-              <p className="text-sm text-muted-foreground">Top 6 most-used converters and utilities</p>
+              <p className="text-sm text-secondary">Top 6 most-used converters and utilities</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
               {popularTools.map((tool, index) => (
@@ -676,11 +680,11 @@ export default function Home() {
           {/* Categories */}
           <div className="mb-12">
             <div className="text-center mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2 text-primary">
                 <Sparkles className="w-6 h-6 text-purple-500" />
                 Tool Categories
               </h2>
-              <p className="text-sm text-muted-foreground">Explore our complete collection of utilities</p>
+              <p className="text-sm text-secondary">Explore our complete collection of utilities</p>
             </div>
             <div className="space-y-8">
               {categories.map((category) => (
@@ -694,8 +698,8 @@ export default function Home() {
       {/* Buy Me a Coffee Button */}
       <div className="text-center mt-12 pt-8 border-t border-border">
         <div className="mb-4">
-          <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
-          <p className="text-muted-foreground">Help support future development</p>
+          <p className="text-lg font-medium text-primary mb-1">💛 Like these tools?</p>
+          <p className="text-secondary">Help support future development</p>
         </div>
         <div 
           dangerouslySetInnerHTML={{
