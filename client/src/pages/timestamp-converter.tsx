@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Clock } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function TimestampConverter() {
   const [unixInput, setUnixInput] = useState("");
@@ -106,10 +107,19 @@ export default function TimestampConverter() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <span className="material-icons tool-purple text-3xl">schedule</span>
-            Timestamp Converter
-          </CardTitle>
+          <div className="flex items-start justify-between">
+            <CardTitle className="flex items-center gap-3">
+              <span className="material-icons tool-purple text-3xl">schedule</span>
+              Timestamp Converter
+            </CardTitle>
+            <BookmarkButton 
+              href="/timestamp-converter"
+              title="Timestamp Converter"
+              icon="schedule"
+              iconColor="text-purple-600"
+              description="Convert Unix timestamps to human-readable dates with timezone support and relative time calculations"
+            />
+          </div>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

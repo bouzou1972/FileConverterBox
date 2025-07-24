@@ -7,6 +7,7 @@ import { RefreshCw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { generateUUID, generateBulkUUIDs } from "@/lib/utils/uuid";
 
 export default function UuidGenerator() {
@@ -35,10 +36,19 @@ export default function UuidGenerator() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <span className="material-icons tool-yellow text-3xl">vpn_key</span>
-            UUID v4 Generator
-          </CardTitle>
+          <div className="flex items-start justify-between">
+            <CardTitle className="flex items-center gap-3">
+              <span className="material-icons tool-yellow text-3xl">vpn_key</span>
+              UUID v4 Generator
+            </CardTitle>
+            <BookmarkButton 
+              href="/uuid-generator"
+              title="UUID Generator"
+              icon="vpn_key"
+              iconColor="text-yellow-600"
+              description="Generate UUID v4 identifiers with bulk generation options for unique identification needs"
+            />
+          </div>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Single UUID Generation */}

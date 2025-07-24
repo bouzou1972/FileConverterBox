@@ -8,6 +8,10 @@ import { Upload, Hash } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function HashGenerator() {
   const [input, setInput] = useState("");
@@ -145,7 +149,16 @@ export default function HashGenerator() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-4">Hash Generator</h1>
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <h1 className="text-3xl font-bold">Hash Generator</h1>
+          <BookmarkButton 
+            href="/hash-generator"
+            title="Hash Generator"
+            icon="tag"
+            iconColor="text-red-600"
+            description="Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or files for security verification"
+          />
+        </div>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or files. All processing happens locally in your browser for maximum security.
         </p>

@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ToolSEO } from "@/components/tool-seo";
 import { ShareButtons } from "@/components/share-buttons";
 import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface Color {
   hex: string;
@@ -320,6 +321,13 @@ export default function ColorPaletteExtractor() {
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Color Palette Extractor</h1>
             <p className="text-gray-600 dark:text-gray-300 mt-1">Extract dominant colors from any image</p>
           </div>
+          <BookmarkButton 
+            href="/color-palette-extractor"
+            title="Color Palette Extractor"
+            icon="palette"
+            iconColor="text-pink-600"
+            description="Extract dominant colors from any image with frequency analysis and multiple format support"
+          />
         </div>
         <div className="flex flex-wrap gap-2 justify-center">
           <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">

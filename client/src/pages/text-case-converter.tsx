@@ -6,6 +6,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { Copy, RotateCcw, Type } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function TextCaseConverter() {
   const [inputText, setInputText] = useState("");
@@ -152,13 +153,24 @@ export default function TextCaseConverter() {
     <div className="max-w-4xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <Type className="text-green-600 text-3xl" />
-            Text Case Converter
-          </CardTitle>
-          <p className="text-gray-600">
-            Convert text between different case formats like camelCase, snake_case, kebab-case, and more
-          </p>
+          <div className="flex items-start justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-3">
+                <Type className="text-green-600 text-3xl" />
+                Text Case Converter
+              </CardTitle>
+              <p className="text-gray-600">
+                Convert text between different case formats like camelCase, snake_case, kebab-case, and more
+              </p>
+            </div>
+            <BookmarkButton 
+              href="/text-case-converter"
+              title="Text Case Converter"
+              icon="format_shapes"
+              iconColor="text-green-600"
+              description="Convert text between 10 different case formats including camelCase, snake_case, and kebab-case"
+            />
+          </div>
         </CardHeader>
         <CardContent>
           <div className="space-y-6">

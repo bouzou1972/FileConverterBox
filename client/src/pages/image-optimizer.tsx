@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ToolSEO } from "@/components/tool-seo";
 import { ShareButtons } from "@/components/share-buttons";
 import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function ImageOptimizer() {
   const [originalFile, setOriginalFile] = useState<File | null>(null);
@@ -257,6 +258,13 @@ export default function ImageOptimizer() {
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Image Optimizer</h1>
             <p className="text-gray-600 dark:text-gray-300 mt-1">Compress images while preserving quality</p>
           </div>
+          <BookmarkButton 
+            href="/image-optimizer"
+            title="Image Optimizer"
+            icon="image"
+            iconColor="text-purple-600"
+            description="Compress and resize images while maintaining visual quality with customizable settings and format support"
+          />
         </div>
         <div className="flex flex-wrap gap-2 justify-center">
           <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">

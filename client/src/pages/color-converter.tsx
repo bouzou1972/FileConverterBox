@@ -7,6 +7,7 @@ import { Slider } from "@/components/ui/slider";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Palette, RefreshCw } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { useToast } from "@/hooks/use-toast";
 
 interface ColorValues {
@@ -205,7 +206,16 @@ export default function ColorConverter() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-4">Color Converter</h1>
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <h1 className="text-3xl font-bold">Color Converter</h1>
+          <BookmarkButton 
+            href="/color-converter"
+            title="Color Converter"
+            icon="palette"
+            iconColor="text-pink-600"
+            description="Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders"
+          />
+        </div>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Convert colors between HEX, RGB, and HSL formats. Pick colors visually or enter values manually for precise color matching.
         </p>

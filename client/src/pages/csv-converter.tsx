@@ -7,6 +7,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, Download, Copy, RotateCcw } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { 
   parseCSV, 
   parseTSV, 
@@ -150,10 +154,19 @@ export default function CsvConverter() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <span className="material-icons text-blue-500 text-3xl">code</span>
-            CSV ↔ JSON/YAML/TSV Converter
-          </CardTitle>
+          <div className="flex items-start justify-between">
+            <CardTitle className="flex items-center gap-3">
+              <span className="material-icons text-blue-500 text-3xl">code</span>
+              CSV ↔ JSON/YAML/TSV Converter
+            </CardTitle>
+            <BookmarkButton 
+              href="/csv-converter"
+              title="CSV Converter"
+              icon="table_chart"
+              iconColor="text-blue-600"
+              description="Convert between CSV, JSON, YAML, and TSV formats with drag-and-drop support"
+            />
+          </div>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

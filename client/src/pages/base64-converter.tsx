@@ -4,9 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { RotateCcw, Upload, Download } from "lucide-react";
+import { RotateCcw, Upload, Download, Copy } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import CopyButton from "@/components/copy-button";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function Base64Converter() {
   const [textInput, setTextInput] = useState("");
@@ -96,13 +101,24 @@ export default function Base64Converter() {
     <div className="max-w-4xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <span className="material-icons text-blue-600 text-3xl">code</span>
-            Base64 Encoder/Decoder
-          </CardTitle>
-          <p className="text-gray-600">
-            Encode text to Base64 or decode Base64 strings back to readable text. Supports file encoding too.
-          </p>
+          <div className="flex items-start justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-3">
+                <span className="material-icons text-blue-600 text-3xl">code</span>
+                Base64 Encoder/Decoder
+              </CardTitle>
+              <p className="text-gray-600">
+                Encode text to Base64 or decode Base64 strings back to readable text. Supports file encoding too.
+              </p>
+            </div>
+            <BookmarkButton 
+              href="/base64-converter"
+              title="Base64 Encoder/Decoder"
+              icon="code"
+              iconColor="text-blue-600"
+              description="Encode text or files to Base64 format or decode Base64 strings back to readable text"
+            />
+          </div>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="encode" className="w-full">

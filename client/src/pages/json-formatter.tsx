@@ -6,6 +6,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, XCircle, Copy, Clipboard, RotateCcw, FileText, Minimize2 } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function JsonFormatter() {
   const [inputJson, setInputJson] = useState("");
@@ -98,10 +102,19 @@ export default function JsonFormatter() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <span className="material-icons tool-pink text-3xl">data_object</span>
-            JSON Formatter & Validator
-          </CardTitle>
+          <div className="flex items-start justify-between">
+            <CardTitle className="flex items-center gap-3">
+              <span className="material-icons tool-pink text-3xl">data_object</span>
+              JSON Formatter & Validator
+            </CardTitle>
+            <BookmarkButton 
+              href="/json-formatter"
+              title="JSON Formatter"
+              icon="data_object"
+              iconColor="text-indigo-600"
+              description="Format, validate, and minify JSON data with syntax highlighting and error detection"
+            />
+          </div>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
