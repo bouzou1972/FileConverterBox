@@ -793,7 +793,7 @@ export default function Home() {
           {/* Recent Tools & Favorites - Combined Section */}
           {(recentTools.length > 0 || bookmarks.length > 0) && (
             <div className="mb-12">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                 {/* Recent Tools Column */}
                 {recentTools.length > 0 && (
                   <div>
