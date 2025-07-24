@@ -8,8 +8,8 @@ export default function Home() {
 
   const toolGroups = [
     {
-      title: "Data Formats",
-      subtitle: "Most Popular Converters",
+      title: "Most Popular Tools",
+      subtitle: "Top 6 Most-Used Converters",
       tools: [
         {
           href: "/csv-converter",
@@ -17,7 +17,7 @@ export default function Home() {
           iconColor: "text-blue-600",
           title: "CSV Converter",
           description: "Convert between CSV, JSON, YAML, and TSV formats with drag-and-drop support.",
-          badge: "🔥 Popular"
+          badge: "🔥 #1 Popular"
         },
         {
           href: "/json-formatter",
@@ -25,22 +25,31 @@ export default function Home() {
           iconColor: "text-indigo-600",
           title: "JSON Formatter",
           description: "Format, validate, and minify JSON data with syntax highlighting and error detection.",
-          badge: "🔥 Popular"
+          badge: "🔥 #2 Popular"
         },
         {
-          href: "/json-xml-converter",
+          href: "/excel-converter",
           icon: "swap_horiz",
           iconColor: "text-green-600",
-          title: "JSON ↔ XML Converter",
-          description: "Convert between JSON and XML formats bidirectionally with file upload support.",
-          badge: "🆕 New"
+          title: "Excel ↔ CSV Converter",
+          description: "Convert between Excel (.xlsx) and CSV formats with support for multiple sheets and custom delimiters.",
+          badge: "🔥 #3 Popular"
         },
         {
-          href: "/base64-converter",
-          icon: "code",
-          iconColor: "text-blue-600",
-          title: "Base64 Encoder/Decoder",
-          description: "Encode text or files to Base64 format or decode Base64 strings back to readable text."
+          href: "/pdf-converter",
+          icon: "picture_as_pdf",
+          iconColor: "text-red-600",
+          title: "PDF Converter",
+          description: "Convert text, HTML, or images to PDF with customizable formatting and page settings.",
+          badge: "🔥 #4 Popular"
+        },
+        {
+          href: "/image-converter",
+          icon: "image",
+          iconColor: "text-indigo-600",
+          title: "Image Format Converter",
+          description: "Convert images between PNG, JPEG, and WebP formats with quality control.",
+          badge: "🔥 #5 Popular"
         },
         {
           href: "/string-to-json",
@@ -48,7 +57,73 @@ export default function Home() {
           iconColor: "text-purple-600",
           title: "String to JSON Converter",
           description: "Convert malformed strings to valid JSON. Fixes single quotes, unquoted keys, and trailing commas.",
+          badge: "🔥 #6 Popular"
+        }
+      ]
+    },
+    {
+      title: "Quick Utilities",
+      subtitle: "Lightweight & Fast Tools",
+      tools: [
+        {
+          href: "/character-counter",
+          icon: "format_list_numbered",
+          iconColor: "text-blue-600",
+          title: "Character & Word Counter",
+          description: "Count characters, words, lines, and paragraphs in text. Track reading time and text statistics.",
           badge: "🆕 New"
+        },
+        {
+          href: "/clipboard-inspector",
+          icon: "content_paste",
+          iconColor: "text-green-600",
+          title: "Clipboard Inspector",
+          description: "View, analyze, and clear clipboard content. See hidden formatting and special characters.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/calculator",
+          icon: "calculate",
+          iconColor: "text-orange-600",
+          title: "Expression Calculator",
+          description: "Evaluate mathematical expressions with support for functions, constants, and variables.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/text-compressor",
+          icon: "compress",
+          iconColor: "text-purple-600",
+          title: "Text Compressor",
+          description: "Compress text using run-length encoding and other simple compression algorithms.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/unit-converter",
+          icon: "straighten",
+          iconColor: "text-teal-600",
+          title: "Unit Converter",
+          description: "Convert between metric/imperial units, time, data sizes, and more. Works completely offline.",
+          badge: "🆕 New"
+        }
+      ]
+    },
+    {
+      title: "Data Formats",
+      subtitle: "File Format Converters",
+      tools: [
+        {
+          href: "/json-xml-converter",
+          icon: "swap_horiz",
+          iconColor: "text-green-600",
+          title: "JSON ↔ XML Converter",
+          description: "Convert between JSON and XML formats bidirectionally with file upload support."
+        },
+        {
+          href: "/base64-converter",
+          icon: "code",
+          iconColor: "text-blue-600",
+          title: "Base64 Encoder/Decoder",
+          description: "Encode text or files to Base64 format or decode Base64 strings back to readable text."
         }
       ]
     },

@@ -37,6 +37,11 @@ import ColorPaletteGenerator from "@/pages/color-palette-generator";
 import StringToJson from "@/pages/string-to-json";
 import ExcelConverter from "@/pages/excel-converter";
 import DataCleaner from "@/pages/data-cleaner";
+import CharacterCounter from "@/pages/character-counter";
+import ClipboardInspector from "@/pages/clipboard-inspector";
+import Calculator from "@/pages/calculator";
+import TextCompressor from "@/pages/text-compressor";
+import UnitConverter from "@/pages/unit-converter";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -76,6 +81,11 @@ function Router() {
         <Route path="/string-to-json" component={StringToJson} />
         <Route path="/excel-converter" component={ExcelConverter} />
         <Route path="/data-cleaner" component={DataCleaner} />
+        <Route path="/character-counter" component={CharacterCounter} />
+        <Route path="/clipboard-inspector" component={ClipboardInspector} />
+        <Route path="/calculator" component={Calculator} />
+        <Route path="/text-compressor" component={TextCompressor} />
+        <Route path="/unit-converter" component={UnitConverter} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
