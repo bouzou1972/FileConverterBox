@@ -1,0 +1,90 @@
+import React, { useState } from 'react';
+
+const SEOOptimizer = () => {
+  const [keyword, setKeyword] = useState('');
+  const [content, setContent] = useState('');
+  const [report, setReport] = useState(null);
+
+  const analyzeContent = () => {
+    const wordCount = content.trim().split(/\s+/).length;
+    const keywordRegex = new RegExp(`\\b${keyword}\\b`, 'gi');
+    const keywordMatches = (content.match(keywordRegex) || []).length;
+    const keywordDensity = wordCount ? ((keywordMatches / wordCount) * 100).toFixed(2) : 0;
+
+    const titleMatch = content.toLowerCase().includes(`<title>${keyword.toLowerCase()}`);
+    const h1Match = content.toLowerCase().includes(`<h1>${keyword.toLowerCase()}`);
+    const metaDescMatch = content.toLowerCase().includes('meta name="description"');
+
+    const fleschScore = getFleschReadingEase(content);
+
+    setReport({
+      keywordMatches,
+      keywordDensity,
+      titleMatch,
+      h1Match,
+      metaDescMatch,
+      fleschScore
+    });
+  };
+
+  const getFleschReadingEase = (text) => {
+    const sentenceCount = Math.max(text.split(/[.!?]/).length, 1);
+    const wordArray = text.trim().split(/\s+/);
+    const syllableCount = wordArray.reduce((total, word) => total + countSyllables(word), 0);
+    const wordCount = wordArray.length;
+    return 206.835 - 1.015 * (wordCount / sentenceCount) - 84.6 * (syllableCount / wordCount);
+  };
+
+  const countSyllables = (word) => {
+    word = word.toLowerCase();
+    if (word.length <= 3) return 1;
+    word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
+    word = word.replace(/^y/, '');
+    const syllables = word.match(/[aeiouy]{1,2}/g);
+    return syllables ? syllables.length : 1;
+  };
+
+  return (
+    <div className="max-w-3xl mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">SEO Optimizer</h1>
+
+      <label className="block mb-2 font-medium">Focus Keyword:</label>
+      <input
+        className="w-full p-2 border rounded mb-4"
+        type="text"
+        value={keyword}
+        onChange={(e) => setKeyword(e.target.value)}
+        placeholder="e.g. file converter"
+      />
+
+      <label className="block mb-2 font-medium">Your HTML Content:</label>
+      <textarea
+        className="w-full p-2 border rounded h-60 mb-4"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        placeholder="Paste your HTML content here..."
+      />
+
+      <button
+        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        onClick={analyzeContent}
+      >
+        Analyze Content
+      </button>
+
+      {report && (
+        <div className="mt-6 bg-gray-100 p-4 rounded shadow">
+          <h2 className="text-xl font-semibold mb-2">SEO Report</h2>
+          <p><strong>Keyword Matches:</strong> {report.keywordMatches}</p>
+          <p><strong>Keyword Density:</strong> {report.keywordDensity}%</p>
+          <p><strong>Keyword in &lt;title&gt; tag:</strong> {report.titleMatch ? '✅ Yes' : '❌ No'}</p>
+          <p><strong>Keyword in &lt;h1&gt; tag:</strong> {report.h1Match ? '✅ Yes' : '❌ No'}</p>
+          <p><strong>Meta Description Present:</strong> {report.metaDescMatch ? '✅ Yes' : '❌ No'}</p>
+          <p><strong>Readability Score (Flesch):</strong> {report.fleschScore.toFixed(1)}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default SEOOptimizer;

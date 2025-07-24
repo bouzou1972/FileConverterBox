@@ -383,6 +383,14 @@ export default function Home() {
           title: "Password Generator",
           description: "Secure password creation with customizable rules and strength analysis.",
           badge: "🆕 New"
+        },
+        {
+          href: "/seo-optimizer",
+          icon: "search",
+          iconColor: "text-blue-600",
+          title: "SEO Content Optimizer",
+          description: "Analyze and optimize your content for search engines with keyword density analysis and readability scoring.",
+          badge: "🆕 New"
         }
       ]
     },
