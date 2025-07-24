@@ -540,65 +540,64 @@ export default function Home() {
   );
 
   const CategoryCard = ({ category }: { category: ToolCategory }) => (
-    <Card className="border-border">
+    <Card className="border-border hover:shadow-lg transition-all duration-200 cursor-pointer group">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className={`p-2 rounded-lg bg-gray-50`}>
-              <span className={`material-icons text-xl ${category.iconColor}`}>{category.icon}</span>
+          <div className="flex items-center gap-4">
+            <div className={`p-3 rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors`}>
+              <span className={`material-icons text-2xl ${category.iconColor}`}>{category.icon}</span>
             </div>
-            <div>
-              <CardTitle className="text-lg">{category.title}</CardTitle>
-              <p className="text-sm text-muted-foreground">{category.description}</p>
+            <div className="flex-1">
+              <CardTitle className="text-xl mb-1">{category.title}</CardTitle>
+              <p className="text-sm text-muted-foreground mb-3">{category.description}</p>
+              <div className="flex items-center gap-2">
+                <span className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full">
+                  {category.allTools.length} tools available
+                </span>
+              </div>
             </div>
           </div>
-
         </div>
       </CardHeader>
-      <CardContent className="space-y-4">
-        {/* Featured Tools */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {category.featured.map((tool, index) => (
-            <ToolCard key={index} {...tool} />
-          ))}
+      <CardContent className="pt-0">
+        {/* Top Featured Tool */}
+        <div className="mb-4">
+          <h4 className="text-sm font-medium text-muted-foreground mb-3">Featured Tool:</h4>
+          <ToolCard {...category.featured[0]} />
         </div>
         
         {/* View All Button */}
-        {category.allTools.length > category.featured.length && (
-          <Collapsible
-            open={openCategories.includes(category.id)}
-            onOpenChange={() => toggleCategory(category.id)}
-          >
-            <CollapsibleTrigger asChild>
-              <Button 
-                className="w-full mt-4 flex items-center justify-center gap-2 text-white hover:opacity-90 transition-opacity"
-                style={{ backgroundColor: '#9664C7' }}
-              >
-                {openCategories.includes(category.id) ? (
-                  <>
-                    <ChevronDown className="w-4 h-4" />
-                    Hide {category.allTools.length - category.featured.length} more tools
-                  </>
-                ) : (
-                  <>
-                    <ChevronRight className="w-4 h-4" />
-                    View all {category.allTools.length} {category.title.toLowerCase()}
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </>
-                )}
-              </Button>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="mt-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {category.allTools
-                  .filter(tool => !category.featured.some(featured => featured.href === tool.href))
-                  .map((tool, index) => (
-                    <ToolCard key={index} {...tool} />
-                  ))}
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
-        )}
+        <Collapsible
+          open={openCategories.includes(category.id)}
+          onOpenChange={() => toggleCategory(category.id)}
+        >
+          <CollapsibleTrigger asChild>
+            <Button 
+              className="w-full flex items-center justify-center gap-2 text-white hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: '#9664C7' }}
+            >
+              {openCategories.includes(category.id) ? (
+                <>
+                  <ChevronDown className="w-4 h-4" />
+                  Hide all tools
+                </>
+              ) : (
+                <>
+                  <ChevronRight className="w-4 h-4" />
+                  View all {category.allTools.length} tools
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </>
+              )}
+            </Button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {category.allTools.map((tool, index) => (
+                <ToolCard key={index} {...tool} />
+              ))}
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
       </CardContent>
     </Card>
   );
@@ -608,10 +607,13 @@ export default function Home() {
       {/* Hero Section */}
       <div className="text-center mb-8 sm:mb-12">
         <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#9664C7' }}>
-          File Converter Box
+          🧰 File Converter Box
         </h1>
-        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-          Professional utilities that work entirely in your browser. No data leaves your device - 100% private and secure.
+        <p className="text-lg sm:text-xl font-medium text-foreground max-w-2xl mx-auto mb-3">
+          Your All-in-One Private Toolset — Convert, Edit & Format Files Securely in Your Browser.
+        </p>
+        <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
+          No data leaves your device — 100% local & secure.
         </p>
       </div>
 
