@@ -46,6 +46,9 @@ import GrammarChecker from "@/pages/grammar-checker";
 import FaviconGenerator from "@/pages/favicon-generator";
 import SocialMediaCropper from "@/pages/social-media-cropper";
 import LogoCleaner from "@/pages/logo-cleaner";
+import ReadabilityGrader from "@/pages/readability-grader";
+import PassiveVoiceDetector from "@/pages/passive-voice-detector";
+import AcademicWritingFormatter from "@/pages/academic-writing-formatter";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -94,6 +97,9 @@ function Router() {
         <Route path="/favicon-generator" component={FaviconGenerator} />
         <Route path="/social-media-cropper" component={SocialMediaCropper} />
         <Route path="/logo-cleaner" component={LogoCleaner} />
+        <Route path="/readability-grader" component={ReadabilityGrader} />
+        <Route path="/passive-voice-detector" component={PassiveVoiceDetector} />
+        <Route path="/academic-writing-formatter" component={AcademicWritingFormatter} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

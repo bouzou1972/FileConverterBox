@@ -82,6 +82,9 @@ The application provides various developer utilities grouped by category, now in
 - **Whitespace & Indentation Tool**: Clean up messy text formatting by normalizing whitespace, fixing indentation, and removing unwanted spaces
 - **Text Encryptor/Decryptor**: Securely encrypt and decrypt text using AES-256 encryption with client-side processing
 - **Color Palette Generator**: Extract beautiful color palettes from images with hex, RGB, and HSL values
+- **Readability Grader**: Analyze text with 6 readability formulas including Flesch-Kincaid, Gunning Fog, and SMOG indices with grade level assessments
+- **Passive Voice Detector**: Identify passive voice constructions in writing and get suggestions for converting them to active voice
+- **Academic Writing Formatter**: Generate properly formatted citations and bibliographies in APA, MLA, and Chicago styles with in-text citation examples
 
 #### Content Generation
 - **Lorem Ipsum Generator**: Placeholder text generation with HTML options

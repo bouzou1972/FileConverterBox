@@ -229,6 +229,30 @@ export default function Home() {
           iconColor: "text-green-600",
           title: "Regex Tester",
           description: "Test regular expressions with live matching, replace functionality, and pattern explanation."
+        },
+        {
+          href: "/readability-grader",
+          icon: "analytics",
+          iconColor: "text-blue-600",
+          title: "Readability Grader",
+          description: "Analyze text with 6 readability formulas including Flesch-Kincaid, Gunning Fog, and SMOG indices.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/passive-voice-detector",
+          icon: "visibility",
+          iconColor: "text-purple-600",
+          title: "Passive Voice Detector",
+          description: "Identify passive voice constructions and get suggestions for converting to active voice.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/academic-writing-formatter",
+          icon: "school",
+          iconColor: "text-indigo-600",
+          title: "Academic Writing Formatter",
+          description: "Generate properly formatted citations and bibliographies in APA, MLA, and Chicago styles.",
+          badge: "🆕 New"
         }
       ]
     },

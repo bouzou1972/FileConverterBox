@@ -1,0 +1,59 @@
+<!-- Offline File Organizer -->
+<section>
+  <h3>Offline File Organizer</h3>
+  <input type="file" id="organizeFilesInput" multiple />
+  <select id="organizeBy">
+    <option value="type">Organize by Type</option>
+    <option value="name">Organize by Name</option>
+    <option value="date">Organize by Last Modified Date</option>
+  </select>
+  <button id="organizeBtn">Organize</button>
+  <div id="organizedFiles"></div>
+</section>
+
+<script>
+  const organizeInput = document.getElementById('organizeFilesInput');
+  const organizeBy = document.getElementById('organizeBy');
+  const organizeBtn = document.getElementById('organizeBtn');
+  const organizedFiles = document.getElementById('organizedFiles');
+
+  organizeBtn.addEventListener('click', () => {
+    const files = Array.from(organizeInput.files);
+    if (files.length === 0) {
+      organizedFiles.textContent = 'Please select files first.';
+      return;
+    }
+
+    let grouped = {};
+    switch (organizeBy.value) {
+      case 'type':
+        files.forEach(f => {
+          const ext = f.name.split('.').pop().toLowerCase() || 'no-extension';
+          if (!grouped[ext]) grouped[ext] = [];
+          grouped[ext].push(f);
+        });
+        break;
+      case 'name':
+        grouped = { all: files.sort((a,b) => a.name.localeCompare(b.name)) };
+        break;
+      case 'date':
+        grouped = { all: files.sort((a,b) => a.lastModified - b.lastModified) };
+        break;
+    }
+
+    organizedFiles.innerHTML = '';
+    for (const group in grouped) {
+      const heading = document.createElement('h4');
+      heading.textContent = organizeBy.value === 'type' ? `.${group}` : `Files`;
+      organizedFiles.appendChild(heading);
+
+      const list = document.createElement('ul');
+      grouped[group].forEach(f => {
+        const item = document.createElement('li');
+        item.textContent = `${f.name} (${(f.size/1024).toFixed(1)} KB) - Last Modified: ${new Date(f.lastModified).toLocaleDateString()}`;
+        list.appendChild(item);
+      });
+      organizedFiles.appendChild(list);
+    }
+  });
+</script>
