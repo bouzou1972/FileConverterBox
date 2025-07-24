@@ -31,6 +31,23 @@ Preferred communication style: Simple, everyday language.
 - **Migrations**: Drizzle Kit for schema migrations
 - **Current State**: Uses in-memory storage, with PostgreSQL configuration ready for production
 
+## Recent Changes
+
+### UX-Driven Homepage Redesign (✅ COMPLETE - January 24, 2025)
+- Reorganized tool categories from format-based to user intent-based:
+  - "🧩 File Converters" → "📂 Convert Files" 
+  - "📄 PDF Tools" → "📝 Create or Edit PDFs"
+  - "✍️ Text Tools" → "🔤 Edit or Analyze Text"
+  - "</> Developer Tools" → "👨‍💻 Code Utilities"
+  - "🎨 Images & Colors" → "🎨 Image + Color Tools"
+  - "📊 Spreadsheet Tools" → "📈 Data + Spreadsheets"
+- Added "Tool Spotlight" section featuring one lesser-known tool with contextual description
+- Implemented cleaner, warm-neutral color palette with better contrast
+- Enhanced card design with subtle shadows and improved hover states
+- Reduced visual fatigue by showing only 1 featured tool per category instead of multiple
+- Updated category descriptions to be more user-goal oriented
+- Improved responsive layout for Recently Used and Favorites sections (50/50 split)
+
 ## Key Components
 
 ### Content & SEO Enhancement System (✅ COMPLETE)

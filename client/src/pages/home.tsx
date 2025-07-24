@@ -105,28 +105,21 @@ export default function Home() {
     }
   ];
 
-  // Organized categories with featured tools + all tools
+  // UX-driven categories organized by user intent
   const categories: ToolCategory[] = [
     {
-      id: "file-converters",
-      title: "🧩 File Converters",
-      description: "Convert between different file formats",
+      id: "convert-files",
+      title: "📂 Convert Files",
+      description: "Convert files between CSV, JSON, PDF, Image & more — in your browser",
       icon: "swap_horiz",
       iconColor: "text-blue-600",
       featured: [
         {
-          href: "/json-xml-converter",
-          icon: "swap_horiz",
-          iconColor: "text-green-600",
-          title: "JSON ↔ XML Converter",
-          description: "Convert between JSON and XML formats bidirectionally with file upload support."
-        },
-        {
-          href: "/base64-converter",
-          icon: "code",
+          href: "/csv-converter",
+          icon: "table_chart",
           iconColor: "text-blue-600",
-          title: "Base64 Encoder/Decoder",
-          description: "Encode text or files to Base64 format or decode Base64 strings back to readable text."
+          title: "CSV Converter",
+          description: "Most popular: Convert between CSV, JSON, YAML, and TSV formats with drag-and-drop support."
         }
       ],
       allTools: [
@@ -178,9 +171,9 @@ export default function Home() {
       ]
     },
     {
-      id: "pdf-tools",
-      title: "📄 PDF Tools",
-      description: "Create, convert and modify PDF documents",
+      id: "create-edit-pdfs",
+      title: "📝 Create or Edit PDFs",
+      description: "Create, convert and modify PDF documents with professional formatting",
       icon: "picture_as_pdf",
       iconColor: "text-red-600",
       featured: [
@@ -190,13 +183,6 @@ export default function Home() {
           iconColor: "text-red-600",
           title: "PDF Converter",
           description: "Convert text, HTML, or images to PDF with customizable formatting and page settings."
-        },
-        {
-          href: "/png-to-pdf",
-          icon: "image",
-          iconColor: "text-orange-600",
-          title: "PNG to PDF Converter",
-          description: "Convert PNG, JPG, and other image formats to PDF with batch processing support."
         }
       ],
       allTools: [
@@ -224,9 +210,9 @@ export default function Home() {
       ]
     },
     {
-      id: "text-tools",
-      title: "✍️ Text Tools",
-      description: "Process, format and analyze text content",
+      id: "edit-analyze-text",
+      title: "🔤 Edit or Analyze Text",
+      description: "Transform, format and analyze text content for better readability",
       icon: "text_fields",
       iconColor: "text-green-600",
       featured: [
@@ -236,14 +222,6 @@ export default function Home() {
           iconColor: "text-indigo-600",
           title: "Text Case Converter",
           description: "Convert text between 10 different formats: camelCase, snake_case, PascalCase, kebab-case, and more."
-        },
-        {
-          href: "/readability-grader",
-          icon: "analytics",
-          iconColor: "text-blue-600",
-          title: "Readability Grader",
-          description: "Analyze text with 6 readability formulas including Flesch-Kincaid, Gunning Fog, and SMOG indices.",
-          badge: "🆕 New"
         }
       ],
       allTools: [
@@ -318,9 +296,9 @@ export default function Home() {
       ]
     },
     {
-      id: "developer-tools",
-      title: "</> Developer Tools",
-      description: "Utilities for developers and programmers",
+      id: "code-utilities",
+      title: "👨‍💻 Code Utilities", 
+      description: "Essential tools for developers and programmers to debug and optimize code",
       icon: "code",
       iconColor: "text-orange-600",
       featured: [
@@ -410,24 +388,17 @@ export default function Home() {
     },
     {
       id: "image-color-tools",
-      title: "🎨 Images & Colors",
-      description: "Process images and work with colors",
+      title: "🎨 Image + Color Tools",
+      description: "Compress, convert, and extract colors from images locally",
       icon: "palette",
       iconColor: "text-pink-600",
       featured: [
         {
-          href: "/image-converter",
-          icon: "image",
-          iconColor: "text-purple-600",
-          title: "Image Format Converter",
-          description: "Convert images between PNG, JPEG, and WebP formats with quality control."
-        },
-        {
-          href: "/color-converter",
-          icon: "palette",
-          iconColor: "text-pink-600",
-          title: "Color Converter",
-          description: "Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders."
+          href: "/image-optimizer",
+          icon: "speed",
+          iconColor: "text-green-600",
+          title: "Image Optimizer",
+          description: "Compress images while preserving quality with customizable size and quality settings."
         }
       ],
       allTools: [
@@ -495,9 +466,9 @@ export default function Home() {
       ]
     },
     {
-      id: "spreadsheet-tools",
-      title: "📊 Spreadsheet Tools",
-      description: "Work with Excel, CSV and data files",
+      id: "data-spreadsheets",
+      title: "📈 Data + Spreadsheets",
+      description: "Transform, clean and merge data from Excel, CSV and other formats",
       icon: "table_view",
       iconColor: "text-green-600",
       featured: [
@@ -506,14 +477,7 @@ export default function Home() {
           icon: "swap_horiz",
           iconColor: "text-green-600",
           title: "Excel ↔ CSV Converter",
-          description: "Convert between Excel (.xlsx) and CSV formats with support for multiple sheets and custom delimiters."
-        },
-        {
-          href: "/csv-merger",
-          icon: "merge_type",
-          iconColor: "text-blue-600",
-          title: "CSV Merger & Splitter",
-          description: "Combine multiple CSV files or split large CSVs by rows or file size with advanced processing options."
+          description: "Most popular: Convert between Excel (.xlsx) and CSV formats with support for multiple sheets and custom delimiters."
         }
       ],
       allTools: [
@@ -585,43 +549,43 @@ export default function Home() {
 
     return (
       <Link href={href}>
-        <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer group border-border hover:border-purple-200 dark:hover:border-purple-700" onClick={handleClick}>
-          <CardContent className="p-4 sm:p-6">
+        <Card className="h-full hover:shadow-md transition-all duration-200 cursor-pointer group bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600" onClick={handleClick} style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.06)' }}>
+          <CardContent className="p-4 sm:p-5">
             <div className="flex items-start gap-3 sm:gap-4">
-              <div className={`p-2 sm:p-3 rounded-lg bg-gray-50 dark:bg-gray-800 group-hover:bg-purple-50 dark:group-hover:bg-purple-900/20 transition-colors`}>
+              <div className={`p-2 sm:p-3 rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors`}>
                 <span className={`material-icons text-xl sm:text-2xl ${iconColor}`}>{icon}</span>
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <h3 className="font-semibold text-sm sm:text-base text-foreground group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-2">
+                  <h3 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                     {title}
                   </h3>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 flex-shrink-0">
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="p-1 h-auto opacity-100 transition-all duration-200 hover:bg-purple-50"
+                      className="p-1 h-auto opacity-100 transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/20"
                       onClick={handleBookmarkClick}
                     >
                       <Heart 
                         className={`w-4 h-4 transition-all duration-200 ${
                           isBookmarked(href) 
                             ? 'fill-red-500 text-red-500' 
-                            : 'text-purple-500 hover:text-purple-600'
+                            : 'text-gray-400 hover:text-red-500'
                         }`} 
                       />
                     </Button>
                     {badge && (
                       <Badge 
                         variant="secondary" 
-                        className="text-xs whitespace-nowrap bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 border-orange-200"
+                        className="text-xs whitespace-nowrap bg-orange-50 text-orange-700 border-orange-200 font-medium"
                       >
                         {badge}
                       </Badge>
                     )}
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 group-hover:text-gray-600 transition-colors">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 line-clamp-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                   {description}
                 </p>
               </div>
@@ -633,18 +597,18 @@ export default function Home() {
   };
 
   const CategoryCard = ({ category }: { category: ToolCategory }) => (
-    <Card className="border-border hover:shadow-lg transition-all duration-200 cursor-pointer group">
+    <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-200 cursor-pointer group" style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.06)' }}>
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className={`p-3 rounded-xl bg-gray-50 group-hover:bg-blue-50 transition-colors shadow-md`}>
+            <div className={`p-3 rounded-xl bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors`}>
               <span className={`material-icons text-2xl ${category.iconColor}`}>{category.icon}</span>
             </div>
             <div className="flex-1">
-              <CardTitle className="text-sm font-bold mb-1 uppercase tracking-wider">{category.title}</CardTitle>
-              <p className="text-sm text-muted-foreground mb-3">{category.description}</p>
+              <CardTitle className="text-sm font-bold mb-1 uppercase tracking-wider text-gray-900 dark:text-white">{category.title}</CardTitle>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{category.description}</p>
               <div className="flex items-center gap-2">
-                <span className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-xl shadow-md">
+                <span className="text-xs bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-xl">
                   {category.allTools.length} tools available
                 </span>
               </div>
@@ -655,30 +619,30 @@ export default function Home() {
       <CardContent className="pt-0">
         {/* Top Featured Tool */}
         <div className="mb-4">
-          <h4 className="text-sm font-medium text-muted-foreground mb-3">Featured Tool:</h4>
-          <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
+          <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-3">Featured Tool:</h4>
+          <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl p-4 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
             <Link href={category.featured[0].href} className="block">
               <div className="flex items-start gap-3">
-                <div className={`p-2 rounded-lg bg-gray-50`}>
+                <div className={`p-2 rounded-lg bg-white dark:bg-gray-600`}>
                   <span className={`material-icons text-lg ${category.featured[0].iconColor}`}>
                     {category.featured[0].icon}
                   </span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <h5 className="font-semibold text-sm text-foreground hover:text-blue-600 transition-colors">
+                    <h5 className="font-semibold text-sm text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                       {category.featured[0].title}
                     </h5>
                     {category.featured[0].badge && (
                       <Badge 
                         variant="secondary" 
-                        className="text-xs whitespace-nowrap bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 border-orange-200"
+                        className="text-xs whitespace-nowrap bg-orange-50 text-orange-700 border-orange-200 font-medium"
                       >
                         {category.featured[0].badge}
                       </Badge>
                     )}
                   </div>
-                  <p className="text-xs text-muted-foreground line-clamp-2">
+                  <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
                     {category.featured[0].description}
                   </p>
                 </div>
@@ -694,8 +658,7 @@ export default function Home() {
         >
           <CollapsibleTrigger asChild>
             <Button 
-              className="w-full flex items-center justify-center gap-2 text-white hover:opacity-90 transition-opacity rounded-xl shadow-md"
-              style={{ backgroundColor: '#9664C7' }}
+              className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white transition-colors rounded-xl"
             >
               {openCategories.includes(category.id) ? (
                 <>
@@ -790,6 +753,32 @@ export default function Home() {
       {/* Show main content only when not searching */}
       {!searchQuery && (
         <>
+          {/* Tool Spotlight Section */}
+          <div className="mb-12">
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-6 border border-blue-100 dark:border-blue-800">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-blue-100 dark:bg-blue-800 rounded-lg">
+                  <span className="material-icons text-2xl text-blue-600 dark:text-blue-400">search</span>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <h2 className="text-lg font-bold text-gray-900 dark:text-white">🔍 Tool Spotlight</h2>
+                    <Badge className="bg-orange-100 text-orange-800 border-orange-200">Featured</Badge>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">Text Diff Checker</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">
+                    Compare two blocks of text with detailed difference reports. Useful for version tracking and proofreading.
+                  </p>
+                  <Link href="/text-diff-checker">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                      Try Tool <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Recent Tools & Favorites - Combined Section */}
           {(recentTools.length > 0 || bookmarks.length > 0) && (
             <div className="mb-12">
@@ -799,7 +788,7 @@ export default function Home() {
                   <div className="flex-1">
                     <div className="text-center mb-6">
                       <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
-                        <Clock className="w-6 h-6 text-purple-500" />
+                        <Clock className="w-6 h-6 text-blue-500" />
                         RECENTLY USED
                       </h2>
                       <p className="text-sm text-muted-foreground">Your last {recentTools.length} tools</p>
@@ -835,11 +824,11 @@ export default function Home() {
           {/* Most Popular Tools */}
           <div className="mb-12">
             <div className="text-center mb-8">
-              <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
-                <TrendingUp className="w-6 h-6 text-orange-500" />
+              <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                <TrendingUp className="w-6 h-6 text-teal-500" />
                 MOST POPULAR TOOLS
               </h2>
-              <p className="text-sm text-muted-foreground">Top 6 most-used converters and utilities</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Top 6 most-used converters and utilities</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
               {popularTools.map((tool, index) => (
@@ -851,11 +840,11 @@ export default function Home() {
           {/* Categories */}
           <div className="mb-12">
             <div className="text-center mb-8">
-              <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
-                <Sparkles className="w-6 h-6 text-purple-500" />
+              <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                <Sparkles className="w-6 h-6 text-indigo-500" />
                 TOOL CATEGORIES
               </h2>
-              <p className="text-sm text-muted-foreground">Explore our complete collection of utilities</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Explore our complete collection organized by what you want to do</p>
             </div>
             <div className="space-y-8">
               {categories.map((category) => (
