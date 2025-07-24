@@ -790,9 +790,9 @@ export default function Home() {
           {recentTools.length > 0 && (
             <div className="mb-12">
               <div className="text-center mb-8">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+                <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
                   <Clock className="w-6 h-6 text-purple-500" />
-                  Recently Used
+                  RECENTLY USED
                 </h2>
                 <p className="text-sm text-muted-foreground">Your last {recentTools.length} tools</p>
               </div>
@@ -808,9 +808,9 @@ export default function Home() {
           {bookmarks.length > 0 && (
             <div className="mb-12">
               <div className="text-center mb-8">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+                <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
                   <Heart className="w-6 h-6 text-red-500" />
-                  Bookmarked Tools
+                  BOOKMARKED TOOLS
                 </h2>
                 <p className="text-sm text-muted-foreground">Your favorite {bookmarks.length} tools</p>
               </div>
