@@ -600,11 +600,15 @@ export default function Home() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="p-1 h-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="p-1 h-auto opacity-100 transition-all duration-200 hover:bg-purple-50"
                       onClick={handleBookmarkClick}
                     >
                       <Heart 
-                        className={`w-4 h-4 ${isBookmarked(href) ? 'fill-red-500 text-red-500' : 'text-gray-400 hover:text-red-500'}`} 
+                        className={`w-4 h-4 transition-all duration-200 ${
+                          isBookmarked(href) 
+                            ? 'fill-red-500 text-red-500' 
+                            : 'text-purple-500 hover:text-purple-600'
+                        }`} 
                       />
                     </Button>
                     {badge && (
