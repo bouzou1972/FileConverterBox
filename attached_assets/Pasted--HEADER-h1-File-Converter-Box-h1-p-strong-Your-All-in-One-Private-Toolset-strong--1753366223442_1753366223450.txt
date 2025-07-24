@@ -1,0 +1,67 @@
+<!-- HEADER -->
+<h1>🧰 File Converter Box</h1>
+<p><strong>Your All-in-One Private Toolset</strong> — Convert, Edit & Format Files Securely in Your Browser.</p>
+<p><em>No data leaves your device — 100% local & secure.</em></p>
+
+<!-- Search -->
+<input type="text" placeholder="Search tools... (e.g., json, pdf, image)" />
+
+<!-- MOST POPULAR -->
+<h2>🔥 Most Popular Tools</h2>
+<p>Top 6 most-used converters and utilities</p>
+
+<ul>
+  <li>📊 <strong>CSV Converter</strong> — Convert between CSV, JSON, YAML, and TSV formats. <em>#1 Popular</em></li>
+  <li>🧬 <strong>JSON Formatter</strong> — Format, validate, and minify JSON. <em>#2 Popular</em></li>
+  <li>📄 <strong>PDF Converter</strong> — Convert text, HTML, or images to PDF. <em>#3 Popular</em></li>
+  <li>🔁 <strong>Excel ↔ CSV</strong> — Convert Excel (.xlsx) to/from CSV. <em>#4 Popular</em></li>
+  <li>🖼️ <strong>Image Converter</strong> — PNG, JPEG, WebP conversion with quality control. <em>#5 Popular</em></li>
+  <li>🔧 <strong>String to JSON</strong> — Fix malformed JSON with smart repair. <em>#6 Popular</em></li>
+</ul>
+
+<!-- CATEGORIES -->
+<h2>🧰 Tool Categories</h2>
+<p>Explore our complete collection of utilities</p>
+
+<h3>🧩 File Converters <span style="font-weight: normal;">(6 tools)</span></h3>
+<p><strong>Featured:</strong> 🔁 JSON ↔ XML Converter — Convert between JSON and XML formats bidirectionally.</p>
+<a href="#">View all 6 tools</a>
+
+<h3>📄 PDF Tools <span style="font-weight: normal;">(3 tools)</span></h3>
+<p><strong>Featured:</strong> 📄 PDF Converter — Create PDFs from text, HTML or images with layout control.</p>
+<a href="#">View all 3 tools</a>
+
+<h3>✍️ Text Tools <span style="font-weight: normal;">(9 tools)</span></h3>
+<p><strong>Featured:</strong> 🔤 Text Case Converter — Convert text to camelCase, snake_case, PascalCase, and more.</p>
+<a href="#">View all 9 tools</a>
+
+<h3>💻 Developer Tools <span style="font-weight: normal;">(6 tools)</span></h3>
+<p><strong>Featured:</strong> 🧬 JSON Formatter — Format, minify, or beautify JSON with syntax highlighting.</p>
+<a href="#">View all 6 tools</a>
+
+<h3>🎨 Images & Colors <span style="font-weight: normal;">(6 tools)</span></h3>
+<p><strong>Featured:</strong> 🖼️ Image Format Converter — Convert PNG, JPEG, WebP formats with drag-drop support.</p>
+<a href="#">View all 6 tools</a>
+
+<h3>📊 Spreadsheet Tools <span style="font-weight: normal;">(4 tools)</span></h3>
+<p><strong>Featured:</strong> 🔁 Excel ↔ CSV Converter — Multi-sheet support with custom delimiters.</p>
+<a href="#">View all 4 tools</a>
+
+<!-- SUPPORT -->
+<hr />
+<p>💛 Like these tools?</p>
+<a href="https://buymeacoffee.com/yourlink" style="
+  display: inline-block;
+  background-color: #facc15;
+  color: #111827;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+">☕ Buy Me a Coffee</a>
+
+<!-- FOOTER -->
+<p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
+© 2025 FileConverterData. Built with 💻 + ☕ | All processing happens locally in your browser
+</p>
