@@ -255,8 +255,9 @@ export default function RegexTester() {
       />
       
       <UsageGuide 
+        title="Regex Tester Usage Guide"
+        description="Learn how to effectively test and validate regular expressions with live feedback and match highlighting"
         examples={usageExamples}
-        toolName="Regex Tester"
       />
 
       <div className="text-center mt-8">

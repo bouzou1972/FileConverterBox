@@ -436,8 +436,9 @@ export default function HtmlMinifier() {
       />
       
       <UsageGuide 
+        title="HTML Minifier & Beautifier Usage Guide"
+        description="Learn how to effectively minify and beautify HTML code for optimization and readability"
         examples={usageExamples}
-        toolName="HTML Minifier & Beautifier"
       />
 
       <div className="text-center mt-8">

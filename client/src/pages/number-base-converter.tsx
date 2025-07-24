@@ -389,8 +389,9 @@ export default function NumberBaseConverter() {
       />
       
       <UsageGuide 
+        title="Number Base Converter Usage Guide"
+        description="Learn how to effectively convert numbers between binary, octal, decimal, and hexadecimal formats for programming and computer science"
         examples={usageExamples}
-        toolName="Number Base Converter"
       />
 
       <div className="text-center mt-8">

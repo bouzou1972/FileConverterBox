@@ -7,6 +7,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Upload, Download, RefreshCw } from "lucide-react";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 type ImageFormat = "png" | "jpeg" | "webp";
 
@@ -110,8 +114,52 @@ export default function ImageConverter() {
     };
   };
 
+  const usageExamples = [
+    {
+      title: "Social Media Image Conversion",
+      description: "Convert images to web-optimized formats for social platforms",
+      steps: [
+        "Upload your high-quality image file",
+        "Select WebP format for best compression and quality",
+        "Adjust quality settings if needed (80-90% recommended)",
+        "Click convert to process the image",
+        "Download the optimized image for web use"
+      ],
+      tip: "WebP format provides 25-35% better compression than JPEG"
+    },
+    {
+      title: "Legacy System Compatibility",
+      description: "Convert modern formats to JPEG for older systems",
+      steps: [
+        "Upload your WebP, HEIC, or PNG image",
+        "Choose JPEG format for maximum compatibility",
+        "Set quality to 85-95% for good balance",
+        "Convert and download the compatible format",
+        "Use in legacy applications or older devices"
+      ]
+    },
+    {
+      title: "Transparent Image Processing",
+      description: "Convert images with transparency to appropriate formats",
+      steps: [
+        "Upload your image with transparent background",
+        "Choose PNG to preserve transparency",
+        "Or select JPEG to add white background",
+        "Process the image with desired settings",
+        "Download for use in your project"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="Image Format Converter"
+        description="Convert images between PNG, JPEG, and WebP formats with quality control. Free online image converter supporting transparency and compression."
+        keywords={["image converter", "image format converter", "png to jpeg", "jpeg to webp", "webp converter", "image compression"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-foreground">
@@ -256,6 +304,18 @@ export default function ImageConverter() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Image Format Converter - Free Online Tool"
+        description="Convert images between PNG, JPEG, and WebP formats with quality control and transparency support."
+      />
+      
+      <UsageGuide 
+        title="Image Format Converter Usage Guide"
+        description="Learn how to effectively convert images between different formats for web optimization and compatibility"
+        examples={usageExamples}
+      />
+
       <div className="text-center mt-8">
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>

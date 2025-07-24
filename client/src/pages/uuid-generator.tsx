@@ -168,8 +168,9 @@ export default function UuidGenerator() {
       />
       
       <UsageGuide 
+        title="UUID v4 Generator Usage Guide"
+        description="Learn how to effectively generate and use UUID v4 identifiers for databases, APIs, and applications"
         examples={usageExamples}
-        toolName="UUID v4 Generator"
       />
 
       <div className="text-center mt-8">

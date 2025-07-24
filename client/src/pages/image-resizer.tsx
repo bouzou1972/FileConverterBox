@@ -9,6 +9,9 @@ import { Upload, Download, RefreshCw, Maximize2, Minimize2 } from "lucide-react"
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 export default function ImageResizer() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -168,8 +171,51 @@ export default function ImageResizer() {
     return originalSize > 0 ? Math.round(((originalSize - processedSize) / originalSize) * 100) : 0;
   };
 
+  const usageExamples = [
+    {
+      title: "Website Image Optimization",
+      description: "Resize and compress images for faster website loading",
+      steps: [
+        "Upload your high-resolution image",
+        "Switch to 'Resize by Percentage' mode",
+        "Set to 50-70% of original size for web use",
+        "Adjust quality to 70-80% for good balance",
+        "Download the optimized image for your website"
+      ],
+      tip: "Smaller images significantly improve page loading speed"
+    },
+    {
+      title: "Social Media Profile Pictures",
+      description: "Create perfect profile pictures for different platforms",
+      steps: [
+        "Upload your profile photo",
+        "Use 'Resize by Pixels' mode",
+        "Set dimensions to 400x400 for universal compatibility",
+        "Maintain aspect ratio for square crop",
+        "Choose JPEG format and 85% quality"
+      ]
+    },
+    {
+      title: "Email-Friendly Images",
+      description: "Reduce image file sizes for email attachments",
+      steps: [
+        "Upload your image file",
+        "Resize to maximum 800px width",
+        "Reduce quality to 60-70%",
+        "Check the compression ratio indicator",
+        "Download when file size is under 1MB"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="Image Resizer & Compressor"
+        description="Resize images by pixels or percentage with quality control. Free online image resizer supporting multiple formats and compression optimization."
+        keywords={["image resizer", "image compressor", "resize image", "compress image", "image dimensions", "photo resizer"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
       <Card className="shadow-lg">
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -413,6 +459,18 @@ export default function ImageResizer() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Image Resizer & Compressor - Free Tool"
+        description="Resize images by pixels or percentage with quality control and compression optimization for web and social media."
+      />
+      
+      <UsageGuide 
+        title="Image Resizer & Compressor Usage Guide"
+        description="Learn how to effectively resize and compress images for web optimization, social media, and file size reduction"
+        examples={usageExamples}
+      />
+
       <div className="text-center mt-8">
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
