@@ -17,6 +17,8 @@ export function BookmarkButton({ href, title, icon, iconColor, description = "" 
   
   const tool = { href, title, icon, iconColor, description };
   const bookmarked = isBookmarked(href);
+  
+  console.log("BookmarkButton rendered for:", title, "bookmarked:", bookmarked);
 
   const handleBookmark = () => {
     toggleBookmark(tool);
@@ -33,16 +35,18 @@ export function BookmarkButton({ href, title, icon, iconColor, description = "" 
       variant="outline"
       size="sm"
       onClick={handleBookmark}
-      className="flex items-center gap-2 rounded-xl shadow-md"
+      className="flex items-center gap-2 rounded-xl shadow-md bg-white border-purple-200 hover:bg-purple-50"
     >
       <Heart 
         className={`w-4 h-4 transition-colors ${
           bookmarked 
             ? 'text-red-500 fill-red-500' 
-            : 'text-gray-400'
+            : 'text-purple-400'
         }`} 
       />
-      {bookmarked ? 'Bookmarked' : 'Bookmark'}
+      <span className="text-sm font-medium">
+        {bookmarked ? 'Bookmarked' : 'Bookmark'}
+      </span>
     </Button>
   );
 }
