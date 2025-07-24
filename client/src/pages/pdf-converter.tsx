@@ -10,6 +10,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { FileText, Download, Upload, RotateCcw } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { 
   convertTextToPDF, 
   convertHTMLToPDF, 
@@ -178,10 +179,19 @@ export default function PDFConverter() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <span className="material-icons text-red-600 text-3xl">picture_as_pdf</span>
-            PDF Converter
-          </CardTitle>
+          <div className="flex items-start justify-between">
+            <CardTitle className="flex items-center gap-3">
+              <span className="material-icons text-red-600 text-3xl">picture_as_pdf</span>
+              PDF Converter
+            </CardTitle>
+            <BookmarkButton 
+              href="/pdf-converter"
+              title="PDF Converter"
+              icon="picture_as_pdf"
+              iconColor="text-red-600"
+              description="Convert text, HTML, and images to PDF with customizable formatting options and page settings"
+            />
+          </div>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

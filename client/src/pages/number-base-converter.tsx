@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, RefreshCw } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { useToast } from "@/hooks/use-toast";
 
 export default function NumberBaseConverter() {
@@ -126,11 +127,20 @@ export default function NumberBaseConverter() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-4">Number Base Converter</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Convert numbers between binary, octal, decimal, and hexadecimal formats instantly. Perfect for programming and computer science tasks.
-        </p>
+      <div className="flex items-start justify-between mb-8">
+        <div className="text-center flex-1">
+          <h1 className="text-3xl font-bold mb-4">Number Base Converter</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Convert numbers between binary, octal, decimal, and hexadecimal formats instantly. Perfect for programming and computer science tasks.
+          </p>
+        </div>
+        <BookmarkButton 
+          href="/number-base-converter"
+          title="Number Base Converter"
+          icon="calculate"
+          iconColor="text-blue-600"
+          description="Convert numbers between binary, octal, decimal, and hexadecimal formats with live conversion"
+        />
       </div>
 
       {error && (

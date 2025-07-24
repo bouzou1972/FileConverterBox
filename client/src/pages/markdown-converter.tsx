@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Eye, Code, Copy, Download, FileText } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { convertMarkdownToHTML, createFullHTMLDocument, sampleMarkdown } from "@/lib/utils/markdown";
 import { downloadFile } from "@/lib/utils/data-converter";
 
@@ -55,10 +56,19 @@ export default function MarkdownConverter() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <span className="material-icons tool-red text-3xl">html</span>
-            Markdown to HTML Converter
-          </CardTitle>
+          <div className="flex items-start justify-between">
+            <CardTitle className="flex items-center gap-3">
+              <span className="material-icons tool-red text-3xl">html</span>
+              Markdown to HTML Converter
+            </CardTitle>
+            <BookmarkButton 
+              href="/markdown-converter"
+              title="Markdown Converter"
+              icon="html"
+              iconColor="text-red-600"
+              description="Convert Markdown to HTML with live preview and download options for documents and web content"
+            />
+          </div>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Upload, Download, RefreshCw, Maximize2, Minimize2 } from "lucide-react";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function ImageResizer() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -171,10 +172,19 @@ export default function ImageResizer() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-foreground">
-            <span className="material-icons text-green-600 text-3xl">photo_size_select_large</span>
-            Image Resizer & Compressor
-          </CardTitle>
+          <div className="flex items-start justify-between">
+            <CardTitle className="flex items-center gap-3 text-foreground">
+              <span className="material-icons text-green-600 text-3xl">photo_size_select_large</span>
+              Image Resizer & Compressor
+            </CardTitle>
+            <BookmarkButton 
+              href="/image-resizer"
+              title="Image Resizer"
+              icon="photo_size_select_large"
+              iconColor="text-green-600"
+              description="Resize and compress images with customizable dimensions, quality, and format options"
+            />
+          </div>
         </CardHeader>
         <CardContent className="space-y-6">
           <div>

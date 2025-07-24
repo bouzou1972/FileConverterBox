@@ -18,7 +18,7 @@ export function BookmarkButton({ href, title, icon, iconColor, description = "" 
   const tool = { href, title, icon, iconColor, description };
   const bookmarked = isBookmarked(href);
   
-  console.log("BookmarkButton rendered for:", title, "bookmarked:", bookmarked);
+
 
   const handleBookmark = () => {
     toggleBookmark(tool);

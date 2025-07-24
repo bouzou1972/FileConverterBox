@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { FileText, Copy, Download } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { generateLorem, type LoremOptions } from "@/lib/utils/lorem";
 import { downloadFile } from "@/lib/utils/data-converter";
 
@@ -58,10 +59,19 @@ export default function LoremGenerator() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <span className="material-icons tool-indigo text-3xl">text_snippet</span>
-            Lorem Ipsum Generator
-          </CardTitle>
+          <div className="flex items-start justify-between">
+            <CardTitle className="flex items-center gap-3">
+              <span className="material-icons tool-indigo text-3xl">text_snippet</span>
+              Lorem Ipsum Generator
+            </CardTitle>
+            <BookmarkButton 
+              href="/lorem-generator"
+              title="Lorem Ipsum Generator"
+              icon="text_snippet"
+              iconColor="text-indigo-600"
+              description="Generate placeholder text in words, sentences, or paragraphs with HTML formatting options"
+            />
+          </div>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Controls */}

@@ -6,6 +6,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { Copy, RotateCcw, FileText, GitCompare } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface DiffResult {
   type: 'equal' | 'delete' | 'insert' | 'replace';
@@ -212,13 +213,24 @@ export default function TextDiffChecker() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <GitCompare className="text-purple-600 text-3xl" />
-            Text Diff Checker
-          </CardTitle>
-          <p className="text-gray-600">
-            Compare two blocks of text to find differences, additions, and deletions
-          </p>
+          <div className="flex items-start justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-3">
+                <GitCompare className="text-purple-600 text-3xl" />
+                Text Diff Checker
+              </CardTitle>
+              <p className="text-gray-600">
+                Compare two blocks of text to find differences, additions, and deletions
+              </p>
+            </div>
+            <BookmarkButton 
+              href="/text-diff-checker"
+              title="Text Diff Checker"
+              icon="compare"
+              iconColor="text-purple-600"
+              description="Compare text blocks with detailed difference analysis and statistics for changes, additions, and deletions"
+            />
+          </div>
         </CardHeader>
         <CardContent>
           <div className="space-y-6">

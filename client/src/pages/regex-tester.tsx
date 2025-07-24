@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface RegexMatch {
   match: string;
@@ -81,10 +82,19 @@ export default function RegexTester() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3">
-            <span className="material-icons tool-green text-3xl">filter_alt</span>
-            Regex Tester
-          </CardTitle>
+          <div className="flex items-start justify-between">
+            <CardTitle className="flex items-center gap-3">
+              <span className="material-icons tool-green text-3xl">filter_alt</span>
+              Regex Tester
+            </CardTitle>
+            <BookmarkButton 
+              href="/regex-tester"
+              title="Regex Tester"
+              icon="filter_alt"
+              iconColor="text-green-600"
+              description="Test regular expressions with live feedback, match highlighting, and detailed pattern analysis"
+            />
+          </div>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Pattern Input */}

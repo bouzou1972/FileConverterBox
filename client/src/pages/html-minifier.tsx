@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Download, Upload, FileText, Minimize2, Maximize2 } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { useToast } from "@/hooks/use-toast";
 
 export default function HtmlMinifier() {
@@ -198,11 +199,20 @@ export default function HtmlMinifier() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-4">HTML Minifier / Beautifier</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Minify HTML to reduce file size or beautify HTML for better readability. All processing happens locally in your browser.
-        </p>
+      <div className="flex items-start justify-between mb-8">
+        <div className="text-center flex-1">
+          <h1 className="text-3xl font-bold mb-4">HTML Minifier / Beautifier</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Minify HTML to reduce file size or beautify HTML for better readability. All processing happens locally in your browser.
+          </p>
+        </div>
+        <BookmarkButton 
+          href="/html-minifier"
+          title="HTML Minifier"
+          icon="code"
+          iconColor="text-orange-600"
+          description="Minify HTML to reduce file size or beautify for readability with customizable options"
+        />
       </div>
 
       {error && (
