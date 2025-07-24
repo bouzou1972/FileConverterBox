@@ -35,16 +35,16 @@ export function BookmarkButton({ href, title, icon, iconColor, description = "" 
       variant="outline"
       size="sm"
       onClick={handleBookmark}
-      className="flex items-center gap-2 rounded-xl shadow-md bg-white border-purple-200 hover:bg-purple-50"
+      className="flex items-center gap-2 rounded-xl shadow-md bg-white border-purple-200 hover:bg-purple-50 hover:border-purple-300 transition-all duration-200"
     >
       <Heart 
-        className={`w-4 h-4 transition-colors ${
+        className={`w-4 h-4 transition-all duration-200 ${
           bookmarked 
             ? 'text-red-500 fill-red-500' 
-            : 'text-purple-400'
+            : 'text-purple-500 hover:text-purple-600'
         }`} 
       />
-      <span className="text-sm font-medium">
+      <span className="text-sm font-medium text-gray-700 hover:text-purple-700 transition-colors duration-200">
         {bookmarked ? 'Bookmarked' : 'Bookmark'}
       </span>
     </Button>
