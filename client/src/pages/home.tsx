@@ -732,11 +732,7 @@ export default function Home() {
             __html: `<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="freedownloads" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>`
           }}
         />
-        <div className="mt-6 pt-6 border-t border-border text-center">
-          <p className="text-sm text-muted-foreground">
-            © 2025 File Converter Box. Built with 💻 + ☕ | All processing happens locally in your browser
-          </p>
-        </div>
+
       </div>
     </div>
   );
