@@ -571,8 +571,8 @@ export default function Home() {
           >
             <CollapsibleTrigger asChild>
               <Button 
-                variant="outline" 
-                className="w-full mt-4 flex items-center justify-center gap-2 hover:bg-blue-50"
+                className="w-full mt-4 flex items-center justify-center gap-2 text-white hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: '#9664C7' }}
               >
                 {openCategories.includes(category.id) ? (
                   <>
@@ -607,7 +607,7 @@ export default function Home() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Hero Section */}
       <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#9664C7' }}>
           File Converter Box
         </h1>
         <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
