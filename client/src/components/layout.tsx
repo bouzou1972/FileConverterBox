@@ -76,6 +76,16 @@ export default function Layout({ children }: LayoutProps) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             <span className="text-sm text-muted-foreground">100% Local, Free & Private</span>
+            <Link href="/">
+              <Button
+                variant={location === "/" ? "default" : "outline"}
+                size="sm"
+                className="flex items-center gap-2"
+              >
+                <span className="material-icons text-sm">home</span>
+                Home
+              </Button>
+            </Link>
             <Button
               variant="outline"
               size="sm"
@@ -165,6 +175,20 @@ export default function Layout({ children }: LayoutProps) {
                   <div className="text-xs text-muted-foreground mb-4 p-2 bg-muted rounded">
                     100% Local, Free & Private
                   </div>
+                  
+                  {/* Home Link for Mobile */}
+                  <Link href="/">
+                    <div 
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer mb-4 border-b border-gray-200"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <span className="material-icons text-purple-600 text-lg flex-shrink-0">
+                        home
+                      </span>
+                      <span className="font-medium text-sm">Home</span>
+                    </div>
+                  </Link>
+                  
                   {(() => {
                     const groupedTools = tools.reduce((acc, tool) => {
                       if (!acc[tool.group]) acc[tool.group] = [];
