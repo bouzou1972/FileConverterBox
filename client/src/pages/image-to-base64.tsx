@@ -334,6 +334,10 @@ export default function ImageToBase64() {
       </Card>
       
       <div className="text-center mt-8">
+        <div className="mb-4">
+          <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
+          <p className="text-muted-foreground">Help support future development</p>
+        </div>
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">
           Thanks for using this free tool! Your support keeps it ad-free and private.

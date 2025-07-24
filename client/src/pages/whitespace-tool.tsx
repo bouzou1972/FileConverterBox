@@ -189,7 +189,7 @@ export default function WhitespaceToolPage() {
               placeholder="Paste your messy text here...
     This   text    has
         irregular   spacing
-	and	mixed	tabs...
+        and     mixed   tabs...
   "
               className="min-h-[300px] font-mono text-sm"
             />
@@ -391,6 +391,10 @@ export default function WhitespaceToolPage() {
       </Card>
       
       <div className="text-center mt-8">
+        <div className="mb-4">
+          <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
+          <p className="text-muted-foreground">Help support future development</p>
+        </div>
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">
           Thanks for using this free tool! Your support keeps it ad-free and private.
