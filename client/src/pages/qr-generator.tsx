@@ -9,6 +9,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Download, QrCode, Wifi, Link as LinkIcon, Type } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 import QRCode from "qrcode";
 
 export default function QRGenerator() {
@@ -127,8 +130,78 @@ export default function QRGenerator() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Website QR Code",
+      description: "Create a QR code for your website or landing page",
+      steps: [
+        "Select 'Text/URL' tab",
+        "Enter your full website URL (include https://)",
+        "Adjust size and colors as needed",
+        "Click 'Generate QR Code'",
+        "Download or copy the generated QR code"
+      ],
+      tip: "Always include the full protocol (https://) for proper URL recognition"
+    },
+    {
+      title: "WiFi Network Sharing",
+      description: "Share WiFi credentials without revealing the password",
+      steps: [
+        "Switch to 'WiFi' tab",
+        "Enter your network name (SSID)",
+        "Input the WiFi password",
+        "Select the correct security type (WPA/WPA2 most common)",
+        "Generate the QR code for easy sharing"
+      ],
+      tip: "Guests can scan the code to connect automatically without seeing your password"
+    },
+    {
+      title: "Contact Information",
+      description: "Share contact details quickly",
+      steps: [
+        "Use 'Text/URL' tab",
+        "Enter contact info in vCard format or plain text",
+        "Include phone, email, and name",
+        "Generate and share the QR code"
+      ]
+    }
+  ];
+
+  const proTips = [
+    "Higher error correction levels make QR codes more readable when damaged",
+    "Use high contrast colors (dark on light) for best scanning results",
+    "Test your QR codes with multiple devices before sharing",
+    "Keep text short for cleaner, more scannable codes",
+    "256×256 pixels is optimal for most printing applications"
+  ];
+
+  const bestPractices = [
+    "Always test QR codes before printing or distributing",
+    "Use proper URLs with https:// protocol for web links",
+    "Choose appropriate error correction for your use case",
+    "Maintain sufficient white space around the QR code",
+    "Consider the scanning distance when choosing size"
+  ];
+
+  const commonUses = [
+    "Website links",
+    "WiFi sharing",
+    "Contact cards",
+    "Event tickets",
+    "Product information",
+    "Social media profiles",
+    "App store links",
+    "Restaurant menus"
+  ];
+
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
+    <div className="max-w-6xl mx-auto p-6 space-y-6">
+      <ToolSEO
+        title="QR Code Generator"
+        description="Generate QR codes instantly for URLs, text, WiFi credentials and more. Free online QR code maker with customizable size, colors and error correction levels."
+        keywords={["qr code generator", "qr code maker", "wifi qr code", "free qr generator", "custom qr code"]}
+        canonicalUrl={window.location.href}
+      />
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="p-3 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
@@ -339,34 +412,21 @@ export default function QRGenerator() {
         </Card>
       </div>
 
-      {/* Usage Tips */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Usage Tips</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <h4 className="font-semibold mb-2">Text/URL QR Codes</h4>
-              <ul className="space-y-1 text-gray-600 dark:text-gray-300">
-                <li>• Perfect for sharing website links</li>
-                <li>• Can encode up to 4,296 characters</li>
-                <li>• Include https:// for proper URL recognition</li>
-                <li>• Works with email addresses and phone numbers</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">WiFi QR Codes</h4>
-              <ul className="space-y-1 text-gray-600 dark:text-gray-300">
-                <li>• Guests can connect by scanning the code</li>
-                <li>• Works on most modern smartphones</li>
-                <li>• Password is hidden but encoded in QR</li>
-                <li>• Choose appropriate security type</li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Usage Guide */}
+      <UsageGuide
+        title="QR Code Generator"
+        description="Create custom QR codes for any text, URL, or WiFi network with full privacy and customization options."
+        examples={usageExamples}
+        tips={proTips}
+        bestPractices={bestPractices}
+        commonUses={commonUses}
+      />
+
+      {/* Share Buttons */}
+      <ShareButtons
+        title="Free QR Code Generator"
+        description="Generate QR codes instantly for URLs, text, WiFi credentials and more. 100% free and privacy-focused."
+      />
     </div>
   );
 }

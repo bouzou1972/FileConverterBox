@@ -7,6 +7,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Download, BarChart3, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 import JsBarcode from "jsbarcode";
 
 export default function BarcodeGenerator() {
@@ -141,8 +144,77 @@ export default function BarcodeGenerator() {
 
   const selectedFormat = barcodeFormats.find(f => f.value === barcodeFormat);
 
+  const usageExamples = [
+    {
+      title: "Product Barcode (EAN-13)",
+      description: "Create standard retail product barcodes",
+      steps: [
+        "Select 'EAN-13' format",
+        "Enter 12-13 digit product code",
+        "Adjust height for label size requirements",
+        "Generate and download for packaging"
+      ],
+      tip: "EAN-13 codes must be registered with GS1 for retail use"
+    },
+    {
+      title: "Inventory Management (CODE128)",
+      description: "Generate barcodes for internal inventory tracking",
+      steps: [
+        "Choose 'CODE128' format for alphanumeric data",
+        "Enter your internal product ID or SKU",
+        "Set appropriate bar width for scanning distance",
+        "Print and apply to inventory items"
+      ],
+      tip: "CODE128 supports letters, numbers, and symbols for flexible inventory codes"
+    },
+    {
+      title: "Shipping Labels (ITF-14)",
+      description: "Create barcodes for cartons and shipping containers",
+      steps: [
+        "Select 'ITF-14' format",
+        "Enter exactly 14 digits for the container code",
+        "Use thicker bars and larger height for warehouse scanning",
+        "Apply to shipping cartons"
+      ]
+    }
+  ];
+
+  const proTips = [
+    "Test barcode scanning with your target devices before mass printing",
+    "Higher bar width settings work better for longer scanning distances",
+    "Keep background color light and bars dark for optimal contrast",
+    "Different formats have specific data requirements - validate before printing",
+    "Consider the scanning environment when choosing bar thickness and height"
+  ];
+
+  const bestPractices = [
+    "Always verify barcode data accuracy before printing large quantities",
+    "Choose the right format for your specific industry or use case",
+    "Maintain adequate white space (quiet zone) around barcodes",
+    "Test barcodes with the actual scanners that will be used",
+    "Use high-quality printing to ensure clean, sharp bars",
+    "Store master barcode files in a high-resolution format"
+  ];
+
+  const commonUses = [
+    "Retail products",
+    "Inventory tracking",
+    "Shipping labels",
+    "Asset management",
+    "Document tracking",
+    "Event tickets",
+    "Library books",
+    "Medical supplies"
+  ];
+
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
+    <div className="max-w-6xl mx-auto p-6 space-y-6">
+      <ToolSEO
+        title="Barcode Generator"
+        description="Create professional barcodes in multiple formats including Code128, EAN-13, UPC, and more. Free online barcode maker with customizable settings."
+        keywords={["barcode generator", "barcode maker", "ean13 barcode", "code128 barcode", "free barcode generator"]}
+        canonicalUrl={window.location.href}
+      />
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="p-3 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
@@ -323,50 +395,21 @@ export default function BarcodeGenerator() {
         </Card>
       </div>
 
-      {/* Format Information */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Barcode Format Guide</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-            <div>
-              <h4 className="font-semibold mb-3">Common Formats</h4>
-              <div className="space-y-2">
-                <div>
-                  <span className="font-medium">CODE128:</span> Most versatile, supports all ASCII characters
-                </div>
-                <div>
-                  <span className="font-medium">CODE39:</span> Alphanumeric, widely used in non-retail
-                </div>
-                <div>
-                  <span className="font-medium">EAN-13:</span> European product codes (13 digits)
-                </div>
-                <div>
-                  <span className="font-medium">UPC-A:</span> US/Canada product codes (12 digits)
-                </div>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-3">Specialized Uses</h4>
-              <div className="space-y-2">
-                <div>
-                  <span className="font-medium">ITF-14:</span> Shipping containers and cases
-                </div>
-                <div>
-                  <span className="font-medium">MSI:</span> Inventory and warehouse management
-                </div>
-                <div>
-                  <span className="font-medium">Pharmacode:</span> Pharmaceutical packaging
-                </div>
-                <div>
-                  <span className="font-medium">EAN-8:</span> Small products with limited space
-                </div>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Usage Guide */}
+      <UsageGuide
+        title="Barcode Generator"
+        description="Create industry-standard barcodes for retail, inventory, shipping, and asset management with professional formatting options."
+        examples={usageExamples}
+        tips={proTips}
+        bestPractices={bestPractices}
+        commonUses={commonUses}
+      />
+
+      {/* Share Buttons */}
+      <ShareButtons
+        title="Professional Barcode Generator"
+        description="Create industry-standard barcodes in multiple formats. Free barcode maker with Code128, EAN-13, UPC support."
+      />
     </div>
   );
 }

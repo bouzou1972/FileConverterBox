@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Upload, Palette, Copy, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 interface Color {
   hex: string;
@@ -232,8 +235,82 @@ export default function ColorPaletteExtractor() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Brand Color Palette",
+      description: "Extract colors from logo or brand images for consistent design",
+      steps: [
+        "Upload your logo or brand image",
+        "Set palette size to 5-8 colors for main brand colors",
+        "Click 'Extract Colors' to analyze the image",
+        "Copy the dominant colors in HEX format",
+        "Use these colors in your design system and brand guidelines"
+      ],
+      tip: "Use high-resolution, uncompressed logos for the most accurate color extraction"
+    },
+    {
+      title: "Design Inspiration",
+      description: "Get color schemes from inspiring photos or artwork",
+      steps: [
+        "Upload an inspiring image or artwork",
+        "Increase palette size to 12-16 for more color options",
+        "Extract colors and review the dominant tones",
+        "Copy colors in your preferred format (HEX, RGB, HSL)",
+        "Apply the palette to your design project"
+      ],
+      tip: "Nature photos and artwork often provide the most harmonious color palettes"
+    },
+    {
+      title: "Website Color Matching",
+      description: "Match colors from existing websites or designs",
+      steps: [
+        "Take a screenshot of the website or design",
+        "Upload the screenshot to the extractor",
+        "Extract colors to get the exact color values",
+        "Export the palette as JSON for development use",
+        "Implement the colors in your CSS or design files"
+      ]
+    }
+  ];
+
+  const proTips = [
+    "High-contrast images with varied colors work best for extraction",
+    "Use larger palette sizes (12-16) for more color variety and options",
+    "Export palettes as JSON files to easily import into design tools",
+    "Click individual colors to copy them instantly to your clipboard",
+    "The frequency analysis shows which colors are most prominent in the image",
+    "Try different image crops to focus on specific color areas"
+  ];
+
+  const bestPractices = [
+    "Use high-quality, uncompressed images for accurate color extraction",
+    "Test extracted colors in your actual design context",
+    "Consider color accessibility when using extracted palettes",
+    "Save successful color palettes for future reference",
+    "Verify colors work well together in various lighting conditions",
+    "Document color usage guidelines when creating brand palettes",
+    "Test color combinations for sufficient contrast ratios"
+  ];
+
+  const commonUses = [
+    "Brand identity design",
+    "Website color schemes",
+    "Marketing materials",
+    "App UI design",
+    "Interior design",
+    "Fashion design",
+    "Art projects",
+    "Product design"
+  ];
+
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
+      <ToolSEO
+        title="Color Palette Extractor"
+        description="Extract dominant colors from any image with frequency analysis. Free online color palette generator with HEX, RGB, and HSL support."
+        keywords={["color palette extractor", "color picker from image", "extract colors", "image color analysis", "color scheme generator"]}
+        canonicalUrl={window.location.href}
+      />
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="p-3 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
@@ -460,34 +537,21 @@ export default function ColorPaletteExtractor() {
       {/* Hidden Canvas */}
       <canvas ref={canvasRef} className="hidden" />
 
-      {/* Usage Tips */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Usage Tips</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <h4 className="font-semibold mb-2">Best Results</h4>
-              <ul className="space-y-1 text-gray-600 dark:text-gray-300">
-                <li>• Use high-contrast images for distinct colors</li>
-                <li>• Images with varied colors work better than monochromatic</li>
-                <li>• Larger images provide more accurate color analysis</li>
-                <li>• Avoid heavily compressed or low-quality images</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Color Formats</h4>
-              <ul className="space-y-1 text-gray-600 dark:text-gray-300">
-                <li>• HEX: Web-friendly format (#RRGGBB)</li>
-                <li>• RGB: Red, Green, Blue values (0-255)</li>
-                <li>• HSL: Hue, Saturation, Lightness percentages</li>
-                <li>• Click any color value to copy it instantly</li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Usage Guide */}
+      <UsageGuide
+        title="Color Palette Extractor"
+        description="Extract and analyze dominant colors from any image with advanced frequency analysis and multiple export formats."
+        examples={usageExamples}
+        tips={proTips}
+        bestPractices={bestPractices}
+        commonUses={commonUses}
+      />
+
+      {/* Share Buttons */}
+      <ShareButtons
+        title="Color Palette Extractor"
+        description="Extract dominant colors from any image with frequency analysis. Free color palette generator with multiple format support."
+      />
     </div>
   );
 }

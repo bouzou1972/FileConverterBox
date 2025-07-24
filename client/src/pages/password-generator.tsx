@@ -9,6 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Copy, RefreshCw, Shield, Eye, EyeOff, AlertTriangle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 export default function PasswordGenerator() {
   const [password, setPassword] = useState("");
@@ -110,8 +113,80 @@ export default function PasswordGenerator() {
 
   const strength = calculateStrength(password);
 
+  const usageExamples = [
+    {
+      title: "High-Security Account Password",
+      description: "Create a strong password for banking or important accounts",
+      steps: [
+        "Set length to 16+ characters",
+        "Enable all character types (uppercase, lowercase, numbers, symbols)",
+        "Enable 'Exclude similar characters' to avoid confusion",
+        "Generate and copy to password manager",
+        "Never reuse this password for other accounts"
+      ],
+      tip: "Use a unique strong password for each important account"
+    },
+    {
+      title: "WiFi Network Password",
+      description: "Generate a secure but memorable WiFi password",
+      steps: [
+        "Set length to 12-16 characters",
+        "Enable uppercase, lowercase, and numbers",
+        "Disable symbols if devices have trouble connecting",
+        "Exclude ambiguous symbols for easier manual entry"
+      ],
+      tip: "Write down WiFi passwords in a secure location for guests"
+    },
+    {
+      title: "Temporary Access Password",
+      description: "Create passwords for temporary accounts or testing",
+      steps: [
+        "Use shorter length (8-12 characters) if required",
+        "Include numbers and letters",
+        "Consider excluding symbols for compatibility",
+        "Set expiration reminders for temporary passwords"
+      ]
+    }
+  ];
+
+  const proTips = [
+    "Use a password manager to store all your generated passwords securely",
+    "Enable two-factor authentication wherever possible for extra security", 
+    "Longer passwords are generally more secure than complex short ones",
+    "Avoid using the same password across multiple important accounts",
+    "Generate new passwords periodically for critical accounts",
+    "The 'exclude similar characters' option helps prevent typos when typing passwords"
+  ];
+
+  const bestPractices = [
+    "Store passwords in a reputable password manager",
+    "Use unique passwords for each account, especially important ones",
+    "Generate passwords with at least 12 characters for good security",
+    "Enable two-factor authentication when available",
+    "Never share passwords via email, text, or unsecured methods",
+    "Change passwords immediately if you suspect they've been compromised",
+    "Use the highest security settings your account/system allows"
+  ];
+
+  const commonUses = [
+    "Online accounts",
+    "WiFi networks", 
+    "Database access",
+    "Application passwords",
+    "Temporary accounts",
+    "System administration",
+    "API keys",
+    "Device unlock codes"
+  ];
+
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
+    <div className="max-w-6xl mx-auto p-6 space-y-6">
+      <ToolSEO
+        title="Password Generator"
+        description="Generate secure, cryptographically random passwords with customizable length and character types. Free online password creator with strength analysis."
+        keywords={["password generator", "secure password", "random password", "strong password maker", "password creator"]}
+        canonicalUrl={window.location.href}
+      />
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="p-3 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
@@ -338,37 +413,21 @@ export default function PasswordGenerator() {
         </div>
       </div>
 
-      {/* Security Tips */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5" />
-            Security Best Practices
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <h4 className="font-semibold mb-2">Password Guidelines</h4>
-              <ul className="space-y-1 text-gray-600 dark:text-gray-300">
-                <li>• Use at least 12 characters for strong security</li>
-                <li>• Include multiple character types</li>
-                <li>• Avoid common words or patterns</li>
-                <li>• Use unique passwords for each account</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Storage & Usage</h4>
-              <ul className="space-y-1 text-gray-600 dark:text-gray-300">
-                <li>• Store passwords in a password manager</li>
-                <li>• Enable two-factor authentication when possible</li>
-                <li>• Don't share passwords via email or text</li>
-                <li>• Clear clipboard after copying sensitive data</li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Usage Guide */}
+      <UsageGuide
+        title="Password Generator"
+        description="Generate cryptographically secure passwords with full control over length, character types, and complexity rules."
+        examples={usageExamples}
+        tips={proTips}
+        bestPractices={bestPractices}
+        commonUses={commonUses}
+      />
+
+      {/* Share Buttons */}
+      <ShareButtons
+        title="Secure Password Generator"
+        description="Create strong, cryptographically random passwords with customizable rules. Free password generator with strength analysis."
+      />
     </div>
   );
 }

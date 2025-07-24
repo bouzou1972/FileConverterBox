@@ -7,6 +7,9 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Upload, Download, Image as ImageIcon, Zap, FileImage } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 export default function ImageOptimizer() {
   const [originalFile, setOriginalFile] = useState<File | null>(null);
@@ -170,8 +173,81 @@ export default function ImageOptimizer() {
 
   const savings = calculateSavings();
 
+  const usageExamples = [
+    {
+      title: "Website Image Optimization",
+      description: "Optimize images for faster website loading",
+      steps: [
+        "Upload your high-resolution website images",
+        "Set quality to 80-85% for good balance of size and quality",
+        "Resize to maximum 1920px width for desktop displays",
+        "Download optimized images for web use",
+        "Test loading speeds and adjust quality if needed"
+      ],
+      tip: "80% quality usually provides the best balance for web images"
+    },
+    {
+      title: "Social Media Preparation",
+      description: "Reduce file sizes for social media uploads",
+      steps: [
+        "Upload your original high-quality images",
+        "Set max width to 1080px for Instagram/Facebook",
+        "Use 75-80% quality for good compression",
+        "Download and upload to social platforms",
+        "Check how images appear after platform compression"
+      ],
+      tip: "Social platforms often compress further, so start with good quality"
+    },
+    {
+      title: "Email Attachments",
+      description: "Compress images to fit email size limits",
+      steps: [
+        "Select images that are too large for email",
+        "Reduce quality to 60-70% and resize significantly",
+        "Aim for files under 1MB each for email compatibility",
+        "Download compressed versions for email attachment"
+      ]
+    }
+  ];
+
+  const proTips = [
+    "JPEG format works best for photos, PNG for graphics with transparency",
+    "Always keep original files as backups before optimizing",
+    "Test different quality settings to find the sweet spot for your use case",
+    "Resize images to their display size rather than just compressing",
+    "Preview optimized images at actual size to check quality loss",
+    "Batch process similar images with the same settings for consistency"
+  ];
+
+  const bestPractices = [
+    "Always work with copies - never compress your original files",
+    "Choose quality based on final use: 90%+ for print, 70-85% for web",
+    "Resize images to their actual display dimensions first",
+    "Use appropriate formats: JPEG for photos, PNG for graphics",
+    "Test optimized images in their intended context",
+    "Monitor file size vs quality trade-offs carefully",
+    "Keep originals in a separate folder as backups"
+  ];
+
+  const commonUses = [
+    "Website optimization",
+    "Social media posts",
+    "Email attachments",
+    "Mobile app assets",
+    "Blog images",
+    "Product photos",
+    "Portfolio galleries",
+    "Document illustrations"
+  ];
+
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
+      <ToolSEO
+        title="Image Optimizer"
+        description="Compress and resize images while preserving quality. Free online image optimizer with customizable quality settings and size reduction."
+        keywords={["image optimizer", "image compressor", "resize images", "reduce image size", "compress photos online"]}
+        canonicalUrl={window.location.href}
+      />
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="p-3 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
@@ -407,34 +483,21 @@ export default function ImageOptimizer() {
       {/* Hidden Canvas */}
       <canvas ref={canvasRef} className="hidden" />
 
-      {/* Tips */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Optimization Tips</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <h4 className="font-semibold mb-2">Quality Settings</h4>
-              <ul className="space-y-1 text-gray-600 dark:text-gray-300">
-                <li>• 90-100%: Highest quality, minimal compression</li>
-                <li>• 80-90%: High quality, good for photos</li>
-                <li>• 60-80%: Balanced quality and size</li>
-                <li>• 40-60%: Smaller files, visible quality loss</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Best Practices</h4>
-              <ul className="space-y-1 text-gray-600 dark:text-gray-300">
-                <li>• Use JPEG for photos with many colors</li>
-                <li>• Use PNG for images with transparency</li>
-                <li>• Resize large images before compressing</li>
-                <li>• Test different quality settings for optimal results</li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Usage Guide */}
+      <UsageGuide
+        title="Image Optimizer"
+        description="Compress and resize images efficiently while maintaining visual quality for web, social media, and other applications."
+        examples={usageExamples}
+        tips={proTips}
+        bestPractices={bestPractices}
+        commonUses={commonUses}
+      />
+
+      {/* Share Buttons */}
+      <ShareButtons
+        title="Free Image Optimizer"
+        description="Compress and resize images while preserving quality. Free online image optimizer with customizable settings."
+      />
     </div>
   );
 }
