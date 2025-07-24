@@ -209,8 +209,9 @@ export default function MarkdownConverter() {
       />
       
       <UsageGuide 
+        title="Markdown to HTML Converter Usage Guide"
+        description="Learn how to effectively convert Markdown documents to HTML with live preview functionality"
         examples={usageExamples}
-        toolName="Markdown to HTML Converter"
       />
 
       <div className="text-center mt-8">

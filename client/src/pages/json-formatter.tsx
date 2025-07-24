@@ -215,6 +215,53 @@ export default function JsonFormatter() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="JSON Formatter - Free JSON Validator & Beautifier"
+        description="Format, validate, and minify JSON data with instant error detection and syntax highlighting."
+      />
+      
+      <UsageGuide 
+        title="JSON Formatter Usage Guide"
+        description="Learn how to effectively format, validate, and minify JSON data for development and debugging"
+        examples={[
+          {
+            title: "API Response Formatting",
+            description: "Clean up and format JSON responses from APIs",
+            steps: [
+              "Copy JSON response from your API testing tool",
+              "Paste into the input field",
+              "Click 'Format JSON' to beautify the output",
+              "Use formatted JSON for documentation or debugging",
+              "Copy the clean result to clipboard"
+            ],
+            tip: "Properly formatted JSON is easier to read and debug"
+          },
+          {
+            title: "JSON Data Validation",
+            description: "Validate JSON syntax and structure before using in applications",
+            steps: [
+              "Paste your JSON data into the formatter",
+              "Click 'Validate JSON' to check for syntax errors",
+              "Review error messages if validation fails",
+              "Fix syntax issues based on error details",
+              "Revalidate until JSON is properly formatted"
+            ]
+          },
+          {
+            title: "Code Minification",
+            description: "Reduce JSON file size for production use",
+            steps: [
+              "Input your formatted JSON data",
+              "Click 'Minify JSON' to remove unnecessary whitespace",
+              "Copy the compressed output",
+              "Use minified JSON in production applications",
+              "Save bandwidth and improve loading times"
+            ]
+          }
+        ]}
+      />
+
       <div className="text-center mt-8">
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>

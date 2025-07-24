@@ -493,6 +493,8 @@ export default function ColorConverter() {
       />
       
       <UsageGuide 
+        title="Color Converter Usage Guide"
+        description="Learn how to use the color converter effectively for web design and development"
         examples={usageExamples}
       />
     </div>

@@ -298,8 +298,9 @@ export default function TextCaseConverter() {
       />
       
       <UsageGuide 
+        title="Text Case Converter Usage Guide"
+        description="Learn how to effectively convert text between different case formats for programming and content creation"
         examples={usageExamples}
-        toolName="Text Case Converter"
       />
 
       <div className="text-center mt-8">

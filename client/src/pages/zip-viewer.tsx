@@ -709,6 +709,18 @@ export default function ZipViewer() {
         </AlertDescription>
       </Alert>
 
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="ZIP File Viewer & Extractor - Free Online Tool"
+        description="View ZIP archive contents, preview text files, and extract individual files with complete privacy."
+      />
+      
+      <UsageGuide 
+        title="ZIP File Viewer & Extractor Usage Guide"
+        description="Learn how to effectively view and extract files from ZIP archives"
+        examples={usageExamples}
+      />
+
       <div className="text-center mt-8">
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>

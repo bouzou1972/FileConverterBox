@@ -291,8 +291,52 @@ export default function FileSplitter() {
     };
   }, [chunks, joinedFile]);
 
+  const usageExamples = [
+    {
+      title: "Large File Sharing",
+      description: "Split large files for email or cloud storage limits",
+      steps: [
+        "Upload your large file (videos, archives, databases)",
+        "Set chunk size based on sharing platform limits",
+        "Download all chunks with sequential naming",
+        "Share chunks separately via email or cloud storage",
+        "Recipients can rejoin chunks to restore original file"
+      ],
+      tip: "Use 10MB chunks for most email providers, 25MB for Google Drive sharing"
+    },
+    {
+      title: "Backup & Storage",
+      description: "Split files for distributed backup storage",
+      steps: [
+        "Select large backup files or archives",
+        "Choose optimal chunk size for your storage medium",
+        "Generate multiple chunks for redundant storage",
+        "Store chunks across different devices or locations",
+        "Use join feature to restore when needed"
+      ]
+    },
+    {
+      title: "File Recovery & Assembly",
+      description: "Rejoin split files back to original format",
+      steps: [
+        "Collect all file chunks with .part extensions",
+        "Upload chunks in the Join Files tab",
+        "Verify all parts are present and correctly named",
+        "Join files to recreate original file",
+        "Download and verify the restored file integrity"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Large File Splitter & Joiner"
+        description="Split large files into smaller chunks for easier sharing or storage, then rejoin them back to the original file with complete privacy."
+        keywords={["file splitter", "file joiner", "split large files", "file chunks", "file sharing", "large file transfer", "file assembly"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Large File Splitter & Joiner</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -652,6 +696,18 @@ export default function FileSplitter() {
           </div>
         </CardContent>
       </Card>
+
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Large File Splitter & Joiner - Free File Tool"
+        description="Split large files into smaller chunks for easier sharing or storage, then rejoin them back to the original file with complete privacy."
+      />
+      
+      <UsageGuide 
+        title="Large File Splitter & Joiner Usage Guide"
+        description="Learn how to effectively split and join large files for sharing and storage management"
+        examples={usageExamples}
+      />
 
       <div className="text-center mt-8">
         <div className="mb-4">

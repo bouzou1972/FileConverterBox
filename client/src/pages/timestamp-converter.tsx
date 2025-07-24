@@ -270,8 +270,9 @@ export default function TimestampConverter() {
       />
       
       <UsageGuide 
+        title="Timestamp Converter Usage Guide"
+        description="Learn how to effectively convert between Unix timestamps and human-readable dates"
         examples={usageExamples}
-        toolName="Timestamp Converter"
       />
 
       <div className="text-center mt-8">

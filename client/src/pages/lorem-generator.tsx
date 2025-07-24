@@ -223,8 +223,9 @@ export default function LoremGenerator() {
       />
       
       <UsageGuide 
+        title="Lorem Ipsum Generator Usage Guide"
+        description="Learn how to effectively generate placeholder text for design, development, and content creation"
         examples={usageExamples}
-        toolName="Lorem Ipsum Generator"
       />
 
       <div className="text-center mt-8">

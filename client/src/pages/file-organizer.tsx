@@ -295,8 +295,52 @@ export default function FileOrganizer() {
   const totalSize = selectedFiles.reduce((sum, file) => sum + file.size, 0);
   const categories = Array.from(new Set(selectedFiles.map(f => f.category)));
 
+  const usageExamples = [
+    {
+      title: "Document Management",
+      description: "Organize mixed documents by type and date",
+      steps: [
+        "Upload multiple documents (PDF, DOC, images, etc.)",
+        "Choose 'File Type' organization to group by format",
+        "Use 'Date' organization to sort by modification time",
+        "Review organized groups with file statistics",
+        "Export organization report for documentation"
+      ],
+      tip: "Use date organization to quickly find recently modified files"
+    },
+    {
+      title: "Media Library Cleanup",
+      description: "Sort photos, videos, and audio files efficiently",
+      steps: [
+        "Select all media files from your folders",
+        "Organize by 'Size' to identify large files",
+        "Use search to filter specific file types",
+        "Review file details and compression information",
+        "Generate reports for storage optimization"
+      ]
+    },
+    {
+      title: "Project File Analysis",
+      description: "Analyze project files and folder structure",
+      steps: [
+        "Upload all project files at once",
+        "Organize alphabetically by name for better structure",
+        "Filter by category to focus on specific file types",
+        "Review total sizes and file count statistics",
+        "Export detailed file inventory for project documentation"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Offline File Organizer"
+        description="Organize multiple files by type, name, date, or size with detailed analysis and export reports using local processing. Free file management tool."
+        keywords={["file organizer", "file management", "organize files", "file sorting", "file analysis", "document organizer", "media organizer"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Offline File Organizer</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -619,6 +663,18 @@ export default function FileOrganizer() {
           </div>
         </CardContent>
       </Card>
+
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Offline File Organizer - Free File Management Tool"
+        description="Organize multiple files by type, name, date, or size with detailed analysis and export reports using local processing."
+      />
+      
+      <UsageGuide 
+        title="Offline File Organizer Usage Guide"
+        description="Learn how to effectively organize and analyze your files with powerful sorting and reporting features"
+        examples={usageExamples}
+      />
 
       <div className="text-center mt-8">
         <div className="mb-4">

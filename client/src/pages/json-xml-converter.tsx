@@ -7,6 +7,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Download, Upload, RefreshCw } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { useToast } from "@/hooks/use-toast";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function JsonXmlConverter() {
   const [jsonInput, setJsonInput] = useState("");
@@ -140,8 +144,52 @@ export default function JsonXmlConverter() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "API Data Format Conversion",
+      description: "Convert between JSON API responses and XML data formats",
+      steps: [
+        "Paste your JSON API response or XML data",
+        "Choose the conversion direction (JSON to XML or XML to JSON)",
+        "Click convert to transform the data format",
+        "Download the converted file or copy to clipboard",
+        "Use in your applications or integrations"
+      ],
+      tip: "Perfect for legacy system integrations requiring XML format"
+    },
+    {
+      title: "Configuration File Migration",
+      description: "Convert configuration files between JSON and XML formats",
+      steps: [
+        "Upload your configuration file (JSON or XML)",
+        "Select the target format for conversion",
+        "Review the converted structure for accuracy",
+        "Download the new configuration file",
+        "Update your application to use the new format"
+      ]
+    },
+    {
+      title: "Data Export Processing",
+      description: "Transform exported data between common formats",
+      steps: [
+        "Import your data export (JSON/XML format)",
+        "Convert to the required format for your system",
+        "Validate the structure and data integrity",
+        "Save the converted file for import",
+        "Use in spreadsheets, databases, or applications"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="JSON ↔ XML Converter"
+        description="Convert between JSON and XML formats instantly with bidirectional conversion. Free online tool with file upload support for data format transformation."
+        keywords={["json to xml", "xml to json", "data format converter", "json xml converter", "file conversion", "api data conversion"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">JSON ↔ XML Converter</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -296,6 +344,18 @@ export default function JsonXmlConverter() {
         </TabsContent>
       </Tabs>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="JSON ↔ XML Converter - Free Data Format Tool"
+        description="Convert between JSON and XML formats instantly with bidirectional conversion and file upload support."
+      />
+      
+      <UsageGuide 
+        title="JSON ↔ XML Converter Usage Guide"
+        description="Learn how to effectively convert between JSON and XML data formats for various use cases"
+        examples={usageExamples}
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">

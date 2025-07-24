@@ -9,6 +9,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Download, Upload, SortAsc, SortDesc, Filter, Merge } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { useToast } from "@/hooks/use-toast";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function TextLineTools() {
   const [input, setInput] = useState("");
@@ -137,8 +141,52 @@ export default function TextLineTools() {
   const inputStats = getStats(input);
   const outputStats = getStats(output);
 
+  const usageExamples = [
+    {
+      title: "Data Processing & Cleanup",
+      description: "Clean and organize messy text data efficiently",
+      steps: [
+        "Paste or upload your messy text data",
+        "Use 'Remove Duplicates' to eliminate repeated entries",
+        "Apply 'Remove Empty Lines' to clean up formatting",
+        "Use 'Trim Lines' to remove extra whitespace",
+        "Sort alphabetically for better organization"
+      ],
+      tip: "Combine multiple operations for comprehensive data cleanup"
+    },
+    {
+      title: "List Management",
+      description: "Organize and manipulate lists of any kind",
+      steps: [
+        "Import your list data (names, URLs, items, etc.)",
+        "Sort ascending or descending for organization",
+        "Remove duplicates to ensure unique entries",
+        "Number lines for ordered lists",
+        "Use shuffle for randomization when needed"
+      ]
+    },
+    {
+      title: "Text Format Conversion",
+      description: "Convert between different text formats and structures",
+      steps: [
+        "Input text in any line-based format",
+        "Use 'Merge Lines' with custom delimiters (comma, semicolon, etc.)",
+        "Convert comma-separated values back to lines with 'Split Lines'",
+        "Apply numbering for ordered content creation",
+        "Download processed results for use in other applications"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Text Line Tools"
+        description="Sort, deduplicate, merge, and manipulate text lines with powerful processing options. Free online text line manipulation tool for data cleanup."
+        keywords={["text line tools", "sort lines", "remove duplicates", "merge lines", "text processing", "line manipulation", "data cleanup"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Text Line Tools</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -348,6 +396,18 @@ Duplicate line"
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Text Line Tools - Free Line Processing Tool"
+        description="Sort, deduplicate, merge, and manipulate text lines with powerful processing options for data cleanup."
+      />
+      
+      <UsageGuide 
+        title="Text Line Tools Usage Guide"
+        description="Learn how to effectively process and manipulate text lines for data cleanup and organization"
+        examples={usageExamples}
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">
