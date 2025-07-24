@@ -41,6 +41,14 @@ export default function Home() {
           iconColor: "text-blue-600",
           title: "Base64 Encoder/Decoder",
           description: "Encode text or files to Base64 format or decode Base64 strings back to readable text."
+        },
+        {
+          href: "/string-to-json",
+          icon: "data_object",
+          iconColor: "text-purple-600",
+          title: "String to JSON Converter",
+          description: "Convert malformed strings to valid JSON. Fixes single quotes, unquoted keys, and trailing commas.",
+          badge: "🆕 New"
         }
       ]
     },
@@ -107,7 +115,7 @@ export default function Home() {
           icon: "text_fields",
           iconColor: "text-green-600",
           title: "Text Case Converter",
-          description: "Convert text between different case formats like camelCase, snake_case, kebab-case, and more."
+          description: "Convert text between different case formats like camelCase, snake_case, kebab-case, and more. Includes lowercase, UPPERCASE, and Capitalize options."
         },
         {
           href: "/text-diff-checker",
@@ -222,31 +230,53 @@ export default function Home() {
       ]
     },
     {
-      title: "Advanced Tools",
-      subtitle: "Power User Utilities",
+      title: "Spreadsheet Tools",
+      subtitle: "Excel & CSV Utilities",
       tools: [
+        {
+          href: "/excel-converter",
+          icon: "swap_horiz",
+          iconColor: "text-green-600",
+          title: "Excel ↔ CSV Converter",
+          description: "Convert between Excel (.xlsx) and CSV formats with support for multiple sheets and custom delimiters.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/data-cleaner",
+          icon: "cleaning_services",
+          iconColor: "text-blue-600",
+          title: "Smart Data Cleaner",
+          description: "Clean messy Excel data: remove currency symbols, convert text to numbers, handle percentages.",
+          badge: "🆕 New"
+        },
         {
           href: "/csv-merger",
           icon: "merge",
-          iconColor: "text-blue-600",
+          iconColor: "text-purple-600",
           title: "CSV Merger & Splitter",
           description: "Combine multiple CSV files or split large CSVs by rows or file size.",
           badge: "🆕 New"
         },
+        {
+          href: "/csv-viewer",
+          icon: "table_view",
+          iconColor: "text-indigo-600",
+          title: "CSV/TSV Viewer",
+          description: "View and sort CSV/TSV files in a tabular grid with filtering and column hiding features.",
+          badge: "🆕 New"
+        }
+      ]
+    },
+    {
+      title: "Advanced Tools",
+      subtitle: "Power User Utilities",
+      tools: [
         {
           href: "/text-analyzer",
           icon: "analytics",
           iconColor: "text-purple-600",
           title: "Text Analyzer",
           description: "Analyze text for readability, word count, sentence structure, and writing quality.",
-          badge: "🆕 New"
-        },
-        {
-          href: "/csv-viewer",
-          icon: "table_view",
-          iconColor: "text-blue-600",
-          title: "CSV/TSV Viewer",
-          description: "View and sort CSV/TSV files in a tabular grid with filtering and column hiding features.",
           badge: "🆕 New"
         },
         {

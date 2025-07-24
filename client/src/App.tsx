@@ -34,6 +34,9 @@ import WhitespaceTool from "@/pages/whitespace-tool";
 import CsvViewer from "@/pages/csv-viewer";
 import TextEncryptor from "@/pages/text-encryptor";
 import ColorPaletteGenerator from "@/pages/color-palette-generator";
+import StringToJson from "@/pages/string-to-json";
+import ExcelConverter from "@/pages/excel-converter";
+import DataCleaner from "@/pages/data-cleaner";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -70,6 +73,9 @@ function Router() {
         <Route path="/csv-viewer" component={CsvViewer} />
         <Route path="/text-encryptor" component={TextEncryptor} />
         <Route path="/color-palette-generator" component={ColorPaletteGenerator} />
+        <Route path="/string-to-json" component={StringToJson} />
+        <Route path="/excel-converter" component={ExcelConverter} />
+        <Route path="/data-cleaner" component={DataCleaner} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
