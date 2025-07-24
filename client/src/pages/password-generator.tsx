@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ToolSEO } from "@/components/tool-seo";
 import { ShareButtons } from "@/components/share-buttons";
 import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function PasswordGenerator() {
   const [password, setPassword] = useState("");
@@ -196,6 +197,13 @@ export default function PasswordGenerator() {
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Password Generator</h1>
             <p className="text-gray-600 dark:text-gray-300 mt-1">Create secure passwords with customizable rules</p>
           </div>
+          <BookmarkButton 
+            href="/password-generator"
+            title="Password Generator"
+            icon="security"
+            iconColor="text-red-600"
+            description="Create secure passwords with customizable rules"
+          />
         </div>
         <div className="flex flex-wrap gap-2 justify-center">
           <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">

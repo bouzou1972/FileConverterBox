@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ToolSEO } from "@/components/tool-seo";
 import { ShareButtons } from "@/components/share-buttons";
 import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 import QRCode from "qrcode";
 
 export default function QRGenerator() {
@@ -211,6 +212,13 @@ export default function QRGenerator() {
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">QR Code Generator</h1>
             <p className="text-gray-600 dark:text-gray-300 mt-1">Generate QR codes locally for URLs, text, and WiFi credentials</p>
           </div>
+          <BookmarkButton 
+            href="/qr-generator"
+            title="QR Code Generator"
+            icon="qr_code"
+            iconColor="text-blue-600"
+            description="Generate QR codes locally for URLs, text, and WiFi credentials"
+          />
         </div>
         <div className="flex flex-wrap gap-2 justify-center">
           <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">
