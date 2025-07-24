@@ -26,6 +26,7 @@ export default function SEOOptimizer() {
   const [content, setContent] = useState('');
   const [report, setReport] = useState<SEOReport | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
 
   const analyzeContent = async () => {
     if (!keyword.trim() || !content.trim()) {
@@ -115,6 +116,87 @@ export default function SEOOptimizer() {
     return "Too High";
   };
 
+  const getKeywordSuggestions = (inputKeyword: string): string[] => {
+    const related: Record<string, string[]> = {
+      "converter": ["file converter", "online converter", "PDF converter", "CSV to JSON", "document converter", "format converter"],
+      "seo": ["seo tools", "on-page seo", "keyword optimization", "seo checker", "search engine optimization", "seo analysis"],
+      "ai": ["ai content", "ai tools", "ai writer", "chatbot seo", "artificial intelligence", "machine learning"],
+      "file": ["file converter", "file upload", "file processing", "file format", "document management", "file sharing"],
+      "json": ["json formatter", "json validator", "json converter", "api response", "data structure", "javascript object"],
+      "pdf": ["pdf converter", "pdf generator", "pdf tools", "document processing", "pdf editor", "file conversion"],
+      "csv": ["csv converter", "data processing", "spreadsheet tools", "excel converter", "data analysis", "file import"],
+      "text": ["text processing", "text analyzer", "content optimization", "writing tools", "text formatter", "document editor"],
+      "image": ["image converter", "photo editor", "image optimization", "graphics tools", "picture processing", "visual content"],
+      "color": ["color picker", "color palette", "design tools", "hex colors", "rgb converter", "color scheme"],
+      "html": ["html formatter", "web development", "html validator", "markup language", "frontend tools", "code editor"],
+      "javascript": ["js tools", "javascript formatter", "web development", "frontend programming", "code optimization", "js validator"],
+      "markdown": ["markdown editor", "documentation tools", "content writing", "text formatting", "readme generator", "markup language"],
+      "base64": ["base64 encoder", "data encoding", "file encoding", "binary data", "string conversion", "encoding tools"],
+      "password": ["password generator", "security tools", "strong passwords", "authentication", "password manager", "cybersecurity"],
+      "qr": ["qr code generator", "barcode tools", "mobile scanning", "quick response", "contact sharing", "wifi qr codes"],
+      "excel": ["excel converter", "spreadsheet tools", "data processing", "xlsx files", "office tools", "data analysis"],
+      "regex": ["regular expressions", "pattern matching", "text validation", "string processing", "search patterns", "regex tester"],
+      "hash": ["hash generator", "data integrity", "checksum", "security verification", "file validation", "cryptographic hash"],
+      "timestamp": ["time converter", "date tools", "unix timestamp", "datetime formatting", "time zone converter", "epoch time"],
+      "uuid": ["unique identifier", "guid generator", "database keys", "random id", "identifier tools", "uuid v4"],
+      "minify": ["code minification", "file compression", "optimization tools", "build tools", "performance", "size reduction"],
+      "beautify": ["code formatter", "pretty print", "code organization", "syntax highlighting", "code readability", "development tools"],
+      "api": ["api tools", "rest api", "json api", "web services", "backend development", "api testing"],
+      "database": ["database tools", "sql converter", "data migration", "database design", "query tools", "data management"],
+      "web": ["web tools", "frontend development", "web optimization", "website tools", "web performance", "online utilities"],
+      "content": ["content optimization", "content marketing", "seo content", "writing tools", "content analysis", "digital marketing"],
+      "marketing": ["digital marketing", "seo marketing", "content marketing", "online promotion", "marketing tools", "brand optimization"],
+      "analytics": ["web analytics", "data analysis", "performance metrics", "tracking tools", "business intelligence", "data insights"],
+      "optimization": ["seo optimization", "performance optimization", "code optimization", "website speed", "conversion optimization", "efficiency tools"],
+      "security": ["web security", "data protection", "encryption tools", "security audit", "vulnerability check", "cybersecurity tools"],
+      "mobile": ["mobile optimization", "responsive design", "mobile seo", "app development", "mobile tools", "device compatibility"],
+      "social": ["social media", "social sharing", "social seo", "social marketing", "social tools", "social optimization"],
+      "email": ["email marketing", "email tools", "email validation", "newsletter tools", "email optimization", "email automation"],
+      "ecommerce": ["ecommerce seo", "product optimization", "online store", "shopping cart", "product pages", "conversion tools"],
+      "wordpress": ["wordpress seo", "wp optimization", "wordpress tools", "cms tools", "blog optimization", "website builder"],
+      "google": ["google tools", "google seo", "search console", "google analytics", "google ads", "search optimization"],
+      "bing": ["bing seo", "microsoft search", "search engine", "bing webmaster", "search optimization", "search marketing"],
+      "local": ["local seo", "local search", "google my business", "local marketing", "location-based", "local optimization"],
+      "technical": ["technical seo", "website audit", "seo analysis", "site performance", "crawling", "indexing"],
+      "link": ["link building", "backlinks", "internal linking", "link analysis", "authority building", "link optimization"],
+      "keyword": ["keyword research", "keyword analysis", "search terms", "keyword density", "long tail keywords", "keyword planning"],
+      "meta": ["meta tags", "meta description", "title tags", "meta optimization", "html meta", "seo meta"],
+      "schema": ["schema markup", "structured data", "rich snippets", "json-ld", "seo schema", "search results"],
+      "sitemap": ["xml sitemap", "sitemap generator", "site structure", "crawling", "indexing", "seo sitemap"],
+      "robots": ["robots.txt", "crawl directives", "search bots", "indexing control", "seo robots", "crawling rules"]
+    };
+
+    const lower = inputKeyword.toLowerCase().trim();
+    if (!lower) return [];
+
+    // Direct match
+    if (related[lower]) {
+      return related[lower];
+    }
+
+    // Partial matches
+    const partialMatches: string[] = [];
+    Object.entries(related).forEach(([key, values]) => {
+      if (key.includes(lower) || lower.includes(key)) {
+        partialMatches.push(...values);
+      }
+    });
+
+    // Remove duplicates and limit to 6 suggestions
+    return [...new Set(partialMatches)].slice(0, 6);
+  };
+
+  const handleKeywordChange = (value: string) => {
+    setKeyword(value);
+    const newSuggestions = getKeywordSuggestions(value);
+    setSuggestions(newSuggestions);
+  };
+
+  const selectSuggestion = (suggestion: string) => {
+    setKeyword(suggestion);
+    setSuggestions([]);
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <ToolSEO 
@@ -152,12 +234,34 @@ export default function SEOOptimizer() {
               <Input
                 type="text"
                 value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
+                onChange={(e) => handleKeywordChange(e.target.value)}
                 placeholder="e.g., file converter, SEO optimization"
                 className="w-full"
               />
+              
+              {/* Keyword Suggestions */}
+              {suggestions.length > 0 && (
+                <div className="mt-2 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Search className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                    <span className="text-sm font-medium text-blue-800 dark:text-blue-200">Related keywords:</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {suggestions.map((suggestion, index) => (
+                      <button
+                        key={index}
+                        onClick={() => selectSuggestion(suggestion)}
+                        className="px-2 py-1 text-xs bg-white dark:bg-gray-700 border border-blue-300 dark:border-blue-600 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors text-blue-700 dark:text-blue-300"
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
               <p className="text-xs text-gray-500 mt-1">
-                Enter the main keyword you want to optimize for
+                Enter the main keyword you want to optimize for. Click on suggestions for quick input.
               </p>
             </div>
 

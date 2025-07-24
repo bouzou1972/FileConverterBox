@@ -40,6 +40,9 @@ Preferred communication style: Simple, everyday language.
   - SEO element validation (title tags, H1 tags, meta descriptions)
   - Real-time content statistics (word count, sentence count, keyword matches)
   - Visual indicators for SEO compliance with checkmarks and color coding
+  - Intelligent keyword suggestions with 50+ categories and 300+ related terms
+  - Client-side keyword association engine with partial matching capabilities
+  - Interactive suggestion buttons for quick keyword selection
   - Comprehensive usage guide with blog post and landing page optimization examples
 - Integrated tool into "👨‍💻 Code Utilities" category on homepage
 - Full SEO optimization with ToolSEO, ShareButtons, and UsageGuide components
