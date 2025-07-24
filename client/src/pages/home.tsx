@@ -148,6 +148,14 @@ export default function Home() {
           title: "Offline File Organizer",
           description: "Organize multiple files by type, name, date, or size with detailed analysis and export reports.",
           badge: "🆕 New"
+        },
+        {
+          href: "/file-splitter",
+          icon: "content_cut",
+          iconColor: "text-red-600",
+          title: "Large File Splitter & Joiner",
+          description: "Split large files into smaller chunks for easier sharing, then rejoin them back to the original file.",
+          badge: "🆕 New"
         }
       ]
     },

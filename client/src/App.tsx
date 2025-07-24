@@ -51,6 +51,7 @@ import PassiveVoiceDetector from "@/pages/passive-voice-detector";
 import AcademicWritingFormatter from "@/pages/academic-writing-formatter";
 import ZipViewer from "@/pages/zip-viewer";
 import FileOrganizer from "@/pages/file-organizer";
+import FileSplitter from "@/pages/file-splitter";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -104,6 +105,7 @@ function Router() {
         <Route path="/academic-writing-formatter" component={AcademicWritingFormatter} />
         <Route path="/zip-viewer" component={ZipViewer} />
         <Route path="/file-organizer" component={FileOrganizer} />
+        <Route path="/file-splitter" component={FileSplitter} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

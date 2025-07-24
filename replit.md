@@ -43,6 +43,7 @@ The application provides various developer utilities grouped by category, now in
 - **Base64 Encoder/Decoder**: Encode text/files to Base64 or decode Base64 strings with file support
 - **ZIP File Viewer & Extractor**: View ZIP archive contents, preview text files, and extract individual files or entire archives with complete privacy
 - **Offline File Organizer**: Organize multiple files by type, name, date, or size with detailed analysis and export reports using local processing
+- **Large File Splitter & Joiner**: Split large files into smaller chunks for easier sharing or storage, then rejoin them back to the original file
 
 #### PDF Tools (High Demand)
 - **PDF Converter**: Text, HTML, and image to PDF conversion with formatting options
