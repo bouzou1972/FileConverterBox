@@ -8,6 +8,9 @@ import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
 import { convertMarkdownToHTML, createFullHTMLDocument, sampleMarkdown } from "@/lib/utils/markdown";
 import { downloadFile } from "@/lib/utils/data-converter";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 export default function MarkdownConverter() {
   const [markdown, setMarkdown] = useState("");
@@ -52,8 +55,52 @@ export default function MarkdownConverter() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Documentation Creation",
+      description: "Convert Markdown documentation to HTML for web publishing",
+      steps: [
+        "Write documentation in Markdown format",
+        "Paste Markdown content into the converter",
+        "Preview the HTML output with live rendering",
+        "Download the converted HTML file",
+        "Host the HTML on your website or documentation platform"
+      ],
+      tip: "Use the sample content to learn Markdown syntax quickly"
+    },
+    {
+      title: "Blog Content Conversion",
+      description: "Transform Markdown blog posts to HTML format",
+      steps: [
+        "Write blog posts in Markdown for better formatting control",
+        "Convert to HTML for CMS or static site generators",
+        "Preview the rendered content before publishing",
+        "Copy HTML to your blogging platform",
+        "Maintain Markdown originals for easy editing"
+      ]
+    },
+    {
+      title: "README File Publishing",
+      description: "Convert GitHub README files to standalone HTML pages",
+      steps: [
+        "Copy Markdown content from GitHub README files",
+        "Convert to HTML with proper styling",
+        "Preview the formatted content",
+        "Download as HTML for hosting on websites",
+        "Share formatted documentation easily"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="Markdown to HTML Converter"
+        description="Convert Markdown to HTML with live preview and download. Free online Markdown converter supporting all standard syntax including tables, code blocks, and links."
+        keywords={["markdown to html", "markdown converter", "md to html", "markdown parser", "markdown editor", "html converter"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <Card className="shadow-lg">
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -155,6 +202,17 @@ export default function MarkdownConverter() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Markdown to HTML Converter - Free Online Tool"
+        description="Convert Markdown to HTML with live preview. Perfect for documentation, blogs, and web content."
+      />
+      
+      <UsageGuide 
+        examples={usageExamples}
+        toolName="Markdown to HTML Converter"
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
       </div>

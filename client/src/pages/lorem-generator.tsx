@@ -11,6 +11,9 @@ import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
 import { generateLorem, type LoremOptions } from "@/lib/utils/lorem";
 import { downloadFile } from "@/lib/utils/data-converter";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 export default function LoremGenerator() {
   const [type, setType] = useState<"words" | "sentences" | "paragraphs">("paragraphs");
@@ -55,8 +58,49 @@ export default function LoremGenerator() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Web Design & Development",
+      description: "Create placeholder content for websites and applications",
+      steps: [
+        "Generate 3-5 paragraphs for page content mockups",
+        "Use HTML formatting for styled text previews",
+        "Create different lengths for responsive design testing",
+        "Generate varied content for different page sections"
+      ],
+      tip: "Start with Lorem ipsum to maintain the traditional placeholder text format"
+    },
+    {
+      title: "Print Design & Layout",
+      description: "Fill design layouts with placeholder text",
+      steps: [
+        "Generate specific word counts for headlines and body text",
+        "Create multiple paragraphs for magazine layouts",
+        "Generate sentences for caption placeholders",
+        "Download as text file for design software import"
+      ]
+    },
+    {
+      title: "Content Planning",
+      description: "Estimate content length and layout requirements",
+      steps: [
+        "Generate sample content to test reading flow",
+        "Create placeholder text for content management systems",
+        "Test typography and spacing with realistic text lengths",
+        "Plan content structure with varied paragraph sizes"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="Lorem Ipsum Generator"
+        description="Generate Lorem Ipsum placeholder text in words, sentences, or paragraphs. Free Lorem generator with HTML formatting and download options."
+        keywords={["lorem ipsum generator", "placeholder text", "dummy text", "lorem generator", "ipsum generator", "text placeholder"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <Card className="shadow-lg">
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -172,6 +216,17 @@ export default function LoremGenerator() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Lorem Ipsum Generator - Free Placeholder Text Tool"
+        description="Generate Lorem Ipsum placeholder text in words, sentences, or paragraphs with HTML formatting options."
+      />
+      
+      <UsageGuide 
+        examples={usageExamples}
+        toolName="Lorem Ipsum Generator"
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
       </div>

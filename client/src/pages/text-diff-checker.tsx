@@ -7,6 +7,9 @@ import { useToast } from "@/hooks/use-toast";
 import { Copy, RotateCcw, FileText, GitCompare } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 interface DiffResult {
   type: 'equal' | 'delete' | 'insert' | 'replace';
@@ -209,8 +212,50 @@ export default function TextDiffChecker() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Document Version Comparison",
+      description: "Compare different versions of documents to track changes",
+      steps: [
+        "Paste the original document text in the left panel",
+        "Paste the updated document text in the right panel",
+        "Click 'Compare Text' to see the differences",
+        "Review additions (green), deletions (red), and modifications (yellow)",
+        "Copy the diff report for documentation purposes"
+      ],
+      tip: "Use this tool for comparing different versions of contracts, articles, or any text documents"
+    },
+    {
+      title: "Code Review and Changes",
+      description: "Compare code snippets to identify modifications",
+      steps: [
+        "Enter the original code in the first text area",
+        "Enter the modified code in the second text area", 
+        "Compare to see exactly what lines changed",
+        "Use the detailed report for code review documentation"
+      ]
+    },
+    {
+      title: "Content Migration",
+      description: "Verify content was correctly migrated or copied",
+      steps: [
+        "Enter original content and migrated content",
+        "Compare to ensure no data was lost or changed",
+        "Identify any formatting or content differences",
+        "Generate a report of all changes found"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="Text Diff Checker"
+        description="Compare two text blocks to find differences, additions, and deletions. Free online text comparison tool with detailed analysis and statistics."
+        keywords={["text diff", "text compare", "difference checker", "text comparison", "document compare", "file diff"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <Card className="shadow-lg">
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -354,6 +399,17 @@ export default function TextDiffChecker() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Text Diff Checker - Free Online Comparison Tool"
+        description="Compare two text blocks to find differences, additions, and deletions with detailed analysis."
+      />
+      
+      <UsageGuide 
+        examples={usageExamples}
+        toolName="Text Diff Checker"
+      />
+
       <div className="text-center mt-8">
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>

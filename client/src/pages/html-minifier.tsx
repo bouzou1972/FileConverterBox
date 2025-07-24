@@ -10,6 +10,9 @@ import { Copy, Download, Upload, FileText, Minimize2, Maximize2 } from "lucide-r
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
 import { useToast } from "@/hooks/use-toast";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 export default function HtmlMinifier() {
   const [input, setInput] = useState("");
@@ -197,8 +200,52 @@ export default function HtmlMinifier() {
 
   const sizeReduction = getFileSizeReduction();
 
+  const usageExamples = [
+    {
+      title: "Website Optimization",
+      description: "Reduce HTML file sizes for faster website loading",
+      steps: [
+        "Copy HTML code from your website files",
+        "Choose minification options (remove comments, whitespace)",
+        "Click 'Minify' to compress the HTML",
+        "Compare file size reduction statistics",
+        "Download or copy the optimized HTML"
+      ],
+      tip: "Enable all minification options for maximum file size reduction"
+    },
+    {
+      title: "Code Formatting & Beautification", 
+      description: "Clean up messy HTML code for better readability",
+      steps: [
+        "Paste minified or messy HTML code",
+        "Click 'Beautify' to format with proper indentation",
+        "Review the clean, readable HTML structure",
+        "Copy the formatted code for development",
+        "Use for code reviews and documentation"
+      ]
+    },
+    {
+      title: "Email Template Optimization",
+      description: "Compress HTML email templates for better deliverability",
+      steps: [
+        "Upload HTML email template files",
+        "Remove unnecessary whitespace and comments",
+        "Minify inline CSS for smaller email size",
+        "Test the compressed template",
+        "Use in email marketing campaigns"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="HTML Minifier & Beautifier"
+        description="Minify HTML to reduce file size or beautify HTML for better readability. Free online HTML optimizer with customizable compression options."
+        keywords={["html minifier", "html beautifier", "html optimizer", "compress html", "html formatter", "minify html"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <div className="flex items-start justify-between mb-8">
         <div className="text-center flex-1">
           <h1 className="text-3xl font-bold mb-4">HTML Minifier / Beautifier</h1>
@@ -382,6 +429,17 @@ export default function HtmlMinifier() {
         </Button>
       </div>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="HTML Minifier & Beautifier - Free Code Optimizer"
+        description="Minify HTML to reduce file size or beautify HTML for better readability with customizable compression options."
+      />
+      
+      <UsageGuide 
+        examples={usageExamples}
+        toolName="HTML Minifier & Beautifier"
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">

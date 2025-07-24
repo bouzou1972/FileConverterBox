@@ -9,6 +9,9 @@ import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
 import { generateUUID, generateBulkUUIDs } from "@/lib/utils/uuid";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 export default function UuidGenerator() {
   const [currentUUID, setCurrentUUID] = useState("");
@@ -32,8 +35,49 @@ export default function UuidGenerator() {
 
 
 
+  const usageExamples = [
+    {
+      title: "Database Primary Keys",
+      description: "Generate unique identifiers for database records",
+      steps: [
+        "Click 'Generate UUID' to create a new unique identifier",
+        "Copy the UUID to use as a primary key",
+        "Use bulk generation for importing multiple records",
+        "Ensure each record has a unique UUID identifier"
+      ],
+      tip: "UUIDs are globally unique and perfect for distributed databases"
+    },
+    {
+      title: "API Development",
+      description: "Create unique identifiers for REST API resources",
+      steps: [
+        "Generate UUIDs for new resource creation endpoints",
+        "Use UUIDs as resource identifiers in API URLs",
+        "Generate bulk UUIDs for testing and mock data",
+        "Replace sequential IDs with UUIDs for better security"
+      ]
+    },
+    {
+      title: "Session Management",
+      description: "Generate unique session tokens and tracking IDs",
+      steps: [
+        "Create unique session identifiers for user authentication",
+        "Generate tracking IDs for analytics and logging",
+        "Use UUIDs for temporary file names and cache keys",
+        "Create unique identifiers for background jobs"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="UUID v4 Generator"
+        description="Generate UUID v4 identifiers with bulk generation options. Free online UUID generator for unique identification needs in databases and applications."
+        keywords={["uuid generator", "uuid v4", "unique identifier", "guid generator", "uuid bulk", "uuid tool"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <Card className="shadow-lg">
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -117,6 +161,17 @@ export default function UuidGenerator() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="UUID v4 Generator - Free Online Unique Identifier Tool"
+        description="Generate UUID v4 identifiers with bulk generation options for databases, APIs, and applications."
+      />
+      
+      <UsageGuide 
+        examples={usageExamples}
+        toolName="UUID v4 Generator"
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">

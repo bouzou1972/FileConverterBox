@@ -7,6 +7,9 @@ import { useToast } from "@/hooks/use-toast";
 import { Copy, RotateCcw, Type } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 export default function TextCaseConverter() {
   const [inputText, setInputText] = useState("");
@@ -149,8 +152,50 @@ export default function TextCaseConverter() {
     { key: 'pathcase', label: 'path/case', description: 'words/separated/by/slashes' }
   ];
 
+  const usageExamples = [
+    {
+      title: "Programming & Development",
+      description: "Convert variable names between different coding conventions",
+      steps: [
+        "Enter text in any format (spaces, mixed case, etc.)",
+        "Choose the appropriate case format for your code",
+        "Copy camelCase for JavaScript variables",
+        "Use snake_case for Python functions and variables",
+        "Apply PascalCase for class names and components"
+      ],
+      tip: "Most programming languages have specific naming conventions"
+    },
+    {
+      title: "Content & Writing",
+      description: "Format text for different content needs",
+      steps: [
+        "Convert headings to Title Case for proper formatting",
+        "Use UPPERCASE for emphasis or constants",
+        "Apply sentence case for readable content",
+        "Convert between formats for consistency"
+      ]
+    },
+    {
+      title: "Data Processing",
+      description: "Standardize text data formats in bulk operations",
+      steps: [
+        "Convert file names to consistent formats",
+        "Standardize database field names",
+        "Format API endpoint names consistently",
+        "Clean up imported data with mixed case formats"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="Text Case Converter"
+        description="Convert text between 10 different case formats including camelCase, snake_case, PascalCase, and more. Free online text case converter for developers and writers."
+        keywords={["text case converter", "camelcase", "snake_case", "pascalcase", "uppercase", "lowercase", "title case"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <Card className="shadow-lg">
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -246,6 +291,17 @@ export default function TextCaseConverter() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Text Case Converter - Free Case Format Tool"
+        description="Convert text between 10 different case formats including camelCase, snake_case, PascalCase, and more."
+      />
+      
+      <UsageGuide 
+        examples={usageExamples}
+        toolName="Text Case Converter"
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
       </div>

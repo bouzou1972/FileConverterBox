@@ -6,6 +6,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Clock } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 export default function TimestampConverter() {
   const [unixInput, setUnixInput] = useState("");
@@ -103,8 +106,49 @@ export default function TimestampConverter() {
     return `${diffDay} days ago`;
   };
 
+  const usageExamples = [
+    {
+      title: "System Administration",
+      description: "Convert timestamps for log analysis and debugging",
+      steps: [
+        "Copy UNIX timestamp from system logs",
+        "Paste into the converter to see human-readable date",
+        "Use timezone selection for accurate local time",
+        "Convert back to timestamp for system configuration"
+      ],
+      tip: "Use 'Current Timestamp' button to get the exact current time"
+    },
+    {
+      title: "Database Management",
+      description: "Work with timestamp fields in databases",
+      steps: [
+        "Convert database timestamp values to readable dates",
+        "Generate timestamps for date range queries",
+        "Convert user input dates to UNIX timestamps",
+        "Verify timestamp accuracy across different systems"
+      ]
+    },
+    {
+      title: "API Development",
+      description: "Handle timestamp data in web applications",
+      steps: [
+        "Convert API response timestamps to display dates",
+        "Generate timestamps for API request parameters",
+        "Debug timestamp-related issues in applications",
+        "Test with different timezone scenarios"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="Timestamp Converter"
+        description="Convert UNIX timestamps to human-readable dates and vice versa. Free online timestamp converter with timezone support for developers and system administrators."
+        keywords={["timestamp converter", "unix timestamp", "epoch converter", "date converter", "timestamp to date", "unix time"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <Card className="shadow-lg">
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -219,6 +263,17 @@ export default function TimestampConverter() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Timestamp Converter - Free UNIX Timestamp Tool"
+        description="Convert UNIX timestamps to human-readable dates and vice versa with timezone support for developers."
+      />
+      
+      <UsageGuide 
+        examples={usageExamples}
+        toolName="Timestamp Converter"
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
       </div>

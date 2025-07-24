@@ -8,6 +8,9 @@ import { Copy, RefreshCw } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
 import { useToast } from "@/hooks/use-toast";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 export default function NumberBaseConverter() {
   const [input, setInput] = useState("");
@@ -125,8 +128,49 @@ export default function NumberBaseConverter() {
     return value.replace(/(.{4})/g, '$1 ').trim();
   };
 
+  const usageExamples = [
+    {
+      title: "Programming & Computer Science",
+      description: "Convert between number systems for programming tasks",
+      steps: [
+        "Enter a decimal number like 255 to see its hex equivalent (FF)",
+        "Convert binary patterns to decimal for calculations",
+        "Use hexadecimal for color codes and memory addresses",
+        "Convert file permissions from octal to binary representation"
+      ],
+      tip: "Programmers often use hex (base 16) for memory addresses and color codes"
+    },
+    {
+      title: "Digital Electronics",
+      description: "Work with binary representations in digital systems",
+      steps: [
+        "Convert logic gate outputs from binary to decimal",
+        "Analyze digital signal patterns using different bases",
+        "Convert between bases for digital circuit design",
+        "Understand binary representations of digital data"
+      ]
+    },
+    {
+      title: "Data Analysis", 
+      description: "Convert between bases for data interpretation",
+      steps: [
+        "Convert hexadecimal error codes to decimal",
+        "Analyze binary flags and bit patterns",
+        "Convert octal file permissions to understand access rights",
+        "Work with different encoding systems"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Number Base Converter"
+        description="Convert numbers between binary, octal, decimal, and hexadecimal formats instantly. Free online base converter for programming and computer science."
+        keywords={["number base converter", "binary converter", "hexadecimal converter", "octal converter", "decimal converter", "base conversion"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <div className="flex items-start justify-between mb-8">
         <div className="text-center flex-1">
           <h1 className="text-3xl font-bold mb-4">Number Base Converter</h1>
@@ -338,6 +382,17 @@ export default function NumberBaseConverter() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Number Base Converter - Free Binary Hex Decimal Tool"
+        description="Convert numbers between binary, octal, decimal, and hexadecimal formats instantly. Perfect for programming and computer science."
+      />
+      
+      <UsageGuide 
+        examples={usageExamples}
+        toolName="Number Base Converter"
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">

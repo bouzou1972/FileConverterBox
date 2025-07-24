@@ -6,6 +6,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 interface RegexMatch {
   match: string;
@@ -78,8 +81,49 @@ export default function RegexTester() {
     testRegex();
   }, [pattern, testString, globalFlag, ignoreCaseFlag, multilineFlag]);
 
+  const usageExamples = [
+    {
+      title: "Email Validation",
+      description: "Test if an email address follows the correct format",
+      steps: [
+        "Enter pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+        "Enter test string: user@example.com",
+        "Check that it matches valid email formats",
+        "Test invalid emails to ensure they don't match"
+      ],
+      tip: "Use the global flag to test multiple email addresses in one text block"
+    },
+    {
+      title: "Phone Number Extraction", 
+      description: "Extract phone numbers from text content",
+      steps: [
+        "Enter pattern: \\(\\d{3}\\)\\s\\d{3}-\\d{4}",
+        "Enter test text with phone numbers: Call us at (555) 123-4567",
+        "Use global flag to find all phone numbers",
+        "Adjust pattern for different phone formats"
+      ]
+    },
+    {
+      title: "Data Validation",
+      description: "Validate specific data formats like ZIP codes, dates, or IDs", 
+      steps: [
+        "Create pattern for your data format",
+        "Test with valid and invalid examples",
+        "Use flags appropriately (global for multiple matches)",
+        "Refine pattern based on test results"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="Regex Tester"
+        description="Test regular expressions with live feedback and match highlighting. Free online regex tester with pattern validation, flags support, and detailed match analysis."
+        keywords={["regex tester", "regular expression", "pattern matching", "regex validator", "regex online", "regex tool"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <Card className="shadow-lg">
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -204,6 +248,17 @@ export default function RegexTester() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Regex Tester - Free Online Regular Expression Tool"
+        description="Test regular expressions with live feedback and match highlighting. Perfect for pattern validation and development."
+      />
+      
+      <UsageGuide 
+        examples={usageExamples}
+        toolName="Regex Tester"
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">

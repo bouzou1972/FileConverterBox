@@ -24,6 +24,10 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import JSZip from "jszip";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface ZipEntry {
   name: string;
@@ -329,8 +333,52 @@ export default function ZipViewer() {
   const totalFiles = zipEntries.filter(e => !e.isFolder).length;
   const totalFolders = zipEntries.filter(e => e.isFolder).length;
 
+  const usageExamples = [
+    {
+      title: "Archive Inspection",
+      description: "View ZIP contents without extracting files",
+      steps: [
+        "Upload ZIP file using the file picker",
+        "Browse through all files and folders",
+        "Preview text files directly in browser",
+        "Check file sizes and compression ratios",
+        "Search for specific files by name"
+      ],
+      tip: "Use search to quickly find files in large archives"
+    },
+    {
+      title: "File Extraction",
+      description: "Extract specific files from ZIP archives",
+      steps: [
+        "Browse ZIP contents to find needed files",
+        "Click download button for individual files",
+        "Preview text files before downloading",
+        "Extract multiple files one by one",
+        "Verify file integrity and sizes"
+      ]
+    },
+    {
+      title: "Archive Analysis",
+      description: "Analyze ZIP structure and compression efficiency",
+      steps: [
+        "View compression ratios for each file",
+        "Check original vs compressed file sizes",
+        "Analyze folder structure and organization",
+        "Identify file types within the archive",
+        "Review modification dates and metadata"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="ZIP File Viewer & Extractor"
+        description="View ZIP archive contents, preview text files, and extract individual files with complete privacy. Free online ZIP viewer with file extraction capabilities."
+        keywords={["zip viewer", "zip extractor", "archive viewer", "zip preview", "file extraction", "zip contents", "archive analysis"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">ZIP File Viewer & Extractor</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">

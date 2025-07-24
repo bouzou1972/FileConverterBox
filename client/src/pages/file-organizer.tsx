@@ -25,6 +25,10 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface FileInfo {
   file: File;

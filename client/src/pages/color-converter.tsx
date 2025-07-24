@@ -9,6 +9,9 @@ import { Copy, Palette, RefreshCw } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
 import { useToast } from "@/hooks/use-toast";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 
 interface ColorValues {
   hex: string;
@@ -203,8 +206,52 @@ export default function ColorConverter() {
 
   const formats = getColorFormats();
 
+  const usageExamples = [
+    {
+      title: "Web Design & Development",
+      description: "Convert colors between formats for CSS and web design",
+      steps: [
+        "Enter any color format (HEX, RGB, or HSL)",
+        "Get instant conversions to all other formats",
+        "Use the color picker for visual selection",
+        "Copy CSS-ready values for your stylesheets",
+        "Generate Tailwind CSS color classes"
+      ],
+      tip: "Use the random color generator for design inspiration"
+    },
+    {
+      title: "Brand & UI Design",
+      description: "Maintain color consistency across design systems",
+      steps: [
+        "Enter brand colors in any format",
+        "Convert to all formats for different design tools",
+        "Use RGB values for digital displays",
+        "Use HSL for color adjustments and variations",
+        "Copy exact values to maintain brand consistency"
+      ]
+    },
+    {
+      title: "Color Analysis & Matching",
+      description: "Analyze and match colors from various sources",
+      steps: [
+        "Use color picker to select exact colors",
+        "Adjust hue, saturation, and lightness with sliders",
+        "Compare different color formats side by side",
+        "Find closest Tailwind color equivalents",
+        "Generate color variations for design systems"
+      ]
+    }
+  ];
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Color Converter"
+        description="Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders. Free online color converter for web designers and developers."
+        keywords={["color converter", "hex to rgb", "rgb to hsl", "color picker", "css colors", "color formats", "web colors"]}
+        canonicalUrl={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
+      
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Color Converter</h1>
@@ -438,6 +485,16 @@ export default function ColorConverter() {
           Thanks for using this free tool! Your support keeps it ad-free and private.
         </p>
       </div>
+      
+      <ShareButtons 
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title="Color Converter - Free HEX RGB HSL Tool"
+        description="Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders for web design."
+      />
+      
+      <UsageGuide 
+        examples={usageExamples}
+      />
     </div>
   );
 }
