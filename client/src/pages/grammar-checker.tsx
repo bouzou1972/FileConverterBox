@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { CheckCircle, AlertTriangle, FileText, RefreshCw, BookOpen } from "lucide-react";
+import { CheckCircle, AlertTriangle, FileText, RefreshCw, BookOpen, Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
@@ -22,6 +22,10 @@ export default function GrammarChecker() {
   const [issues, setIssues] = useState<GrammarIssue[]>([]);
   const [isChecking, setIsChecking] = useState(false);
   const [stats, setStats] = useState({ words: 0, sentences: 0, issues: 0 });
+  const [showHighlights, setShowHighlights] = useState(true);
+  const [selectedIssue, setSelectedIssue] = useState<number | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const highlightRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   // Extended grammar and spelling rules
@@ -146,16 +150,56 @@ export default function GrammarChecker() {
     setStats({ words: 0, sentences: 0, issues: 0 });
   };
 
-  const applySuggestion = (issue: GrammarIssue) => {
+  const applySuggestion = (issue: GrammarIssue, index: number) => {
     const before = text.substring(0, issue.position);
     const after = text.substring(issue.position + issue.word.length);
     const newText = before + issue.suggestion + after;
     setText(newText);
+    setSelectedIssue(null);
     
     // Re-run grammar check with updated text
     setTimeout(() => {
       checkGrammar();
     }, 100);
+  };
+
+  const highlightText = () => {
+    if (!text || issues.length === 0 || !showHighlights) {
+      return text;
+    }
+
+    let result = '';
+    let lastIndex = 0;
+
+    // Sort issues by position to process them in order
+    const sortedIssues = [...issues].sort((a, b) => a.position - b.position);
+
+    sortedIssues.forEach((issue, index) => {
+      // Add text before the issue
+      result += text.substring(lastIndex, issue.position);
+      
+      // Add highlighted issue
+      const issueClass = `grammar-error ${issue.type}-error ${selectedIssue === index ? 'selected' : ''}`;
+      result += `<span class="${issueClass}" data-issue="${index}" title="${issue.description}">${issue.word}</span>`;
+      
+      lastIndex = issue.position + issue.word.length;
+    });
+
+    // Add remaining text
+    result += text.substring(lastIndex);
+    
+    return result;
+  };
+
+  const handleIssueClick = (issueIndex: number) => {
+    setSelectedIssue(selectedIssue === issueIndex ? null : issueIndex);
+  };
+
+  const scrollSync = () => {
+    if (textareaRef.current && highlightRef.current) {
+      highlightRef.current.scrollTop = textareaRef.current.scrollTop;
+      highlightRef.current.scrollLeft = textareaRef.current.scrollLeft;
+    }
   };
 
   const getIssueIcon = (type: string) => {
@@ -198,7 +242,7 @@ export default function GrammarChecker() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex gap-2 mb-4">
+              <div className="flex gap-2 mb-4 flex-wrap">
                 <Button variant="outline" size="sm" onClick={loadSample}>
                   Load Sample
                 </Button>
@@ -206,15 +250,46 @@ export default function GrammarChecker() {
                   <RefreshCw className="w-4 h-4 mr-2" />
                   Clear
                 </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => setShowHighlights(!showHighlights)}
+                  className={showHighlights ? "bg-blue-50 text-blue-600" : ""}
+                >
+                  {showHighlights ? <Eye className="w-4 h-4 mr-2" /> : <EyeOff className="w-4 h-4 mr-2" />}
+                  {showHighlights ? "Hide" : "Show"} Highlights
+                </Button>
                 <CopyButton text={text} label="Copy Text" />
               </div>
 
-              <Textarea
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder="Type or paste your text here to check for grammar, spelling, and style issues..."
-                className="min-h-[300px] font-mono text-sm resize-none"
-              />
+              <div className="relative">
+                {/* Highlighted background layer */}
+                {showHighlights && issues.length > 0 && (
+                  <div
+                    ref={highlightRef}
+                    className="absolute inset-0 min-h-[300px] font-mono text-sm whitespace-pre-wrap break-words overflow-hidden pointer-events-none z-10 p-3 border rounded-md"
+                    style={{
+                      color: 'transparent',
+                      background: 'transparent',
+                      border: '1px solid transparent'
+                    }}
+                    dangerouslySetInnerHTML={{ __html: highlightText() }}
+                  />
+                )}
+                
+                {/* Text input */}
+                <Textarea
+                  ref={textareaRef}
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                  onScroll={scrollSync}
+                  placeholder="Type or paste your text here to check for grammar, spelling, and style issues..."
+                  className={`min-h-[300px] font-mono text-sm resize-none relative z-20 ${showHighlights && issues.length > 0 ? 'bg-transparent' : ''}`}
+                  style={{
+                    background: showHighlights && issues.length > 0 ? 'transparent' : undefined
+                  }}
+                />
+              </div>
 
               <Button 
                 onClick={checkGrammar} 
@@ -324,14 +399,24 @@ export default function GrammarChecker() {
                       </div>
                     </div>
                     
-                    <Button 
-                      size="sm" 
-                      variant="outline"
-                      onClick={() => applySuggestion(issue)}
-                      className="shrink-0"
-                    >
-                      Apply Fix
-                    </Button>
+                    <div className="flex gap-2 shrink-0">
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => applySuggestion(issue, index)}
+                        className="shrink-0"
+                      >
+                        Apply Fix
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="ghost"
+                        onClick={() => handleIssueClick(index)}
+                        className={selectedIssue === index ? "bg-blue-100" : ""}
+                      >
+                        {selectedIssue === index ? "Hide" : "Show"} in Text
+                      </Button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -405,6 +490,47 @@ export default function GrammarChecker() {
           </div>
         </CardContent>
       </Card>
+
+      <style jsx>{`
+        .grammar-error {
+          position: relative;
+          cursor: pointer;
+          border-radius: 2px;
+          padding: 1px 2px;
+          transition: all 0.2s ease;
+        }
+        
+        .spelling-error {
+          background-color: rgba(239, 68, 68, 0.2);
+          border-bottom: 2px wavy #ef4444;
+        }
+        
+        .grammar-error {
+          background-color: rgba(245, 101, 101, 0.2);
+          border-bottom: 2px wavy #f56565;
+        }
+        
+        .punctuation-error {
+          background-color: rgba(251, 146, 60, 0.2);
+          border-bottom: 2px wavy #fb923c;
+        }
+        
+        .style-error {
+          background-color: rgba(168, 85, 247, 0.2);
+          border-bottom: 2px wavy #a855f7;
+        }
+        
+        .grammar-error.selected {
+          background-color: rgba(59, 130, 246, 0.3) !important;
+          border-bottom: 2px solid #3b82f6 !important;
+          box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+        
+        .grammar-error:hover {
+          opacity: 0.8;
+          transform: scale(1.02);
+        }
+      `}</style>
 
       <div className="text-center mt-8">
         <div className="mb-4">
