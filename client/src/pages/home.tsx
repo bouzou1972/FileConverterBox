@@ -140,6 +140,14 @@ export default function Home() {
           title: "ZIP File Viewer & Extractor",
           description: "View ZIP archive contents, preview text files, and extract individual files or entire archives.",
           badge: "🆕 New"
+        },
+        {
+          href: "/file-organizer",
+          icon: "folder_open",
+          iconColor: "text-purple-600",
+          title: "Offline File Organizer",
+          description: "Organize multiple files by type, name, date, or size with detailed analysis and export reports.",
+          badge: "🆕 New"
         }
       ]
     },

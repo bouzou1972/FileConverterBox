@@ -1,0 +1,85 @@
+<!-- Large File Splitter & Joiner -->
+<section>
+  <h3>Large File Splitter</h3>
+  <input type="file" id="splitFileInput" /><br/>
+  <label>Chunk size (MB): <input type="number" id="chunkSize" value="5" min="1" max="100" /></label>
+  <button id="splitBtn">Split File</button>
+  <div id="splitOutput"></div>
+</section>
+
+<section style="margin-top:2em;">
+  <h3>Large File Joiner</h3>
+  <input type="file" id="joinFilesInput" multiple /><br/>
+  <button id="joinBtn">Join Files</button>
+  <a id="downloadLink" style="display:none;" download="joined_file" href="#">Download Joined File</a>
+</section>
+
+<script>
+  // Split File
+  const splitInput = document.getElementById('splitFileInput');
+  const chunkSizeInput = document.getElementById('chunkSize');
+  const splitBtn = document.getElementById('splitBtn');
+  const splitOutput = document.getElementById('splitOutput');
+
+  splitBtn.onclick = () => {
+    const file = splitInput.files[0];
+    const chunkSizeMB = parseInt(chunkSizeInput.value) || 5;
+    if (!file) {
+      alert('Select a file to split');
+      return;
+    }
+    splitOutput.innerHTML = '';
+    const chunkSizeBytes = chunkSizeMB * 1024 * 1024;
+    const chunks = Math.ceil(file.size / chunkSizeBytes);
+    splitOutput.textContent = `File size: ${(file.size/1024/1024).toFixed(2)} MB, splitting into ${chunks} chunk(s)...`;
+
+    const downloadLinks = document.createElement('div');
+    splitOutput.appendChild(downloadLinks);
+
+    for (let i = 0; i < chunks; i++) {
+      const start = i * chunkSizeBytes;
+      const end = Math.min(file.size, start + chunkSizeBytes);
+      const blob = file.slice(start, end);
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${file.name}.part${i+1}`;
+      a.textContent = `Download chunk ${i+1}`;
+      a.style.display = 'block';
+      downloadLinks.appendChild(a);
+    }
+  };
+
+  // Join Files
+  const joinInput = document.getElementById('joinFilesInput');
+  const joinBtn = document.getElementById('joinBtn');
+  const downloadLink = document.getElementById('downloadLink');
+
+  joinBtn.onclick = async () => {
+    const files = Array.from(joinInput.files);
+    if (files.length < 2) {
+      alert('Select 2 or more chunk files to join');
+      return;
+    }
+
+    files.sort((a,b) => a.name.localeCompare(b.name)); // Sort by filename to join in order
+
+    // Read files as ArrayBuffers and combine
+    const buffers = await Promise.all(files.map(f => f.arrayBuffer()));
+    const totalLength = buffers.reduce((acc, buf) => acc + buf.byteLength, 0);
+    const joined = new Uint8Array(totalLength);
+
+    let offset = 0;
+    for (const buf of buffers) {
+      joined.set(new Uint8Array(buf), offset);
+      offset += buf.byteLength;
+    }
+
+    const joinedBlob = new Blob([joined]);
+    const joinedUrl = URL.createObjectURL(joinedBlob);
+    downloadLink.href = joinedUrl;
+    downloadLink.style.display = 'inline-block';
+    downloadLink.textContent = `Download joined file (${(joinedBlob.size/1024/1024).toFixed(2)} MB)`;
+  };
+</script>
