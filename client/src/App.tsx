@@ -43,6 +43,9 @@ import Calculator from "@/pages/calculator";
 import TextCompressor from "@/pages/text-compressor";
 import UnitConverter from "@/pages/unit-converter";
 import GrammarChecker from "@/pages/grammar-checker";
+import FaviconGenerator from "@/pages/favicon-generator";
+import SocialMediaCropper from "@/pages/social-media-cropper";
+import LogoCleaner from "@/pages/logo-cleaner";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -88,6 +91,9 @@ function Router() {
         <Route path="/text-compressor" component={TextCompressor} />
         <Route path="/unit-converter" component={UnitConverter} />
         <Route path="/grammar-checker" component={GrammarChecker} />
+        <Route path="/favicon-generator" component={FaviconGenerator} />
+        <Route path="/social-media-cropper" component={SocialMediaCropper} />
+        <Route path="/logo-cleaner" component={LogoCleaner} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

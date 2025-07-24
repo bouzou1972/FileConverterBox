@@ -491,7 +491,7 @@ export default function GrammarChecker() {
         </CardContent>
       </Card>
 
-      <style jsx>{`
+      <style>{`
         .grammar-error {
           position: relative;
           cursor: pointer;

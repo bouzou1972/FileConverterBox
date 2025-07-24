@@ -67,6 +67,9 @@ The application provides various developer utilities grouped by category, now in
 #### Image & Color Tools (New Category)
 - **Image to Base64 Converter**: Convert images to Base64 encoded strings for embedding in HTML, CSS, or applications
 - **Color Converter**: Convert colors between HEX, RGB, and HSL formats with visual color picker and sliders
+- **Favicon Generator**: Upload any image and generate favicons in all standard sizes for websites (ICO & PNG formats)
+- **Social Media Image Cropper**: Auto-crop images to perfect sizes for Instagram, Facebook, Twitter, LinkedIn, YouTube, and more platforms
+- **Logo Background Remover**: Remove backgrounds from logos and images with manual brush and magic wand tools
 
 #### Spreadsheet Tools (New Category)
 - **Excel ↔ CSV Converter**: Convert between Excel (.xlsx) and CSV formats with support for multiple sheets and custom delimiters using SheetJS

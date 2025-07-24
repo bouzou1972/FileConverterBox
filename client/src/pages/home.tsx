@@ -309,6 +309,30 @@ export default function Home() {
           title: "Color Palette Generator",
           description: "Extract beautiful color palettes from any image with hex, RGB, and HSL values.",
           badge: "🆕 New"
+        },
+        {
+          href: "/favicon-generator",
+          icon: "web",
+          iconColor: "text-blue-600",
+          title: "Favicon Generator",
+          description: "Upload any image and generate favicons in all standard sizes for your website (ICO & PNG formats).",
+          badge: "🆕 New"
+        },
+        {
+          href: "/social-media-cropper",
+          icon: "crop",
+          iconColor: "text-purple-600",
+          title: "Social Media Image Cropper",
+          description: "Auto-crop images to perfect sizes for Instagram, Facebook, Twitter, LinkedIn, YouTube, and more.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/logo-cleaner",
+          icon: "auto_fix_high",
+          iconColor: "text-orange-600",
+          title: "Logo Background Remover",
+          description: "Remove backgrounds from logos and images with manual brush and magic wand tools.",
+          badge: "🆕 New"
         }
       ]
     },
