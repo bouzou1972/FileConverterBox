@@ -790,38 +790,45 @@ export default function Home() {
       {/* Show main content only when not searching */}
       {!searchQuery && (
         <>
-          {/* Recent Tools */}
-          {recentTools.length > 0 && (
+          {/* Recent Tools & Favorites - Combined Section */}
+          {(recentTools.length > 0 || bookmarks.length > 0) && (
             <div className="mb-12">
-              <div className="text-center mb-8">
-                <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
-                  <Clock className="w-6 h-6 text-purple-500" />
-                  RECENTLY USED
-                </h2>
-                <p className="text-sm text-muted-foreground">Your last {recentTools.length} tools</p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-                {recentTools.map((tool, index) => (
-                  <ToolCard key={index} {...tool} />
-                ))}
-              </div>
-            </div>
-          )}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Recent Tools Column */}
+                {recentTools.length > 0 && (
+                  <div>
+                    <div className="text-center mb-6">
+                      <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
+                        <Clock className="w-6 h-6 text-purple-500" />
+                        RECENTLY USED
+                      </h2>
+                      <p className="text-sm text-muted-foreground">Your last {recentTools.length} tools</p>
+                    </div>
+                    <div className="space-y-4">
+                      {recentTools.map((tool, index) => (
+                        <ToolCard key={index} {...tool} />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-          {/* Bookmarked Tools */}
-          {bookmarks.length > 0 && (
-            <div className="mb-12">
-              <div className="text-center mb-8">
-                <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
-                  <Heart className="w-6 h-6 text-red-500" />
-                  BOOKMARKED TOOLS
-                </h2>
-                <p className="text-sm text-muted-foreground">Your favorite {bookmarks.length} tools</p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-                {bookmarks.map((tool, index) => (
-                  <ToolCard key={index} {...tool} />
-                ))}
+                {/* Bookmarked Tools Column */}
+                {bookmarks.length > 0 && (
+                  <div>
+                    <div className="text-center mb-6">
+                      <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
+                        <Heart className="w-6 h-6 text-red-500" />
+                        FAVORITES
+                      </h2>
+                      <p className="text-sm text-muted-foreground">Your favorite {bookmarks.length} tools</p>
+                    </div>
+                    <div className="space-y-4">
+                      {bookmarks.map((tool, index) => (
+                        <ToolCard key={index} {...tool} />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}
