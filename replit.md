@@ -41,6 +41,7 @@ The application provides various developer utilities grouped by category, now in
 - **JSON Formatter**: JSON validation, formatting, and minification
 - **JSON ↔ XML Converter**: Bidirectional conversion between JSON and XML formats with file support
 - **Base64 Encoder/Decoder**: Encode text/files to Base64 or decode Base64 strings with file support
+- **ZIP File Viewer & Extractor**: View ZIP archive contents, preview text files, and extract individual files or entire archives with complete privacy
 
 #### PDF Tools (High Demand)
 - **PDF Converter**: Text, HTML, and image to PDF conversion with formatting options

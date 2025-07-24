@@ -132,6 +132,14 @@ export default function Home() {
           iconColor: "text-blue-600",
           title: "Base64 Encoder/Decoder",
           description: "Encode text or files to Base64 format or decode Base64 strings back to readable text."
+        },
+        {
+          href: "/zip-viewer",
+          icon: "folder_zip",
+          iconColor: "text-orange-600",
+          title: "ZIP File Viewer & Extractor",
+          description: "View ZIP archive contents, preview text files, and extract individual files or entire archives.",
+          badge: "🆕 New"
         }
       ]
     },

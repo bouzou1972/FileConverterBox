@@ -49,6 +49,7 @@ import LogoCleaner from "@/pages/logo-cleaner";
 import ReadabilityGrader from "@/pages/readability-grader";
 import PassiveVoiceDetector from "@/pages/passive-voice-detector";
 import AcademicWritingFormatter from "@/pages/academic-writing-formatter";
+import ZipViewer from "@/pages/zip-viewer";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -100,6 +101,7 @@ function Router() {
         <Route path="/readability-grader" component={ReadabilityGrader} />
         <Route path="/passive-voice-detector" component={PassiveVoiceDetector} />
         <Route path="/academic-writing-formatter" component={AcademicWritingFormatter} />
+        <Route path="/zip-viewer" component={ZipViewer} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
