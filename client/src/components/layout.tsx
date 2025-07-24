@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import ThemeToggle from "@/components/theme-toggle";
-import { Menu, X } from "lucide-react";
+import { useTheme } from "@/contexts/theme-context";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -55,6 +55,7 @@ const tools = [
 export default function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="min-h-screen bg-background">
@@ -62,7 +63,7 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           {/* Site Name */}
           <Link href="/">
-            <h1 className="text-2xl font-bold text-blue-600 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1" tabIndex={0}>
+            <h1 className="text-2xl font-bold text-purple-600 dark:text-purple-400 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-md px-2 py-1" tabIndex={0}>
               File Converter Box
             </h1>
           </Link>
@@ -70,7 +71,15 @@ export default function Layout({ children }: LayoutProps) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             <span className="text-sm text-muted-foreground">100% Local, Free & Private</span>
-            <ThemeToggle />
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleTheme}
+              className="flex items-center gap-2"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {theme === 'dark' ? 'Light' : 'Dark'}
+            </Button>
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="sm" className="flex items-center gap-2">
@@ -129,7 +138,14 @@ export default function Layout({ children }: LayoutProps) {
 
           {/* Mobile Hamburger Menu */}
           <div className="md:hidden flex items-center gap-2">
-            <ThemeToggle />
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleTheme}
+              className="flex items-center gap-2"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </Button>
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="sm">

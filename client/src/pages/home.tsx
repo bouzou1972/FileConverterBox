@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Link } from "wouter";
-import { Search, ChevronDown, ChevronRight, TrendingUp, Sparkles, ArrowRight } from "lucide-react";
+import { Search, ChevronDown, ChevronRight, TrendingUp, Sparkles, ArrowRight, Star, Clock, Heart } from "lucide-react";
+import { useRecentTools } from "@/hooks/use-recent-tools";
+import { useBookmarks } from "@/hooks/use-bookmarks";
+import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 
 interface Tool {
   href: string;
@@ -29,6 +32,26 @@ interface ToolCategory {
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [openCategories, setOpenCategories] = useState<string[]>([]);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  
+  const { recentTools, addRecentTool } = useRecentTools();
+  const { bookmarks, isBookmarked, toggleBookmark } = useBookmarks();
+
+  // Keyboard shortcuts
+  useKeyboardShortcuts({
+    onSearchToggle: () => {
+      searchInputRef.current?.focus();
+      setIsSearchFocused(true);
+    },
+    onEscape: () => {
+      if (searchQuery) {
+        setSearchQuery("");
+      }
+      searchInputRef.current?.blur();
+      setIsSearchFocused(false);
+    }
+  });
 
   // Top 6 most popular tools (manually curated)
   const popularTools: Tool[] = [
@@ -507,37 +530,63 @@ export default function Home() {
       )
     : [];
 
-  const ToolCard = ({ href, icon, iconColor, title, description, badge }: Tool) => (
-    <Link href={href}>
-      <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer group border-border hover:border-blue-200">
-        <CardContent className="p-4 sm:p-6">
-          <div className="flex items-start gap-3 sm:gap-4">
-            <div className={`p-2 sm:p-3 rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors`}>
-              <span className={`material-icons text-xl sm:text-2xl ${iconColor}`}>{icon}</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="font-semibold text-sm sm:text-base text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
-                  {title}
-                </h3>
-                {badge && (
-                  <Badge 
-                    variant="secondary" 
-                    className="text-xs whitespace-nowrap bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 border-orange-200"
-                  >
-                    {badge}
-                  </Badge>
-                )}
+  const ToolCard = ({ href, icon, iconColor, title, description, badge }: Tool) => {
+    const tool = { href, icon, iconColor, title, description, badge };
+    
+    const handleClick = () => {
+      addRecentTool(tool);
+    };
+
+    const handleBookmarkClick = (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleBookmark(tool);
+    };
+
+    return (
+      <Link href={href}>
+        <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer group border-border hover:border-purple-200 dark:hover:border-purple-700" onClick={handleClick}>
+          <CardContent className="p-4 sm:p-6">
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className={`p-2 sm:p-3 rounded-lg bg-gray-50 dark:bg-gray-800 group-hover:bg-purple-50 dark:group-hover:bg-purple-900/20 transition-colors`}>
+                <span className={`material-icons text-xl sm:text-2xl ${iconColor}`}>{icon}</span>
               </div>
-              <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 group-hover:text-gray-600 transition-colors">
-                {description}
-              </p>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h3 className="font-semibold text-sm sm:text-base text-foreground group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-2">
+                    {title}
+                  </h3>
+                  <div className="flex items-center gap-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="p-1 h-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                      onClick={handleBookmarkClick}
+                    >
+                      <Heart 
+                        className={`w-4 h-4 ${isBookmarked(href) ? 'fill-red-500 text-red-500' : 'text-gray-400 hover:text-red-500'}`} 
+                      />
+                    </Button>
+                    {badge && (
+                      <Badge 
+                        variant="secondary" 
+                        className="text-xs whitespace-nowrap bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 border-orange-200"
+                      >
+                        {badge}
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 group-hover:text-gray-600 transition-colors">
+                  {description}
+                </p>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
-    </Link>
-  );
+          </CardContent>
+        </Card>
+      </Link>
+    );
+  };
 
   const CategoryCard = ({ category }: { category: ToolCategory }) => (
     <Card className="border-border hover:shadow-lg transition-all duration-200 cursor-pointer group">
@@ -650,12 +699,22 @@ export default function Home() {
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
           <Input
+            ref={searchInputRef}
             type="text"
-            placeholder="Search tools... (e.g., json, pdf, image)"
+            placeholder="Search tools... (Ctrl+K to focus)"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 text-center bg-background border-border focus:ring-2 focus:ring-blue-500"
+            onFocus={() => setIsSearchFocused(true)}
+            onBlur={() => setIsSearchFocused(false)}
+            className={`pl-10 text-center bg-background border-border focus:ring-2 focus:ring-purple-500 transition-all ${
+              isSearchFocused ? 'ring-2 ring-purple-500 border-purple-500' : ''
+            }`}
           />
+          {!searchQuery && (
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground hidden sm:block">
+              Ctrl+K
+            </div>
+          )}
         </div>
         {searchQuery && (
           <p className="text-sm text-muted-foreground mt-2 text-center">
@@ -682,6 +741,47 @@ export default function Home() {
             </div>
           )}
         </div>
+      )}
+
+      {/* Show main content only when not searching */}
+      {!searchQuery && (
+        <>
+          {/* Recent Tools */}
+          {recentTools.length > 0 && (
+            <div className="mb-12">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+                  <Clock className="w-6 h-6 text-purple-500" />
+                  Recently Used
+                </h2>
+                <p className="text-sm text-muted-foreground">Your last {recentTools.length} tools</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+                {recentTools.map((tool, index) => (
+                  <ToolCard key={index} {...tool} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Bookmarked Tools */}
+          {bookmarks.length > 0 && (
+            <div className="mb-12">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+                  <Heart className="w-6 h-6 text-red-500" />
+                  Bookmarked Tools
+                </h2>
+                <p className="text-sm text-muted-foreground">Your favorite {bookmarks.length} tools</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+                {bookmarks.map((tool, index) => (
+                  <ToolCard key={index} {...tool} />
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       )}
 
       {/* Show main content only when not searching */}
