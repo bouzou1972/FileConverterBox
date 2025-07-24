@@ -104,6 +104,14 @@ export default function Home() {
           title: "Unit Converter",
           description: "Convert between metric/imperial units, time, data sizes, and more. Works completely offline.",
           badge: "🆕 New"
+        },
+        {
+          href: "/grammar-checker",
+          icon: "spellcheck",
+          iconColor: "text-indigo-600",
+          title: "Grammar Checker",
+          description: "Check text for grammar, spelling, punctuation, and style issues with suggestions for improvement.",
+          badge: "🆕 New"
         }
       ]
     },

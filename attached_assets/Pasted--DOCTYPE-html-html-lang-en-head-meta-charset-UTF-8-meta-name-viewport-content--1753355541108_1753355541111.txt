@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammar Checker Lite</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .results {
+      margin-top: 2rem;
+    }
+    .result-item {
+      margin-bottom: 1rem;
+      background: #f0f4ff;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #007bff;
+    }
+    .affiliate-box {
+      margin-top: 2rem;
+      background: #fff7e6;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #ffa500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Grammar Checker Lite</h2>
+    <p>Paste or write your text below. We'll highlight common mistakes.</p>
+
+    <textarea id="inputText" placeholder="Start typing..."></textarea>
+    <button onclick="checkGrammar()">Check Grammar</button>
+
+    <div id="results" class="results"></div>
+
+    <div class="affiliate-box">
+      <strong>Want deeper grammar checks?</strong>
+      <p>Try <a href="https://www.grammarly.com/" target="_blank">Grammarly</a> for full grammar analysis, tone detection, and AI writing help.</p>
+    </div>
+  </div>
+
+  <script>
+    const commonMistakes = [
+      { word: "your", suggest: "you're (if you mean you are)" },
+      { word: "their", suggest: "they're / there" },
+      { word: "alot", suggest: "a lot" },
+      { word: "definately", suggest: "definitely" },
+      { word: "recieve", suggest: "receive" },
+      { word: "its", suggest: "it's (if you mean it is)" },
+    ];
+
+    function checkGrammar() {
+      const text = document.getElementById("inputText").value;
+      const results = document.getElementById("results");
+      results.innerHTML = "";
+
+      let found = 0;
+
+      commonMistakes.forEach(item => {
+        const regex = new RegExp("\\b" + item.word + "\\b", "gi");
+        if (regex.test(text)) {
+          found++;
+          results.innerHTML += `
+            <div class="result-item">
+              <strong>Found:</strong> "${item.word}"<br />
+              <strong>Suggestion:</strong> ${item.suggest}
+            </div>
+          `;
+        }
+      });
+
+      if (found === 0) {
+        results.innerHTML = "<p>No common issues found. Great job!</p>";
+      }
+    }
+  </script>
+</body>
+</html>

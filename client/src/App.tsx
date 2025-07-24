@@ -42,6 +42,7 @@ import ClipboardInspector from "@/pages/clipboard-inspector";
 import Calculator from "@/pages/calculator";
 import TextCompressor from "@/pages/text-compressor";
 import UnitConverter from "@/pages/unit-converter";
+import GrammarChecker from "@/pages/grammar-checker";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -86,6 +87,7 @@ function Router() {
         <Route path="/calculator" component={Calculator} />
         <Route path="/text-compressor" component={TextCompressor} />
         <Route path="/unit-converter" component={UnitConverter} />
+        <Route path="/grammar-checker" component={GrammarChecker} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
