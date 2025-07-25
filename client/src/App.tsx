@@ -59,6 +59,7 @@ import BarcodeGenerator from "@/pages/barcode-generator";
 import ImageOptimizer from "@/pages/image-optimizer";
 import ColorPaletteExtractor from "@/pages/color-palette-extractor";
 import SEOOptimizer from "@/pages/seo-optimizer";
+import SEOToolsSuite from "@/pages/seo-tools-suite";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -119,6 +120,7 @@ function Router() {
         <Route path="/image-optimizer" component={ImageOptimizer} />
         <Route path="/color-palette-extractor" component={ColorPaletteExtractor} />
         <Route path="/seo-optimizer" component={SEOOptimizer} />
+        <Route path="/seo-tools-suite" component={SEOToolsSuite} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

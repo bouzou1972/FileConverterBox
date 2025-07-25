@@ -300,6 +300,14 @@ export default function Home() {
           title: "SEO Content Optimizer",
           description: "Analyze and optimize your content for search engines with keyword density analysis, readability scoring, and SEO element validation.",
           badge: "🆕 New"
+        },
+        {
+          href: "/seo-tools-suite",
+          icon: "trending_up",
+          iconColor: "text-purple-600",
+          title: "SEO Tools Suite",
+          description: "Complete collection of 9 professional SEO tools including meta tag generator, robots.txt creator, XML sitemap builder, and more.",
+          badge: "🆕 New"
         }
       ]
     },

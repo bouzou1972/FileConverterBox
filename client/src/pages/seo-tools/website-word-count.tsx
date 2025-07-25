@@ -1,0 +1,334 @@
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Copy, Upload, BarChart3, FileText } from "lucide-react";
+
+interface WordCountAnalysis {
+  totalWords: number;
+  totalCharacters: number;
+  totalCharactersNoSpaces: number;
+  sentences: number;
+  paragraphs: number;
+  averageWordsPerSentence: number;
+  averageCharactersPerWord: number;
+  readingTime: number;
+  mostCommonWords: { word: string; count: number; }[];
+  wordLengthDistribution: { length: number; count: number; }[];
+}
+
+export function WebsiteWordCount() {
+  const [content, setContent] = useState('');
+  const [url, setUrl] = useState('');
+  const [analysis, setAnalysis] = useState<WordCountAnalysis | null>(null);
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file && file.type === 'text/plain') {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = e.target?.result as string;
+        setContent(text);
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  const analyzeContent = () => {
+    if (!content.trim()) return;
+
+    const text = content.trim();
+    
+    // Basic counts
+    const words = text.split(/\s+/).filter(word => word.length > 0);
+    const totalWords = words.length;
+    const totalCharacters = text.length;
+    const totalCharactersNoSpaces = text.replace(/\s/g, '').length;
+    
+    // Sentences (split by . ! ? and filter empty)
+    const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+    const sentenceCount = sentences.length;
+    
+    // Paragraphs (split by double newlines or single newlines for simple text)
+    const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+    const paragraphCount = paragraphs.length;
+    
+    // Averages
+    const averageWordsPerSentence = sentenceCount > 0 ? totalWords / sentenceCount : 0;
+    const averageCharactersPerWord = totalWords > 0 ? totalCharactersNoSpaces / totalWords : 0;
+    
+    // Reading time (average 200 words per minute)
+    const readingTime = Math.ceil(totalWords / 200);
+    
+    // Most common words (excluding common stop words)
+    const stopWords = new Set(['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'is', 'are', 'was', 'were', 'be', 'been', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could', 'should', 'may', 'might', 'must', 'can', 'this', 'that', 'these', 'those', 'i', 'you', 'he', 'she', 'it', 'we', 'they', 'me', 'him', 'her', 'us', 'them']);
+    
+    const wordCount: Record<string, number> = {};
+    words.forEach(word => {
+      const cleanWord = word.toLowerCase().replace(/[^\w]/g, '');
+      if (cleanWord.length > 2 && !stopWords.has(cleanWord)) {
+        wordCount[cleanWord] = (wordCount[cleanWord] || 0) + 1;
+      }
+    });
+    
+    const mostCommonWords = Object.entries(wordCount)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 10)
+      .map(([word, count]) => ({ word, count }));
+    
+    // Word length distribution
+    const lengthCount: Record<number, number> = {};
+    words.forEach(word => {
+      const length = word.replace(/[^\w]/g, '').length;
+      if (length > 0) {
+        lengthCount[length] = (lengthCount[length] || 0) + 1;
+      }
+    });
+    
+    const wordLengthDistribution = Object.entries(lengthCount)
+      .sort(([a], [b]) => Number(a) - Number(b))
+      .map(([length, count]) => ({ length: Number(length), count }));
+
+    setAnalysis({
+      totalWords,
+      totalCharacters,
+      totalCharactersNoSpaces,
+      sentences: sentenceCount,
+      paragraphs: paragraphCount,
+      averageWordsPerSentence,
+      averageCharactersPerWord,
+      readingTime,
+      mostCommonWords,
+      wordLengthDistribution
+    });
+  };
+
+  const copyReport = () => {
+    if (!analysis) return;
+    
+    const report = `Website Word Count Analysis Report
+
+URL: ${url || 'Direct input'}
+Date: ${new Date().toLocaleDateString()}
+
+=== BASIC STATISTICS ===
+Total Words: ${analysis.totalWords}
+Total Characters: ${analysis.totalCharacters}
+Characters (no spaces): ${analysis.totalCharactersNoSpaces}
+Sentences: ${analysis.sentences}
+Paragraphs: ${analysis.paragraphs}
+
+=== AVERAGES ===
+Words per sentence: ${analysis.averageWordsPerSentence.toFixed(1)}
+Characters per word: ${analysis.averageCharactersPerWord.toFixed(1)}
+Estimated reading time: ${analysis.readingTime} minute${analysis.readingTime !== 1 ? 's' : ''}
+
+=== MOST COMMON WORDS ===
+${analysis.mostCommonWords.map((item, index) => `${index + 1}. ${item.word} (${item.count} times)`).join('\n')}
+
+=== WORD LENGTH DISTRIBUTION ===
+${analysis.wordLengthDistribution.map(item => `${item.length} characters: ${item.count} words`).join('\n')}
+
+---
+Generated by File Converter Box
+`;
+    
+    navigator.clipboard.writeText(report);
+  };
+
+  const getSEOAdvice = () => {
+    if (!analysis) return [];
+    
+    const advice = [];
+    
+    if (analysis.totalWords < 300) {
+      advice.push("Content is quite short. Consider adding more valuable content (aim for 300+ words for better SEO).");
+    } else if (analysis.totalWords > 2000) {
+      advice.push("Long-form content detected. Great for SEO if it provides value to readers.");
+    }
+    
+    if (analysis.averageWordsPerSentence > 20) {
+      advice.push("Sentences are quite long. Consider breaking them down for better readability.");
+    } else if (analysis.averageWordsPerSentence < 10) {
+      advice.push("Good sentence length for readability.");
+    }
+    
+    if (analysis.paragraphs < 3 && analysis.totalWords > 300) {
+      advice.push("Consider breaking content into more paragraphs for better readability.");
+    }
+    
+    return advice;
+  };
+
+  return (
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <BarChart3 className="w-5 h-5" />
+          Website Word Count Tool
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {/* Input Section */}
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium mb-2">Website URL (Optional)</label>
+            <Input
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder="https://example.com/page"
+              type="url"
+              className="w-full"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Content to Analyze</label>
+            <Textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="Paste your website content here..."
+              className="min-h-40"
+            />
+          </div>
+
+          <div className="flex items-center gap-2">
+            <input
+              type="file"
+              accept=".txt"
+              onChange={handleFileUpload}
+              className="hidden"
+              id="content-file-upload"
+            />
+            <label htmlFor="content-file-upload">
+              <Button variant="outline" size="sm" asChild>
+                <span className="cursor-pointer">
+                  <Upload className="w-4 h-4 mr-2" />
+                  Upload Text File
+                </span>
+              </Button>
+            </label>
+            <Button onClick={analyzeContent} disabled={!content.trim()}>
+              Analyze Content
+            </Button>
+          </div>
+        </div>
+
+        {/* Analysis Results */}
+        {analysis && (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold">Analysis Results</h3>
+              <Button onClick={copyReport} size="sm" variant="outline">
+                <Copy className="w-4 h-4 mr-2" />
+                Copy Report
+              </Button>
+            </div>
+
+            {/* Basic Statistics */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                <div className="text-3xl font-bold text-blue-600">{analysis.totalWords}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Words</div>
+              </div>
+              <div className="text-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                <div className="text-3xl font-bold text-green-600">{analysis.totalCharacters}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Characters</div>
+              </div>
+              <div className="text-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                <div className="text-3xl font-bold text-purple-600">{analysis.sentences}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Sentences</div>
+              </div>
+              <div className="text-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                <div className="text-3xl font-bold text-orange-600">{analysis.readingTime}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Min Read</div>
+              </div>
+            </div>
+
+            {/* Detailed Statistics */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                <h4 className="font-semibold mb-3">Content Structure</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span>Paragraphs:</span>
+                    <span className="font-medium">{analysis.paragraphs}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Characters (no spaces):</span>
+                    <span className="font-medium">{analysis.totalCharactersNoSpaces}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Avg words per sentence:</span>
+                    <span className="font-medium">{analysis.averageWordsPerSentence.toFixed(1)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Avg characters per word:</span>
+                    <span className="font-medium">{analysis.averageCharactersPerWord.toFixed(1)}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                <h4 className="font-semibold mb-3">SEO Metrics</h4>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Badge variant={analysis.totalWords >= 300 ? "default" : "destructive"}>
+                      {analysis.totalWords >= 300 ? "Good" : "Too Short"}
+                    </Badge>
+                    <span className="text-sm">Word count for SEO</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge variant={analysis.averageWordsPerSentence <= 20 ? "default" : "destructive"}>
+                      {analysis.averageWordsPerSentence <= 20 ? "Good" : "Too Long"}
+                    </Badge>
+                    <span className="text-sm">Sentence length</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge variant={analysis.readingTime <= 10 ? "default" : "secondary"}>
+                      {analysis.readingTime <= 10 ? "Quick Read" : "Long Read"}
+                    </Badge>
+                    <span className="text-sm">Reading time</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Most Common Words */}
+            <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <h4 className="font-semibold mb-3">Most Common Words</h4>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+                {analysis.mostCommonWords.map((item, index) => (
+                  <div key={index} className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-800 rounded">
+                    <span className="text-sm font-medium">{item.word}</span>
+                    <Badge variant="secondary" className="text-xs">{item.count}</Badge>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* SEO Advice */}
+            {getSEOAdvice().length > 0 && (
+              <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <FileText className="w-4 h-4" />
+                  SEO & Readability Advice
+                </h4>
+                <div className="space-y-1">
+                  {getSEOAdvice().map((advice, index) => (
+                    <div key={index} className="flex items-start gap-2 text-sm">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>{advice}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
