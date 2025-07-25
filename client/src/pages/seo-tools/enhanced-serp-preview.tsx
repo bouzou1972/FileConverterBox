@@ -1,0 +1,445 @@
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Copy, Monitor, Smartphone, Search, Globe, Star } from "lucide-react";
+
+interface SERPData {
+  title: string;
+  description: string;
+  url: string;
+  breadcrumb?: string;
+  sitelinks?: Array<{ title: string; url: string; description: string; }>;
+  rating?: number;
+  reviewCount?: number;
+  price?: string;
+  availability?: string;
+}
+
+interface SERPAnalysis {
+  titleLength: number;
+  descriptionLength: number;
+  titleTruncated: boolean;
+  descriptionTruncated: boolean;
+  urlDisplay: string;
+  ctr: number;
+  recommendations: string[];
+}
+
+export function EnhancedSERPPreview() {
+  const [data, setData] = useState<SERPData>({
+    title: '',
+    description: '',
+    url: '',
+    breadcrumb: '',
+    sitelinks: [],
+    rating: 0,
+    reviewCount: 0,
+    price: '',
+    availability: ''
+  });
+
+  const [device, setDevice] = useState<'desktop' | 'mobile'>('desktop');
+  const [analysis, setAnalysis] = useState<SERPAnalysis | null>(null);
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
+  const updateField = (field: keyof SERPData, value: string | number) => {
+    setData(prev => ({ ...prev, [field]: value }));
+    updateAnalysis();
+  };
+
+  const updateAnalysis = () => {
+    if (!data.title && !data.description) return;
+
+    const maxTitleLength = device === 'mobile' ? 78 : 60;
+    const maxDescLength = device === 'mobile' ? 120 : 160;
+
+    const titleTruncated = data.title.length > maxTitleLength;
+    const descriptionTruncated = data.description.length > maxDescLength;
+
+    const urlDisplay = data.url ? 
+      data.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : 
+      'example.com › page';
+
+    // Simplified CTR estimation based on title/description optimization
+    let ctr = 2.5; // Base CTR
+    if (data.title.length >= 30 && data.title.length <= maxTitleLength) ctr += 0.5;
+    if (data.description.length >= 120 && data.description.length <= maxDescLength) ctr += 0.3;
+    if (/\d/.test(data.title)) ctr += 0.2;
+    if (/[!?]/.test(data.title)) ctr += 0.1;
+    if (data.rating && data.rating > 0) ctr += 0.8;
+    if (data.sitelinks && data.sitelinks.length > 0) ctr += 0.4;
+
+    const recommendations = [];
+    if (titleTruncated) recommendations.push('Title will be truncated on search results');
+    if (descriptionTruncated) recommendations.push('Description will be truncated on search results');
+    if (data.title.length < 30) recommendations.push('Title could be longer for better visibility');
+    if (data.description.length < 120) recommendations.push('Description could be more detailed');
+    if (!/[0-9]/.test(data.title)) recommendations.push('Consider adding numbers to increase CTR');
+
+    setAnalysis({
+      titleLength: data.title.length,
+      descriptionLength: data.description.length,
+      titleTruncated,
+      descriptionTruncated,
+      urlDisplay,
+      ctr: Math.min(ctr, 10),
+      recommendations
+    });
+  };
+
+  const addSitelink = () => {
+    setData(prev => ({
+      ...prev,
+      sitelinks: [...(prev.sitelinks || []), { title: '', url: '', description: '' }]
+    }));
+  };
+
+  const updateSitelink = (index: number, field: string, value: string) => {
+    setData(prev => ({
+      ...prev,
+      sitelinks: prev.sitelinks?.map((link, i) => 
+        i === index ? { ...link, [field]: value } : link
+      )
+    }));
+  };
+
+  const removeSitelink = (index: number) => {
+    setData(prev => ({
+      ...prev,
+      sitelinks: prev.sitelinks?.filter((_, i) => i !== index)
+    }));
+  };
+
+  const truncateText = (text: string, maxLength: number) => {
+    return text.length > maxLength ? text.substring(0, maxLength - 3) + '...' : text;
+  };
+
+  const renderStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <Star 
+        key={i} 
+        className={`w-3 h-3 ${i < rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
+      />
+    ));
+  };
+
+  const copyResults = () => {
+    if (!analysis) return;
+    
+    const results = `SERP Preview Analysis
+
+Title: ${data.title}
+Description: ${data.description}
+URL: ${data.url}
+
+PREVIEW ANALYSIS:
+- Title Length: ${analysis.titleLength} chars (${analysis.titleTruncated ? 'TRUNCATED' : 'OK'})
+- Description Length: ${analysis.descriptionLength} chars (${analysis.descriptionTruncated ? 'TRUNCATED' : 'OK'})
+- Estimated CTR: ${analysis.ctr.toFixed(1)}%
+- Display URL: ${analysis.urlDisplay}
+
+RECOMMENDATIONS:
+${analysis.recommendations.map(r => `• ${r}`).join('\n')}
+
+Device: ${device.charAt(0).toUpperCase() + device.slice(1)}
+Generated by File Converter Box
+`;
+
+    navigator.clipboard.writeText(results);
+  };
+
+  return (
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <Search className="w-5 h-5" />
+          Enhanced SERP Snippet Preview
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {/* Device Toggle */}
+        <div className="flex items-center gap-4">
+          <span className="text-sm font-medium">Preview Device:</span>
+          <div className="flex gap-2">
+            <Button
+              variant={device === 'desktop' ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => setDevice('desktop')}
+            >
+              <Monitor className="w-4 h-4 mr-2" />
+              Desktop
+            </Button>
+            <Button
+              variant={device === 'mobile' ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => setDevice('mobile')}
+            >
+              <Smartphone className="w-4 h-4 mr-2" />
+              Mobile
+            </Button>
+          </div>
+        </div>
+
+        <Tabs defaultValue="basic" className="w-full">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="basic">Basic Info</TabsTrigger>
+            <TabsTrigger value="enhanced">Rich Snippets</TabsTrigger>
+            <TabsTrigger value="preview">Live Preview</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="basic" className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">Page Title</label>
+              <Input
+                value={data.title}
+                onChange={(e) => updateField('title', e.target.value)}
+                placeholder="Enter your page title..."
+                className="w-full"
+              />
+              <div className={`text-xs mt-1 ${data.title.length > (device === 'mobile' ? 78 : 60) ? 'text-red-500' : 'text-gray-500'}`}>
+                {data.title.length}/{device === 'mobile' ? 78 : 60} characters
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Meta Description</label>
+              <Textarea
+                value={data.description}
+                onChange={(e) => updateField('description', e.target.value)}
+                placeholder="Enter your meta description..."
+                className="min-h-20"
+              />
+              <div className={`text-xs mt-1 ${data.description.length > (device === 'mobile' ? 120 : 160) ? 'text-red-500' : 'text-gray-500'}`}>
+                {data.description.length}/{device === 'mobile' ? 120 : 160} characters
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Page URL</label>
+              <Input
+                value={data.url}
+                onChange={(e) => updateField('url', e.target.value)}
+                placeholder="https://example.com/page"
+                type="url"
+              />
+            </div>
+          </TabsContent>
+
+          <TabsContent value="enhanced" className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Star Rating (0-5)</label>
+                <Input
+                  type="number"
+                  min="0"
+                  max="5"
+                  step="0.1"
+                  value={data.rating}
+                  onChange={(e) => updateField('rating', parseFloat(e.target.value) || 0)}
+                  placeholder="4.5"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">Review Count</label>
+                <Input
+                  type="number"
+                  value={data.reviewCount}
+                  onChange={(e) => updateField('reviewCount', parseInt(e.target.value) || 0)}
+                  placeholder="256"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Price</label>
+                <Input
+                  value={data.price}
+                  onChange={(e) => updateField('price', e.target.value)}
+                  placeholder="$99.99"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">Availability</label>
+                <Input
+                  value={data.availability}
+                  onChange={(e) => updateField('availability', e.target.value)}
+                  placeholder="In stock"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Breadcrumb</label>
+              <Input
+                value={data.breadcrumb}
+                onChange={(e) => updateField('breadcrumb', e.target.value)}
+                placeholder="Home › Category › Product"
+              />
+            </div>
+
+            {/* Sitelinks */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-medium">Sitelinks</label>
+                <Button onClick={addSitelink} size="sm" variant="outline">
+                  Add Sitelink
+                </Button>
+              </div>
+
+              {data.sitelinks?.map((sitelink, index) => (
+                <div key={index} className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg space-y-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <Input
+                      value={sitelink.title}
+                      onChange={(e) => updateSitelink(index, 'title', e.target.value)}
+                      placeholder="Sitelink title"
+                    />
+                    <Input
+                      value={sitelink.url}
+                      onChange={(e) => updateSitelink(index, 'url', e.target.value)}
+                      placeholder="/sitelink-url"
+                    />
+                  </div>
+                  <div className="flex gap-3">
+                    <Input
+                      value={sitelink.description}
+                      onChange={(e) => updateSitelink(index, 'description', e.target.value)}
+                      placeholder="Brief sitelink description"
+                      className="flex-1"
+                    />
+                    <Button onClick={() => removeSitelink(index)} size="sm" variant="destructive">
+                      Remove
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="preview" className="space-y-6">
+            {/* SERP Preview */}
+            <div className={`border border-gray-300 dark:border-gray-600 rounded-lg p-6 bg-white dark:bg-gray-900 ${device === 'mobile' ? 'max-w-sm' : 'max-w-2xl'}`}>
+              <div className="space-y-3">
+                {/* Breadcrumb */}
+                {data.breadcrumb && (
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    {data.breadcrumb}
+                  </div>
+                )}
+
+                {/* Title */}
+                <div className="text-blue-600 hover:underline cursor-pointer font-normal" 
+                     style={{ fontSize: device === 'mobile' ? '16px' : '20px', lineHeight: '1.3' }}>
+                  {truncateText(data.title, device === 'mobile' ? 78 : 60)}
+                </div>
+
+                {/* URL */}
+                <div className="text-green-700 dark:text-green-500" 
+                     style={{ fontSize: device === 'mobile' ? '12px' : '14px' }}>
+                  {analysis?.urlDisplay || 'example.com'}
+                </div>
+
+                {/* Rating and Reviews */}
+                {data.rating && data.rating > 0 && (
+                  <div className="flex items-center gap-2">
+                    <div className="flex">{renderStars(data.rating)}</div>
+                    <span className="text-sm text-gray-600">
+                      {data.rating}/5 {data.reviewCount && `(${data.reviewCount} reviews)`}
+                    </span>
+                    {data.price && (
+                      <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        {data.price}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {/* Description */}
+                <div className="text-gray-600 dark:text-gray-400" 
+                     style={{ fontSize: device === 'mobile' ? '13px' : '14px', lineHeight: '1.4' }}>
+                  {truncateText(data.description, device === 'mobile' ? 120 : 160)}
+                </div>
+
+                {/* Availability */}
+                {data.availability && (
+                  <div className="text-sm text-green-600 dark:text-green-400">
+                    {data.availability}
+                  </div>
+                )}
+
+                {/* Sitelinks */}
+                {data.sitelinks && data.sitelinks.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                    {data.sitelinks.slice(0, 4).map((sitelink, index) => (
+                      <div key={index} className="text-sm">
+                        <div className="text-blue-600 hover:underline cursor-pointer font-normal">
+                          {sitelink.title}
+                        </div>
+                        <div className="text-gray-600 dark:text-gray-400 text-xs">
+                          {sitelink.description}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Analysis */}
+            {analysis && (
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="text-center p-3 border border-gray-200 dark:border-gray-700 rounded-lg">
+                    <div className="text-xl font-bold text-blue-600">{analysis.ctr.toFixed(1)}%</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Estimated CTR</div>
+                  </div>
+                  <div className="text-center p-3 border border-gray-200 dark:border-gray-700 rounded-lg">
+                    <div className={`text-xl font-bold ${analysis.titleTruncated ? 'text-red-600' : 'text-green-600'}`}>
+                      {analysis.titleLength}
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Title Length</div>
+                  </div>
+                  <div className="text-center p-3 border border-gray-200 dark:border-gray-700 rounded-lg">
+                    <div className={`text-xl font-bold ${analysis.descriptionTruncated ? 'text-red-600' : 'text-green-600'}`}>
+                      {analysis.descriptionLength}
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Description Length</div>
+                  </div>
+                </div>
+
+                {analysis.recommendations.length > 0 && (
+                  <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <h4 className="font-semibold mb-2">Optimization Recommendations</h4>
+                    <div className="space-y-1">
+                      {analysis.recommendations.map((recommendation, index) => (
+                        <div key={index} className="flex items-start gap-2 text-sm">
+                          <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                          <span>{recommendation}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
+
+        {/* Actions */}
+        <div className="flex gap-2">
+          <Button onClick={copyResults} size="sm" disabled={!analysis}>
+            <Copy className="w-4 h-4 mr-2" />
+            Copy Analysis
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}

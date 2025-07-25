@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Copy, Download, Shield, Plus, Trash2 } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Copy, Download, Shield, Plus, Trash2, Upload, CheckCircle, AlertTriangle } from "lucide-react";
 
 interface RobotRule {
   userAgent: string;
@@ -19,6 +21,9 @@ export function RobotsTxtGenerator() {
   const [sitemap, setSitemap] = useState('');
   const [crawlDelay, setCrawlDelay] = useState('');
   const [host, setHost] = useState('');
+  const [comments, setComments] = useState('');
+  const [presetType, setPresetType] = useState('');
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
   const addRule = () => {
     setRules([...rules, { userAgent: '', allow: [], disallow: [] }]);

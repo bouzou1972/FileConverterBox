@@ -2,20 +2,34 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Copy, Download, Map, Plus, Trash2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Copy, Download, Map, Plus, Trash2, Upload, CheckCircle, AlertCircle, Globe } from "lucide-react";
 
 interface SitemapUrl {
   loc: string;
   priority: string;
   changefreq: string;
   lastmod: string;
+  alternates?: { hreflang: string; href: string; }[];
+}
+
+interface SitemapStats {
+  totalUrls: number;
+  validUrls: number;
+  errors: string[];
 }
 
 export function XmlSitemapGenerator() {
   const [urls, setUrls] = useState<SitemapUrl[]>([
     { loc: '', priority: '0.8', changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] }
   ]);
+  const [bulkUrls, setBulkUrls] = useState('');
+  const [stats, setStats] = useState<SitemapStats>({ totalUrls: 0, validUrls: 0, errors: [] });
+  const [includeImages, setIncludeImages] = useState(false);
+  const [includeNews, setIncludeNews] = useState(false);
 
   const addUrl = () => {
     setUrls([...urls, { 
@@ -30,9 +44,13 @@ export function XmlSitemapGenerator() {
     setUrls(urls.filter((_, i) => i !== index));
   };
 
-  const updateUrl = (index: number, field: keyof SitemapUrl, value: string) => {
+  const updateUrl = (index: number, field: keyof SitemapUrl, value: string | { hreflang: string; href: string; }[]) => {
     const newUrls = [...urls];
-    newUrls[index][field] = value;
+    if (field === 'alternates') {
+      newUrls[index][field] = value as { hreflang: string; href: string; }[];
+    } else {
+      newUrls[index][field] = value as string;
+    }
     setUrls(newUrls);
   };
 
