@@ -9,6 +9,7 @@ import { Search, ChevronDown, ChevronRight, TrendingUp, Sparkles, ArrowRight, St
 import { useRecentTools } from "@/hooks/use-recent-tools";
 import { useBookmarks } from "@/hooks/use-bookmarks";
 import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
+import { FavoritesModal } from "@/components/favorites-modal";
 
 interface Tool {
   href: string;
@@ -36,7 +37,7 @@ export default function Home() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   
   const { recentTools, addRecentTool } = useRecentTools();
-  const { bookmarks, isBookmarked, toggleBookmark } = useBookmarks();
+  const { bookmarksSortedByUsage, isBookmarked, toggleBookmark, incrementUsage } = useBookmarks();
 
   // Keyboard shortcuts
   useKeyboardShortcuts({
@@ -563,6 +564,7 @@ export default function Home() {
     
     const handleClick = () => {
       addRecentTool(tool);
+      incrementUsage(href);
     };
 
     const handleBookmarkClick = (e: React.MouseEvent) => {
@@ -803,46 +805,39 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Recent Tools & Favorites - Combined Section */}
-          {(recentTools.length > 0 || bookmarks.length > 0) && (
+          {/* Favorites Section - Single Tool Display */}
+          {bookmarksSortedByUsage.length > 0 && (
             <div className="mb-12">
-              <div className="flex flex-col sm:flex-row gap-6 lg:gap-8">
-                {/* Recent Tools Column - 50% width */}
-                {recentTools.length > 0 && (
-                  <div className="flex-1">
-                    <div className="text-center mb-6">
-                      <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
-                        <Clock className="w-6 h-6 text-blue-500" />
-                        RECENTLY USED
-                      </h2>
-                      <p className="text-sm text-muted-foreground">Your last {recentTools.length} tools</p>
-                    </div>
-                    <div className="space-y-4">
-                      {recentTools.map((tool, index) => (
-                        <ToolCard key={index} {...tool} />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Bookmarked Tools Column - 50% width */}
-                {bookmarks.length > 0 && (
-                  <div className="flex-1">
-                    <div className="text-center mb-6">
-                      <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
-                        <Heart className="w-6 h-6 text-red-500" />
-                        FAVORITES
-                      </h2>
-                      <p className="text-sm text-muted-foreground">Your favorite {bookmarks.length} tools</p>
-                    </div>
-                    <div className="space-y-4">
-                      {bookmarks.map((tool, index) => (
-                        <ToolCard key={index} {...tool} />
-                      ))}
-                    </div>
-                  </div>
-                )}
+              <div className="text-center mb-6">
+                <h2 className="text-sm font-bold mb-2 flex items-center justify-center gap-2 uppercase tracking-wider">
+                  <Heart className="w-6 h-6 text-red-500" />
+                  FAVORITE TOOL
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Your most used tool • Used {bookmarksSortedByUsage[0].usageCount || 0} times
+                </p>
               </div>
+              
+              <div className="max-w-md mx-auto mb-6">
+                <ToolCard 
+                  key={bookmarksSortedByUsage[0].href} 
+                  {...bookmarksSortedByUsage[0]} 
+                />
+              </div>
+
+              {bookmarksSortedByUsage.length > 1 && (
+                <div className="text-center">
+                  <FavoritesModal 
+                    favorites={bookmarksSortedByUsage}
+                    trigger={
+                      <Button variant="outline" className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        See All {bookmarksSortedByUsage.length} Favorites
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    }
+                  />
+                </div>
+              )}
             </div>
           )}
           {/* Most Popular Tools */}
