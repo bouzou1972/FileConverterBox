@@ -830,7 +830,7 @@ export default function Home() {
                   <FavoritesModal 
                     favorites={bookmarksSortedByUsage}
                     trigger={
-                      <Button variant="outline" className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
+                      <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                         See All {bookmarksSortedByUsage.length} Favorites
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
