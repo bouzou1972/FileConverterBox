@@ -10,6 +10,7 @@ import { useRecentTools } from "@/hooks/use-recent-tools";
 import { useBookmarks } from "@/hooks/use-bookmarks";
 import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 import { FavoritesModal } from "@/components/favorites-modal";
+import { DebugPageViews } from "@/components/debug-page-views";
 
 interface Tool {
   href: string;
@@ -873,6 +874,11 @@ export default function Home() {
           </div>
         </>
       )}
+
+      {/* Debug Page Views (temporary) */}
+      <div className="mb-8 flex justify-center">
+        <DebugPageViews />
+      </div>
 
       {/* Buy Me a Coffee Button */}
       <div className="text-center mt-12 pt-8 border-t border-border">
