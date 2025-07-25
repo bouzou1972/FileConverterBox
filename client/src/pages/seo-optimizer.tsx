@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, XCircle, Search, BarChart3, FileText, Eye } from "lucide-react";
+import { CheckCircle, XCircle, Search, BarChart3, FileText, Eye, Download, FileDown } from "lucide-react";
 import { ToolSEO } from "@/components/tool-seo";
 import { ShareButtons } from "@/components/share-buttons";
 import { UsageGuide } from "@/components/usage-guide";
+import jsPDF from "jspdf";
 
 interface SEOReport {
   keywordMatches: number;
@@ -195,6 +196,149 @@ export default function SEOOptimizer() {
   const selectSuggestion = (suggestion: string) => {
     setKeyword(suggestion);
     setSuggestions([]);
+  };
+
+  const exportToPDF = () => {
+    if (!report || !keyword.trim()) return;
+
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.width;
+    const margin = 20;
+    let yPosition = 30;
+
+    // Title
+    doc.setFontSize(20);
+    doc.setFont("helvetica", "bold");
+    doc.text("SEO Content Analysis Report", margin, yPosition);
+    yPosition += 20;
+
+    // Keyword
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Focus Keyword: ${keyword}`, margin, yPosition);
+    yPosition += 15;
+
+    // Date
+    doc.setFontSize(10);
+    doc.text(`Generated: ${new Date().toLocaleDateString()}`, margin, yPosition);
+    yPosition += 20;
+
+    // Content Statistics
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text("Content Statistics", margin, yPosition);
+    yPosition += 15;
+
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Word Count: ${report.wordCount}`, margin, yPosition);
+    yPosition += 10;
+    doc.text(`Sentence Count: ${report.sentenceCount}`, margin, yPosition);
+    yPosition += 10;
+    doc.text(`Keyword Matches: ${report.keywordMatches}`, margin, yPosition);
+    yPosition += 10;
+    doc.text(`Keyword Density: ${report.keywordDensity}% (${getDensityLabel(report.keywordDensity)})`, margin, yPosition);
+    yPosition += 20;
+
+    // SEO Elements
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text("SEO Elements Check", margin, yPosition);
+    yPosition += 15;
+
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Keyword in Title: ${report.titleMatch ? '✓ Yes' : '✗ No'}`, margin, yPosition);
+    yPosition += 10;
+    doc.text(`Keyword in H1: ${report.h1Match ? '✓ Yes' : '✗ No'}`, margin, yPosition);
+    yPosition += 10;
+    doc.text(`Meta Description Present: ${report.metaDescMatch ? '✓ Yes' : '✗ No'}`, margin, yPosition);
+    yPosition += 20;
+
+    // Readability
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text("Readability Analysis", margin, yPosition);
+    yPosition += 15;
+
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Flesch Reading Ease Score: ${report.fleschScore.toFixed(1)}`, margin, yPosition);
+    yPosition += 10;
+    doc.text(`Reading Level: ${report.readabilityLevel}`, margin, yPosition);
+    yPosition += 20;
+
+    // Recommendations
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text("Recommendations", margin, yPosition);
+    yPosition += 15;
+
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+    const recommendations = [
+      "• Aim for keyword density between 1-3% for optimal SEO",
+      "• Include your focus keyword in title tags and H1 headings",
+      "• Target a Flesch Reading Ease score of 60-70 for general audiences",
+      "• Ensure proper HTML structure with semantic tags",
+      "• Use natural keyword placement rather than keyword stuffing"
+    ];
+
+    recommendations.forEach(rec => {
+      doc.text(rec, margin, yPosition);
+      yPosition += 8;
+    });
+
+    doc.save(`seo-analysis-${keyword.replace(/\s+/g, '-')}.pdf`);
+  };
+
+  const exportToMarkdown = () => {
+    if (!report || !keyword.trim()) return;
+
+    const markdown = `# SEO Content Analysis Report
+
+**Focus Keyword:** ${keyword}  
+**Generated:** ${new Date().toLocaleDateString()}
+
+## Content Statistics
+
+- **Word Count:** ${report.wordCount}
+- **Sentence Count:** ${report.sentenceCount}
+- **Keyword Matches:** ${report.keywordMatches}
+- **Keyword Density:** ${report.keywordDensity}% (${getDensityLabel(report.keywordDensity)})
+
+## SEO Elements Check
+
+- **Keyword in Title:** ${report.titleMatch ? '✅ Yes' : '❌ No'}
+- **Keyword in H1:** ${report.h1Match ? '✅ Yes' : '❌ No'}
+- **Meta Description Present:** ${report.metaDescMatch ? '✅ Yes' : '❌ No'}
+
+## Readability Analysis
+
+- **Flesch Reading Ease Score:** ${report.fleschScore.toFixed(1)}
+- **Reading Level:** ${report.readabilityLevel}
+
+## Recommendations
+
+- Aim for keyword density between 1-3% for optimal SEO
+- Include your focus keyword in title tags and H1 headings
+- Target a Flesch Reading Ease score of 60-70 for general audiences
+- Ensure proper HTML structure with semantic tags
+- Use natural keyword placement rather than keyword stuffing
+
+---
+*Report generated by File Converter Box SEO Optimizer*
+`;
+
+    const blob = new Blob([markdown], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `seo-analysis-${keyword.replace(/\s+/g, '-')}.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -386,6 +530,29 @@ export default function SEOOptimizer() {
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     Flesch Reading Ease Score (0-100, higher = easier)
                   </p>
+                </div>
+
+                {/* Export Buttons */}
+                <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <h4 className="font-medium text-gray-900 dark:text-white mb-3">Export Report</h4>
+                  <div className="flex gap-2">
+                    <Button
+                      onClick={exportToPDF}
+                      size="sm"
+                      className="bg-red-600 hover:bg-red-700 text-white"
+                    >
+                      <Download className="w-4 h-4 mr-2" />
+                      Export PDF
+                    </Button>
+                    <Button
+                      onClick={exportToMarkdown}
+                      size="sm"
+                      variant="outline"
+                    >
+                      <FileDown className="w-4 h-4 mr-2" />
+                      Export Markdown
+                    </Button>
+                  </div>
                 </div>
               </div>
             )}

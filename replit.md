@@ -43,6 +43,8 @@ Preferred communication style: Simple, everyday language.
   - Intelligent keyword suggestions with 50+ categories and 300+ related terms
   - Client-side keyword association engine with partial matching capabilities
   - Interactive suggestion buttons for quick keyword selection
+  - PDF and Markdown export functionality for reports
+  - Complete local processing with no external API dependencies
   - Comprehensive usage guide with blog post and landing page optimization examples
 - Integrated tool into "👨‍💻 Code Utilities" category on homepage
 - Full SEO optimization with ToolSEO, ShareButtons, and UsageGuide components
@@ -151,7 +153,7 @@ The application provides various developer utilities grouped by category, now in
 - **Readability Grader**: Analyze text with 6 readability formulas including Flesch-Kincaid, Gunning Fog, and SMOG indices with grade level assessments
 - **Passive Voice Detector**: Identify passive voice constructions in writing and get suggestions for converting them to active voice
 - **Academic Writing Formatter**: Generate properly formatted citations and bibliographies in APA, MLA, and Chicago styles with in-text citation examples
-- **SEO Content Optimizer**: Analyze and optimize content for search engines with keyword density analysis, readability scoring, and SEO element validation
+- **SEO Content Optimizer**: Analyze and optimize content for search engines with keyword density analysis, readability scoring, SEO element validation, keyword suggestions, and PDF/Markdown export capabilities
 
 #### Content Generation
 - **Lorem Ipsum Generator**: Placeholder text generation with HTML options

@@ -1,0 +1,99 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
+
+const categories = [
+  {
+    title: "Generators",
+    tools: [
+      "Meta Tag Generator",
+      ".htaccess Generator",
+      "Robots.txt Generator",
+      "XML Sitemap Generator",
+      "Keyword Generator",
+    ],
+  },
+  {
+    title: "Minifiers",
+    tools: ["CSS Minifier", "JS Minifier", "HTML Minifier"],
+  },
+  {
+    title: "Validators / Testers",
+    tools: [
+      "Title Tag Checker",
+      "Meta Description Checker",
+      "Canonical Tag Checker",
+      "Keyword Density & Consistency Tool",
+      "Website Word Count Tool",
+    ],
+  },
+  {
+    title: "Usability",
+    tools: [
+      "Mobile Responsiveness Tester",
+      "Meta Viewport Tag Checker",
+      "Font Size and Legibility Checker",
+    ],
+  },
+  {
+    title: "Performance",
+    tools: [
+      "Load Speed Performance Tester",
+      "Webpage File Size Check Tool",
+      "Javascript Error Checker",
+    ],
+  },
+  {
+    title: "Security",
+    tools: ["SSL Checker", "HTTPS Redirect Checker"],
+  },
+  {
+    title: "AI SEO Tools",
+    tools: [
+      "AI Blog Post Generator",
+      "AI Headline Generator",
+      "Long Tail Keyword Generator",
+      "Keyword Clustering Tool",
+    ],
+  },
+];
+
+export default function SEOHomePage() {
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold mb-4">SEOptimer’s Free SEO Tools</h1>
+      <p className="text-lg mb-8">
+        SEOptimer provides a range of tools to help you improve your website. Try one of our free tools today.
+      </p>
+
+      {categories.map((cat) => (
+        <div key={cat.title} className="mb-10">
+          <h2 className="text-2xl font-semibold mb-3">{cat.title}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {cat.tools.map((tool) => (
+              <Card key={tool} className="hover:shadow-lg transition-all">
+                <CardContent className="p-4">
+                  <p className="font-medium">{tool}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div className="mt-12 text-center">
+        <h3 className="text-xl font-semibold mb-2">Export Your SEO Report</h3>
+        <p className="text-gray-600 mb-4">
+          Export your analysis as PDF or Markdown for sharing or offline use.
+        </p>
+        <div className="flex justify-center gap-4">
+          <Button variant="default" className="gap-2">
+            <Download className="w-4 h-4" /> Export PDF
+          </Button>
+          <Button variant="secondary">Export Markdown</Button>
+        </div>
+      </div>
+    </div>
+  );
+}

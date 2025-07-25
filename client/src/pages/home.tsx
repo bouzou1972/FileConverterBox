@@ -292,6 +292,14 @@ export default function Home() {
           title: "Grammar Checker",
           description: "Check text for grammar, spelling, punctuation, and style issues with suggestions for improvement.",
           badge: "🆕 New"
+        },
+        {
+          href: "/seo-optimizer",
+          icon: "search",
+          iconColor: "text-blue-600",
+          title: "SEO Content Optimizer",
+          description: "Analyze and optimize your content for search engines with keyword density analysis, readability scoring, and SEO element validation.",
+          badge: "🆕 New"
         }
       ]
     },
