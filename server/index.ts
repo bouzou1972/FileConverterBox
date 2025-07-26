@@ -11,7 +11,8 @@ async function startServer() {
     configFile: path.resolve(__dirname, '../vite.config.ts'),
     server: {
       host: '0.0.0.0',
-      port: 5000
+      port: 5000,
+      allowedHosts: 'all'
     }
   })
 
