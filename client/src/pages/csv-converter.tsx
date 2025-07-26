@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,7 +13,6 @@ import { ToolSEO } from "@/components/tool-seo";
 import { ShareButtons } from "@/components/share-buttons";
 import { UsageGuide } from "@/components/usage-guide";
 import { BookmarkButton } from "@/components/bookmark-button";
-import { trackPageView } from "@/utils/track-page-view";
 import { 
   parseCSV, 
   parseTSV, 
@@ -35,11 +34,6 @@ export default function CsvConverter() {
   const [isConverting, setIsConverting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
-
-  // Track page view on component mount
-  useEffect(() => {
-    trackPageView("CSV Converter");
-  }, []);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
