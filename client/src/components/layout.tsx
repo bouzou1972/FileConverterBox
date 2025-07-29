@@ -239,7 +239,7 @@ export default function Layout({ children }: LayoutProps) {
 
       <footer className="text-center py-6 text-sm text-muted-foreground border-t border-border bg-background mt-12">
         <p>
-          © 2025 FileConverterData. All rights reserved. |{" "}
+          © 2025 FileConverterBox. All rights reserved. |{" "}
           <span className="text-green-600">●</span> All processing happens locally in your browser
         </p>
       </footer>

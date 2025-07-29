@@ -31,8 +31,8 @@ export async function convertPdfToPpt(
     const pptx = new PptxGenJS();
     
     // Set presentation properties
-    pptx.author = 'FileConverterData';
-    pptx.company = 'FileConverterData';
+    pptx.author = 'FileConverterBox';
+    pptx.company = 'FileConverterBox';
     pptx.subject = `Converted from ${file.name}`;
     pptx.title = file.name.replace('.pdf', '');
 
