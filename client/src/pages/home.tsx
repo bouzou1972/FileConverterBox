@@ -882,19 +882,7 @@ export default function Home() {
         </>
       )}
 
-      {/* Buy Me a Coffee Button */}
-      <div className="text-center mt-12 pt-8 border-t border-border">
-        <div className="mb-4">
-          <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
-          <p className="text-muted-foreground">Help support future development</p>
-        </div>
-        <div 
-          dangerouslySetInnerHTML={{
-            __html: `<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="freedownloads" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>`
-          }}
-        />
 
-      </div>
     </div>
   );
 }
