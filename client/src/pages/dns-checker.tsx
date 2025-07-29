@@ -173,18 +173,24 @@ const DNSChecker = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <ToolSEO
-        title="DNS Checker Tool - Free DNS Record Lookup | File Converter Box"
-        description="Check DNS records for any domain instantly. Look up A, AAAA, CNAME, MX, TXT, NS, and other DNS records with our free DNS checker tool."
-        keywords={["dns checker", "dns lookup", "dns records", "domain lookup", "mx records", "a records", "cname records", "txt records"]}
+        title="DNS Checker - Free DNS Record Lookup & DNS Propagation Checker"
+        description="Check DNS records for any domain worldwide. Look up A, AAAA, CNAME, MX, TXT, NS, SOA records instantly. Free DNS lookup tool with global DNS propagation checking."
+        keywords={["dns checker", "dns lookup", "dns records", "dns propagation", "domain lookup", "mx records", "a records", "cname records", "txt records", "ns records", "soa records", "dns resolver"]}
         canonicalUrl="/dns-checker"
       />
 
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-4">DNS Checker</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Check DNS records for any domain instantly. Look up A, AAAA, CNAME, MX, TXT, NS, SOA, and other DNS record types. 
-          Perfect for troubleshooting domain issues and verifying DNS configurations.
+        <h1 className="text-3xl font-bold mb-4">DNS Records and Worldwide DNS Propagation Checker</h1>
+        <p className="text-gray-600 max-w-3xl mx-auto mb-4">
+          Check DNS records for any domain instantly with our comprehensive DNS lookup tool. Verify A, AAAA, CNAME, MX, TXT, NS, SOA, and PTR records. 
+          Perfect for troubleshooting domain issues, verifying DNS configurations, and monitoring DNS propagation worldwide.
         </p>
+        <div className="flex flex-wrap justify-center gap-2 text-sm">
+          <Badge variant="secondary">Instant DNS Lookup</Badge>
+          <Badge variant="secondary">Global DNS Servers</Badge>
+          <Badge variant="secondary">All Record Types</Badge>
+          <Badge variant="secondary">Free Tool</Badge>
+        </div>
       </div>
 
       <Card className="mb-8">
@@ -327,9 +333,82 @@ const DNSChecker = () => {
         </Card>
       )}
 
+      {/* Educational Content Section */}
+      <div className="mt-12 space-y-8">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Globe className="w-5 h-5 text-blue-600" />
+              What is DNS and Why Check DNS Records?
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-gray-700">
+              The DNS (Domain Name System) is the system that translates domain names you enter in the browser to the IP addresses required to access a website. 
+              When you use our DNS checker, you can verify how domain names resolve across different DNS servers worldwide.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 className="font-semibold mb-2 text-blue-600">Why Use a DNS Checker?</h4>
+                <ul className="space-y-1 text-sm text-gray-600">
+                  <li>• Troubleshoot website connectivity issues</li>
+                  <li>• Verify DNS propagation after changes</li>
+                  <li>• Check email server configurations (MX records)</li>
+                  <li>• Validate domain verification records</li>
+                  <li>• Monitor DNS security settings</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2 text-green-600">DNS Record Types Explained</h4>
+                <ul className="space-y-1 text-sm text-gray-600">
+                  <li>• <strong>A:</strong> Points domain to IPv4 address</li>
+                  <li>• <strong>AAAA:</strong> Points domain to IPv6 address</li>
+                  <li>• <strong>CNAME:</strong> Alias pointing to another domain</li>
+                  <li>• <strong>MX:</strong> Mail exchange servers for email</li>
+                  <li>• <strong>TXT:</strong> Text records for verification</li>
+                  <li>• <strong>NS:</strong> Name servers for the domain</li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <AlertCircle className="w-5 h-5 text-orange-600" />
+              Common DNS Issues and Solutions
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold mb-2 text-orange-600">Slow Website Loading</h4>
+                <p className="text-sm text-gray-600 mb-3">
+                  Slow DNS servers may cause lag before websites load. DNS lookups typically take 20-120 milliseconds to complete.
+                </p>
+                <p className="text-sm text-gray-700">
+                  <strong>Solution:</strong> Switch to faster public DNS servers like Cloudflare (1.1.1.1) or Google (8.8.8.8).
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2 text-red-600">DNS Propagation Delays</h4>
+                <p className="text-sm text-gray-600 mb-3">
+                  After changing DNS records, it can take up to 48 hours for changes to propagate globally.
+                </p>
+                <p className="text-sm text-gray-700">
+                  <strong>Solution:</strong> Use our DNS checker to monitor propagation status across different regions.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       <Tabs defaultValue="guide" className="mt-8">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="guide">Usage Guide</TabsTrigger>
+          <TabsTrigger value="dns-info">DNS Information</TabsTrigger>
           <TabsTrigger value="share">Share Tool</TabsTrigger>
         </TabsList>
         
@@ -373,28 +452,91 @@ const DNSChecker = () => {
               }
             ]}
             tips={[
-              "A records point to IPv4 addresses",
-              "AAAA records point to IPv6 addresses", 
-              "CNAME records are aliases pointing to other domains",
-              "MX records specify mail servers for email delivery",
-              "TXT records contain text information, often used for verification",
-              "NS records specify the authoritative name servers",
-              "Use this tool to troubleshoot domain and email issues"
+              "A records point to IPv4 addresses - most common DNS record type",
+              "AAAA records point to IPv6 addresses - the future of internet addressing", 
+              "CNAME records are aliases pointing to other domains - useful for subdomains",
+              "MX records specify mail servers for email delivery - lower priority numbers are preferred",
+              "TXT records contain text information - commonly used for domain verification and email security",
+              "NS records specify the authoritative name servers for the domain",
+              "SOA records contain administrative information about the domain zone",
+              "DNS propagation can take up to 48 hours to complete globally",
+              "Use multiple DNS record types to get a complete picture of domain configuration"
             ]}
             commonUses={[
-              "Website troubleshooting",
-              "Email configuration",
-              "Domain verification",
-              "DNS propagation monitoring",
-              "Security analysis"
+              "Website troubleshooting and connectivity issues",
+              "Email server configuration and MX record verification",
+              "Domain ownership verification for services",
+              "DNS propagation monitoring after record changes",
+              "Security analysis and SPF/DKIM record checking",
+              "Subdomain and CNAME configuration verification",
+              "Name server and authoritative DNS checking"
             ]}
           />
         </TabsContent>
         
+        <TabsContent value="dns-info">
+          <Card>
+            <CardHeader>
+              <CardTitle>Public DNS Servers and Best Practices</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div>
+                <h4 className="font-semibold mb-3 text-blue-600">Popular Public DNS Servers</h4>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <div className="p-3 bg-blue-50 rounded-lg">
+                      <h5 className="font-medium">Cloudflare DNS</h5>
+                      <p className="text-sm text-gray-600">Primary: 1.1.1.1 | Secondary: 1.0.0.1</p>
+                      <p className="text-xs text-gray-500">Fast, privacy-focused DNS</p>
+                    </div>
+                    <div className="p-3 bg-green-50 rounded-lg">
+                      <h5 className="font-medium">Google Public DNS</h5>
+                      <p className="text-sm text-gray-600">Primary: 8.8.8.8 | Secondary: 8.8.4.4</p>
+                      <p className="text-xs text-gray-500">Reliable, global DNS service</p>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="p-3 bg-purple-50 rounded-lg">
+                      <h5 className="font-medium">OpenDNS</h5>
+                      <p className="text-sm text-gray-600">Primary: 208.67.222.222 | Secondary: 208.67.220.220</p>
+                      <p className="text-xs text-gray-500">Security and parental controls</p>
+                    </div>
+                    <div className="p-3 bg-orange-50 rounded-lg">
+                      <h5 className="font-medium">Quad9 DNS</h5>
+                      <p className="text-sm text-gray-600">Primary: 9.9.9.9 | Secondary: 149.112.112.112</p>
+                      <p className="text-xs text-gray-500">Security-focused DNS blocking</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold mb-3 text-green-600">Why Use Public DNS Servers?</h4>
+                <ul className="grid md:grid-cols-2 gap-2 text-sm text-gray-700">
+                  <li>• Faster web browsing speed</li>
+                  <li>• Improved reliability and stability</li>
+                  <li>• Protection against phishing websites</li>
+                  <li>• Enhanced security features</li>
+                  <li>• Parental control options</li>
+                  <li>• Faster DNS propagation process</li>
+                </ul>
+              </div>
+
+              <Alert>
+                <AlertCircle className="w-4 h-4" />
+                <AlertDescription>
+                  <strong>Pro Tip:</strong> You can mix DNS servers for redundancy. Use Google Public DNS as primary (8.8.8.8) 
+                  and OpenDNS as secondary (208.67.222.222) to improve reliability.
+                </AlertDescription>
+              </Alert>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
         <TabsContent value="share">
           <ShareButtons
-            title="DNS Checker Tool - Free DNS Record Lookup"
-            description="Check DNS records for any domain instantly with this free online tool"
+            title="DNS Checker - Free DNS Record Lookup & Propagation Checker"
+            description="Check DNS records for any domain worldwide. Verify A, AAAA, CNAME, MX, TXT, NS records instantly with our free DNS lookup tool"
           />
         </TabsContent>
       </Tabs>
