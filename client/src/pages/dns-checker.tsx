@@ -173,14 +173,14 @@ const DNSChecker = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <ToolSEO
-        title="DNS Checker - Free DNS Record Lookup & DNS Propagation Checker"
+        title="DNS Checker - Free DNS Record Lookup & Public DNS Servers by Country"
         description="Check DNS records for any domain worldwide. Access public DNS servers by country. Look up A, AAAA, CNAME, MX, TXT, NS, SOA records instantly. Free DNS lookup tool with global DNS propagation checking."
         keywords={["dns checker", "dns lookup", "dns records", "dns propagation", "domain lookup", "mx records", "a records", "cname records", "txt records", "ns records", "soa records", "dns resolver", "public dns servers", "dns servers by country", "best dns servers"]}
         canonicalUrl="/dns-checker"
       />
 
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-4">DNS Records and Worldwide DNS Propagation Checker</h1>
+        <h1 className="text-3xl font-bold mb-4">DNS Records Checker & Public DNS Servers by Country</h1>
         <p className="text-gray-600 max-w-3xl mx-auto mb-4">
           Check DNS records for any domain instantly with our comprehensive DNS lookup tool. Verify A, AAAA, CNAME, MX, TXT, NS, SOA, and PTR records. 
           Perfect for troubleshooting domain issues, verifying DNS configurations, and monitoring DNS propagation worldwide.
@@ -541,9 +541,23 @@ const DNSChecker = () => {
                 <Globe className="w-5 h-5 text-blue-600" />
                 Public DNS Servers by Country
               </CardTitle>
-              <p className="text-sm text-gray-600">
-                Complete list of the best IPv4 and IPv6 public DNS servers worldwide. Choose servers closest to your location for optimal performance.
+              <p className="text-sm text-gray-600 mb-4">
+                Complete list of the best IPv4 and IPv6 public DNS servers worldwide. This comprehensive database contains all free and public DNS servers to choose from to replace the original ones configured by your ISP. Choose servers closest to your location for optimal performance.
               </p>
+              <div className="grid md:grid-cols-3 gap-2 mb-6">
+                <div className="p-3 bg-blue-50 rounded text-center">
+                  <div className="font-semibold text-blue-700">🌍 Global Coverage</div>
+                  <div className="text-sm text-gray-600">50+ Countries</div>
+                </div>
+                <div className="p-3 bg-green-50 rounded text-center">
+                  <div className="font-semibold text-green-700">⚡ Performance Focused</div>
+                  <div className="text-sm text-gray-600">Regional & Local Servers</div>
+                </div>
+                <div className="p-3 bg-purple-50 rounded text-center">
+                  <div className="font-semibold text-purple-700">🔒 Security Options</div>
+                  <div className="text-sm text-gray-600">Privacy & Protection</div>
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
@@ -654,10 +668,84 @@ const DNSChecker = () => {
                     </div>
                   </div>
 
-                  {/* Asia Pacific */}
+                  {/* Europe Extended */}
+                  <div className="mt-6">
+                    <h4 className="font-medium mb-4 text-green-700">Europe (Extended)</h4>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div>
+                        <h5 className="font-medium mb-2 text-green-600">🇳🇱 Netherlands</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-green-50 rounded text-sm">
+                            <strong>Surfnet:</strong><br/>
+                            145.253.2.171, 145.253.2.151
+                          </div>
+                          <div className="p-2 bg-green-50 rounded text-sm">
+                            <strong>KPN:</strong><br/>
+                            62.45.224.1, 62.45.224.18
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-green-600">🇸🇪 Sweden</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-green-50 rounded text-sm">
+                            <strong>Telia:</strong><br/>
+                            213.80.99.110, 213.80.99.111
+                          </div>
+                          <div className="p-2 bg-green-50 rounded text-sm">
+                            <strong>Bredband2:</strong><br/>
+                            195.67.199.11, 195.67.199.12
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-green-600">🇳🇴 Norway</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-green-50 rounded text-sm">
+                            <strong>Telenor:</strong><br/>
+                            193.213.112.4, 130.67.15.198
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-green-600">🇪🇸 Spain</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-green-50 rounded text-sm">
+                            <strong>Telefonica:</strong><br/>
+                            80.58.61.250, 80.58.61.254
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-green-600">🇮🇹 Italy</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-green-50 rounded text-sm">
+                            <strong>TIM:</strong><br/>
+                            212.216.172.62, 212.216.112.112
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-green-600">🇨🇭 Switzerland</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-green-50 rounded text-sm">
+                            <strong>Swisscom:</strong><br/>
+                            195.186.4.111, 195.186.1.111
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Asia Pacific Extended */}
                   <div className="mt-6">
                     <h4 className="font-medium mb-4 text-purple-700">Asia Pacific</h4>
-                    <div className="grid md:grid-cols-3 gap-4">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                       <div>
                         <h5 className="font-medium mb-2 text-purple-600">🇯🇵 Japan</h5>
                         <div className="space-y-2">
@@ -699,46 +787,349 @@ const DNSChecker = () => {
                           </div>
                         </div>
                       </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-purple-600">🇰🇷 South Korea</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-purple-50 rounded text-sm">
+                            <strong>KT:</strong><br/>
+                            168.126.63.1, 168.126.63.2
+                          </div>
+                          <div className="p-2 bg-purple-50 rounded text-sm">
+                            <strong>SK Broadband:</strong><br/>
+                            210.220.163.82, 219.250.36.130
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-purple-600">🇭🇰 Hong Kong</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-purple-50 rounded text-sm">
+                            <strong>PCCW:</strong><br/>
+                            203.80.96.10, 203.80.96.9
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-purple-600">🇹🇼 Taiwan</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-purple-50 rounded text-sm">
+                            <strong>Chunghwa Telecom:</strong><br/>
+                            168.95.1.1, 168.95.192.1
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-purple-600">🇮🇳 India</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-purple-50 rounded text-sm">
+                            <strong>BSNL:</strong><br/>
+                            61.1.64.1, 61.1.64.2
+                          </div>
+                          <div className="p-2 bg-purple-50 rounded text-sm">
+                            <strong>Airtel:</strong><br/>
+                            202.56.250.5, 202.56.250.4
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-purple-600">🇹🇭 Thailand</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-purple-50 rounded text-sm">
+                            <strong>CAT Telecom:</strong><br/>
+                            203.113.14.3, 203.144.207.3
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-purple-600">🇮🇩 Indonesia</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-purple-50 rounded text-sm">
+                            <strong>Telkom:</strong><br/>
+                            202.134.1.10, 203.130.193.74
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Additional Countries */}
+                  {/* Americas Extended */}
                   <div className="mt-6">
-                    <h4 className="font-medium mb-4 text-orange-700">Other Regions</h4>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <h4 className="font-medium mb-4 text-blue-700">Americas (Extended)</h4>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                       <div>
-                        <h5 className="font-medium mb-2 text-orange-600">🇧🇷 Brazil</h5>
-                        <div className="p-2 bg-orange-50 rounded text-sm">
-                          <strong>Telecom Italia:</strong><br/>
-                          189.38.95.95, 189.38.95.96
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <h5 className="font-medium mb-2 text-orange-600">🇷🇺 Russia</h5>
-                        <div className="p-2 bg-orange-50 rounded text-sm">
-                          <strong>Yandex.DNS:</strong><br/>
-                          77.88.8.8, 77.88.8.1
+                        <h5 className="font-medium mb-2 text-blue-600">🇲🇽 Mexico</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-blue-50 rounded text-sm">
+                            <strong>Telmex:</strong><br/>
+                            200.95.144.3, 200.95.144.15
+                          </div>
                         </div>
                       </div>
 
                       <div>
-                        <h5 className="font-medium mb-2 text-orange-600">🇮🇳 India</h5>
-                        <div className="p-2 bg-orange-50 rounded text-sm">
-                          <strong>BSNL:</strong><br/>
-                          61.1.64.1, 61.1.64.2
+                        <h5 className="font-medium mb-2 text-blue-600">🇧🇷 Brazil</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-blue-50 rounded text-sm">
+                            <strong>Telecom Italia:</strong><br/>
+                            189.38.95.95, 189.38.95.96
+                          </div>
+                          <div className="p-2 bg-blue-50 rounded text-sm">
+                            <strong>UOL:</strong><br/>
+                            200.221.11.100, 200.221.11.101
+                          </div>
                         </div>
                       </div>
 
+                      <div>
+                        <h5 className="font-medium mb-2 text-blue-600">🇦🇷 Argentina</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-blue-50 rounded text-sm">
+                            <strong>Speedy:</strong><br/>
+                            200.7.91.67, 200.7.86.67
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-blue-600">🇨🇱 Chile</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-blue-50 rounded text-sm">
+                            <strong>Telefonica Chile:</strong><br/>
+                            200.1.123.46, 200.1.123.14
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-blue-600">🇨🇴 Colombia</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-blue-50 rounded text-sm">
+                            <strong>ETB:</strong><br/>
+                            190.15.17.25, 190.15.17.24
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-blue-600">🇵🇪 Peru</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-blue-50 rounded text-sm">
+                            <strong>Telefonica Peru:</strong><br/>
+                            200.48.225.130, 200.48.225.146
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Middle East & Africa */}
+                  <div className="mt-6">
+                    <h4 className="font-medium mb-4 text-orange-700">Middle East & Africa</h4>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                       <div>
                         <h5 className="font-medium mb-2 text-orange-600">🇿🇦 South Africa</h5>
-                        <div className="p-2 bg-orange-50 rounded text-sm">
-                          <strong>Telkom:</strong><br/>
-                          196.7.0.138, 196.7.142.132
+                        <div className="space-y-2">
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>Telkom:</strong><br/>
+                            196.7.0.138, 196.7.142.132
+                          </div>
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>IS:</strong><br/>
+                            155.232.32.112, 41.203.245.58
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-orange-600">🇷🇺 Russia</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>Yandex.DNS:</strong><br/>
+                            77.88.8.8, 77.88.8.1
+                          </div>
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>SafeDNS:</strong><br/>
+                            195.46.39.39, 195.46.39.40
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-orange-600">🇦🇪 UAE</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>Etisalat:</strong><br/>
+                            213.42.20.20, 195.229.241.222
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-orange-600">🇸🇦 Saudi Arabia</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>STC:</strong><br/>
+                            212.26.3.42, 212.26.3.41
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-orange-600">🇪🇬 Egypt</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>TE Data:</strong><br/>
+                            195.229.241.52, 195.229.241.222
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-orange-600">🇮🇱 Israel</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>Bezeq:</strong><br/>
+                            80.179.54.171, 80.179.54.132
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-orange-600">🇹🇷 Turkey</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>Turk Telekom:</strong><br/>
+                            195.175.39.39, 195.175.39.40
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-orange-600">🇳🇬 Nigeria</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>MTN:</strong><br/>
+                            196.3.92.2, 196.3.90.2
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 className="font-medium mb-2 text-orange-600">🇰🇪 Kenya</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 bg-orange-50 rounded text-sm">
+                            <strong>Safaricom:</strong><br/>
+                            165.255.3.1, 165.255.4.1
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                </div>
+
+                {/* Detailed DNS Information */}
+                <div className="mt-8 space-y-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">What is a Public DNS Server?</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 mb-4">
+                        The public DNS server is the nameserver that networked computers may use to resolve DNS queries. 
+                        They can be used in place of (or in addition to) the DNS servers assigned by your ISP. 
+                        These are publicly available, and anyone can easily access them.
+                      </p>
+                      <p className="text-gray-700">
+                        The public DNS server is also called a public recursive nameserver or public DNS resolver.
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Reasons to Use Public DNS Servers</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 mb-4">
+                        Even five years ago, ISP assigned DNS servers were sufficient to browse the internet. 
+                        With time, web pages have become more complex. Today, DNS servers have to perform multiple lookups to display one website. 
+                        This might increase the latency of the DNS server and slow down the browsing experience significantly.
+                      </p>
+                      <p className="text-gray-700 mb-4">
+                        <strong>According to YSlow, DNS lookups take 20 to 120 milliseconds to complete.</strong>
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-semibold mb-2">Main Benefits:</h4>
+                          <ul className="space-y-1 text-sm text-gray-700">
+                            <li>• Faster web browsing speed</li>
+                            <li>• Improved reliability and stability</li>
+                            <li>• Protection against phishing and malicious websites</li>
+                            <li>• Enhanced security features</li>
+                            <li>• Parental control options to protect families</li>
+                            <li>• Censorship bypass to access geo-blocked content</li>
+                            <li>• Faster DNS propagation compared to ISP DNS servers</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-2">Best DNS Providers:</h4>
+                          <ul className="space-y-1 text-sm text-gray-700">
+                            <li>• <strong>Cloudflare DNS</strong> - Privacy focused, fastest</li>
+                            <li>• <strong>Google Public DNS</strong> - Reliable, global coverage</li>
+                            <li>• <strong>OpenDNS</strong> - Security & parental controls</li>
+                            <li>• <strong>Quad9 DNS</strong> - Security focused blocking</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">DNS Server Selection Guidelines</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div>
+                          <h4 className="font-semibold text-blue-600 mb-2">Geographic Proximity Matters</h4>
+                          <p className="text-sm text-gray-700">
+                            Internet speed depends on how close a DNS resolver is to your location. If your area is located near an OpenDNS PoP (Point of Presence), 
+                            then OpenDNS is the best option. If it's located 2,500+ miles from the OpenDNS PoP, it's better to use a local DNS service.
+                          </p>
+                        </div>
+                        
+                        <div>
+                          <h4 className="font-semibold text-green-600 mb-2">Mixing DNS Servers</h4>
+                          <p className="text-sm text-gray-700">
+                            Yes, you can mix DNS servers! Use Google Public DNS as the primary DNS server and OpenDNS as your secondary DNS server. 
+                            This improves redundancy in case of failure of the primary DNS server.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h4 className="font-semibold text-purple-600 mb-2">Safety of Changing DNS</h4>
+                          <p className="text-sm text-gray-700">
+                            Changing your current DNS settings to a reliable public DNS server is safe. These changes are reversible and beneficial adjustments 
+                            that will not harm your computer or network.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h4 className="font-semibold text-orange-600 mb-2">Provider Reliability</h4>
+                          <p className="text-sm text-gray-700">
+                            Like any business, DNS providers can shut down. For example, Norton ConnectSafe was a well-recognized public DNS resolver, 
+                            but it shut down its business in November 2018. Be aware of this and keep an eye on the service once you're settled with one.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
 
                 {/* Performance Tips */}
