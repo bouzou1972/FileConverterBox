@@ -5,6 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Download, Upload, Image as ImageIcon, Trash2 } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ImageToBase64() {
@@ -114,8 +118,41 @@ export default function ImageToBase64() {
     return `background-image: url(${base64Output});`;
   };
 
+  const usageExamples = [
+    {
+      title: "Embed Images in HTML/CSS",
+      description: "Convert images to Base64 for direct embedding in code",
+      steps: [
+        "Upload your image file (PNG, JPG, GIF, SVG, WebP)",
+        "Copy the generated Base64 data URL",
+        "Use in HTML: <img src='data:image/png;base64,...'>",
+        "Use in CSS: background-image: url('data:image/...')",
+        "Test the embedded image in your application"
+      ],
+      tip: "Base64 images are great for small icons but increase HTML size"
+    },
+    {
+      title: "API Integration",
+      description: "Prepare images for API requests and data transfer",
+      steps: [
+        "Convert your image to Base64 format",
+        "Copy just the Base64 string (without data URL prefix)",
+        "Include in JSON API requests as a string field",
+        "Send to backend for processing or storage",
+        "Decode on the receiving end for image manipulation"
+      ],
+      tip: "Base64 increases file size by ~33%, consider alternatives for large images"
+    }
+  ];
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Image to Base64 Converter - Encode Images Online"
+        description="Convert images to Base64 encoded strings for embedding in HTML, CSS, or APIs. Supports PNG, JPG, GIF, SVG, and WebP formats."
+        keywords={["image to base64", "base64 encoder", "image encoder", "data url converter", "image embedding"]}
+        canonicalUrl="/image-to-base64"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Image to Base64 Converter</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -334,6 +371,31 @@ export default function ImageToBase64() {
       </Card>
       
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Image to Base64 Converter - Encode Images Online"
+          description="Convert images to Base64 encoded strings for embedding in HTML, CSS, or APIs"
+        />
+        
+        <UsageGuide 
+          title="Image to Base64 Converter"
+          description="Learn how to convert and use Base64 encoded images in your projects"
+          examples={usageExamples}
+          tips={[
+            "Base64 images are great for small icons but increase HTML size",
+            "Base64 increases file size by ~33%, consider alternatives for large images",
+            "Use data URLs for inline embedding in HTML and CSS",
+            "Base64 strings work well for API JSON payloads",
+            "Consider image optimization before Base64 conversion"
+          ]}
+          commonUses={[
+            "HTML email templates",
+            "CSS inline images",
+            "API data transfer",
+            "Small icon embedding",
+            "JSON image storage"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

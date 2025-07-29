@@ -9,6 +9,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Upload, Download, FileSpreadsheet, FileText, RefreshCw, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 // @ts-ignore
 import * as XLSX from 'xlsx';
 
@@ -207,8 +211,41 @@ export default function ExcelConverter() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Convert CSV to Excel",
+      description: "Transform CSV files into Excel spreadsheets with multiple sheets",
+      steps: [
+        "Select 'CSV to Excel' tab",
+        "Upload your CSV file or paste CSV content",
+        "Choose delimiter (comma, semicolon, tab)",
+        "Set whether your data has headers",
+        "Click 'Convert to Excel' to download XLSX file"
+      ],
+      tip: "Perfect for creating professional Excel files from CSV data"
+    },
+    {
+      title: "Extract Data from Excel",
+      description: "Convert Excel files to CSV format for data analysis",
+      steps: [
+        "Switch to 'Excel to CSV' tab",
+        "Upload your Excel (.xlsx) file",
+        "Select which sheet to convert",
+        "Choose your preferred delimiter",
+        "Download the CSV file"
+      ],
+      tip: "Great for data analysis tools that require CSV format"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Excel to CSV Converter - Convert Between Excel and CSV"
+        description="Convert Excel files to CSV or CSV files to Excel format. Support for multiple sheets, custom delimiters, and headers."
+        keywords={["excel to csv", "csv to excel", "xlsx converter", "spreadsheet converter", "excel csv converter"]}
+        canonicalUrl="/excel-converter"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Excel & CSV Converter</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -447,6 +484,31 @@ Jane${delimiter}25${delimiter}Los Angeles`}
           </div>
         </CardContent>
       </Card>
+
+      <ShareButtons 
+        title="Excel to CSV Converter - Convert Between Excel and CSV"
+        description="Convert Excel files to CSV or CSV files to Excel format with support for multiple sheets and custom delimiters"
+      />
+      
+      <UsageGuide 
+        title="Excel to CSV Converter"
+        description="Learn how to convert between Excel and CSV formats with advanced options"
+        examples={usageExamples}
+        tips={[
+          "Use appropriate delimiters based on your data content",
+          "Headers option helps preserve column names",
+          "Excel files can contain multiple sheets - select the right one",
+          "CSV format is perfect for data analysis and import/export",
+          "Excel format provides better data visualization and formulas"
+        ]}
+        commonUses={[
+          "Data analysis preparation",
+          "Database import/export",
+          "Report generation",
+          "Spreadsheet conversion",
+          "Data backup and migration"
+        ]}
+      />
 
       <div className="text-center mt-8">
         <div className="mb-4">

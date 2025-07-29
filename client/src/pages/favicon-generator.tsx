@@ -5,6 +5,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Upload, Download, Image as ImageIcon, RefreshCw, Info } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function FaviconGenerator() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -193,8 +197,41 @@ export default function FaviconGenerator() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Create Website Favicons",
+      description: "Generate all necessary favicon sizes for your website",
+      steps: [
+        "Upload your logo or icon image (PNG, JPG, SVG)",
+        "Click 'Generate All Favicons' to create all sizes",
+        "Download individual favicons or all as a ZIP",
+        "Add the favicon files to your website's root directory",
+        "Update your HTML with the appropriate favicon tags"
+      ],
+      tip: "Use square images (1:1 ratio) for best results across all platforms"
+    },
+    {
+      title: "Mobile App Icons",
+      description: "Create app icons for iOS and Android devices",
+      steps: [
+        "Upload your app icon design (minimum 512x512)",
+        "Generate multiple sizes for different devices",
+        "Download iOS touch icons and Android chrome icons",
+        "Use the appropriate sizes in your app manifest",
+        "Test icons on different devices and browsers"
+      ],
+      tip: "Ensure your icon is simple and recognizable at small sizes (16x16)"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Favicon Generator - Create Website Icons & App Icons"
+        description="Generate favicons and app icons in all standard sizes from any image. Create ICO and PNG favicons for websites, iOS, and Android applications."
+        keywords={["favicon generator", "website icon", "app icon", "favicon creator", "ico generator"]}
+        canonicalUrl="/favicon-generator"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Favicon Generator</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -405,6 +442,31 @@ export default function FaviconGenerator() {
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Favicon Generator - Create Website Icons & App Icons"
+          description="Generate favicons and app icons in all standard sizes from any image"
+        />
+        
+        <UsageGuide 
+          title="Favicon Generator"
+          description="Learn how to create professional favicons and app icons for websites and applications"
+          examples={usageExamples}
+          tips={[
+            "Use square images (1:1 ratio) for best results",
+            "Ensure your icon is simple and recognizable at small sizes",
+            "Test favicons in different browsers and devices",
+            "Include all standard favicon sizes for compatibility",
+            "Use high contrast designs for better visibility"
+          ]}
+          commonUses={[
+            "Website favicons",
+            "Progressive web app icons",
+            "Mobile app icons",
+            "Browser bookmark icons",
+            "Desktop shortcut icons"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

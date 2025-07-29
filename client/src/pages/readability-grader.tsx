@@ -8,6 +8,10 @@ import { FileText, RefreshCw, BookOpen, BarChart3, TrendingUp, Info } from "luci
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface ReadabilityScore {
   name: string;
@@ -273,8 +277,41 @@ export default function ReadabilityGrader() {
 
   const overall = getOverallGrade();
 
+  const usageExamples = [
+    {
+      title: "Academic Writing Assessment",
+      description: "Evaluate readability for academic papers and research",
+      steps: [
+        "Paste your academic text into the analyzer",
+        "Click 'Analyze Readability' to get comprehensive scores",
+        "Review grade levels from 6 different formulas",
+        "Check if complexity matches your target audience",
+        "Revise text based on readability recommendations"
+      ],
+      tip: "Academic writing typically scores 12th grade or higher on most formulas"
+    },
+    {
+      title: "Content Optimization",
+      description: "Optimize content readability for better engagement",
+      steps: [
+        "Input your content (blog posts, articles, marketing copy)",
+        "Analyze with multiple readability formulas",
+        "Target 8th-10th grade level for general audiences",
+        "Simplify complex sentences and vocabulary",
+        "Re-analyze until you reach optimal readability"
+      ],
+      tip: "Most successful online content targets 8th-10th grade reading level"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Readability Grader - Analyze Text Reading Level"
+        description="Analyze text readability with 6 formulas including Flesch-Kincaid, Gunning Fog, and SMOG. Get grade level assessments and detailed statistics."
+        keywords={["readability grader", "flesch kincaid", "text analysis", "reading level", "content readability"]}
+        canonicalUrl="/readability-grader"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Readability Grader</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -493,6 +530,31 @@ export default function ReadabilityGrader() {
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Readability Grader - Analyze Text Reading Level"
+          description="Analyze text readability with 6 formulas including Flesch-Kincaid, Gunning Fog, and SMOG"
+        />
+        
+        <UsageGuide 
+          title="Readability Grader"
+          description="Learn how to analyze and improve text readability for better audience engagement"
+          examples={usageExamples}
+          tips={[
+            "Academic writing typically scores 12th grade or higher",
+            "Most successful online content targets 8th-10th grade reading level",
+            "Use shorter sentences to improve readability scores",
+            "Avoid complex vocabulary for general audiences",
+            "Test different formulas for comprehensive analysis"
+          ]}
+          commonUses={[
+            "Content marketing",
+            "Academic writing",
+            "Technical documentation",
+            "Educational materials",
+            "Web content optimization"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

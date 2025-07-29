@@ -7,6 +7,10 @@ import { RefreshCw, FileText, Timer, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function CharacterCounter() {
   const [text, setText] = useState("");
@@ -97,8 +101,41 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
     return `${hours}h ${mins}m`;
   };
 
+  const usageExamples = [
+    {
+      title: "Content Analysis",
+      description: "Analyze text content for writing optimization",
+      steps: [
+        "Paste your text content into the text area",
+        "View character, word, and sentence counts",
+        "Check reading and speaking time estimates",
+        "Review word frequency analysis",
+        "Use insights for content optimization"
+      ],
+      tip: "Keep sentences under 20 words for better readability"
+    },
+    {
+      title: "Social Media Optimization",
+      description: "Check text length for social media platforms",
+      steps: [
+        "Enter your social media post text",
+        "Check character count for platform limits",
+        "Review word frequency for hashtag ideas",
+        "Optimize based on character analysis",
+        "Ensure content fits platform requirements"
+      ],
+      tip: "Twitter: 280 chars, Instagram caption: 2,200 chars"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Character Counter - Text Analysis & Word Count Tool"
+        description="Count characters, words, sentences, and paragraphs. Analyze text with reading time, word frequency, and detailed statistics for content optimization."
+        keywords={["character counter", "word counter", "text analysis", "character count", "word count tool"]}
+        canonicalUrl="/character-counter"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Character & Word Counter</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -304,6 +341,31 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Character Counter - Text Analysis & Word Count Tool"
+          description="Count characters, words, sentences with reading time and word frequency analysis"
+        />
+        
+        <UsageGuide 
+          title="Character Counter"
+          description="Learn how to analyze text content with detailed statistics and insights"
+          examples={usageExamples}
+          tips={[
+            "Use for social media character limits",
+            "Check reading time for blog posts",
+            "Analyze word frequency for SEO",
+            "Review sentence length for readability",
+            "Track character distribution for content balance"
+          ]}
+          commonUses={[
+            "Social media posts",
+            "Blog content analysis",
+            "Academic writing",
+            "SEO optimization",
+            "Content planning"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

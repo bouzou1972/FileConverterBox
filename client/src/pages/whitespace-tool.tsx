@@ -11,6 +11,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Copy, Download, Upload, Minimize2, Maximize2, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function WhitespaceToolPage() {
   const [input, setInput] = useState("");
@@ -152,8 +156,41 @@ export default function WhitespaceToolPage() {
   const inputStats = getStats(input);
   const outputStats = getStats(output);
 
+  const usageExamples = [
+    {
+      title: "Code Formatting",
+      description: "Clean up messy code with proper indentation and spacing",
+      steps: [
+        "Paste your messy code into the input area",
+        "Enable 'Normalize Spaces' and 'Remove Trailing Spaces'",
+        "Choose between tabs or spaces for indentation",
+        "Set your preferred indent size (2 or 4 spaces)",
+        "Click 'Process Text' to clean up formatting"
+      ],
+      tip: "Enable 'Tabs to Spaces' for consistent code formatting across teams"
+    },
+    {
+      title: "Document Cleanup",
+      description: "Remove extra whitespace from text documents",
+      steps: [
+        "Input your document text with irregular spacing",
+        "Enable 'Remove Empty Lines' to eliminate blank lines",
+        "Turn on 'Trim Lines' to remove leading/trailing spaces",
+        "Use 'Normalize Line Endings' for cross-platform compatibility",
+        "Process and copy the cleaned text"
+      ],
+      tip: "Great for cleaning up copied text from PDFs or web pages"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Whitespace Tool - Clean Text Formatting & Indentation"
+        description="Clean up text formatting by normalizing whitespace, fixing indentation, removing extra spaces, and converting between tabs and spaces."
+        keywords={["whitespace tool", "text formatter", "indentation fixer", "code formatter", "text cleaner"]}
+        canonicalUrl="/whitespace-tool"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Whitespace & Indentation Tool</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -391,6 +428,31 @@ export default function WhitespaceToolPage() {
       </Card>
       
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Whitespace Tool - Clean Text Formatting & Indentation"
+          description="Clean up text formatting by normalizing whitespace and fixing indentation"
+        />
+        
+        <UsageGuide 
+          title="Whitespace & Indentation Tool"
+          description="Learn how to clean up text formatting and fix indentation issues"
+          examples={usageExamples}
+          tips={[
+            "Enable 'Tabs to Spaces' for consistent code formatting across teams",
+            "Great for cleaning up copied text from PDFs or web pages",
+            "Use 'Normalize Line Endings' for cross-platform compatibility",
+            "Set indent size to match your project's coding standards",
+            "Process large files by uploading them directly"
+          ]}
+          commonUses={[
+            "Code formatting",
+            "Document cleanup",
+            "Text processing",
+            "Cross-platform compatibility",
+            "Consistent indentation"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

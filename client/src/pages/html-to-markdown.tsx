@@ -6,6 +6,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { Copy, RotateCcw, Download, Code } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function HtmlToMarkdown() {
   const [htmlInput, setHtmlInput] = useState("");
@@ -164,8 +168,40 @@ export default function HtmlToMarkdown() {
     setHtmlInput(sample);
   };
 
+  const usageExamples = [
+    {
+      title: "Convert HTML Blog Posts",
+      description: "Transform HTML blog content to clean Markdown format",
+      steps: [
+        "Copy the HTML content from your blog or website",
+        "Paste it into the 'HTML Input' field",
+        "Review the automatically converted Markdown output",
+        "Copy the result or download as .md file",
+        "Use the clean Markdown in your documentation"
+      ],
+      tip: "Works great with content from CMS systems and blog platforms"
+    },
+    {
+      title: "Clean Web Page Content", 
+      description: "Extract clean Markdown from complex web pages",
+      steps: [
+        "Copy HTML source from web pages",
+        "Paste into the converter",
+        "Get clean Markdown without styling overhead",
+        "Perfect for documentation and note-taking"
+      ],
+      tip: "Removes unnecessary HTML tags while preserving content structure"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="HTML to Markdown Converter - Convert HTML to Markdown"
+        description="Convert HTML content to clean Markdown format with support for headers, links, lists, and code blocks. Perfect for documentation."
+        keywords={["html to markdown", "convert html markdown", "html markdown converter", "markdown generator"]}
+        canonicalUrl="/html-to-markdown"
+      />
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">
@@ -290,6 +326,31 @@ export default function HtmlToMarkdown() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        title="HTML to Markdown Converter - Convert HTML to Markdown"
+        description="Convert HTML content to clean Markdown format with support for headers, links, lists, and code blocks"
+      />
+      
+      <UsageGuide 
+        title="HTML to Markdown Converter"
+        description="Learn how to convert HTML content to clean, readable Markdown format"
+        examples={usageExamples}
+        tips={[
+          "Supports headers, bold, italic, links, and images",
+          "Converts lists and code blocks automatically",
+          "Removes unnecessary HTML attributes and styling",
+          "Perfect for documentation and note-taking",
+          "Works with content from any HTML source"
+        ]}
+        commonUses={[
+          "Blog content conversion",
+          "Documentation cleanup",
+          "Web scraping results",
+          "Email content processing",
+          "CMS content migration"
+        ]}
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">

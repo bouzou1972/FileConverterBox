@@ -8,6 +8,10 @@ import { Calculator as CalculatorIcon, History, RefreshCw, Info } from "lucide-r
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface CalculationHistory {
   expression: string;
@@ -162,8 +166,39 @@ export default function Calculator() {
     setExpression("sqrt(pow(3, 2) + pow(4, 2)) * pi / 2");
   };
 
+  const usageExamples = [
+    {
+      title: "Basic Arithmetic Calculations",
+      description: "Perform standard mathematical operations",
+      steps: [
+        "Enter a mathematical expression like '2 + 3 * 4'",
+        "Click 'Calculate' or press Enter",
+        "View the result and copy if needed",
+        "See the calculation added to history"
+      ],
+      tip: "Use parentheses for complex expressions: (2 + 3) * 4"
+    },
+    {
+      title: "Scientific Functions",
+      description: "Use advanced mathematical functions",
+      steps: [
+        "Use functions like sin(pi/2) or sqrt(16)",
+        "Access constants like pi, e, or phi",
+        "Combine functions: log(exp(5)) or pow(2, 3)",
+        "View detailed calculation history"
+      ],
+      tip: "All trigonometric functions work in radians"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Advanced Calculator - Scientific & Programming Calculator"
+        description="Advanced calculator with scientific functions, programming operations, and calculation history. Supports trigonometry, logarithms, and mathematical constants."
+        keywords={["calculator", "scientific calculator", "math calculator", "programming calculator", "advanced calculator"]}
+        canonicalUrl="/calculator"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Expression Calculator</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -382,6 +417,31 @@ export default function Calculator() {
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Advanced Calculator - Scientific & Programming Calculator"
+          description="Advanced calculator with scientific functions and calculation history"
+        />
+        
+        <UsageGuide 
+          title="Advanced Calculator"
+          description="Learn how to use scientific functions and mathematical constants"
+          examples={usageExamples}
+          tips={[
+            "Use parentheses to control order of operations",
+            "All trigonometric functions work in radians",
+            "Access constants like pi, e, phi, sqrt2",
+            "View calculation history for reference",
+            "Copy results directly to clipboard"
+          ]}
+          commonUses={[
+            "Scientific calculations",
+            "Engineering computations",
+            "Mathematical analysis",
+            "Homework assistance",
+            "Quick calculations"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

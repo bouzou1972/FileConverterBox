@@ -11,6 +11,9 @@ import { useToast } from "@/hooks/use-toast";
 import { FileText, Download, Upload, RotateCcw } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 import { 
   convertTextToPDF, 
   convertHTMLToPDF, 
@@ -175,8 +178,50 @@ export default function PDFConverter() {
     setError("");
   };
 
+  const usageExamples = [
+    {
+      title: "Convert Text Documents",
+      description: "Transform plain text or formatted content into professional PDFs",
+      steps: [
+        "Select 'Text to PDF' tab",
+        "Paste your text content or load a sample",
+        "Adjust format, orientation, and font settings",
+        "Click 'Convert Text to PDF' to download"
+      ],
+      tip: "Use Markdown-style formatting like # for headers, **bold**, *italic* for better-looking PDFs"
+    },
+    {
+      title: "HTML to PDF Conversion",
+      description: "Convert HTML content with styling to PDF format",
+      steps: [
+        "Switch to 'HTML to PDF' tab", 
+        "Enter your HTML content with CSS styling",
+        "Configure page settings as needed",
+        "Generate your styled PDF document"
+      ],
+      tip: "Include inline CSS for better styling control in the PDF output"
+    },
+    {
+      title: "Image to PDF Processing",
+      description: "Convert images to PDF format with professional layout",
+      steps: [
+        "Go to 'Image to PDF' tab",
+        "Upload PNG, JPG, JPEG, GIF, or WebP images",
+        "Set page format and orientation",
+        "Convert and download your PDF"
+      ],
+      tip: "Use A4 portrait for documents, landscape for presentations"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="PDF Converter - Convert Text, HTML & Images to PDF"
+        description="Convert text, HTML, and images to PDF with customizable formatting. Support for multiple formats, orientations, and professional page settings."
+        keywords={["pdf converter", "text to pdf", "html to pdf", "image to pdf", "convert pdf", "document converter"]}
+        canonicalUrl="/pdf-converter"
+      />
       <Card className="shadow-lg">
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -420,6 +465,31 @@ export default function PDFConverter() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        title="PDF Converter - Convert Text, HTML & Images to PDF"
+        description="Convert text, HTML, and images to PDF with customizable formatting and professional settings"
+      />
+      
+      <UsageGuide 
+        title="PDF Converter"
+        description="Learn how to convert text, HTML, and images to PDF with professional formatting"
+        examples={usageExamples}
+        tips={[
+          "Choose A4 format for standard documents",
+          "Use HTML mode for complex layouts with styling",
+          "Adjust margins for better text readability",
+          "Portrait orientation works best for text documents",
+          "Landscape orientation is ideal for wide content or images"
+        ]}
+        commonUses={[
+          "Document creation",
+          "Report generation", 
+          "Image compilation",
+          "Web page archiving",
+          "Content preservation"
+        ]}
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
       </div>

@@ -8,6 +8,10 @@ import { Clipboard, Trash2, Eye, Info, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function ClipboardInspector() {
   const [clipboardContent, setClipboardContent] = useState("");
@@ -132,8 +136,41 @@ export default function ClipboardInspector() {
       .replace(/\r/g, '⏎');
   };
 
+  const usageExamples = [
+    {
+      title: "Inspect Clipboard Content",
+      description: "View and analyze what's currently in your clipboard",
+      steps: [
+        "Click 'Read Clipboard' button",
+        "Grant clipboard permissions if prompted",
+        "View the content analysis and metadata",
+        "Copy specific parts if needed",
+        "Clear sensitive data for privacy"
+      ],
+      tip: "Modern browsers require user permission for clipboard access"
+    },
+    {
+      title: "Clipboard Content Management",
+      description: "Manage and clean your clipboard data",
+      steps: [
+        "Read current clipboard content",
+        "Analyze the data type and format",
+        "Clear clipboard for security",
+        "Copy cleaned or modified content",
+        "Verify clipboard changes"
+      ],
+      tip: "Regularly clear clipboard after copying sensitive information"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Clipboard Inspector - View & Analyze Clipboard Content"
+        description="Inspect clipboard content, analyze data types, and manage clipboard data securely. View clipboard history and clear sensitive information."
+        keywords={["clipboard inspector", "clipboard viewer", "clipboard manager", "clipboard content", "clipboard analysis"]}
+        canonicalUrl="/clipboard-inspector"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Clipboard Inspector</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -363,6 +400,31 @@ export default function ClipboardInspector() {
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Clipboard Inspector - View & Analyze Clipboard Content"
+          description="Inspect and manage clipboard content securely with detailed analysis"
+        />
+        
+        <UsageGuide 
+          title="Clipboard Inspector"
+          description="Learn how to safely inspect and manage your clipboard content"
+          examples={usageExamples}
+          tips={[
+            "Grant clipboard permissions when prompted",
+            "Regularly clear sensitive clipboard data",
+            "Use fallback manual paste if permissions denied",
+            "Check data types before processing",
+            "Verify content before sharing or processing"
+          ]}
+          commonUses={[
+            "Security auditing",
+            "Data validation",
+            "Content debugging",
+            "Privacy management",
+            "Clipboard cleaning"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

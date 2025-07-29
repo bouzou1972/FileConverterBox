@@ -10,6 +10,10 @@ import { Badge } from "@/components/ui/badge";
 import { Copy, Key, Lock, Unlock, Shield, AlertTriangle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function TextEncryptorPage() {
   const [input, setInput] = useState("");
@@ -200,8 +204,41 @@ export default function TextEncryptorPage() {
     });
   };
 
+  const usageExamples = [
+    {
+      title: "Secure Text Storage",
+      description: "Encrypt sensitive text for secure storage or transmission",
+      steps: [
+        "Enter your sensitive text in the encryption input field",
+        "Create a strong password or use the random generator",
+        "Click 'Encrypt Text' to generate encrypted output",
+        "Save both the encrypted text and password securely",
+        "Use the decrypt tab to recover your original text later"
+      ],
+      tip: "Use the random password generator for maximum security"
+    },
+    {
+      title: "Decrypt Received Messages",
+      description: "Decrypt encrypted text messages you've received",
+      steps: [
+        "Switch to the 'Decrypt Text' tab",
+        "Paste the encrypted text you received",
+        "Enter the password provided by the sender",
+        "Click 'Decrypt Text' to reveal the original message",
+        "Copy the decrypted text for further use"
+      ],
+      tip: "Make sure you have the exact password - decryption will fail with incorrect passwords"
+    }
+  ];
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Text Encryptor - Secure AES-256 Text Encryption Online"
+        description="Encrypt and decrypt text using AES-256 encryption with PBKDF2 key derivation. Secure client-side processing with no data transmission."
+        keywords={["text encryptor", "aes encryption", "text security", "password encryption", "secure text"]}
+        canonicalUrl="/text-encryptor"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Text Encryptor/Decryptor</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -413,6 +450,31 @@ export default function TextEncryptorPage() {
       </Card>
       
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Text Encryptor - Secure AES-256 Text Encryption Online"
+          description="Encrypt and decrypt text using military-grade AES-256 encryption"
+        />
+        
+        <UsageGuide 
+          title="Text Encryptor/Decryptor"
+          description="Learn how to securely encrypt and decrypt text using AES-256 encryption"
+          examples={usageExamples}
+          tips={[
+            "Use the random password generator for maximum security",
+            "Make sure you have the exact password - decryption will fail with incorrect passwords",
+            "Store passwords separately from encrypted text",
+            "AES-256 with PBKDF2 provides military-grade security",
+            "All encryption happens in your browser - no data transmission"
+          ]}
+          commonUses={[
+            "Secure messaging",
+            "Password protection",
+            "Sensitive data storage",
+            "Confidential notes",
+            "Private communication"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

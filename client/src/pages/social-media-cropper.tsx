@@ -6,6 +6,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Upload, Download, Crop, RefreshCw, Info, Move, ZoomIn, ZoomOut } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface CropPreset {
   name: string;
@@ -242,8 +246,41 @@ export default function SocialMediaCropper() {
     return acc;
   }, {} as {[key: string]: CropPreset[]});
 
+  const usageExamples = [
+    {
+      title: "Multi-Platform Content Creation",
+      description: "Create perfect images for all social media platforms at once",
+      steps: [
+        "Upload your high-resolution image",
+        "Select 'All Platforms' or choose specific platform presets",
+        "Click 'Crop to All Sizes' for automatic processing",
+        "Download individual images or all at once",
+        "Use the perfectly sized images across your social accounts"
+      ],
+      tip: "Upload square or landscape images for best results across all platforms"
+    },
+    {
+      title: "Instagram Marketing",
+      description: "Optimize images specifically for Instagram formats",
+      steps: [
+        "Choose Instagram-specific presets (square post, story, reel)",
+        "Upload your marketing image or photo",
+        "Preview how it will look in each format",
+        "Adjust cropping if needed for better composition",
+        "Download optimized images for Instagram campaigns"
+      ],
+      tip: "Instagram Stories (9:16) work great for behind-the-scenes content"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Social Media Image Cropper - Resize for All Platforms"
+        description="Automatically crop images to perfect sizes for Instagram, Facebook, Twitter, LinkedIn, YouTube, TikTok, and Pinterest. Professional social media optimization."
+        keywords={["social media cropper", "image resizer", "instagram image size", "facebook image crop", "social media optimizer"]}
+        canonicalUrl="/social-media-cropper"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Social Media Image Cropper</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -494,6 +531,31 @@ export default function SocialMediaCropper() {
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Social Media Image Cropper - Resize for All Platforms"
+          description="Automatically crop images to perfect sizes for all social media platforms"
+        />
+        
+        <UsageGuide 
+          title="Social Media Image Cropper"
+          description="Learn how to create perfectly sized images for all social media platforms"
+          examples={usageExamples}
+          tips={[
+            "Upload square or landscape images for best results",
+            "Instagram Stories (9:16) work great for behind-the-scenes content",
+            "Use high-resolution source images for better output quality",
+            "Download all sizes at once for multi-platform campaigns",
+            "Consider platform-specific content when cropping"
+          ]}
+          commonUses={[
+            "Social media marketing",
+            "Brand content creation",
+            "Influencer posts",
+            "Business promotion",
+            "Event announcements"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

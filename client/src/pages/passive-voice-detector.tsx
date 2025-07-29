@@ -8,6 +8,10 @@ import { Eye, RefreshCw, Target, TrendingDown, Lightbulb, Info } from "lucide-re
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface PassiveVoiceMatch {
   sentence: string;
@@ -275,8 +279,41 @@ export default function PassiveVoiceDetector() {
     return "Poor";
   };
 
+  const usageExamples = [
+    {
+      title: "Academic Writing Improvement",
+      description: "Identify and fix passive voice in research papers and essays",
+      steps: [
+        "Paste your academic text into the analyzer",
+        "Click 'Analyze Text' to detect passive voice constructions",
+        "Review highlighted passive sentences with confidence levels",
+        "Read suggested active voice alternatives",
+        "Rewrite sentences using the provided suggestions"
+      ],
+      tip: "Academic writing often prefers active voice for clarity and directness"
+    },
+    {
+      title: "Business Communication",
+      description: "Make business writing more direct and engaging",
+      steps: [
+        "Enter your business content (emails, reports, proposals)",
+        "Analyze for passive voice patterns",
+        "Review detection results with explanations",
+        "Convert passive sentences to active voice",
+        "Copy improved text for professional communication"
+      ],
+      tip: "Active voice makes business writing more persuasive and easier to understand"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Passive Voice Detector - Fix Passive Voice in Writing"
+        description="Detect and fix passive voice in your writing. Improve clarity and engagement by converting passive sentences to active voice with intelligent suggestions."
+        keywords={["passive voice detector", "active voice converter", "writing improvement", "grammar checker", "writing analyzer"]}
+        canonicalUrl="/passive-voice-detector"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Passive Voice Detector</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -549,6 +586,31 @@ export default function PassiveVoiceDetector() {
       `}</style>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Passive Voice Detector - Fix Passive Voice in Writing"
+          description="Detect and fix passive voice in your writing for better clarity and engagement"
+        />
+        
+        <UsageGuide 
+          title="Passive Voice Detector"
+          description="Learn how to identify and improve passive voice in your writing"
+          examples={usageExamples}
+          tips={[
+            "Academic writing often prefers active voice for clarity",
+            "Active voice makes business writing more persuasive",
+            "Look for 'be' verbs followed by past participles",
+            "Ask 'who is doing the action?' to identify passive voice",
+            "Use active voice to make writing more direct and engaging"
+          ]}
+          commonUses={[
+            "Academic papers",
+            "Business writing",
+            "Content creation",
+            "Email communication",
+            "Technical documentation"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

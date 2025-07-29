@@ -9,6 +9,10 @@ import { Archive, Download, RefreshCw, TrendingDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 type CompressionMethod = "rle" | "frequency" | "dictionary" | "simple";
 
@@ -308,8 +312,41 @@ export default function TextCompressor() {
     setInput(sample);
   };
 
+  const usageExamples = [
+    {
+      title: "Compress Repetitive Text",
+      description: "Reduce file size of text with repeated patterns",
+      steps: [
+        "Paste your text with repetitive content into the input area",
+        "Choose 'Run-Length Encoding' for texts with repeated characters",
+        "Click 'Compress Text' to see size reduction",
+        "Review compression ratio and savings percentage",
+        "Copy compressed output or download as file"
+      ],
+      tip: "Run-length encoding works best on text with repeated characters or patterns"
+    },
+    {
+      title: "Optimize Large Documents",
+      description: "Compress large text files for storage or transmission",
+      steps: [
+        "Upload or paste your large text document",
+        "Try 'Dictionary Compression' for natural language text",
+        "Analyze compression efficiency with detailed statistics",
+        "Choose the method with best compression ratio",
+        "Decompress later to restore original content"
+      ],
+      tip: "Dictionary compression typically works better for natural language than technical content"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Text Compressor - Compress Text with Multiple Algorithms"
+        description="Compress text using run-length encoding, frequency mapping, and dictionary compression. Reduce file sizes and analyze compression efficiency."
+        keywords={["text compressor", "text compression", "file size reducer", "run length encoding", "text optimizer"]}
+        canonicalUrl="/text-compressor"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Text Compressor</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -525,6 +562,31 @@ export default function TextCompressor() {
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Text Compressor - Compress Text with Multiple Algorithms"
+          description="Compress text using various algorithms to reduce file sizes and analyze efficiency"
+        />
+        
+        <UsageGuide 
+          title="Text Compressor"
+          description="Learn how to effectively compress text using different algorithms"
+          examples={usageExamples}
+          tips={[
+            "Run-length encoding works best on text with repeated characters",
+            "Dictionary compression typically works better for natural language",
+            "Try different methods to find the best compression ratio",
+            "Large documents often compress better than short texts",
+            "Remember to save the method used for proper decompression"
+          ]}
+          commonUses={[
+            "Log file compression",
+            "Document optimization",
+            "Data transmission",
+            "Storage optimization",
+            "Bandwidth reduction"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

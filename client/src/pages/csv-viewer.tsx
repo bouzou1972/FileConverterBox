@@ -11,6 +11,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Upload, Search, SortAsc, SortDesc, Eye, EyeOff, Download, FileSpreadsheet } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface CsvData {
   headers: string[];
@@ -204,8 +208,41 @@ export default function CsvViewerPage() {
     visibleColumns: visibleColumns?.length || 0
   };
 
+  const usageExamples = [
+    {
+      title: "View Large CSV Files",
+      description: "Browse and analyze large CSV datasets with sorting and filtering",
+      steps: [
+        "Upload your CSV file or paste CSV content",
+        "Choose the correct delimiter (comma, semicolon, tab)",
+        "Toggle headers if your data includes column names",
+        "Use search to find specific data",
+        "Sort columns by clicking column headers"
+      ],
+      tip: "Use the search feature to quickly locate specific data points"
+    },
+    {
+      title: "Analyze Data Structure",
+      description: "Examine CSV structure and data quality",
+      steps: [
+        "Load your CSV file",
+        "Review column headers and data types",
+        "Hide unnecessary columns for focused analysis",
+        "Sort data to identify patterns",
+        "Export filtered results if needed"
+      ],
+      tip: "Hide columns you don't need to focus on relevant data"
+    }
+  ];
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="CSV Viewer - View and Analyze CSV Files Online"
+        description="View, sort, filter, and analyze CSV files with a powerful online viewer. Support for custom delimiters, search, and column management."
+        keywords={["csv viewer", "csv file viewer", "csv analyzer", "view csv online", "csv reader"]}
+        canonicalUrl="/csv-viewer"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">CSV/TSV Viewer</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -439,6 +476,31 @@ export default function CsvViewerPage() {
       </Card>
       
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="CSV Viewer - View and Analyze CSV Files Online"
+          description="View, sort, filter, and analyze CSV files with powerful online tools"
+        />
+        
+        <UsageGuide 
+          title="CSV Viewer"
+          description="Learn how to effectively view and analyze CSV files with advanced features"
+          examples={usageExamples}
+          tips={[
+            "Choose the correct delimiter for proper data parsing",
+            "Use search to quickly locate specific data points",
+            "Hide unnecessary columns to focus on relevant data",
+            "Sort columns to identify patterns and outliers",
+            "Enable headers option if your data includes column names"
+          ]}
+          commonUses={[
+            "Data analysis",
+            "Report review",
+            "Database exports",
+            "Spreadsheet validation",
+            "CSV file debugging"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

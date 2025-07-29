@@ -9,6 +9,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Upload, Palette, Copy, Download, RefreshCw, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface ColorInfo {
   hex: string;
@@ -270,8 +274,41 @@ export default function ColorPaletteGeneratorPage() {
     URL.revokeObjectURL(url);
   };
 
+  const usageExamples = [
+    {
+      title: "Extract Colors from Photos",
+      description: "Generate color palettes from photography and artwork",
+      steps: [
+        "Upload an image file (JPG, PNG, GIF, WebP)",
+        "Adjust the number of colors (1-20) using the slider",
+        "Click 'Generate Palette' to extract dominant colors",
+        "View colors in HEX, RGB, and HSL formats",
+        "Copy individual colors or download the full palette"
+      ],
+      tip: "High-contrast images produce more distinct color palettes"
+    },
+    {
+      title: "Design Color Schemes",
+      description: "Create cohesive color schemes for design projects",
+      steps: [
+        "Upload reference images or inspiration photos",
+        "Extract 5-8 colors for a balanced palette",
+        "Copy HEX codes for use in design software",
+        "Download palette data for team sharing",
+        "Test color combinations in your designs"
+      ],
+      tip: "Limit to 5-7 colors for professional design coherence"
+    }
+  ];
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Color Palette Generator - Extract Colors from Images"
+        description="Generate beautiful color palettes from any image. Extract dominant colors in HEX, RGB, and HSL formats for design projects and inspiration."
+        keywords={["color palette generator", "extract colors from image", "color picker", "dominant colors", "design colors"]}
+        canonicalUrl="/color-palette-generator"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Color Palette Generator</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -474,6 +511,31 @@ export default function ColorPaletteGeneratorPage() {
       <canvas ref={canvasRef} className="hidden" />
       
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Color Palette Generator - Extract Colors from Images"
+          description="Generate beautiful color palettes from any image with HEX, RGB, and HSL formats"
+        />
+        
+        <UsageGuide 
+          title="Color Palette Generator"
+          description="Learn how to extract and use color palettes from images for design projects"
+          examples={usageExamples}
+          tips={[
+            "Use high-contrast images for distinct color palettes",
+            "Limit to 5-7 colors for professional design coherence",
+            "Save palettes as JSON for team collaboration",
+            "Test color accessibility with contrast checkers",
+            "Consider color psychology for brand projects"
+          ]}
+          commonUses={[
+            "Web design color schemes",
+            "Brand color extraction",
+            "Art project inspiration",
+            "Interior design planning",
+            "Fashion color coordination"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

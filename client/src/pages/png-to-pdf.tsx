@@ -8,6 +8,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, Download, RotateCcw, Image } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { 
   convertImageToPDF, 
   downloadPDF,
@@ -143,8 +147,41 @@ export default function PngToPdf() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Convert Multiple Images to PDF",
+      description: "Combine several images into a single PDF document",
+      steps: [
+        "Click 'Upload Images' button",
+        "Select multiple PNG, JPG, JPEG, GIF, or WebP files",
+        "Preview the uploaded images in the gallery",
+        "Adjust page format and orientation settings",
+        "Click 'Convert to PDF' to generate the document"
+      ],
+      tip: "Use landscape orientation for wide images like screenshots"
+    },
+    {
+      title: "Single Image to PDF",
+      description: "Convert a single image to PDF format with custom settings",
+      steps: [
+        "Upload one image file",
+        "Choose appropriate page format (A4, A3, Letter)",
+        "Set orientation based on your image dimensions",
+        "Adjust margins for better presentation",
+        "Generate your PDF document"
+      ],
+      tip: "A4 portrait works best for document-style images"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="PNG to PDF Converter - Convert Images to PDF"
+        description="Convert PNG, JPG, JPEG, GIF, and WebP images to PDF format with batch processing and customizable page settings."
+        keywords={["png to pdf", "image to pdf", "convert images pdf", "batch image converter", "jpg to pdf"]}
+        canonicalUrl="/png-to-pdf"
+      />
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">
@@ -337,6 +374,31 @@ export default function PngToPdf() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        title="PNG to PDF Converter - Convert Images to PDF"
+        description="Convert PNG, JPG, JPEG, GIF, and WebP images to PDF with batch processing and custom settings"
+      />
+      
+      <UsageGuide 
+        title="PNG to PDF Converter"
+        description="Learn how to convert images to PDF format with professional settings and batch processing"
+        examples={usageExamples}
+        tips={[
+          "Upload multiple images for batch conversion",
+          "Use A4 portrait for standard document images",
+          "Choose landscape for wide screenshots or photos",
+          "Adjust margins to control image placement on the page",
+          "Supported formats: PNG, JPG, JPEG, GIF, WebP"
+        ]}
+        commonUses={[
+          "Document compilation",
+          "Photo albums",
+          "Screenshot collections",
+          "Image archiving",
+          "Report preparation"
+        ]}
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">

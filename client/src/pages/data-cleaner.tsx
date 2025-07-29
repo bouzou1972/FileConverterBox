@@ -10,6 +10,10 @@ import { Copy, RefreshCw, Wand2, TrendingUp, DollarSign, Percent } from "lucide-
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface CleaningOptions {
   removeSymbols: boolean;
@@ -155,8 +159,41 @@ Widget D        ¥5,678  25%     01000`;
     setInput(sample);
   };
 
+  const usageExamples = [
+    {
+      title: "Clean Excel Data",
+      description: "Remove formatting issues from spreadsheet data",
+      steps: [
+        "Paste your messy data with currency symbols and formatting",
+        "Enable cleaning options like 'Remove Currency' and 'Convert Percentages'",
+        "Click 'Clean Data' to process the content",
+        "Review the cleaned output and statistics",
+        "Copy or download the clean data"
+      ],
+      tip: "Enable 'Convert to Number' for mathematical operations"
+    },
+    {
+      title: "Prepare Data for Analysis",
+      description: "Format data for import into analysis tools",
+      steps: [
+        "Upload or paste data with inconsistent formatting",
+        "Configure cleaning options based on your data type",
+        "Remove unwanted symbols and whitespace",
+        "Convert percentages and currency to numbers",
+        "Export clean data for further analysis"
+      ],
+      tip: "Use 'Trim Whitespace' to remove hidden spaces that cause issues"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Data Cleaner - Clean Messy Excel and CSV Data"
+        description="Clean messy data by removing currency symbols, converting percentages, and formatting numbers. Perfect for Excel and CSV data preparation."
+        keywords={["data cleaner", "clean excel data", "csv data cleaner", "remove currency symbols", "data formatting"]}
+        canonicalUrl="/data-cleaner"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Smart Data Cleaner</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -383,6 +420,31 @@ Supports tab-separated or space-separated values.`}
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Data Cleaner - Clean Messy Excel and CSV Data"
+          description="Clean messy data by removing currency symbols, converting percentages, and formatting numbers"
+        />
+        
+        <UsageGuide 
+          title="Data Cleaner"
+          description="Learn how to clean and format messy data for analysis and processing"
+          examples={usageExamples}
+          tips={[
+            "Enable 'Convert to Number' for mathematical operations",
+            "Use 'Trim Whitespace' to remove hidden spaces",
+            "Handle currency symbols before numerical analysis",
+            "Convert percentages to decimals for calculations",
+            "Remove leading zeros for proper number formatting"
+          ]}
+          commonUses={[
+            "Excel data preparation",
+            "CSV data formatting",
+            "Database import prep",
+            "Analysis tool preparation",
+            "Report data cleaning"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

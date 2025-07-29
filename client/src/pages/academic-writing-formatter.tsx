@@ -12,6 +12,10 @@ import { BookOpen, RefreshCw, Copy, Plus, Trash2, FileText, Info, GraduationCap 
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface Citation {
   id: string;
@@ -503,8 +507,41 @@ export default function AcademicWritingFormatter() {
     );
   };
 
+  const usageExamples = [
+    {
+      title: "Research Paper Citations",
+      description: "Format citations for academic research papers",
+      steps: [
+        "Select your citation style (APA, MLA, or Chicago)",
+        "Choose the source type (journal, book, website, etc.)",
+        "Fill in the required fields (author, title, year, etc.)",
+        "Add multiple sources to build your bibliography",
+        "Copy formatted citations and bibliography"
+      ],
+      tip: "Double-check author names and publication dates for accuracy"
+    },
+    {
+      title: "Student Essay Writing",
+      description: "Format citations for essays and assignments",
+      steps: [
+        "Add your sources as you research",
+        "Use the in-text citation generator for quotes",
+        "Build your bibliography with all sources",
+        "Export citations in your required format",
+        "Review formatting before submission"
+      ],
+      tip: "Add sources immediately when researching to avoid missing citations"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Academic Writing Formatter - APA, MLA, Chicago Citations"
+        description="Generate properly formatted academic citations and bibliographies in APA, MLA, and Chicago styles. Perfect for research papers and essays."
+        keywords={["citation generator", "APA citations", "MLA format", "Chicago style", "bibliography generator"]}
+        canonicalUrl="/academic-writing-formatter"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Academic Writing Formatter</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -727,6 +764,31 @@ export default function AcademicWritingFormatter() {
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Academic Writing Formatter - APA, MLA, Chicago Citations"
+          description="Generate properly formatted academic citations and bibliographies in multiple styles"
+        />
+        
+        <UsageGuide 
+          title="Academic Writing Formatter"
+          description="Learn how to create properly formatted citations for academic papers and research"
+          examples={usageExamples}
+          tips={[
+            "Double-check author names and publication dates for accuracy",
+            "Add sources immediately when researching to avoid missing citations",
+            "Use hanging indents for APA and MLA bibliographies",
+            "Include DOI or URL when available for digital sources",
+            "Check your institution's specific formatting requirements"
+          ]}
+          commonUses={[
+            "Research papers",
+            "Academic essays",
+            "Thesis writing",
+            "Literature reviews",
+            "Student assignments"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

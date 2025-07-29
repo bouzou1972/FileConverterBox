@@ -8,6 +8,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, Download, FileText, Presentation } from "lucide-react";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 import { convertPdfToPpt } from "@/lib/utils/pdf-to-ppt";
 
 export default function PdfToPpt() {
@@ -72,8 +76,41 @@ export default function PdfToPpt() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Convert Academic PDFs",
+      description: "Transform research papers and academic documents into presentations",
+      steps: [
+        "Upload your PDF document (research paper, thesis, etc.)",
+        "Choose slide layout style (title-content recommended)",
+        "Set maximum slides limit for manageable presentations",
+        "Enable image extraction for visual content",
+        "Download the generated PowerPoint presentation"
+      ],
+      tip: "Academic PDFs work best with title-content layout for structured content"
+    },
+    {
+      title: "Business Report Conversion",
+      description: "Convert business documents into presentation format",
+      steps: [
+        "Select your business PDF (report, proposal, whitepaper)",
+        "Use title-content layout for professional appearance",
+        "Keep slide limit reasonable (20-50 slides)",
+        "Extract images to maintain visual elements",
+        "Review and edit the generated presentation"
+      ],
+      tip: "Limit slides to 30-40 for effective business presentations"
+    }
+  ];
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="PDF to PowerPoint Converter - Convert PDF to PPT Online"
+        description="Convert PDF documents to PowerPoint presentations with automatic slide generation. Extract content and images from PDFs to create editable PPT files."
+        keywords={["pdf to ppt", "pdf to powerpoint", "pdf converter", "slides generator", "presentation converter"]}
+        canonicalUrl="/pdf-to-ppt"
+      />
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">
@@ -260,6 +297,31 @@ export default function PdfToPpt() {
       </Card>
       
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="PDF to PowerPoint Converter - Convert PDF to PPT Online"
+          description="Convert PDF documents to PowerPoint presentations with automatic slide generation"
+        />
+        
+        <UsageGuide 
+          title="PDF to PowerPoint Converter"
+          description="Learn how to effectively convert PDF documents into editable PowerPoint presentations"
+          examples={usageExamples}
+          tips={[
+            "Academic PDFs work best with title-content layout",
+            "Limit slides to 30-40 for effective presentations",
+            "Enable image extraction to preserve visual elements",
+            "Review generated slides for formatting adjustments",
+            "Use structured PDFs for better conversion results"
+          ]}
+          commonUses={[
+            "Academic presentations",
+            "Business reports",
+            "Research papers",
+            "Training materials",
+            "Conference presentations"
+          ]}
+        />
+
         <BuyMeCoffee />
       </div>
     </div>

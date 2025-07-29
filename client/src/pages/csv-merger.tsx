@@ -8,6 +8,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Upload, Download, Merge, Split, X } from "lucide-react";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function CsvMerger() {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
@@ -138,8 +142,41 @@ export default function CsvMerger() {
     URL.revokeObjectURL(url);
   };
 
+  const usageExamples = [
+    {
+      title: "Merge Multiple CSV Files",
+      description: "Combine multiple CSV files into a single consolidated file",
+      steps: [
+        "Go to 'Merge CSVs' tab",
+        "Click 'Upload CSV Files' and select multiple files", 
+        "Review the list of uploaded files",
+        "Click 'Merge CSV Files' to combine them",
+        "Download the merged result"
+      ],
+      tip: "All CSV files should have the same header structure for best results"
+    },
+    {
+      title: "Split Large CSV Files",
+      description: "Break down large CSV files into smaller, manageable chunks",
+      steps: [
+        "Switch to 'Split CSV' tab",
+        "Paste your CSV content or upload a file",
+        "Choose split method: by rows or file size",
+        "Set the split value (e.g., 1000 rows)",
+        "Generate and download the split files"
+      ],
+      tip: "Split by rows is ideal for processing limits, split by size for storage constraints"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <ToolSEO
+        title="CSV Merger & Splitter - Combine and Split CSV Files"
+        description="Merge multiple CSV files into one or split large CSV files into smaller chunks. Perfect for data processing and file management."
+        keywords={["csv merger", "csv splitter", "combine csv", "split csv", "csv tools", "data processing"]}
+        canonicalUrl="/csv-merger"
+      />
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-foreground">
@@ -313,6 +350,31 @@ export default function CsvMerger() {
         </CardContent>
       </Card>
       
+      <ShareButtons 
+        title="CSV Merger & Splitter - Combine and Split CSV Files"
+        description="Merge multiple CSV files into one or split large CSV files into smaller chunks for easy data processing"
+      />
+      
+      <UsageGuide 
+        title="CSV Merger & Splitter"
+        description="Learn how to effectively merge multiple CSV files or split large CSV files into manageable chunks"
+        examples={usageExamples}
+        tips={[
+          "Ensure all CSV files have identical header structures when merging",
+          "Use 'Split by rows' for database import limitations",
+          "Use 'Split by size' for email attachment or storage constraints",
+          "Preview your data before processing large files",
+          "Keep original files as backup before processing"
+        ]}
+        commonUses={[
+          "Data consolidation",
+          "Database preparation",
+          "File size management",
+          "Bulk processing",
+          "Report generation"
+        ]}
+      />
+
       <div className="text-center mt-8">
         <BuyMeCoffee />
         <p className="text-sm text-gray-600 mt-2">

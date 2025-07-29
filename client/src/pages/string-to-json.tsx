@@ -8,6 +8,10 @@ import { Copy, RefreshCw, FileText, CheckCircle, AlertTriangle } from "lucide-re
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function StringToJson() {
   const [input, setInput] = useState("");
@@ -128,8 +132,41 @@ export default function StringToJson() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Fix JavaScript Objects",
+      description: "Convert JavaScript object notation to valid JSON",
+      steps: [
+        "Paste your JavaScript object with single quotes or unquoted keys",
+        "Click 'Convert to JSON' to automatically fix formatting",
+        "Review the valid JSON output with proper double quotes",
+        "Copy the corrected JSON for use in APIs or configurations",
+        "Use 'Beautify' button to add proper indentation"
+      ],
+      tip: "JavaScript objects often use single quotes and unquoted keys - this tool fixes both automatically"
+    },
+    {
+      title: "Clean API Responses",
+      description: "Fix malformed JSON from API responses or logs",
+      steps: [
+        "Input the malformed JSON string with trailing commas or syntax errors",
+        "Let the tool automatically detect and fix common issues",
+        "Verify the output is valid JSON with the green checkmark",
+        "Use the formatted output in your applications",
+        "Save time debugging JSON parsing errors"
+      ],
+      tip: "Common issues like trailing commas and unescaped quotes are automatically fixed"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="String to JSON Converter - Fix Malformed JSON Online"
+        description="Convert malformed strings to valid JSON. Automatically fixes single quotes, unquoted keys, trailing commas, and other common JSON syntax errors."
+        keywords={["string to json", "json converter", "fix json", "json validator", "malformed json fixer"]}
+        canonicalUrl="/string-to-json"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">String to JSON Converter</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -277,6 +314,31 @@ export default function StringToJson() {
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="String to JSON Converter - Fix Malformed JSON Online"
+          description="Convert malformed strings to valid JSON with automatic fixing of common syntax errors"
+        />
+        
+        <UsageGuide 
+          title="String to JSON Converter"
+          description="Learn how to fix and convert malformed strings into valid JSON format"
+          examples={usageExamples}
+          tips={[
+            "JavaScript objects often use single quotes and unquoted keys - this tool fixes both automatically",
+            "Common issues like trailing commas and unescaped quotes are automatically fixed",
+            "Use 'Beautify' to add proper indentation to your JSON",
+            "The tool handles nested objects and arrays",
+            "Check the green checkmark to confirm valid JSON output"
+          ]}
+          commonUses={[
+            "API response cleaning",
+            "JavaScript object conversion",
+            "Configuration file fixing",
+            "JSON debugging",
+            "Data format standardization"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

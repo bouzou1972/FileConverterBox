@@ -9,6 +9,9 @@ import { Ruler, Thermometer, Weight, Clock, HardDrive, RefreshCw } from "lucide-
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
 import { BookmarkButton } from "@/components/bookmark-button";
 
 interface ConversionUnit {
@@ -272,8 +275,41 @@ export default function UnitConverter() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Length Conversions",
+      description: "Convert between different length and distance units",
+      steps: [
+        "Select the 'Length & Distance' tab",
+        "Enter your measurement in the input field",
+        "Choose your source unit (e.g., meters, feet, inches)",
+        "Select your target unit for conversion",
+        "View the precise converted result instantly"
+      ],
+      tip: "The tool supports metric, imperial, and nautical measurements"
+    },
+    {
+      title: "Temperature Calculations",
+      description: "Convert between Celsius, Fahrenheit, and Kelvin",
+      steps: [
+        "Switch to the 'Temperature' tab",
+        "Input your temperature value",
+        "Select source temperature scale",
+        "Choose target temperature scale",
+        "Get accurate temperature conversion with decimal precision"
+      ],
+      tip: "Useful for cooking, weather analysis, and scientific calculations"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Unit Converter - Convert Length, Weight, Temperature & More"
+        description="Convert between different units of measurement including length, weight, temperature, time, and data storage. Fast, accurate conversions with multiple unit categories."
+        keywords={["unit converter", "measurement converter", "length converter", "temperature converter", "weight converter"]}
+        canonicalUrl="/unit-converter"
+      />
       <div className="flex items-start justify-between mb-8">
         <div className="text-center flex-1">
           <h1 className="text-3xl font-bold mb-4">Unit Converter</h1>
@@ -444,6 +480,31 @@ export default function UnitConverter() {
       </Card>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Unit Converter - Convert Length, Weight, Temperature & More"
+          description="Convert between different units of measurement with high precision and multiple categories"
+        />
+        
+        <UsageGuide 
+          title="Unit Converter"
+          description="Learn how to convert between different units of measurement efficiently"
+          examples={usageExamples}
+          tips={[
+            "The tool supports metric, imperial, and nautical measurements",
+            "Useful for cooking, weather analysis, and scientific calculations",
+            "All conversions maintain high precision with decimal accuracy",
+            "Switch between categories using the tabs for different measurement types",
+            "Copy results directly to clipboard for use in other applications"
+          ]}
+          commonUses={[
+            "Cooking measurements",
+            "Scientific calculations",
+            "International travel",
+            "Engineering projects",
+            "Data storage planning"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

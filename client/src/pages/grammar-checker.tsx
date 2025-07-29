@@ -8,6 +8,10 @@ import { CheckCircle, AlertTriangle, FileText, RefreshCw, BookOpen, Eye, EyeOff 
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/copy-button";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface GrammarIssue {
   type: 'spelling' | 'grammar' | 'punctuation' | 'style';
@@ -222,8 +226,41 @@ export default function GrammarChecker() {
     }
   };
 
+  const usageExamples = [
+    {
+      title: "Proofread Documents",
+      description: "Check documents for grammar and spelling errors",
+      steps: [
+        "Paste your text into the editor",
+        "Click 'Check Grammar' to analyze the content",
+        "Review highlighted errors and suggestions",
+        "Click on issues to see detailed explanations",
+        "Apply suggestions or make manual corrections"
+      ],
+      tip: "Read your text aloud to catch errors the checker might miss"
+    },
+    {
+      title: "Academic Writing Review",
+      description: "Polish essays and research papers",
+      steps: [
+        "Upload or paste your academic text",
+        "Review grammar and style suggestions",
+        "Pay attention to commonly confused words",
+        "Check punctuation and sentence structure",
+        "Copy the corrected text for final submission"
+      ],
+      tip: "Academic writing benefits from active voice and clear sentence structure"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Grammar Checker - Check Grammar & Spelling Online"
+        description="Check grammar, spelling, and writing quality with intelligent suggestions. Find and fix common errors in your text with detailed explanations."
+        keywords={["grammar checker", "spelling checker", "proofreading tool", "writing assistant", "grammar check"]}
+        canonicalUrl="/grammar-checker"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Grammar Checker</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -533,6 +570,31 @@ export default function GrammarChecker() {
       `}</style>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Grammar Checker - Check Grammar & Spelling Online"
+          description="Check grammar, spelling, and writing quality with intelligent suggestions"
+        />
+        
+        <UsageGuide 
+          title="Grammar Checker"
+          description="Learn how to effectively check and improve your writing with grammar analysis"
+          examples={usageExamples}
+          tips={[
+            "Read your text aloud to catch errors the checker might miss",
+            "Academic writing benefits from active voice and clear sentence structure",
+            "Pay attention to commonly confused words like 'your/you're'",
+            "Check punctuation rules for proper comma usage",
+            "Use the highlighting feature to visualize error locations"
+          ]}
+          commonUses={[
+            "Academic writing",
+            "Business emails",
+            "Content creation",
+            "Resume writing",
+            "Social media posts"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>

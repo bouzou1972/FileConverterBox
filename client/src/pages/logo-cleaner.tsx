@@ -6,6 +6,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Upload, Download, Eraser, RefreshCw, Info, Undo, Redo } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import BuyMeCoffee from "@/components/buy-me-coffee";
+import { ToolSEO } from "@/components/tool-seo";
+import { ShareButtons } from "@/components/share-buttons";
+import { UsageGuide } from "@/components/usage-guide";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 export default function LogoCleaner() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -271,8 +275,41 @@ export default function LogoCleaner() {
     });
   };
 
+  const usageExamples = [
+    {
+      title: "Remove Logo Backgrounds",
+      description: "Clean up logos and graphics by removing unwanted backgrounds",
+      steps: [
+        "Upload your logo or graphic image",
+        "Use the magic wand tool to automatically select similar colors",
+        "Adjust tolerance setting for better color selection",
+        "Use brush tool for manual background removal",
+        "Download the cleaned image with transparent background"
+      ],
+      tip: "Start with the magic wand on solid color backgrounds for quick removal"
+    },
+    {
+      title: "Clean Product Images",
+      description: "Remove backgrounds from product photos for e-commerce",
+      steps: [
+        "Upload your product image",
+        "Use magic wand tool for solid backgrounds",
+        "Switch to brush tool for detailed edges",
+        "Adjust brush size for precision work",
+        "Use undo/redo for corrections and download final image"
+      ],
+      tip: "Use smaller brush sizes around detailed edges for better results"
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <ToolSEO
+        title="Logo Background Remover - Remove Image Backgrounds Online"
+        description="Remove backgrounds from logos and images with magic wand and brush tools. Clean up graphics with transparent backgrounds for professional use."
+        keywords={["background remover", "logo cleaner", "remove background", "transparent background", "image editor"]}
+        canonicalUrl="/logo-cleaner"
+      />
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Logo Background Remover</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -489,6 +526,31 @@ export default function LogoCleaner() {
       </Alert>
 
       <div className="text-center mt-8">
+        <ShareButtons 
+          title="Logo Background Remover - Remove Image Backgrounds Online"
+          description="Remove backgrounds from logos and images with professional editing tools"
+        />
+        
+        <UsageGuide 
+          title="Logo Background Remover"
+          description="Learn how to effectively remove backgrounds from images and logos"
+          examples={usageExamples}
+          tips={[
+            "Start with the magic wand on solid color backgrounds",
+            "Use smaller brush sizes around detailed edges",
+            "Adjust tolerance setting for better color selection",
+            "Use undo/redo frequently for precision work",
+            "Save as PNG to preserve transparency"
+          ]}
+          commonUses={[
+            "Logo cleanup",
+            "Product photography",
+            "Graphic design",
+            "E-commerce images",
+            "Marketing materials"
+          ]}
+        />
+
         <div className="mb-4">
           <p className="text-lg font-medium text-foreground mb-1">💛 Like these tools?</p>
           <p className="text-muted-foreground">Help support future development</p>
