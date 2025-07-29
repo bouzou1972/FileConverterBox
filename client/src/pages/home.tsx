@@ -295,6 +295,14 @@ export default function Home() {
           badge: "🆕 New"
         },
         {
+          href: "/dns-checker",
+          icon: "dns",
+          iconColor: "text-blue-600",
+          title: "DNS Checker",
+          description: "Check DNS records for any domain instantly. Look up A, AAAA, CNAME, MX, TXT, NS records for troubleshooting.",
+          badge: "🆕 New"
+        },
+        {
           href: "/seo-optimizer",
           icon: "search",
           iconColor: "text-blue-600",
