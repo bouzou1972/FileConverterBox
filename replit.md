@@ -52,7 +52,9 @@ Preferred communication style: Simple, everyday language.
 **Field Technician Tools Suite Now Includes**:
 - 🌡️ **HVAC Tools**: BTU Calculator, Duct Size Calculator, Static Pressure Calculator, Superheat Calculator
 - ⚡ **Electrical Tools**: Voltage Drop Calculator, Ohm's Law Calculator, Wire Size Calculator
+- ❄️ **Refrigeration Tools**: Refrigerant Charge Calculator
 - 🔧 **Utility Tools**: Wattage Calculator, Pipe Volume Calculator, Job Timer, Area & Volume Calculator
+- 🧮 **General Tools**: Unit Converter, Scientific Calculator
 
 ### 🚀 MAJOR: DNS Checker Global Enhancement (✅ COMPLETE - January 29, 2025)
 **COMPREHENSIVE UPGRADE**: Transformed DNS checker into complete global DNS reference tool matching professional DNS websites

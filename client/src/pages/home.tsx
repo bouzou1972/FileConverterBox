@@ -657,6 +657,32 @@ export default function Home() {
           title: "Area & Volume Calculator",
           description: "Calculate area, volume, and perimeter for construction and material estimation.",
           badge: "🆕 New"
+        },
+        // Refrigeration Tools
+        {
+          href: "/refrigerant-charge-calculator",
+          icon: "snowflake",
+          iconColor: "text-cyan-500",
+          title: "Refrigerant Charge Calculator",
+          description: "Calculate additional refrigerant charge needed for extended HVAC line sets.",
+          badge: "🆕 New"
+        },
+        // General Tools
+        {
+          href: "/unit-converter",
+          icon: "repeat",
+          iconColor: "text-emerald-500",
+          title: "Unit Converter",
+          description: "Convert between measurement units for length, area, volume, temperature, and pressure.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/scientific-calculator",
+          icon: "calculator",
+          iconColor: "text-indigo-500",
+          title: "Scientific Calculator",
+          description: "Advanced mathematical calculator with trigonometric functions and scientific operations.",
+          badge: "🆕 New"
         }
       ]
     }

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Technician Tools</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+    h2 { color: #333; }
+    section { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    input { margin: 5px 0; padding: 6px; width: 200px; }
+    button { margin-top: 10px; padding: 6px 12px; }
+  </style>
+</head>
+<body>
+
+  <h1>🧰 Field Technician Tools</h1>
+
+  <!-- HVAC Tools -->
+  <section>
+    <h2>BTU Calculator</h2>
+    <label>Room Size (sq ft): <input type="number" id="roomSize" /></label><br />
+    <button onclick="calculateBTU()">Calculate</button>
+    <p id="btuResult"></p>
+  </section>
+
+  <section>
+    <h2>Superheat Calculator</h2>
+    <label>Suction Line Temp (°F): <input type="number" id="lineTemp" /></label><br />
+    <label>Saturation Temp (°F): <input type="number" id="satTemp" /></label><br />
+    <button onclick="calcSuperheat()">Calculate</button>
+    <p id="superheatResult"></p>
+  </section>
+
+  <!-- Electrician Tools -->
+  <section>
+    <h2>Voltage Drop Calculator</h2>
+    <label>Distance (ft): <input type="number" id="distance" /></label><br />
+    <label>Current (A): <input type="number" id="current" /></label><br />
+    <label>Resistance (Ohms/ft): <input type="number" id="resistance" value="0.0008" /></label><br />
+    <button onclick="calculateVD()">Calculate</button>
+    <p id="vdResult"></p>
+  </section>
+
+  <section>
+    <h2>Ohm's Law Calculator</h2>
+    <label>Voltage (V): <input type="number" id="ohmV" /></label><br />
+    <label>Current (I): <input type="number" id="ohmI" /></label><br />
+    <button onclick="calcOhmsLaw()">Calculate</button>
+    <p id="ohmResult"></p>
+  </section>
+
+  <!-- Refrigeration Tools -->
+  <section>
+    <h2>Refrigerant Charge Calculator</h2>
+    <label>Line Length (ft): <input type="number" id="lineLength" /></label><br />
+    <label>Charge per ft (oz/ft): <input type="number" id="chargePerFt" value="0.6" /></label><br />
+    <button onclick="calcCharge()">Calculate</button>
+    <p id="chargeResult"></p>
+  </section>
+
+  <!-- Miscellaneous -->
+  <section>
+    <h2>Unit Converter</h2>
+    <label>Feet: <input type="number" id="ftInput" /></label><br />
+    <button onclick="convertUnits()">Convert to Meters</button>
+    <p id="unitResult"></p>
+  </section>
+
+  <section>
+    <h2>Date Duration Calculator</h2>
+    <label>Start Date: <input type="date" id="startDate" /></label><br />
+    <label>End Date: <input type="date" id="endDate" /></label><br />
+    <button onclick="calcDateDiff()">Calculate</button>
+    <p id="dateResult"></p>
+  </section>
+
+  <section>
+    <h2>Job Timer</h2>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>
+    <p id="timerDisplay">0 seconds</p>
+  </section>
+
+  <section>
+    <h2>Scientific Calculator</h2>
+    <input type="text" id="sciInput" placeholder="e.g. 2 + 3 * (4^2)" />
+    <button onclick="calcSci()">Calculate</button>
+    <p id="sciResult"></p>
+  </section>
+
+  <script>
+    function calculateBTU() {
+      const size = parseFloat(document.getElementById("roomSize").value);
+      const btu = size * 20;
+      document.getElementById("btuResult").textContent = `BTU Needed: ${btu.toFixed(0)}`;
+    }
+
+    function calcSuperheat() {
+      const line = parseFloat(document.getElementById("lineTemp").value);
+      const sat = parseFloat(document.getElementById("satTemp").value);
+      document.getElementById("superheatResult").textContent = `Superheat: ${(line - sat).toFixed(1)} °F`;
+    }
+
+    function calculateVD() {
+      const d = parseFloat(document.getElementById("distance").value);
+      const i = parseFloat(document.getElementById("current").value);
+      const r = parseFloat(document.getElementById("resistance").value);
+      const drop = 2 * d * r * i;
+      document.getElementById("vdResult").textContent = `Voltage Drop: ${drop.toFixed(2)} V`;
+    }
+
+    function calcOhmsLaw() {
+      const v = parseFloat(document.getElementById("ohmV").value);
+      const i = parseFloat(document.getElementById("ohmI").value);
+      if (!isNaN(v) && !isNaN(i) && i !== 0) {
+        const r = v / i;
+        document.getElementById("ohmResult").textContent = `Resistance: ${r.toFixed(2)} Ω`;
+      } else {
+        document.getElementById("ohmResult").textContent = 'Invalid input';
+      }
+    }
+
+    function calcCharge() {
+      const length = parseFloat(document.getElementById("lineLength").value);
+      const perFt = parseFloat(document.getElementById("chargePerFt").value);
+      document.getElementById("chargeResult").textContent = `Additional Charge: ${(length * perFt).toFixed(2)} oz`;
+    }
+
+    function convertUnits() {
+      const ft = parseFloat(document.getElementById("ftInput").value);
+      const m = ft * 0.3048;
+      document.getElementById("unitResult").textContent = `${ft} ft = ${m.toFixed(2)} m`;
+    }
+
+    function calcDateDiff() {
+      const start = new Date(document.getElementById("startDate").value);
+      const end = new Date(document.getElementById("endDate").value);
+      const diff = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+      document.getElementById("dateResult").textContent = `Duration: ${diff} day(s)`;
+    }
+
+    let timer = null;
+    let seconds = 0;
+    function startTimer() {
+      if (!timer) {
+        timer = setInterval(() => {
+          seconds++;
+          document.getElementById("timerDisplay").textContent = `${seconds} seconds`;
+        }, 1000);
+      }
+    }
+    function stopTimer() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    function calcSci() {
+      const input = document.getElementById("sciInput").value;
+      try {
+        const result = eval(input.replace(/\^/g, '**'));
+        document.getElementById("sciResult").textContent = `Result: ${result}`;
+      } catch (e) {
+        document.getElementById("sciResult").textContent = 'Error in expression';
+      }
+    }
+  </script>
+
+</body>
+</html>

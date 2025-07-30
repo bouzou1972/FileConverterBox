@@ -40,7 +40,6 @@ import CharacterCounter from "@/pages/character-counter";
 import ClipboardInspector from "@/pages/clipboard-inspector";
 import Calculator from "@/pages/calculator";
 import TextCompressor from "@/pages/text-compressor";
-import UnitConverter from "@/pages/unit-converter";
 import GrammarChecker from "@/pages/grammar-checker";
 import FaviconGenerator from "@/pages/favicon-generator";
 import SocialMediaCropper from "@/pages/social-media-cropper";
@@ -70,6 +69,9 @@ import WattageCalculator from "@/pages/wattage-calculator";
 import PipeVolumeCalculator from "@/pages/pipe-volume-calculator";
 import JobTimer from "@/pages/job-timer";
 import AreaVolumeCalculator from "@/pages/area-volume-calculator";
+import RefrigerantChargeCalculator from "@/pages/refrigerant-charge-calculator";
+import UnitConverter from "@/pages/unit-converter";
+import ScientificCalculator from "@/pages/scientific-calculator";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -143,6 +145,9 @@ function Router() {
         <Route path="/pipe-volume-calculator" component={PipeVolumeCalculator} />
         <Route path="/job-timer" component={JobTimer} />
         <Route path="/area-volume-calculator" component={AreaVolumeCalculator} />
+        <Route path="/refrigerant-charge-calculator" component={RefrigerantChargeCalculator} />
+        <Route path="/unit-converter" component={UnitConverter} />
+        <Route path="/scientific-calculator" component={ScientificCalculator} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
