@@ -86,6 +86,16 @@ export default function Layout({ children }: LayoutProps) {
                 Home
               </Button>
             </Link>
+            <Link href="/contact">
+              <Button
+                variant={location === "/contact" ? "default" : "outline"}
+                size="sm"
+                className="flex items-center gap-2"
+              >
+                <span className="material-icons text-sm">contact_mail</span>
+                Contact
+              </Button>
+            </Link>
             <Button
               variant="outline"
               size="sm"
