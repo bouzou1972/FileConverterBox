@@ -148,7 +148,6 @@ function Router() {
         <Route path="/job-timer" component={JobTimer} />
         <Route path="/area-volume-calculator" component={AreaVolumeCalculator} />
         <Route path="/refrigerant-charge-calculator" component={RefrigerantChargeCalculator} />
-        <Route path="/unit-converter" component={UnitConverter} />
         <Route path="/scientific-calculator" component={ScientificCalculator} />
         <Route path="/hvac-tonnage-calculator" component={HVACTonnageCalculator} />
         <Route path="/contact" component={Contact} />
