@@ -736,8 +736,8 @@ export default function Home() {
         <Card className="hover:shadow-md transition-all duration-200 cursor-pointer group bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600" onClick={handleClick} style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.06)' }}>
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
-              <div className={`p-3 rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors flex-shrink-0`}>
-                <span className={`material-icons text-xl ${iconColor}`}>{icon}</span>
+              <div className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors flex-shrink-0`}>
+                <span className={`material-icons text-lg ${iconColor}`}>{icon}</span>
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 mb-2">
@@ -786,7 +786,7 @@ export default function Home() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className={`p-3 rounded-xl bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors flex-shrink-0`}>
-              <span className={`material-icons text-2xl ${category.iconColor}`}>{category.icon}</span>
+              <span className={`material-icons text-xl ${category.iconColor}`}>{category.icon}</span>
             </div>
             <div className="flex-1">
               <CardTitle className="text-sm font-bold mb-1 uppercase tracking-wider text-gray-900 dark:text-white">{category.title}</CardTitle>
@@ -808,7 +808,7 @@ export default function Home() {
             <Link href={category.featured[0].href} className="block">
               <div className="flex items-start gap-3">
                 <div className={`p-2 rounded-lg bg-white dark:bg-gray-600 flex-shrink-0`}>
-                  <span className={`material-icons text-lg ${category.featured[0].iconColor}`}>
+                  <span className={`material-icons text-base ${category.featured[0].iconColor}`}>
                     {category.featured[0].icon}
                   </span>
                 </div>
