@@ -608,6 +608,14 @@ export default function Home() {
           description: "Figure out what size AC unit you need for a building based on square footage and heat sources.",
           badge: "🆕 New"
         },
+        {
+          href: "/pt-chart-tool",
+          icon: "thermostat",
+          iconColor: "text-purple-600",
+          title: "PT Chart Tool",
+          description: "Look up pressure-temperature relationships for R-410A, R-22, R-134a, and R-404A refrigerants for system diagnostics.",
+          badge: "🆕 New"
+        },
         // Electrical Tools
         {
           href: "/voltage-drop-calculator",
