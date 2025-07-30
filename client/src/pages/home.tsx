@@ -589,7 +589,7 @@ export default function Home() {
           icon: "speed",
           iconColor: "text-purple-600",
           title: "Static Pressure Calculator",
-          description: "Calculate total system static pressure by adding pressure drops across filters, coils, and ductwork.",
+          description: "Calculate airflow resistance in HVAC systems - measures how hard the fan works to push air through ducts and components.",
           badge: "🆕 New"
         },
         {
@@ -597,7 +597,7 @@ export default function Home() {
           icon: "ac_unit",
           iconColor: "text-cyan-600",
           title: "Superheat Calculator",
-          description: "Calculate superheat values for HVAC and refrigeration systems to diagnose refrigerant charge levels.",
+          description: "Check if AC system has correct refrigerant amount - compares actual temperature to expected temperature at suction line.",
           badge: "🆕 New"
         },
         {
@@ -647,7 +647,7 @@ export default function Home() {
           icon: "circle",
           iconColor: "text-blue-500",
           title: "Pipe Volume Calculator",
-          description: "Calculate water volume in pipes for plumbing and HVAC system planning.",
+          description: "Calculate how much water fits inside pipes - useful for system capacity planning and chemical treatment dosing.",
           badge: "🆕 New"
         },
         {
@@ -672,7 +672,7 @@ export default function Home() {
           icon: "snowflake",
           iconColor: "text-cyan-500",
           title: "Refrigerant Charge Calculator",
-          description: "Calculate additional refrigerant charge needed for extended HVAC line sets.",
+          description: "Calculate extra refrigerant needed when installing longer copper lines between indoor and outdoor AC units.",
           badge: "🆕 New"
         },
         // General Tools
