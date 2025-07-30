@@ -29,6 +29,30 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+### 🚀 MAJOR: Field Technician Tools Expansion (✅ COMPLETE - January 30, 2025)
+**COMPREHENSIVE EXPANSION**: Added complete field technician tools suite with professional-grade calculators for HVAC, electrical, and refrigeration specialists
+- **HVAC Tools**: Enhanced existing suite with Duct Size Calculator and Static Pressure Calculator
+  - Duct Size Calculator: Calculate optimal round and rectangular duct dimensions based on CFM and velocity requirements
+  - Static Pressure Calculator: Calculate total system pressure drops with component-by-component analysis and quick-add presets
+- **Electrical Tools**: Complete electrical calculation suite for professional electricians
+  - Ohm's Law Calculator: Full V=IR and power calculations with any-two-values input capability
+  - Wire Size Calculator: Professional wire gauge selection based on current, distance, voltage drop, and ampacity requirements
+- **Organized Subcategories**: Restructured Field Technician Tools with clear HVAC and Electrical tool groupings
+- **Professional Features**: Each tool includes industry-standard formulas, component presets, code compliance checks, and comprehensive usage guides
+- **Enhanced User Experience**: Tools feature professional interfaces with validation, error handling, copy-to-clipboard functionality, and comprehensive tooltips
+
+**Technical Implementation**:
+- ✅ Added 4 new professional calculator pages with complete React TypeScript implementation
+- ✅ Updated App.tsx routing for all new field technician tools  
+- ✅ Enhanced homepage with organized subcategories showing HVAC and Electrical tool groupings
+- ✅ Implemented comprehensive SEO optimization with ToolSEO, ShareButtons, and UsageGuide components
+- ✅ All tools follow established privacy-first architecture with 100% client-side processing
+- ✅ Professional validation and error handling for all calculation scenarios
+
+**Field Technician Tools Suite Now Includes**:
+- 🌡️ **HVAC Tools**: BTU Calculator, Duct Size Calculator, Static Pressure Calculator, Superheat Calculator
+- ⚡ **Electrical Tools**: Voltage Drop Calculator, Ohm's Law Calculator, Wire Size Calculator
+
 ### 🚀 MAJOR: DNS Checker Global Enhancement (✅ COMPLETE - January 29, 2025)
 **COMPREHENSIVE UPGRADE**: Transformed DNS checker into complete global DNS reference tool matching professional DNS websites
 - **50+ Countries Coverage**: Added authentic DNS server data for major regions worldwide (North America, Europe, Asia Pacific, Middle East & Africa, Americas)

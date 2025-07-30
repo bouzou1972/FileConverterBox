@@ -62,6 +62,10 @@ import DNSChecker from "@/pages/dns-checker";
 import HVACBTUCalculator from "@/pages/hvac-btu-calculator";
 import VoltageDropCalculator from "@/pages/voltage-drop-calculator";
 import SuperheatCalculator from "@/pages/superheat-calculator";
+import DuctSizeCalculator from "@/pages/duct-size-calculator";
+import OhmsLawCalculator from "@/pages/ohms-law-calculator";
+import WireSizeCalculator from "@/pages/wire-size-calculator";
+import StaticPressureCalculator from "@/pages/static-pressure-calculator";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -127,6 +131,10 @@ function Router() {
         <Route path="/hvac-btu-calculator" component={HVACBTUCalculator} />
         <Route path="/voltage-drop-calculator" component={VoltageDropCalculator} />
         <Route path="/superheat-calculator" component={SuperheatCalculator} />
+        <Route path="/duct-size-calculator" component={DuctSizeCalculator} />
+        <Route path="/ohms-law-calculator" component={OhmsLawCalculator} />
+        <Route path="/wire-size-calculator" component={WireSizeCalculator} />
+        <Route path="/static-pressure-calculator" component={StaticPressureCalculator} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

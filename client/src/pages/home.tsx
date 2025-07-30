@@ -567,6 +567,7 @@ export default function Home() {
         }
       ],
       allTools: [
+        // HVAC Tools
         {
           href: "/hvac-btu-calculator",
           icon: "thermostat",
@@ -576,11 +577,19 @@ export default function Home() {
           badge: "🆕 New"
         },
         {
-          href: "/voltage-drop-calculator",
-          icon: "electrical_services",
-          iconColor: "text-yellow-600",
-          title: "Voltage Drop Calculator",
-          description: "Calculate voltage loss in electrical circuits to ensure proper wire sizing and code compliance.",
+          href: "/duct-size-calculator",
+          icon: "tune",
+          iconColor: "text-indigo-600",
+          title: "Duct Size Calculator",
+          description: "Calculate optimal duct dimensions for HVAC systems based on airflow requirements and velocity.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/static-pressure-calculator",
+          icon: "speed",
+          iconColor: "text-purple-600",
+          title: "Static Pressure Calculator",
+          description: "Calculate total system static pressure by adding pressure drops across filters, coils, and ductwork.",
           badge: "🆕 New"
         },
         {
@@ -589,6 +598,31 @@ export default function Home() {
           iconColor: "text-cyan-600",
           title: "Superheat Calculator",
           description: "Calculate superheat values for HVAC and refrigeration systems to diagnose refrigerant charge levels.",
+          badge: "🆕 New"
+        },
+        // Electrical Tools
+        {
+          href: "/voltage-drop-calculator",
+          icon: "electrical_services",
+          iconColor: "text-yellow-600",
+          title: "Voltage Drop Calculator",
+          description: "Calculate voltage loss in electrical circuits to ensure proper wire sizing and code compliance.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/ohms-law-calculator",
+          icon: "calculate",
+          iconColor: "text-orange-600",
+          title: "Ohm's Law Calculator",
+          description: "Calculate voltage, current, resistance, and power using fundamental electrical formulas.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/wire-size-calculator",
+          icon: "cable",
+          iconColor: "text-red-600",
+          title: "Wire Size Calculator",
+          description: "Determine proper wire gauge based on current load, distance, and voltage drop requirements.",
           badge: "🆕 New"
         }
       ]

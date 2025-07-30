@@ -1,0 +1,185 @@
+<!-- Field Technician Tools - 100% Frontend HTML + JavaScript -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Technician Tools</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; line-height: 1.6; background: #f8f9fa; }
+    section { background: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    h2 { color: #2c3e50; }
+    label { display: block; margin: 8px 0 4px; }
+    input { padding: 6px; width: 100%; max-width: 300px; }
+    button { margin-top: 10px; padding: 8px 12px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+
+  <h1>Field Technician Tools</h1>
+
+  <section>
+    <h2>BTU Calculator</h2>
+    <label>Room Size (sq ft): <input type="number" id="roomSize" /></label>
+    <button onclick="calculateBTU()">Calculate BTU</button>
+    <p id="btuResult"></p>
+  </section>
+
+  <section>
+    <h2>Superheat Calculator</h2>
+    <label>Suction Line Temp (°F): <input type="number" id="lineTemp" /></label>
+    <label>Saturation Temp (°F): <input type="number" id="satTemp" /></label>
+    <button onclick="calcSuperheat()">Calculate Superheat</button>
+    <p id="superheatResult"></p>
+  </section>
+
+  <section>
+    <h2>Voltage Drop Calculator</h2>
+    <label>Distance (ft): <input type="number" id="distance" /></label>
+    <label>Current (A): <input type="number" id="current" /></label>
+    <label>Wire Resistance (Ohms/ft): <input type="number" id="resistance" value="0.0008" /></label>
+    <button onclick="calculateVD()">Calculate Voltage Drop</button>
+    <p id="vdResult"></p>
+  </section>
+
+  <section>
+    <h2>Wattage Calculator</h2>
+    <label>Volts (V): <input type="number" id="volts" /></label>
+    <label>Amps (A): <input type="number" id="amps" /></label>
+    <button onclick="calcWattage()">Calculate Watts</button>
+    <p id="wattResult"></p>
+  </section>
+
+  <section>
+    <h2>Ohm's Law Calculator</h2>
+    <label>Volts (V): <input type="number" id="ohmV" /></label>
+    <label>Resistance (Ω): <input type="number" id="ohmR" /></label>
+    <button onclick="calcOhm()">Calculate Current</button>
+    <p id="ohmResult"></p>
+  </section>
+
+  <section>
+    <h2>Pipe Volume Calculator</h2>
+    <label>Pipe Diameter (inches): <input type="number" id="pipeDiameter" /></label>
+    <label>Pipe Length (feet): <input type="number" id="pipeLength" /></label>
+    <button onclick="calcPipeVolume()">Calculate Volume</button>
+    <p id="pipeResult"></p>
+  </section>
+
+  <section>
+    <h2>Water Flow Rate Estimator</h2>
+    <label>Pipe Diameter (in): <input type="number" id="flowDiameter" /></label>
+    <label>Velocity (ft/s): <input type="number" id="flowVelocity" /></label>
+    <button onclick="calcFlowRate()">Estimate GPM</button>
+    <p id="flowResult"></p>
+  </section>
+
+  <section>
+    <h2>Date Duration Calculator</h2>
+    <label>Start Date: <input type="date" id="startDate" /></label>
+    <label>End Date: <input type="date" id="endDate" /></label>
+    <button onclick="calcDateDiff()">Calculate Days</button>
+    <p id="dateResult"></p>
+  </section>
+
+  <section>
+    <h2>Job Timer</h2>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>
+    <p id="timerDisplay">00:00:00</p>
+  </section>
+
+  <section>
+    <h2>Area & Volume Calculator</h2>
+    <label>Length (ft): <input type="number" id="length" /></label>
+    <label>Width (ft): <input type="number" id="width" /></label>
+    <label>Height (ft, optional): <input type="number" id="height" /></label>
+    <button onclick="calcAreaVolume()">Calculate</button>
+    <p id="areaVolumeResult"></p>
+  </section>
+
+  <script>
+    function calculateBTU() {
+      const size = parseFloat(document.getElementById("roomSize").value);
+      const btu = size * 20;
+      document.getElementById("btuResult").textContent = `Required Cooling: ${btu.toLocaleString()} BTU`;
+    }
+
+    function calcSuperheat() {
+      const line = parseFloat(document.getElementById("lineTemp").value);
+      const sat = parseFloat(document.getElementById("satTemp").value);
+      const sh = line - sat;
+      document.getElementById("superheatResult").textContent = `Superheat: ${sh.toFixed(1)} °F`;
+    }
+
+    function calculateVD() {
+      const d = parseFloat(document.getElementById("distance").value);
+      const i = parseFloat(document.getElementById("current").value);
+      const r = parseFloat(document.getElementById("resistance").value);
+      const drop = 2 * d * r * i;
+      document.getElementById("vdResult").textContent = `Voltage Drop: ${drop.toFixed(2)} V`;
+    }
+
+    function calcWattage() {
+      const v = parseFloat(document.getElementById("volts").value);
+      const a = parseFloat(document.getElementById("amps").value);
+      document.getElementById("wattResult").textContent = `Wattage: ${(v * a).toFixed(2)} W`;
+    }
+
+    function calcOhm() {
+      const v = parseFloat(document.getElementById("ohmV").value);
+      const r = parseFloat(document.getElementById("ohmR").value);
+      const i = v / r;
+      document.getElementById("ohmResult").textContent = `Current: ${i.toFixed(2)} A`;
+    }
+
+    function calcPipeVolume() {
+      const d = parseFloat(document.getElementById("pipeDiameter").value);
+      const l = parseFloat(document.getElementById("pipeLength").value);
+      const r = d / 2 / 12; // radius in feet
+      const volume = Math.PI * r * r * l * 7.48; // gallons
+      document.getElementById("pipeResult").textContent = `Pipe Volume: ${volume.toFixed(2)} gallons`;
+    }
+
+    function calcFlowRate() {
+      const d = parseFloat(document.getElementById("flowDiameter").value);
+      const v = parseFloat(document.getElementById("flowVelocity").value);
+      const area = Math.PI * Math.pow(d / 24, 2);
+      const gpm = area * v * 448.831;
+      document.getElementById("flowResult").textContent = `Flow Rate: ${gpm.toFixed(1)} GPM`;
+    }
+
+    function calcDateDiff() {
+      const start = new Date(document.getElementById("startDate").value);
+      const end = new Date(document.getElementById("endDate").value);
+      const days = (end - start) / (1000 * 60 * 60 * 24);
+      document.getElementById("dateResult").textContent = `Duration: ${days} days`;
+    }
+
+    let timerInterval, seconds = 0;
+    function startTimer() {
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        seconds++;
+        const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+        const secs = String(seconds % 60).padStart(2, '0');
+        document.getElementById("timerDisplay").textContent = `${hrs}:${mins}:${secs}`;
+      }, 1000);
+    }
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }
+
+    function calcAreaVolume() {
+      const l = parseFloat(document.getElementById("length").value);
+      const w = parseFloat(document.getElementById("width").value);
+      const h = parseFloat(document.getElementById("height").value);
+      const area = l * w;
+      const volume = h ? area * h : null;
+      document.getElementById("areaVolumeResult").textContent = `Area: ${area.toFixed(2)} ft²` + (volume ? ` | Volume: ${volume.toFixed(2)} ft³` : '');
+    }
+  </script>
+</body>
+</html>
