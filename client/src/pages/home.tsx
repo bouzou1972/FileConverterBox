@@ -672,7 +672,7 @@ export default function Home() {
           icon: "snowflake",
           iconColor: "text-cyan-500",
           title: "Refrigerant Charge Calculator",
-          description: "Calculate extra refrigerant needed when installing longer copper lines between indoor and outdoor AC units.",
+          description: "Calculate how much extra refrigerant to add when copper lines are longer than standard 25 feet in AC installations.",
           badge: "🆕 New"
         },
         // General Tools
@@ -689,7 +689,7 @@ export default function Home() {
           icon: "calculator",
           iconColor: "text-indigo-500",
           title: "Scientific Calculator",
-          description: "Advanced mathematical calculator with trigonometric functions and scientific operations.",
+          description: "Professional calculator with advanced math functions - sine, cosine, logarithms, square roots, and more for technical calculations.",
           badge: "🆕 New"
         }
       ]
