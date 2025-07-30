@@ -29,6 +29,22 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+### 🚀 Field Technician Tools UI/UX Improvements (✅ COMPLETE - January 30, 2025)
+**USABILITY ENHANCEMENT**: Improved all field technician tool descriptions and fixed mobile layout issues
+- **Clear Descriptions Updated**: Rewrote all 15 field technician tool descriptions using plain language instead of technical jargon
+- **Mobile Layout Fixed**: Resolved card height constraints causing text cutoff on mobile devices
+- **Icon Sizing Optimized**: Reduced oversized icons that were hiding text content
+- **Consistent Card Styling**: Applied uniform styling across contact page to match tool cards throughout application
+- **Better Text Visibility**: Removed line-clamp restrictions and improved spacing for full description visibility
+- **Professional Communication**: All descriptions now explain practical purposes in everyday language for non-technical users
+
+**Tool Description Improvements**:
+- ✅ HVAC Tools - Simplified technical concepts (BTU calculations, duct sizing, static pressure, superheat, tonnage)
+- ✅ Electrical Tools - Clarified complex formulas (Ohm's law, voltage drop, wire sizing) 
+- ✅ Utility Tools - Enhanced practical explanations (wattage, pipe volume, job timing, area calculations)
+- ✅ Refrigeration Tools - Clear 25-foot standard explanation for refrigerant charging
+- ✅ General Tools - Better descriptions for unit conversion and scientific calculator functions
+
 ### 🚀 Contact Page Addition (✅ COMPLETE - January 30, 2025)
 **NEW FEATURE**: Added professional contact page with comprehensive FAQ and feature highlights
 - **Contact Form**: Full contact form with validation, error handling, and success states

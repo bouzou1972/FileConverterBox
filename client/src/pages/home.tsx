@@ -573,7 +573,7 @@ export default function Home() {
           icon: "thermostat",
           iconColor: "text-blue-600",
           title: "HVAC BTU Calculator",
-          description: "Calculate required BTU capacity for heating and cooling systems based on room size and environmental factors.",
+          description: "Calculate how much heating or cooling power you need for any room based on size, insulation, and usage.",
           badge: "🆕 New"
         },
         {
@@ -581,7 +581,7 @@ export default function Home() {
           icon: "tune",
           iconColor: "text-indigo-600",
           title: "Duct Size Calculator",
-          description: "Calculate optimal duct dimensions for HVAC systems based on airflow requirements and velocity.",
+          description: "Find the right duct size for your airflow needs - works for both round and rectangular ducts.",
           badge: "🆕 New"
         },
         {
@@ -605,7 +605,7 @@ export default function Home() {
           icon: "wind",
           iconColor: "text-sky-600",
           title: "HVAC Tonnage Calculator",
-          description: "Calculate proper air conditioning unit size based on space, climate, insulation, and load factors.",
+          description: "Figure out what size AC unit you need for a building based on square footage and heat sources.",
           badge: "🆕 New"
         },
         // Electrical Tools
@@ -614,7 +614,7 @@ export default function Home() {
           icon: "electrical_services",
           iconColor: "text-yellow-600",
           title: "Voltage Drop Calculator",
-          description: "Calculate voltage loss in electrical circuits to ensure proper wire sizing and code compliance.",
+          description: "Check how much electrical power is lost over wire distance to make sure your circuits work properly.",
           badge: "🆕 New"
         },
         {
@@ -622,7 +622,7 @@ export default function Home() {
           icon: "calculate",
           iconColor: "text-orange-600",
           title: "Ohm's Law Calculator",
-          description: "Calculate voltage, current, resistance, and power using fundamental electrical formulas.",
+          description: "Calculate electrical values when you know any two - voltage, current, resistance, or power using V=IR formulas.",
           badge: "🆕 New"
         },
         {
@@ -630,7 +630,7 @@ export default function Home() {
           icon: "cable",
           iconColor: "text-red-600",
           title: "Wire Size Calculator",
-          description: "Determine proper wire gauge based on current load, distance, and voltage drop requirements.",
+          description: "Find the right wire thickness for electrical circuits based on how much power you're running and distance.",
           badge: "🆕 New"
         },
         // Utility Tools
@@ -639,7 +639,7 @@ export default function Home() {
           icon: "zap",
           iconColor: "text-yellow-500",
           title: "Wattage Calculator",
-          description: "Calculate electrical power consumption in watts from voltage and current measurements.",
+          description: "Find out how much electrical power something uses by entering voltage and current readings.",
           badge: "🆕 New"
         },
         {
@@ -655,7 +655,7 @@ export default function Home() {
           icon: "timer",
           iconColor: "text-green-500",
           title: "Job Timer",
-          description: "Track work time for jobs and projects with session history and export capabilities.",
+          description: "Time how long you spend on different jobs and projects with start/stop tracking and work history.",
           badge: "🆕 New"
         },
         {
@@ -663,7 +663,7 @@ export default function Home() {
           icon: "square",
           iconColor: "text-purple-500",
           title: "Area & Volume Calculator",
-          description: "Calculate area, volume, and perimeter for construction and material estimation.",
+          description: "Calculate square footage, cubic space, and perimeter measurements for construction projects and material estimates.",
           badge: "🆕 New"
         },
         // Refrigeration Tools
@@ -681,7 +681,7 @@ export default function Home() {
           icon: "repeat",
           iconColor: "text-emerald-500",
           title: "Unit Converter",
-          description: "Convert between measurement units for length, area, volume, temperature, and pressure.",
+          description: "Convert measurements between different units - feet to meters, Fahrenheit to Celsius, PSI to kPa, and more.",
           badge: "🆕 New"
         },
         {
