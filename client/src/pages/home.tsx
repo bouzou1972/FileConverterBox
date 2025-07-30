@@ -602,8 +602,8 @@ export default function Home() {
         },
         {
           href: "/hvac-tonnage-calculator",
-          icon: "",
-          iconColor: "",
+          icon: "ac_unit",
+          iconColor: "text-sky-600",
           title: "HVAC Tonnage Calculator",
           description: "Figure out what size AC unit you need for a building based on square footage and heat sources.",
           badge: "🆕 New"
@@ -669,8 +669,8 @@ export default function Home() {
         // Refrigeration Tools
         {
           href: "/refrigerant-charge-calculator",
-          icon: "",
-          iconColor: "",
+          icon: "ac_unit",
+          iconColor: "text-cyan-500",
           title: "Refrigerant Charge Calculator",
           description: "Calculate how much extra refrigerant to add when copper lines are longer than standard 25 feet in AC installations.",
           badge: "🆕 New"
@@ -686,8 +686,8 @@ export default function Home() {
         },
         {
           href: "/scientific-calculator",
-          icon: "",
-          iconColor: "",
+          icon: "calculate",
+          iconColor: "text-indigo-500",
           title: "Scientific Calculator",
           description: "Professional calculator with advanced math functions - sine, cosine, logarithms, square roots, and more for technical calculations.",
           badge: "🆕 New"
@@ -738,7 +738,7 @@ export default function Home() {
             <div className="flex items-start gap-3">
               {icon && (
                 <div className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors flex-shrink-0`}>
-                  <span className={`material-icons text-lg ${iconColor}`}>{icon}</span>
+                  <span className={`material-icons text-base ${iconColor}`}>{icon}</span>
                 </div>
               )}
               <div className="flex-1 min-w-0">
