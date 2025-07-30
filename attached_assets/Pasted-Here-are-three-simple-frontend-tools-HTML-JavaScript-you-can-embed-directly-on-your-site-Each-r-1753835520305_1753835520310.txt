@@ -1,0 +1,87 @@
+Here are three simple frontend tools (HTML + JavaScript) you can embed directly on your site. Each runs entirely in the browser:
+
+1. HVAC – BTU Calculator
+html
+Copy code
+<div>
+  <h2>HVAC BTU Calculator</h2>
+  <label>Room Size (sq ft): <input type="number" id="roomSize" /></label><br />
+  <button onclick="calculateBTU()">Calculate BTU</button>
+  <p id="btuResult"></p>
+</div>
+
+<script>
+  function calculateBTU() {
+    const size = parseFloat(document.getElementById("roomSize").value);
+    const btu = size * 20; // Rough estimate: 20 BTU per sq ft
+    document.getElementById("btuResult").textContent = 
+      `Required Cooling: ${btu.toLocaleString()} BTU`;
+  }
+</script>
+2. Electrician – Voltage Drop Calculator
+html
+Copy code
+<div>
+  <h2>Voltage Drop Calculator</h2>
+  <label>Distance (ft): <input type="number" id="distance" /></label><br />
+  <label>Current (A): <input type="number" id="current" /></label><br />
+  <label>Wire Resistance (Ohms/ft): <input type="number" id="resistance" value="0.0008" /></label><br />
+  <button onclick="calculateVD()">Calculate Voltage Drop</button>
+  <p id="vdResult"></p>
+</div>
+
+<script>
+  function calculateVD() {
+    const d = parseFloat(document.getElementById("distance").value);
+    const i = parseFloat(document.getElementById("current").value);
+    const r = parseFloat(document.getElementById("resistance").value);
+    const drop = 2 * d * r * i;
+    document.getElementById("vdResult").textContent = 
+      `Voltage Drop: ${drop.toFixed(2)} V`;
+  }
+</script>
+3. Refrigeration – Superheat Calculator
+html
+Copy code
+<div>
+  <h2>Superheat Calculator</h2>
+  <label>Suction Line Temp (°F): <input type="number" id="lineTemp" /></label><br />
+  <label>Saturation Temp (°F): <input type="number" id="satTemp" /></label><br />
+  <button onclick="calcSuperheat()">Calculate Superheat</button>
+  <p id="superheatResult"></p>
+</div>
+
+<script>
+  function calcSuperheat() {
+    const line = parseFloat(document.getElementById("lineTemp").value);
+    const sat = parseFloat(document.getElementById("satTemp").value);
+    const sh = line - sat;
+    document.getElementById("superheatResult").textContent = 
+      `Superheat: ${sh.toFixed(1)} °F`;
+  }
+</script>
+Let me know if you want:
+
+Combined UI for all tools
+
+Styled versions (e.g., Tailwind, Bootstrap)
+
+Offline support
+
+A downloadable HTML file
+Or if you want backend logging or pro features for each.
+
+
+
+
+
+
+
+
+
+
+Tools
+
+
+
+ChatGPT can 
