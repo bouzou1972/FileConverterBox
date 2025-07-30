@@ -122,14 +122,14 @@ export default function Contact() {
       <div className="grid lg:grid-cols-2 gap-12">
         {/* Contact Form */}
         <div>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="hover:shadow-md transition-shadow duration-200 border border-gray-200">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg font-semibold text-gray-900">
                 <MessageSquare className="w-5 h-5 text-blue-600" />
                 Send Us a Message
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-0">
               {isSubmitted ? (
                 <div className="text-center py-8">
                   <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
@@ -222,20 +222,20 @@ export default function Contact() {
         {/* Why Choose Us & FAQ */}
         <div className="space-y-8">
           {/* Features */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Why Choose File Converter Box?</CardTitle>
+          <Card className="hover:shadow-md transition-shadow duration-200 border border-gray-200">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg font-semibold text-gray-900">Why Choose File Converter Box?</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
+            <CardContent className="pt-0">
+              <div className="space-y-4">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-2 rounded-lg">
-                      <feature.icon className="w-5 h-5 text-blue-600" />
+                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <div className="bg-blue-100 p-2 rounded-lg flex-shrink-0">
+                      <feature.icon className="w-4 h-4 text-blue-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">{feature.title}</h3>
-                      <p className="text-gray-600 text-sm mt-1">{feature.description}</p>
+                      <h3 className="font-medium text-gray-900 text-sm">{feature.title}</h3>
+                      <p className="text-gray-600 text-xs mt-1 leading-relaxed">{feature.description}</p>
                     </div>
                   </div>
                 ))}
@@ -244,16 +244,16 @@ export default function Contact() {
           </Card>
 
           {/* FAQ */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Frequently Asked Questions</CardTitle>
+          <Card className="hover:shadow-md transition-shadow duration-200 border border-gray-200">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg font-semibold text-gray-900">Frequently Asked Questions</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-0">
               <div className="space-y-4">
                 {commonQuestions.map((faq, index) => (
-                  <div key={index} className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0">
-                    <h3 className="font-semibold text-gray-900 mb-2">{faq.question}</h3>
-                    <p className="text-gray-600 text-sm">{faq.answer}</p>
+                  <div key={index} className="p-3 rounded-lg hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0">
+                    <h3 className="font-medium text-gray-900 text-sm mb-2">{faq.question}</h3>
+                    <p className="text-gray-600 text-xs leading-relaxed">{faq.answer}</p>
                   </div>
                 ))}
               </div>
@@ -261,27 +261,27 @@ export default function Contact() {
           </Card>
 
           {/* Quick Stats */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Our Community</CardTitle>
+          <Card className="hover:shadow-md transition-shadow duration-200 border border-gray-200">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg font-semibold text-gray-900">Our Community</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-0">
               <div className="grid grid-cols-2 gap-4 text-center">
-                <div>
-                  <div className="text-2xl font-bold text-blue-600">50+</div>
-                  <div className="text-sm text-gray-600">Free Tools</div>
+                <div className="p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                  <div className="text-xl font-bold text-blue-600">50+</div>
+                  <div className="text-xs text-gray-600">Free Tools</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-green-600">100%</div>
-                  <div className="text-sm text-gray-600">Privacy</div>
+                <div className="p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                  <div className="text-xl font-bold text-green-600">100%</div>
+                  <div className="text-xs text-gray-600">Privacy</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-purple-600">0</div>
-                  <div className="text-sm text-gray-600">Data Uploads</div>
+                <div className="p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                  <div className="text-xl font-bold text-purple-600">0</div>
+                  <div className="text-xs text-gray-600">Data Uploads</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-orange-600">∞</div>
-                  <div className="text-sm text-gray-600">Usage Limit</div>
+                <div className="p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                  <div className="text-xl font-bold text-orange-600">∞</div>
+                  <div className="text-xs text-gray-600">Usage Limit</div>
                 </div>
               </div>
             </CardContent>
@@ -291,15 +291,15 @@ export default function Contact() {
 
       {/* Bottom Section */}
       <div className="mt-16 text-center">
-        <Card>
+        <Card className="hover:shadow-md transition-shadow duration-200 border border-gray-200">
           <CardContent className="pt-6">
-            <h2 className="text-2xl font-bold mb-4">We're Here to Help</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mb-6">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">We're Here to Help</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto mb-6 text-sm leading-relaxed">
               File Converter Box is built by developers who understand the need for reliable, 
               privacy-focused tools. Whether you're a field technician, content creator, 
               developer, or just someone who values privacy, we're here to support you.
             </p>
-            <div className="flex justify-center items-center gap-8 text-sm text-gray-500">
+            <div className="flex justify-center items-center gap-6 text-xs text-gray-500">
               <span>• Response within 24 hours</span>
               <span>• No account required</span>
               <span>• Always free</span>
