@@ -72,6 +72,7 @@ import AreaVolumeCalculator from "@/pages/area-volume-calculator";
 import RefrigerantChargeCalculator from "@/pages/refrigerant-charge-calculator";
 import UnitConverter from "@/pages/unit-converter";
 import ScientificCalculator from "@/pages/scientific-calculator";
+import HVACTonnageCalculator from "@/pages/hvac-tonnage-calculator";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -148,6 +149,7 @@ function Router() {
         <Route path="/refrigerant-charge-calculator" component={RefrigerantChargeCalculator} />
         <Route path="/unit-converter" component={UnitConverter} />
         <Route path="/scientific-calculator" component={ScientificCalculator} />
+        <Route path="/hvac-tonnage-calculator" component={HVACTonnageCalculator} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

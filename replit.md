@@ -50,7 +50,7 @@ Preferred communication style: Simple, everyday language.
 - ✅ Professional validation and error handling for all calculation scenarios
 
 **Field Technician Tools Suite Now Includes**:
-- 🌡️ **HVAC Tools**: BTU Calculator, Duct Size Calculator, Static Pressure Calculator, Superheat Calculator
+- 🌡️ **HVAC Tools**: BTU Calculator, Duct Size Calculator, Static Pressure Calculator, Superheat Calculator, Tonnage Calculator
 - ⚡ **Electrical Tools**: Voltage Drop Calculator, Ohm's Law Calculator, Wire Size Calculator
 - ❄️ **Refrigeration Tools**: Refrigerant Charge Calculator
 - 🔧 **Utility Tools**: Wattage Calculator, Pipe Volume Calculator, Job Timer, Area & Volume Calculator

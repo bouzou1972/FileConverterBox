@@ -600,6 +600,14 @@ export default function Home() {
           description: "Calculate superheat values for HVAC and refrigeration systems to diagnose refrigerant charge levels.",
           badge: "🆕 New"
         },
+        {
+          href: "/hvac-tonnage-calculator",
+          icon: "wind",
+          iconColor: "text-sky-600",
+          title: "HVAC Tonnage Calculator",
+          description: "Calculate proper air conditioning unit size based on space, climate, insulation, and load factors.",
+          badge: "🆕 New"
+        },
         // Electrical Tools
         {
           href: "/voltage-drop-calculator",
