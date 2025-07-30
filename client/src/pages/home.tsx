@@ -733,15 +733,15 @@ export default function Home() {
 
     return (
       <Link href={href}>
-        <Card className="h-full hover:shadow-md transition-all duration-200 cursor-pointer group bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600" onClick={handleClick} style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.06)' }}>
-          <CardContent className="p-4 sm:p-5">
-            <div className="flex items-start gap-3 sm:gap-4">
-              <div className={`p-2 sm:p-3 rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors flex-shrink-0`}>
-                <span className={`material-icons text-lg ${iconColor}`}>{icon}</span>
+        <Card className="hover:shadow-md transition-all duration-200 cursor-pointer group bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600" onClick={handleClick} style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.06)' }}>
+          <CardContent className="p-4">
+            <div className="flex items-start gap-3">
+              <div className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors flex-shrink-0`}>
+                <span className={`material-icons text-base ${iconColor}`}>{icon}</span>
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <h3 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                  <h3 className="font-semibold text-sm text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {title}
                   </h3>
                   <div className="flex items-center gap-1 flex-shrink-0">
@@ -769,7 +769,7 @@ export default function Home() {
                     )}
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 line-clamp-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                   {description}
                 </p>
               </div>
@@ -826,7 +826,7 @@ export default function Home() {
                       </Badge>
                     )}
                   </div>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
+                  <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
                     {category.featured[0].description}
                   </p>
                 </div>
