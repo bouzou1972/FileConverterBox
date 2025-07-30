@@ -26,6 +26,14 @@ export default function RefrigerantChargeCalculator() {
       '3/4': 1.3,
       '7/8': 1.8
     },
+    'R32': {
+      '1/4': 0.08,
+      '3/8': 0.25,
+      '1/2': 0.5,
+      '5/8': 0.8,
+      '3/4': 1.1,
+      '7/8': 1.5
+    },
     'R22': {
       '1/4': 0.08,
       '3/8': 0.25,
@@ -41,6 +49,30 @@ export default function RefrigerantChargeCalculator() {
       '5/8': 0.6,
       '3/4': 0.9,
       '7/8': 1.2
+    },
+    'R407C': {
+      '1/4': 0.09,
+      '3/8': 0.28,
+      '1/2': 0.55,
+      '5/8': 0.85,
+      '3/4': 1.2,
+      '7/8': 1.6
+    },
+    'R404A': {
+      '1/4': 0.12,
+      '3/8': 0.35,
+      '1/2': 0.7,
+      '5/8': 1.0,
+      '3/4': 1.4,
+      '7/8': 1.9
+    },
+    'R507A': {
+      '1/4': 0.11,
+      '3/8': 0.33,
+      '1/2': 0.65,
+      '5/8': 0.95,
+      '3/4': 1.35,
+      '7/8': 1.85
     }
   };
 
@@ -99,7 +131,7 @@ export default function RefrigerantChargeCalculator() {
         <h1 className="text-3xl font-bold mb-4">Refrigerant Charge Calculator</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Calculate additional refrigerant charge needed for extended line sets in HVAC systems. 
-          Supports R410A, R22, and R134A refrigerants with standard line sizes.
+          Supports 7 common refrigerants including R410A, R32, R22, R134A, R407C, R404A, and R507A with standard line sizes.
         </p>
       </div>
 
@@ -121,9 +153,13 @@ export default function RefrigerantChargeCalculator() {
                   value={refrigerantType}
                   onChange={(e) => setRefrigerantType(e.target.value)}
                 >
-                  <option value="R410A">R410A</option>
-                  <option value="R22">R22</option>
-                  <option value="R134A">R134A</option>
+                  <option value="R410A">R410A (Most Common)</option>
+                  <option value="R32">R32 (Eco-Friendly)</option>
+                  <option value="R22">R22 (Legacy)</option>
+                  <option value="R134A">R134A (Automotive)</option>
+                  <option value="R407C">R407C (R22 Replacement)</option>
+                  <option value="R404A">R404A (Commercial)</option>
+                  <option value="R507A">R507A (Low-Temp)</option>
                 </select>
               </div>
               <div>

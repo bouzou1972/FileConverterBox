@@ -12,8 +12,20 @@ import { UsageGuide } from '@/components/usage-guide';
 export default function SuperheatCalculator() {
   const [lineTemp, setLineTemp] = useState('');
   const [satTemp, setSatTemp] = useState('');
-  const [result, setResult] = useState<{superheat: number, status: string} | null>(null);
+  const [refrigerantType, setRefrigerantType] = useState('R410A');
+  const [result, setResult] = useState<{superheat: number, status: string, targetRange: string} | null>(null);
   const [error, setError] = useState('');
+
+  // Refrigerant-specific superheat targets
+  const superheatTargets = {
+    'R410A': { min: 8, max: 15, ideal: '8-15°F' },
+    'R32': { min: 6, max: 12, ideal: '6-12°F' },
+    'R22': { min: 8, max: 18, ideal: '8-18°F' },
+    'R134A': { min: 10, max: 20, ideal: '10-20°F' },
+    'R407C': { min: 10, max: 18, ideal: '10-18°F' },
+    'R404A': { min: 6, max: 12, ideal: '6-12°F' },
+    'R507A': { min: 6, max: 12, ideal: '6-12°F' }
+  };
 
   const calcSuperheat = () => {
     const line = parseFloat(lineTemp);
@@ -26,26 +38,30 @@ export default function SuperheatCalculator() {
     }
 
     const superheat = line - sat;
+    const target = superheatTargets[refrigerantType as keyof typeof superheatTargets];
     let status = '';
     
-    // Standard superheat ranges for different applications
-    if (superheat < 5) {
-      status = 'Low - Risk of liquid refrigerant return';
-    } else if (superheat >= 5 && superheat <= 15) {
-      status = 'Normal - Optimal range for most systems';
-    } else if (superheat > 15 && superheat <= 25) {
-      status = 'High - Check refrigerant charge';
+    // Refrigerant-specific superheat ranges
+    if (superheat < target.min - 2) {
+      status = 'Very Low - Risk of liquid refrigerant return to compressor';
+    } else if (superheat < target.min) {
+      status = 'Low - May indicate overcharged system';
+    } else if (superheat >= target.min && superheat <= target.max) {
+      status = 'Normal - System operating within optimal range';
+    } else if (superheat > target.max && superheat <= target.max + 10) {
+      status = 'High - May indicate undercharged system or restricted airflow';
     } else {
-      status = 'Very High - System needs attention';
+      status = 'Very High - System requires immediate attention';
     }
     
-    setResult({ superheat, status });
+    setResult({ superheat, status, targetRange: target.ideal });
     setError('');
   };
 
   const clearCalculation = () => {
     setLineTemp('');
     setSatTemp('');
+    setRefrigerantType('R410A');
     setResult(null);
     setError('');
   };
@@ -53,15 +69,17 @@ export default function SuperheatCalculator() {
   const copyResult = () => {
     if (result) {
       navigator.clipboard.writeText(
-        `Suction Line: ${lineTemp}°F | Saturation: ${satTemp}°F | Superheat: ${result.superheat.toFixed(1)}°F | Status: ${result.status}`
+        `${refrigerantType} Superheat | Suction Line: ${lineTemp}°F | Saturation: ${satTemp}°F | Superheat: ${result.superheat.toFixed(1)}°F | Target: ${result.targetRange} | Status: ${result.status}`
       );
     }
   };
 
-  const getStatusColor = (superheat: number) => {
-    if (superheat < 5) return 'bg-red-50 border-red-200 text-red-700';
-    if (superheat >= 5 && superheat <= 15) return 'bg-green-50 border-green-200 text-green-700';
-    if (superheat > 15 && superheat <= 25) return 'bg-yellow-50 border-yellow-200 text-yellow-700';
+  const getStatusColor = (superheat: number, refrigerant: string) => {
+    const target = superheatTargets[refrigerant as keyof typeof superheatTargets];
+    if (superheat < target.min - 2) return 'bg-red-50 border-red-200 text-red-700';
+    if (superheat < target.min) return 'bg-yellow-50 border-yellow-200 text-yellow-700';
+    if (superheat >= target.min && superheat <= target.max) return 'bg-green-50 border-green-200 text-green-700';
+    if (superheat > target.max && superheat <= target.max + 10) return 'bg-yellow-50 border-yellow-200 text-yellow-700';
     return 'bg-red-50 border-red-200 text-red-700';
   };
 
@@ -77,8 +95,8 @@ export default function SuperheatCalculator() {
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-4">Superheat Calculator</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Calculate superheat values for HVAC and refrigeration systems. 
-          Diagnose refrigerant charge levels and system performance with accurate superheat measurements.
+          Calculate superheat values for HVAC and refrigeration systems with refrigerant-specific target ranges.
+          Supports 7 common refrigerants including R410A, R32, R22, R134A, R407C, R404A, and R507A.
         </p>
       </div>
 
@@ -91,6 +109,27 @@ export default function SuperheatCalculator() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
+            <div>
+              <Label htmlFor="refrigerantType">Refrigerant Type</Label>
+              <select 
+                id="refrigerantType"
+                className="w-full border border-gray-300 rounded-md px-3 py-2"
+                value={refrigerantType}
+                onChange={(e) => setRefrigerantType(e.target.value)}
+              >
+                <option value="R410A">R410A (Most Common)</option>
+                <option value="R32">R32 (Eco-Friendly)</option>
+                <option value="R22">R22 (Legacy)</option>
+                <option value="R134A">R134A (Automotive)</option>
+                <option value="R407C">R407C (R22 Replacement)</option>
+                <option value="R404A">R404A (Commercial)</option>
+                <option value="R507A">R507A (Low-Temp)</option>
+              </select>
+              <p className="text-xs text-gray-500 mt-1">
+                Target superheat: {superheatTargets[refrigerantType as keyof typeof superheatTargets]?.ideal}
+              </p>
+            </div>
+
             <div>
               <Label htmlFor="lineTemp">Suction Line Temperature (°F)</Label>
               <Input
@@ -138,12 +177,15 @@ export default function SuperheatCalculator() {
             )}
 
             {result && (
-              <Card className={getStatusColor(result.superheat)}>
+              <Card className={getStatusColor(result.superheat, refrigerantType)}>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <h3 className="font-semibold text-lg mb-2">Superheat Results</h3>
+                    <h3 className="font-semibold text-lg mb-2">{refrigerantType} Superheat Results</h3>
                     <p className="text-3xl font-bold mb-2">
                       {result.superheat.toFixed(1)}°F
+                    </p>
+                    <p className="font-semibold mb-2">
+                      Target Range: {result.targetRange}
                     </p>
                     <p className="font-semibold mb-4">
                       {result.status}
@@ -154,13 +196,14 @@ export default function SuperheatCalculator() {
                       <p>Difference: {result.superheat.toFixed(1)}°F</p>
                     </div>
 
-                    {(result.superheat < 5 || result.superheat > 25) && (
+                    {(result.superheat < superheatTargets[refrigerantType as keyof typeof superheatTargets].min - 2 || 
+                      result.superheat > superheatTargets[refrigerantType as keyof typeof superheatTargets].max + 10) && (
                       <Alert variant="destructive" className="mt-4 text-left">
                         <AlertTriangle className="w-4 h-4" />
                         <AlertDescription>
-                          {result.superheat < 5 
-                            ? "Low superheat may indicate overcharge or TXV issues"
-                            : "High superheat may indicate undercharge or restricted TXV"
+                          {result.superheat < superheatTargets[refrigerantType as keyof typeof superheatTargets].min - 2
+                            ? `Very low superheat for ${refrigerantType} - risk of liquid refrigerant return to compressor`
+                            : `Very high superheat for ${refrigerantType} - system requires immediate attention`
                           }
                         </AlertDescription>
                       </Alert>

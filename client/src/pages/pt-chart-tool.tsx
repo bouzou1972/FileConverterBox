@@ -19,6 +19,14 @@ const refrigerantData = {
     { temp: 80, pressure: 331.3 }, { temp: 90, pressure: 392.8 }, { temp: 100, pressure: 462.4 },
     { temp: 110, pressure: 540.8 }, { temp: 120, pressure: 628.7 }
   ],
+  "R-32": [
+    { temp: -40, pressure: 17.2 }, { temp: -30, pressure: 25.1 }, { temp: -20, pressure: 35.4 },
+    { temp: -10, pressure: 48.6 }, { temp: 0, pressure: 65.2 }, { temp: 10, pressure: 85.9 },
+    { temp: 20, pressure: 111.5 }, { temp: 30, pressure: 142.8 }, { temp: 40, pressure: 180.7 },
+    { temp: 50, pressure: 226.2 }, { temp: 60, pressure: 280.4 }, { temp: 70, pressure: 344.3 },
+    { temp: 80, pressure: 419.1 }, { temp: 90, pressure: 506.0 }, { temp: 100, pressure: 606.2 },
+    { temp: 110, pressure: 720.9 }, { temp: 120, pressure: 851.4 }
+  ],
   "R-22": [
     { temp: -40, pressure: 10.1 }, { temp: -30, pressure: 16.8 }, { temp: -20, pressure: 25.9 },
     { temp: -10, pressure: 37.7 }, { temp: 0, pressure: 52.5 }, { temp: 10, pressure: 70.9 },
@@ -35,6 +43,14 @@ const refrigerantData = {
     { temp: 80, pressure: 397.3 }, { temp: 90, pressure: 481.4 }, { temp: 100, pressure: 577.5 },
     { temp: 110, pressure: 686.6 }, { temp: 120, pressure: 809.7 }
   ],
+  "R-407C": [
+    { temp: -40, pressure: 13.2 }, { temp: -30, pressure: 19.7 }, { temp: -20, pressure: 28.4 },
+    { temp: -10, pressure: 39.8 }, { temp: 0, pressure: 54.3 }, { temp: 10, pressure: 72.4 },
+    { temp: 20, pressure: 94.8 }, { temp: 30, pressure: 122.0 }, { temp: 40, pressure: 154.7 },
+    { temp: 50, pressure: 193.5 }, { temp: 60, pressure: 239.1 }, { temp: 70, pressure: 292.2 },
+    { temp: 80, pressure: 353.6 }, { temp: 90, pressure: 424.0 }, { temp: 100, pressure: 504.2 },
+    { temp: 110, pressure: 595.0 }, { temp: 120, pressure: 697.1 }
+  ],
   "R-404A": [
     { temp: -40, pressure: 18.3 }, { temp: -30, pressure: 26.4 }, { temp: -20, pressure: 36.7 },
     { temp: -10, pressure: 49.7 }, { temp: 0, pressure: 65.8 }, { temp: 10, pressure: 85.4 },
@@ -42,6 +58,14 @@ const refrigerantData = {
     { temp: 50, pressure: 208.9 }, { temp: 60, pressure: 253.8 }, { temp: 70, pressure: 305.5 },
     { temp: 80, pressure: 364.7 }, { temp: 90, pressure: 432.1 }, { temp: 100, pressure: 508.4 },
     { temp: 110, pressure: 594.3 }, { temp: 120, pressure: 690.6 }
+  ],
+  "R-507A": [
+    { temp: -40, pressure: 17.9 }, { temp: -30, pressure: 25.8 }, { temp: -20, pressure: 35.9 },
+    { temp: -10, pressure: 48.6 }, { temp: 0, pressure: 64.4 }, { temp: 10, pressure: 83.7 },
+    { temp: 20, pressure: 107.0 }, { temp: 30, pressure: 134.8 }, { temp: 40, pressure: 167.7 },
+    { temp: 50, pressure: 206.2 }, { temp: 60, pressure: 250.9 }, { temp: 70, pressure: 302.5 },
+    { temp: 80, pressure: 361.7 }, { temp: 90, pressure: 429.1 }, { temp: 100, pressure: 505.5 },
+    { temp: 110, pressure: 591.6 }, { temp: 120, pressure: 688.1 }
   ]
 };
 
@@ -176,7 +200,7 @@ export default function PTChartTool() {
             PT Chart Tool
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Look up pressure-temperature relationships for common refrigerants. Essential for HVAC diagnostics and system charging.
+            Look up pressure-temperature relationships for 7 common refrigerants including R-410A, R-32, and other modern refrigerants. Essential for HVAC diagnostics and system charging.
           </p>
           <div className="flex items-center justify-center gap-2 mt-4">
             <Badge variant="secondary" className="bg-green-100 text-green-800">
@@ -204,10 +228,13 @@ export default function PTChartTool() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="R-410A">R-410A (Most Common)</SelectItem>
-                    <SelectItem value="R-22">R-22 (Older Systems)</SelectItem>
-                    <SelectItem value="R-134a">R-134a (Automotive)</SelectItem>
-                    <SelectItem value="R-404A">R-404A (Commercial)</SelectItem>
+                    <SelectItem value="R-410A">R-410A (Most Common Residential)</SelectItem>
+                    <SelectItem value="R-32">R-32 (New Eco-Friendly)</SelectItem>
+                    <SelectItem value="R-22">R-22 (Legacy Systems)</SelectItem>
+                    <SelectItem value="R-134a">R-134a (Automotive/Chillers)</SelectItem>
+                    <SelectItem value="R-407C">R-407C (R-22 Replacement)</SelectItem>
+                    <SelectItem value="R-404A">R-404A (Commercial Refrigeration)</SelectItem>
+                    <SelectItem value="R-507A">R-507A (Low-Temp Commercial)</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

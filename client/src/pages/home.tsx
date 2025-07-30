@@ -613,7 +613,7 @@ export default function Home() {
           icon: "thermostat",
           iconColor: "text-purple-600",
           title: "PT Chart Tool",
-          description: "Look up pressure-temperature relationships for R-410A, R-22, R-134a, and R-404A refrigerants for system diagnostics.",
+          description: "Look up pressure-temperature relationships for 7 common refrigerants including R-410A, R-32, and modern eco-friendly options.",
           badge: "🆕 New"
         },
         // Electrical Tools

@@ -29,6 +29,22 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+### 🚀 Enhanced Refrigerant Support Across HVAC Tools (✅ COMPLETE - January 30, 2025)
+**PROFESSIONAL ENHANCEMENT**: Expanded refrigerant support from 4 to 7 common refrigerants across all HVAC tools with modern eco-friendly options
+- **PT Chart Tool Enhanced**: Added R-32 (eco-friendly), R-407C (R-22 replacement), and R-507A (low-temp commercial) to existing R-410A, R-22, R-134a, and R-404A
+- **Refrigerant Charge Calculator Upgraded**: Now supports all 7 refrigerants with specific charge rates per line size for accurate calculations
+- **Superheat Calculator Revolutionized**: Added refrigerant-specific target ranges and intelligent color coding based on actual industry standards
+- **Professional Accuracy**: Each refrigerant now has proper pressure-temperature data, charge rates, and superheat targets matching manufacturer specifications
+- **User Experience**: Clear labeling (Most Common, Eco-Friendly, Legacy, etc.) helps technicians select appropriate refrigerant types
+- **Modern Focus**: Prioritizes R-410A and R-32 as primary options while maintaining legacy R-22 support for older systems
+
+**Technical Benefits**:
+- ✅ Complete Coverage - All modern and legacy refrigerants supported
+- ✅ Accuracy - Industry-standard PT data and superheat targets for each refrigerant
+- ✅ Professional Tools - Color-coded status indicators based on refrigerant-specific ranges
+- ✅ Future-Ready - Includes eco-friendly R-32 for new installations
+- ✅ Educational - Clear descriptions help technicians understand refrigerant applications
+
 ### 🚀 XML Sitemap Implementation & Route Configuration (✅ COMPLETE - January 30, 2025)
 **TECHNICAL ENHANCEMENT**: Successfully implemented comprehensive XML sitemap with proper structure and verified all field technician tool routes
 - **XML Sitemap Created**: Complete sitemap with 60+ tool pages in proper XML format at /sitemap.xml
