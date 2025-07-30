@@ -543,6 +543,55 @@ export default function Home() {
           description: "Clean messy Excel data by removing currency symbols, converting text to numbers, handling percentages, and fixing formatting issues."
         }
       ]
+    },
+    {
+      id: "field-technician-tools",
+      title: "🔧 Field Technician Tools",
+      description: "Professional calculators for HVAC, electrical, and refrigeration technicians",
+      icon: "build",
+      iconColor: "text-amber-600",
+      featured: [
+        {
+          href: "/hvac-btu-calculator",
+          icon: "thermostat",
+          iconColor: "text-blue-600",
+          title: "HVAC BTU Calculator",
+          description: "Calculate required BTU capacity for heating and cooling systems based on room size and environmental factors."
+        },
+        {
+          href: "/voltage-drop-calculator",
+          icon: "electrical_services",
+          iconColor: "text-yellow-600",
+          title: "Voltage Drop Calculator",
+          description: "Calculate voltage loss in electrical circuits to ensure proper wire sizing and code compliance."
+        }
+      ],
+      allTools: [
+        {
+          href: "/hvac-btu-calculator",
+          icon: "thermostat",
+          iconColor: "text-blue-600",
+          title: "HVAC BTU Calculator",
+          description: "Calculate required BTU capacity for heating and cooling systems based on room size and environmental factors.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/voltage-drop-calculator",
+          icon: "electrical_services",
+          iconColor: "text-yellow-600",
+          title: "Voltage Drop Calculator",
+          description: "Calculate voltage loss in electrical circuits to ensure proper wire sizing and code compliance.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/superheat-calculator",
+          icon: "ac_unit",
+          iconColor: "text-cyan-600",
+          title: "Superheat Calculator",
+          description: "Calculate superheat values for HVAC and refrigeration systems to diagnose refrigerant charge levels.",
+          badge: "🆕 New"
+        }
+      ]
     }
   ];
 

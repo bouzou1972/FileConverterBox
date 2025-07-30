@@ -59,6 +59,9 @@ import ColorPaletteExtractor from "@/pages/color-palette-extractor";
 import SEOOptimizer from "@/pages/seo-optimizer";
 import SEOToolsSuite from "@/pages/seo-tools-suite";
 import DNSChecker from "@/pages/dns-checker";
+import HVACBTUCalculator from "@/pages/hvac-btu-calculator";
+import VoltageDropCalculator from "@/pages/voltage-drop-calculator";
+import SuperheatCalculator from "@/pages/superheat-calculator";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -121,6 +124,9 @@ function Router() {
         <Route path="/seo-optimizer" component={SEOOptimizer} />
         <Route path="/seo-tools-suite" component={SEOToolsSuite} />
         <Route path="/dns-checker" component={DNSChecker} />
+        <Route path="/hvac-btu-calculator" component={HVACBTUCalculator} />
+        <Route path="/voltage-drop-calculator" component={VoltageDropCalculator} />
+        <Route path="/superheat-calculator" component={SuperheatCalculator} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
