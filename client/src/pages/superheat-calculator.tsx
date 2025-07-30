@@ -16,15 +16,32 @@ export default function SuperheatCalculator() {
   const [result, setResult] = useState<{superheat: number, status: string, targetRange: string} | null>(null);
   const [error, setError] = useState('');
 
-  // Refrigerant-specific superheat targets
+  // Refrigerant-specific superheat targets for most commonly used refrigerants
   const superheatTargets = {
     'R410A': { min: 8, max: 15, ideal: '8-15°F' },
     'R32': { min: 6, max: 12, ideal: '6-12°F' },
     'R22': { min: 8, max: 18, ideal: '8-18°F' },
     'R134A': { min: 10, max: 20, ideal: '10-20°F' },
+    'R407A': { min: 8, max: 16, ideal: '8-16°F' },
     'R407C': { min: 10, max: 18, ideal: '10-18°F' },
+    'R407F': { min: 8, max: 16, ideal: '8-16°F' },
     'R404A': { min: 6, max: 12, ideal: '6-12°F' },
-    'R507A': { min: 6, max: 12, ideal: '6-12°F' }
+    'R507A': { min: 6, max: 12, ideal: '6-12°F' },
+    'R290': { min: 4, max: 8, ideal: '4-8°F' },
+    'R600A': { min: 4, max: 8, ideal: '4-8°F' },
+    'R1234YF': { min: 8, max: 15, ideal: '8-15°F' },
+    'R1234ZE': { min: 8, max: 15, ideal: '8-15°F' },
+    'R513A': { min: 10, max: 18, ideal: '10-18°F' },
+    'R515B': { min: 10, max: 18, ideal: '10-18°F' },
+    'R448A': { min: 6, max: 12, ideal: '6-12°F' },
+    'R449A': { min: 6, max: 12, ideal: '6-12°F' },
+    'R152A': { min: 8, max: 16, ideal: '8-16°F' },
+    'R502': { min: 6, max: 12, ideal: '6-12°F' },
+    'R12': { min: 8, max: 16, ideal: '8-16°F' },
+    'R401A': { min: 8, max: 16, ideal: '8-16°F' },
+    'R402A': { min: 6, max: 12, ideal: '6-12°F' },
+    'R408A': { min: 6, max: 12, ideal: '6-12°F' },
+    'R422D': { min: 8, max: 16, ideal: '8-16°F' }
   };
 
   const calcSuperheat = () => {
@@ -96,7 +113,7 @@ export default function SuperheatCalculator() {
         <h1 className="text-3xl font-bold mb-4">Superheat Calculator</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Calculate superheat values for HVAC and refrigeration systems with refrigerant-specific target ranges.
-          Supports 7 common refrigerants including R410A, R32, R22, R134A, R407C, R404A, and R507A.
+          Supports 25+ refrigerants including most popular R410A, R32, R22 replacements, natural refrigerants, and next-gen options.
         </p>
       </div>
 
@@ -117,13 +134,35 @@ export default function SuperheatCalculator() {
                 value={refrigerantType}
                 onChange={(e) => setRefrigerantType(e.target.value)}
               >
-                <option value="R410A">R410A (Most Common)</option>
-                <option value="R32">R32 (Eco-Friendly)</option>
-                <option value="R22">R22 (Legacy)</option>
-                <option value="R134A">R134A (Automotive)</option>
-                <option value="R407C">R407C (R22 Replacement)</option>
-                <option value="R404A">R404A (Commercial)</option>
-                <option value="R507A">R507A (Low-Temp)</option>
+                <optgroup label="Most Common">
+                  <option value="R410A">R410A (Most Popular Residential)</option>
+                  <option value="R32">R32 (New Eco-Friendly)</option>
+                  <option value="R22">R22 (Legacy Residential)</option>
+                  <option value="R134A">R134A (Automotive/Chillers)</option>
+                </optgroup>
+                <optgroup label="R22 Replacements">
+                  <option value="R407A">R407A (Direct R22 Replacement)</option>
+                  <option value="R407C">R407C (Popular R22 Replacement)</option>
+                  <option value="R407F">R407F (Enhanced R22 Replacement)</option>
+                  <option value="R422D">R422D (Drop-in R22 Replacement)</option>
+                </optgroup>
+                <optgroup label="Commercial Refrigeration">
+                  <option value="R404A">R404A (Medium/Low Temp)</option>
+                  <option value="R507A">R507A (Low Temperature)</option>
+                  <option value="R448A">R448A (R404A Replacement)</option>
+                  <option value="R449A">R449A (R404A/507A Replacement)</option>
+                </optgroup>
+                <optgroup label="Next-Gen Low-GWP">
+                  <option value="R1234YF">R1234YF (Automotive)</option>
+                  <option value="R1234ZE">R1234ZE (Centrifugal Chillers)</option>
+                  <option value="R513A">R513A (R134A Replacement)</option>
+                  <option value="R515B">R515B (R134A Replacement)</option>
+                </optgroup>
+                <optgroup label="Natural Refrigerants">
+                  <option value="R290">R290 (Propane)</option>
+                  <option value="R600A">R600A (Isobutane)</option>
+                  <option value="R152A">R152A (HFC Alternative)</option>
+                </optgroup>
               </select>
               <p className="text-xs text-gray-500 mt-1">
                 Target superheat: {superheatTargets[refrigerantType as keyof typeof superheatTargets]?.ideal}

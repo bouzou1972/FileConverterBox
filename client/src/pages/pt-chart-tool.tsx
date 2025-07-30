@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Copy, Download, Thermometer, Gauge } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-// Common refrigerants with their PT data points
+// Most commonly used refrigerants with their PT data points
 const refrigerantData = {
   "R-410A": [
     { temp: -40, pressure: 14.7 }, { temp: -30, pressure: 21.9 }, { temp: -20, pressure: 31.1 },
@@ -43,6 +43,14 @@ const refrigerantData = {
     { temp: 80, pressure: 397.3 }, { temp: 90, pressure: 481.4 }, { temp: 100, pressure: 577.5 },
     { temp: 110, pressure: 686.6 }, { temp: 120, pressure: 809.7 }
   ],
+  "R-407A": [
+    { temp: -40, pressure: 12.8 }, { temp: -30, pressure: 19.2 }, { temp: -20, pressure: 27.8 },
+    { temp: -10, pressure: 39.0 }, { temp: 0, pressure: 53.2 }, { temp: 10, pressure: 70.8 },
+    { temp: 20, pressure: 92.3 }, { temp: 30, pressure: 118.5 }, { temp: 40, pressure: 150.1 },
+    { temp: 50, pressure: 187.8 }, { temp: 60, pressure: 232.4 }, { temp: 70, pressure: 284.6 },
+    { temp: 80, pressure: 345.2 }, { temp: 90, pressure: 414.9 }, { temp: 100, pressure: 494.6 },
+    { temp: 110, pressure: 585.0 }, { temp: 120, pressure: 686.9 }
+  ],
   "R-407C": [
     { temp: -40, pressure: 13.2 }, { temp: -30, pressure: 19.7 }, { temp: -20, pressure: 28.4 },
     { temp: -10, pressure: 39.8 }, { temp: 0, pressure: 54.3 }, { temp: 10, pressure: 72.4 },
@@ -66,6 +74,38 @@ const refrigerantData = {
     { temp: 50, pressure: 206.2 }, { temp: 60, pressure: 250.9 }, { temp: 70, pressure: 302.5 },
     { temp: 80, pressure: 361.7 }, { temp: 90, pressure: 429.1 }, { temp: 100, pressure: 505.5 },
     { temp: 110, pressure: 591.6 }, { temp: 120, pressure: 688.1 }
+  ],
+  "R-407F": [
+    { temp: -40, pressure: 12.9 }, { temp: -30, pressure: 19.4 }, { temp: -20, pressure: 28.1 },
+    { temp: -10, pressure: 39.4 }, { temp: 0, pressure: 53.8 }, { temp: 10, pressure: 71.8 },
+    { temp: 20, pressure: 93.9 }, { temp: 30, pressure: 120.8 }, { temp: 40, pressure: 152.9 },
+    { temp: 50, pressure: 191.1 }, { temp: 60, pressure: 236.2 }, { temp: 70, pressure: 288.9 },
+    { temp: 80, pressure: 349.9 }, { temp: 90, pressure: 420.1 }, { temp: 100, pressure: 500.2 },
+    { temp: 110, pressure: 591.1 }, { temp: 120, pressure: 693.7 }
+  ],
+  "R-290": [
+    { temp: -40, pressure: 8.5 }, { temp: -30, pressure: 13.8 }, { temp: -20, pressure: 21.2 },
+    { temp: -10, pressure: 31.2 }, { temp: 0, pressure: 44.4 }, { temp: 10, pressure: 61.3 },
+    { temp: 20, pressure: 82.4 }, { temp: 30, pressure: 108.3 }, { temp: 40, pressure: 139.7 },
+    { temp: 50, pressure: 177.3 }, { temp: 60, pressure: 222.0 }, { temp: 70, pressure: 274.8 },
+    { temp: 80, pressure: 336.5 }, { temp: 90, pressure: 408.1 }, { temp: 100, pressure: 490.6 },
+    { temp: 110, pressure: 585.1 }, { temp: 120, pressure: 692.7 }
+  ],
+  "R-600a": [
+    { temp: -40, pressure: 4.2 }, { temp: -30, pressure: 7.8 }, { temp: -20, pressure: 13.5 },
+    { temp: -10, pressure: 21.8 }, { temp: 0, pressure: 33.4 }, { temp: 10, pressure: 48.9 },
+    { temp: 20, pressure: 69.2 }, { temp: 30, pressure: 95.1 }, { temp: 40, pressure: 127.5 },
+    { temp: 50, pressure: 167.4 }, { temp: 60, pressure: 216.0 }, { temp: 70, pressure: 274.6 },
+    { temp: 80, pressure: 344.4 }, { temp: 90, pressure: 426.9 }, { temp: 100, pressure: 523.4 },
+    { temp: 110, pressure: 635.4 }, { temp: 120, pressure: 764.4 }
+  ],
+  "R-1234yf": [
+    { temp: -40, pressure: 6.8 }, { temp: -30, pressure: 12.1 }, { temp: -20, pressure: 20.0 },
+    { temp: -10, pressure: 31.2 }, { temp: 0, pressure: 46.4 }, { temp: 10, pressure: 66.3 },
+    { temp: 20, pressure: 91.8 }, { temp: 30, pressure: 123.5 }, { temp: 40, pressure: 162.2 },
+    { temp: 50, pressure: 209.0 }, { temp: 60, pressure: 265.0 }, { temp: 70, pressure: 331.4 },
+    { temp: 80, pressure: 409.4 }, { temp: 90, pressure: 500.3 }, { temp: 100, pressure: 605.5 },
+    { temp: 110, pressure: 726.4 }, { temp: 120, pressure: 864.6 }
   ]
 };
 
@@ -200,7 +240,7 @@ export default function PTChartTool() {
             PT Chart Tool
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Look up pressure-temperature relationships for 7 common refrigerants including R-410A, R-32, and other modern refrigerants. Essential for HVAC diagnostics and system charging.
+            Look up pressure-temperature relationships for 12 most commonly used refrigerants including R-410A, R-32, R-22 replacements, and natural refrigerants. Essential for HVAC diagnostics and system charging.
           </p>
           <div className="flex items-center justify-center gap-2 mt-4">
             <Badge variant="secondary" className="bg-green-100 text-green-800">
@@ -228,13 +268,18 @@ export default function PTChartTool() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="R-410A">R-410A (Most Common Residential)</SelectItem>
+                    <SelectItem value="R-410A">R-410A (Most Popular Residential)</SelectItem>
                     <SelectItem value="R-32">R-32 (New Eco-Friendly)</SelectItem>
-                    <SelectItem value="R-22">R-22 (Legacy Systems)</SelectItem>
+                    <SelectItem value="R-22">R-22 (Legacy Residential)</SelectItem>
                     <SelectItem value="R-134a">R-134a (Automotive/Chillers)</SelectItem>
-                    <SelectItem value="R-407C">R-407C (R-22 Replacement)</SelectItem>
+                    <SelectItem value="R-407A">R-407A (Direct R-22 Replacement)</SelectItem>
+                    <SelectItem value="R-407C">R-407C (Popular R-22 Replacement)</SelectItem>
+                    <SelectItem value="R-407F">R-407F (Enhanced R-22 Replacement)</SelectItem>
                     <SelectItem value="R-404A">R-404A (Commercial Refrigeration)</SelectItem>
                     <SelectItem value="R-507A">R-507A (Low-Temp Commercial)</SelectItem>
+                    <SelectItem value="R-290">R-290 (Propane - Natural)</SelectItem>
+                    <SelectItem value="R-600a">R-600a (Isobutane - Natural)</SelectItem>
+                    <SelectItem value="R-1234yf">R-1234yf (Next-Gen Automotive)</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

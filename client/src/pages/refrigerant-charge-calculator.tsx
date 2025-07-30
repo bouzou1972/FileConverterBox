@@ -73,6 +73,142 @@ export default function RefrigerantChargeCalculator() {
       '5/8': 0.95,
       '3/4': 1.35,
       '7/8': 1.85
+    },
+    'R290': {
+      '1/4': 0.04,
+      '3/8': 0.12,
+      '1/2': 0.25,
+      '5/8': 0.38,
+      '3/4': 0.55,
+      '7/8': 0.75
+    },
+    'R600A': {
+      '1/4': 0.03,
+      '3/8': 0.1,
+      '1/2': 0.2,
+      '5/8': 0.3,
+      '3/4': 0.45,
+      '7/8': 0.6
+    },
+    'R1234YF': {
+      '1/4': 0.07,
+      '3/8': 0.22,
+      '1/2': 0.45,
+      '5/8': 0.68,
+      '3/4': 0.95,
+      '7/8': 1.3
+    },
+    'R1234ZE': {
+      '1/4': 0.06,
+      '3/8': 0.18,
+      '1/2': 0.36,
+      '5/8': 0.55,
+      '3/4': 0.78,
+      '7/8': 1.05
+    },
+    'R152A': {
+      '1/4': 0.05,
+      '3/8': 0.15,
+      '1/2': 0.3,
+      '5/8': 0.45,
+      '3/4': 0.65,
+      '7/8': 0.88
+    },
+    'R407A': {
+      '1/4': 0.09,
+      '3/8': 0.27,
+      '1/2': 0.54,
+      '5/8': 0.82,
+      '3/4': 1.15,
+      '7/8': 1.55
+    },
+    'R407F': {
+      '1/4': 0.08,
+      '3/8': 0.26,
+      '1/2': 0.52,
+      '5/8': 0.8,
+      '3/4': 1.12,
+      '7/8': 1.52
+    },
+    'R448A': {
+      '1/4': 0.09,
+      '3/8': 0.29,
+      '1/2': 0.58,
+      '5/8': 0.88,
+      '3/4': 1.25,
+      '7/8': 1.68
+    },
+    'R449A': {
+      '1/4': 0.08,
+      '3/8': 0.26,
+      '1/2': 0.53,
+      '5/8': 0.8,
+      '3/4': 1.13,
+      '7/8': 1.53
+    },
+    'R513A': {
+      '1/4': 0.07,
+      '3/8': 0.23,
+      '1/2': 0.46,
+      '5/8': 0.7,
+      '3/4': 0.98,
+      '7/8': 1.32
+    },
+    'R515B': {
+      '1/4': 0.06,
+      '3/8': 0.19,
+      '1/2': 0.38,
+      '5/8': 0.58,
+      '3/4': 0.82,
+      '7/8': 1.1
+    },
+    'R502': {
+      '1/4': 0.11,
+      '3/8': 0.32,
+      '1/2': 0.64,
+      '5/8': 0.97,
+      '3/4': 1.38,
+      '7/8': 1.85
+    },
+    'R12': {
+      '1/4': 0.07,
+      '3/8': 0.22,
+      '1/2': 0.44,
+      '5/8': 0.67,
+      '3/4': 0.95,
+      '7/8': 1.28
+    },
+    'R401A': {
+      '1/4': 0.08,
+      '3/8': 0.24,
+      '1/2': 0.48,
+      '5/8': 0.73,
+      '3/4': 1.03,
+      '7/8': 1.4
+    },
+    'R402A': {
+      '1/4': 0.09,
+      '3/8': 0.26,
+      '1/2': 0.52,
+      '5/8': 0.79,
+      '3/4': 1.12,
+      '7/8': 1.5
+    },
+    'R408A': {
+      '1/4': 0.08,
+      '3/8': 0.25,
+      '1/2': 0.5,
+      '5/8': 0.76,
+      '3/4': 1.08,
+      '7/8': 1.45
+    },
+    'R422D': {
+      '1/4': 0.08,
+      '3/8': 0.25,
+      '1/2': 0.51,
+      '5/8': 0.77,
+      '3/4': 1.09,
+      '7/8': 1.47
     }
   };
 
@@ -131,7 +267,7 @@ export default function RefrigerantChargeCalculator() {
         <h1 className="text-3xl font-bold mb-4">Refrigerant Charge Calculator</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Calculate additional refrigerant charge needed for extended line sets in HVAC systems. 
-          Supports 7 common refrigerants including R410A, R32, R22, R134A, R407C, R404A, and R507A with standard line sizes.
+          Supports 25+ refrigerants including modern R410A/R32, legacy R22, natural refrigerants, and next-generation low-GWP options.
         </p>
       </div>
 
@@ -153,13 +289,42 @@ export default function RefrigerantChargeCalculator() {
                   value={refrigerantType}
                   onChange={(e) => setRefrigerantType(e.target.value)}
                 >
-                  <option value="R410A">R410A (Most Common)</option>
-                  <option value="R32">R32 (Eco-Friendly)</option>
-                  <option value="R22">R22 (Legacy)</option>
-                  <option value="R134A">R134A (Automotive)</option>
-                  <option value="R407C">R407C (R22 Replacement)</option>
-                  <option value="R404A">R404A (Commercial)</option>
-                  <option value="R507A">R507A (Low-Temp)</option>
+                  <optgroup label="Most Common">
+                    <option value="R410A">R410A (Most Popular Residential)</option>
+                    <option value="R32">R32 (New Eco-Friendly)</option>
+                    <option value="R22">R22 (Legacy Residential)</option>
+                    <option value="R134A">R134A (Automotive/Chillers)</option>
+                  </optgroup>
+                  <optgroup label="R22 Replacements">
+                    <option value="R407A">R407A (Direct R22 Replacement)</option>
+                    <option value="R407C">R407C (Popular R22 Replacement)</option>
+                    <option value="R407F">R407F (Enhanced R22 Replacement)</option>
+                    <option value="R422D">R422D (Drop-in R22 Replacement)</option>
+                  </optgroup>
+                  <optgroup label="Commercial Refrigeration">
+                    <option value="R404A">R404A (Medium/Low Temp)</option>
+                    <option value="R507A">R507A (Low Temperature)</option>
+                    <option value="R448A">R448A (R404A Replacement)</option>
+                    <option value="R449A">R449A (R404A/507A Replacement)</option>
+                  </optgroup>
+                  <optgroup label="Next-Gen Low-GWP">
+                    <option value="R1234YF">R1234YF (Automotive)</option>
+                    <option value="R1234ZE">R1234ZE (Centrifugal Chillers)</option>
+                    <option value="R513A">R513A (R134A Replacement)</option>
+                    <option value="R515B">R515B (R134A Replacement)</option>
+                  </optgroup>
+                  <optgroup label="Natural Refrigerants">
+                    <option value="R290">R290 (Propane)</option>
+                    <option value="R600A">R600A (Isobutane)</option>
+                    <option value="R152A">R152A (HFC Alternative)</option>
+                  </optgroup>
+                  <optgroup label="Legacy Refrigerants">
+                    <option value="R12">R12 (Legacy CFC)</option>
+                    <option value="R502">R502 (Legacy Azeotrope)</option>
+                    <option value="R401A">R401A (R12 Replacement)</option>
+                    <option value="R402A">R402A (R502 Replacement)</option>
+                    <option value="R408A">R408A (R502 Replacement)</option>
+                  </optgroup>
                 </select>
               </div>
               <div>

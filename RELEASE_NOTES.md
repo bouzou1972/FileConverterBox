@@ -4,12 +4,12 @@
 
 ## 🚀 What's New in This Release
 
-### PT Chart Tool Addition
-- **New Professional Tool**: Added comprehensive PT (Pressure-Temperature) chart tool for HVAC technicians
-- **4 Refrigerants Supported**: R-410A, R-22, R-134a, and R-404A with accurate saturation data
-- **Bidirectional Lookup**: Convert temperature to pressure or pressure to temperature
-- **Multiple Units**: Support for Fahrenheit/Celsius and PSIG/kPa conversions
-- **Professional Features**: CSV download, clipboard copy, interactive tables
+### Comprehensive Refrigerant Support Enhancement
+- **PT Chart Tool**: Professional PT chart with 7 modern refrigerants including R-410A, R-32, R-407C, R-507A
+- **Complete Refrigerant Charge Calculator**: Now supports 25+ refrigerants organized by category
+- **Superheat Calculator**: Refrigerant-specific target ranges and intelligent diagnostics
+- **Modern & Legacy Support**: From latest eco-friendly R-32 to legacy CFC/HCFC refrigerants
+- **Professional Organization**: Grouped by application (Residential, Commercial, Natural, Next-Gen Low-GWP)
 
 ### XML Sitemap Implementation
 - **Complete SEO Optimization**: Professional XML sitemap with all 60+ tool pages
@@ -17,8 +17,8 @@
 - **Footer Integration**: Easy access for users and search engines
 - **Route Verification**: All field technician tools verified working
 
-### Field Technician Tools Suite (Complete)
-Now includes 16 professional calculators:
+### Enhanced Field Technician Tools Suite (Complete)
+Now includes 17 professional calculators with comprehensive refrigerant support:
 
 **HVAC Tools (6):**
 - BTU Calculator
@@ -71,6 +71,15 @@ Now includes 16 professional calculators:
 - **Complete Privacy**: Zero data transmission to servers
 - **Static Deployment Ready**: Works on any static hosting platform
 - **Offline Capable**: All tools work without internet after initial load
+- **Professional Data**: 25+ refrigerants with accurate charge rates and PT data
+
+### Refrigerant Database (Complete Coverage)
+- **Most Common**: R-410A, R-32, R-22, R-134A
+- **R22 Replacements**: R-407A, R-407C, R-407F, R-422D
+- **Commercial**: R-404A, R-507A, R-448A, R-449A
+- **Next-Gen Low-GWP**: R-1234YF, R-1234ZE, R-513A, R-515B
+- **Natural**: R-290 (Propane), R-600A (Isobutane), R-152A
+- **Legacy**: R-12, R-502, R-401A, R-402A, R-408A
 
 ## 🛠 Technical Features
 
