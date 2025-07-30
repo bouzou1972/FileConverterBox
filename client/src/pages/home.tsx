@@ -636,8 +636,8 @@ export default function Home() {
         // Utility Tools
         {
           href: "/wattage-calculator",
-          icon: "",
-          iconColor: "",
+          icon: "bolt",
+          iconColor: "text-yellow-500",
           title: "Wattage Calculator",
           description: "Find out how much electrical power something uses by entering voltage and current readings.",
           badge: "🆕 New"
