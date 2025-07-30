@@ -602,8 +602,8 @@ export default function Home() {
         },
         {
           href: "/hvac-tonnage-calculator",
-          icon: "wind",
-          iconColor: "text-sky-600",
+          icon: "",
+          iconColor: "",
           title: "HVAC Tonnage Calculator",
           description: "Figure out what size AC unit you need for a building based on square footage and heat sources.",
           badge: "🆕 New"
@@ -669,8 +669,8 @@ export default function Home() {
         // Refrigeration Tools
         {
           href: "/refrigerant-charge-calculator",
-          icon: "snowflake",
-          iconColor: "text-cyan-500",
+          icon: "",
+          iconColor: "",
           title: "Refrigerant Charge Calculator",
           description: "Calculate how much extra refrigerant to add when copper lines are longer than standard 25 feet in AC installations.",
           badge: "🆕 New"
@@ -686,8 +686,8 @@ export default function Home() {
         },
         {
           href: "/scientific-calculator",
-          icon: "calculator",
-          iconColor: "text-indigo-500",
+          icon: "",
+          iconColor: "",
           title: "Scientific Calculator",
           description: "Professional calculator with advanced math functions - sine, cosine, logarithms, square roots, and more for technical calculations.",
           badge: "🆕 New"
@@ -736,9 +736,11 @@ export default function Home() {
         <Card className="hover:shadow-md transition-all duration-200 cursor-pointer group bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600" onClick={handleClick} style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.06)' }}>
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
-              <div className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors flex-shrink-0`}>
-                <span className={`material-icons text-lg ${iconColor}`}>{icon}</span>
-              </div>
+              {icon && (
+                <div className={`p-2 rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors flex-shrink-0`}>
+                  <span className={`material-icons text-lg ${iconColor}`}>{icon}</span>
+                </div>
+              )}
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <h3 className="font-semibold text-base text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
