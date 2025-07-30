@@ -248,10 +248,30 @@ export default function Layout({ children }: LayoutProps) {
       <main className="bg-background">{children}</main>
 
       <footer className="text-center py-6 text-sm text-muted-foreground border-t border-border bg-background mt-12">
-        <p>
-          © 2025 FileConverterBox. All rights reserved. |{" "}
-          <span className="text-green-600">●</span> All processing happens locally in your browser
-        </p>
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3">
+            <a 
+              href="/sitemap.xml" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors underline decoration-dotted underline-offset-4"
+            >
+              XML Sitemap
+            </a>
+            <span className="hidden sm:inline">•</span>
+            <Link href="/contact">
+              <span className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors cursor-pointer underline decoration-dotted underline-offset-4">
+                Contact Us
+              </span>
+            </Link>
+            <span className="hidden sm:inline">•</span>
+            <span className="text-green-600">●</span>
+            <span>100% Local Processing</span>
+          </div>
+          <p>
+            © 2025 FileConverterBox. All rights reserved. All processing happens locally in your browser.
+          </p>
+        </div>
       </footer>
     </div>
   );
