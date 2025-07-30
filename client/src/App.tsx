@@ -66,6 +66,10 @@ import DuctSizeCalculator from "@/pages/duct-size-calculator";
 import OhmsLawCalculator from "@/pages/ohms-law-calculator";
 import WireSizeCalculator from "@/pages/wire-size-calculator";
 import StaticPressureCalculator from "@/pages/static-pressure-calculator";
+import WattageCalculator from "@/pages/wattage-calculator";
+import PipeVolumeCalculator from "@/pages/pipe-volume-calculator";
+import JobTimer from "@/pages/job-timer";
+import AreaVolumeCalculator from "@/pages/area-volume-calculator";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -135,6 +139,10 @@ function Router() {
         <Route path="/ohms-law-calculator" component={OhmsLawCalculator} />
         <Route path="/wire-size-calculator" component={WireSizeCalculator} />
         <Route path="/static-pressure-calculator" component={StaticPressureCalculator} />
+        <Route path="/wattage-calculator" component={WattageCalculator} />
+        <Route path="/pipe-volume-calculator" component={PipeVolumeCalculator} />
+        <Route path="/job-timer" component={JobTimer} />
+        <Route path="/area-volume-calculator" component={AreaVolumeCalculator} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

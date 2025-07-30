@@ -624,6 +624,39 @@ export default function Home() {
           title: "Wire Size Calculator",
           description: "Determine proper wire gauge based on current load, distance, and voltage drop requirements.",
           badge: "🆕 New"
+        },
+        // Utility Tools
+        {
+          href: "/wattage-calculator",
+          icon: "zap",
+          iconColor: "text-yellow-500",
+          title: "Wattage Calculator",
+          description: "Calculate electrical power consumption in watts from voltage and current measurements.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/pipe-volume-calculator",
+          icon: "circle",
+          iconColor: "text-blue-500",
+          title: "Pipe Volume Calculator",
+          description: "Calculate water volume in pipes for plumbing and HVAC system planning.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/job-timer",
+          icon: "timer",
+          iconColor: "text-green-500",
+          title: "Job Timer",
+          description: "Track work time for jobs and projects with session history and export capabilities.",
+          badge: "🆕 New"
+        },
+        {
+          href: "/area-volume-calculator",
+          icon: "square",
+          iconColor: "text-purple-500",
+          title: "Area & Volume Calculator",
+          description: "Calculate area, volume, and perimeter for construction and material estimation.",
+          badge: "🆕 New"
         }
       ]
     }
